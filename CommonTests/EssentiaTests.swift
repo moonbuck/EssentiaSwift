@@ -2148,125 +2148,216 @@ class EssentiaTests: XCTestCase {
 
   /// Tests the functionality of the Windowing algorithm. Values taken from `test_windowing.py`.
   func testWindowing() {
-    
-    XCTFail("\(#function) not yet implemented.")
 
     /*
-    def hamming(size):
-      window = []
-      for i in range(size) :
-        window.append(0.53836-0.46164*math.cos((2.0*math.pi*float(i))/(size-1.0)))
-      return window
-
-    def hann(size):
-      window = []
-      for i in range(size) :
-        window.append(0.5*(1-math.cos((2.0*math.pi*float(i))/(size-1.0))))
-      return window
-
-    def triangular(size):
-      window = []
-      for i in range(size) :
-        window.append(2.0/size*(size/2.0-abs(float(i-(size-1.0)/2.0))))
-      return window
-
-    def testSize(self):
-        # This checks whether the output size of the windowed signal is as expected
-        inputSize = 2047
-        hintSize = 4095
-        paddingSize = 16383 - hintSize
-
-        input = [1] * inputSize
-        output = Windowing(size=hintSize,  zeroPadding=paddingSize,  type='hann')(input)
-        self.assertEqual(len(output), inputSize + paddingSize)
-
-    def testZeropadding(self):
-        # Checks whether the signal gets zero-padded correctly
-        inputSize = 9
-        halfInputSize = int(math.ceil(inputSize / 2.0))
-        paddingSize = 9
-
-        input = [1] * inputSize
-        output = Windowing(size=inputSize,  zeroPadding=paddingSize,  type='square')(input)
-        self.assertEqualVector([0] * paddingSize,  output[halfInputSize:halfInputSize + paddingSize])
-
-    def testZero(self):
-        # Checks whether the result of windowing a zero signal is zeros
-        inputSize = 10
-        paddingSize = 10
-
-        input = [0] * inputSize
-        output = Windowing(size=inputSize,  zeroPadding=paddingSize,  type='square')(input)
-        self.assertEqualVector([0] * (inputSize + paddingSize),  output)
-
-    def normalize(self, window = []):
-        if window is None:
-            return None
-        sum_win = sum(window)
-        return [2.0*i/sum_win for i in window]
-
-    def testRegression(self):
-        # Checks whether the windows are as expected
-        inputSize = 1024
-        input = [1] * inputSize
-
-        # cannot use reference file as we use a different formula than others.
-        # Essentia uses 0.53836 instead of 0.54 and 0.46164 instead of 0.46
-        expected = self.normalize(hamming(inputSize))
-        output = Windowing(size=inputSize,  zeroPadding=0,  type='hamming', zeroPhase=False)(input)
-        self.assertAlmostEqualVector(expected, output, 1e-6)
-
-        expected = self.normalize(hann(inputSize))
-        output = Windowing(size=inputSize,  zeroPadding=0,  type='hann', zeroPhase=False)(input)
-        self.assertAlmostEqualVector(expected, output, 1e-6)
-
-        expected = self.normalize(triangular(inputSize))
-        output = Windowing(size=inputSize,  zeroPadding=0,  type='triangular', zeroPhase=False)(input)
-        self.assertAlmostEqualVector(expected, output, 1e-6)
-
-        expected = self.normalize(ones(inputSize))
-        output = Windowing(size=inputSize,  zeroPadding=0,  type='square', zeroPhase=False)(input)
-        self.assertAlmostEqualVector(expected, output)
-
-        expected = self.normalize(readVector(join(testdir, str(inputSize),'blackmanharris62.txt')))
-        output = Windowing(size=inputSize,  zeroPadding=0, type='blackmanharris62', zeroPhase=False)(input)
-        self.assertAlmostEqualVector(expected, output, 1e-5)
-
-        expected = self.normalize(readVector(join(testdir, str(inputSize),'blackmanharris70.txt')))
-        output = Windowing(size=inputSize,  zeroPadding=0, type='blackmanharris70', zeroPhase=False)(input)
-        self.assertAlmostEqualVector(expected, output, 1e-5)
-
-        expected = self.normalize(readVector(join(testdir, str(inputSize),'blackmanharris74.txt')))
-        output = Windowing(size=inputSize,  zeroPadding=0, type='blackmanharris74', zeroPhase=False)(input)
-        self.assertAlmostEqualVector(expected, output, 1e-5)
-
-        expected = self.normalize(readVector(join(testdir, str(inputSize),'blackmanharris92.txt')))
-        output = Windowing(size=inputSize,  zeroPadding=0, type='blackmanharris92', zeroPhase=False)(input)
-        self.assertAlmostEqualVector(expected, output, 1e-3)
+     Test that the output frame has the expected size.
      */
+
+    let windowing1 = StandardAlgorithm<Standard.Windowing>([
+      .size: 4095,
+      .zeroPadding: 12288,
+      .type: "hann"
+      ])
+
+    windowing1[realVecInput: .frame] = [1.0] * 2047
+    windowing1.compute()
+
+    XCTAssertEqual(windowing1[realVecOutput: .frame].count, 14335)
+
+    /*
+     Test zero padding.
+     */
+
+    let windowing2 = StandardAlgorithm<Standard.Windowing>([
+      .size: 9,
+      .zeroPadding: 9,
+      .type: "square"
+      ])
+
+    windowing2[realVecInput: .frame] = [1.0] * 9
+    windowing2.compute()
+
+    XCTAssertEqual(Array(windowing2[realVecOutput: .frame][5..<14]), [Float()] * 9)
+
+    /*
+     Test with all-zero input.
+     */
+
+    let windowing3 = StandardAlgorithm<Standard.Windowing>([
+      .size: 10,
+      .zeroPadding: 10,
+      .type: "square"
+      ])
+
+    windowing3[realVecInput: .frame] = [0.0] * 10
+    windowing3.compute()
+
+    XCTAssertEqual(windowing3[realVecOutput: .frame], [0.0] * 20)
+
+    func normalize(_ array: inout [Float]) {
+
+      let count = vDSP_Length(array.count)
+
+      var sum: Float = 0
+      vDSP_sve(array, 1, &sum, count)
+
+      var two: Float = 2
+      vDSP_vsmul(array, 1, &two, &array, 1, count)
+
+      vDSP_vsdiv(array, 1, &sum, &array, 1, count)
+
+    }
+
+    /*
+     Test each window type for regression.
+     */
+
+    let input: [Float] = [1.0] * 1024
+
+    let windowing4 = StandardAlgorithm<Standard.Windowing>([
+      .size: 1024,
+      .zeroPadding: 0,
+      .type: "hamming",
+      .zeroPhase: false
+      ])
+
+    windowing4[realVecInput: .frame] = input
+    windowing4.compute()
+
+    var expected = loadVector(name: "hamming")
+    normalize(&expected)
+
+    XCTAssertEqual(windowing4[realVecOutput: .frame], expected, accuracy: 1e-6)
+
+    let windowing5 = StandardAlgorithm<Standard.Windowing>([
+      .size: 1024,
+      .zeroPadding: 0,
+      .type: "hann",
+      .zeroPhase: false
+      ])
+
+    windowing5[realVecInput: .frame] = input
+    windowing5.compute()
+
+    expected = loadVector(name: "hann")
+    normalize(&expected)
+
+    XCTAssertEqual(windowing5[realVecOutput: .frame], expected, accuracy: 1e-6)
+
+    let windowing6 = StandardAlgorithm<Standard.Windowing>([
+      .size: 1024,
+      .zeroPadding: 0,
+      .type: "triangular",
+      .zeroPhase: false
+      ])
+
+    windowing6[realVecInput: .frame] = input
+    windowing6.compute()
+
+    expected = loadVector(name: "triangular")
+    normalize(&expected)
+
+    XCTAssertEqual(windowing6[realVecOutput: .frame], expected, accuracy: 1e-6)
+
+    let windowing7 = StandardAlgorithm<Standard.Windowing>([
+      .size: 1024,
+      .zeroPadding: 0,
+      .type: "square",
+      .zeroPhase: false
+      ])
+
+    windowing7[realVecInput: .frame] = input
+    windowing7.compute()
+
+    expected = [1.0] * 1024
+    normalize(&expected)
+
+    XCTAssertEqual(windowing7[realVecOutput: .frame], expected, accuracy: 1e-7)
+
+    let windowing8 = StandardAlgorithm<Standard.Windowing>([
+      .size: 1024,
+      .zeroPadding: 0,
+      .type: "blackmanharris62",
+      .zeroPhase: false
+      ])
+
+    windowing8[realVecInput: .frame] = input
+    windowing8.compute()
+
+    expected = loadVector(name: "blackmanharris62")
+    normalize(&expected)
+
+    XCTAssertEqual(windowing8[realVecOutput: .frame], expected, accuracy: 1e-5)
+
+    let windowing9 = StandardAlgorithm<Standard.Windowing>([
+      .size: 1024,
+      .zeroPadding: 0,
+      .type: "blackmanharris70",
+      .zeroPhase: false
+      ])
+
+    windowing9[realVecInput: .frame] = input
+    windowing9.compute()
+
+    expected = loadVector(name: "blackmanharris70")
+    normalize(&expected)
+
+    XCTAssertEqual(windowing9[realVecOutput: .frame], expected, accuracy: 1e-5)
+
+    let windowing10 = StandardAlgorithm<Standard.Windowing>([
+      .size: 1024,
+      .zeroPadding: 0,
+      .type: "blackmanharris74",
+      .zeroPhase: false
+      ])
+
+    windowing10[realVecInput: .frame] = input
+    windowing10.compute()
+
+    expected = loadVector(name: "blackmanharris74")
+    normalize(&expected)
+
+    XCTAssertEqual(windowing10[realVecOutput: .frame], expected, accuracy: 1e-5)
+
+    let windowing11 = StandardAlgorithm<Standard.Windowing>([
+      .size: 1024,
+      .zeroPadding: 0,
+      .type: "blackmanharris92",
+      .zeroPhase: false
+      ])
+
+    windowing11[realVecInput: .frame] = input
+    windowing11.compute()
+
+    expected = loadVector(name: "blackmanharris92")
+    normalize(&expected)
+
+    XCTAssertEqual(windowing11[realVecOutput: .frame], expected, accuracy: 1e-3)
+
   }
 
 /*
-   MultiPitchKlapuri
-   MultiPitchMelodia
-   PitchContourSegmentation
-   PitchContours
-   PitchContoursMelody
-   PitchContoursMultiMelody
-   PitchFilter
-   PitchMelodia
-   PitchSalienceFunctionPeaks
-   AutoCorrelation
-   FFTC
-   OverlapAdd
-   PeakDetection
-   WarpedAutoCorrelation
-   PCA
-   Extractor
-   LowLevelSpectralEqloudExtractor
-   LowLevelSpectralExtractor
-   SpectrumCQ
-   TuningFrequencyExtractor
+   Possible test subjects:
+     MultiPitchKlapuri
+     MultiPitchMelodia
+     PitchContourSegmentation
+     PitchContours
+     PitchContoursMelody
+     PitchContoursMultiMelody
+     PitchFilter
+     PitchMelodia
+     PitchSalienceFunctionPeaks
+     AutoCorrelation
+     FFTC
+     OverlapAdd
+     PeakDetection
+     WarpedAutoCorrelation
+     PCA
+     Extractor
+     LowLevelSpectralEqloudExtractor
+     LowLevelSpectralExtractor
+     SpectrumCQ
+     TuningFrequencyExtractor
  */
 
 

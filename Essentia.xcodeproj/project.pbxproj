@@ -1275,6 +1275,20 @@
 		C23A3B5A1FBF636B0083F6CE /* Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23A33BC1FBF5A2A0083F6CE /* Debugging.swift */; };
 		C23A3B601FBF649E0083F6CE /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C23A3B5E1FBF64510083F6CE /* Accelerate.framework */; };
 		C23A3B611FBF64AC0083F6CE /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C23A3B5C1FBF64220083F6CE /* Accelerate.framework */; };
+		C2BADBD61FBFA89B009D02C5 /* blackmanharris92.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBD21FBFA89A009D02C5 /* blackmanharris92.txt */; };
+		C2BADBD71FBFA89B009D02C5 /* blackmanharris92.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBD21FBFA89A009D02C5 /* blackmanharris92.txt */; };
+		C2BADBD81FBFA89B009D02C5 /* blackmanharris62.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBD31FBFA89A009D02C5 /* blackmanharris62.txt */; };
+		C2BADBD91FBFA89B009D02C5 /* blackmanharris62.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBD31FBFA89A009D02C5 /* blackmanharris62.txt */; };
+		C2BADBDA1FBFA89B009D02C5 /* blackmanharris70.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBD41FBFA89A009D02C5 /* blackmanharris70.txt */; };
+		C2BADBDB1FBFA89B009D02C5 /* blackmanharris70.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBD41FBFA89A009D02C5 /* blackmanharris70.txt */; };
+		C2BADBDC1FBFA89B009D02C5 /* blackmanharris74.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBD51FBFA89B009D02C5 /* blackmanharris74.txt */; };
+		C2BADBDD1FBFA89B009D02C5 /* blackmanharris74.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBD51FBFA89B009D02C5 /* blackmanharris74.txt */; };
+		C2BADBE11FBFAAAB009D02C5 /* hann.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBDE1FBFAAAB009D02C5 /* hann.txt */; };
+		C2BADBE21FBFAAAB009D02C5 /* hann.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBDE1FBFAAAB009D02C5 /* hann.txt */; };
+		C2BADBE31FBFAAAB009D02C5 /* hamming.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBDF1FBFAAAB009D02C5 /* hamming.txt */; };
+		C2BADBE41FBFAAAB009D02C5 /* hamming.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBDF1FBFAAAB009D02C5 /* hamming.txt */; };
+		C2BADBE51FBFAAAB009D02C5 /* triangular.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBE01FBFAAAB009D02C5 /* triangular.txt */; };
+		C2BADBE61FBFAAAB009D02C5 /* triangular.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBE01FBFAAAB009D02C5 /* triangular.txt */; };
 		C2EC95261FBF660500D384C5 /* fileoutputproxy.h in Headers */ = {isa = PBXBuildFile; fileRef = C23A34551FBF5A2A0083F6CE /* fileoutputproxy.h */; };
 		C2EC95271FBF660600D384C5 /* fileoutputproxy.h in Headers */ = {isa = PBXBuildFile; fileRef = C23A34551FBF5A2A0083F6CE /* fileoutputproxy.h */; };
 		C2EC95281FBF660B00D384C5 /* fileoutputproxy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C23A34611FBF5A2A0083F6CE /* fileoutputproxy.cpp */; };
@@ -2220,6 +2234,13 @@
 		C23A3A7C1FBF5E390083F6CE /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
 		C23A3B5C1FBF64220083F6CE /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Accelerate.framework; sourceTree = DEVELOPER_DIR; };
 		C23A3B5E1FBF64510083F6CE /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		C2BADBD21FBFA89A009D02C5 /* blackmanharris92.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = blackmanharris92.txt; sourceTree = "<group>"; };
+		C2BADBD31FBFA89A009D02C5 /* blackmanharris62.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = blackmanharris62.txt; sourceTree = "<group>"; };
+		C2BADBD41FBFA89A009D02C5 /* blackmanharris70.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = blackmanharris70.txt; sourceTree = "<group>"; };
+		C2BADBD51FBFA89B009D02C5 /* blackmanharris74.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = blackmanharris74.txt; sourceTree = "<group>"; };
+		C2BADBDE1FBFAAAB009D02C5 /* hann.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hann.txt; sourceTree = "<group>"; };
+		C2BADBDF1FBFAAAB009D02C5 /* hamming.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hamming.txt; sourceTree = "<group>"; };
+		C2BADBE01FBFAAAB009D02C5 /* triangular.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = triangular.txt; sourceTree = "<group>"; };
 		C2EC95311FBF6A1500D384C5 /* silence.flac */ = {isa = PBXFileReference; lastKnownFileType = file; path = silence.flac; sourceTree = "<group>"; };
 		C2EC95331FBF6A1500D384C5 /* empty.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = empty.wav; sourceTree = "<group>"; };
 		C2EC95341FBF6A1500D384C5 /* empty.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = empty.ogg; sourceTree = "<group>"; };
@@ -3703,6 +3724,13 @@
 		C2EC95B41FBF6A1500D384C5 /* data */ = {
 			isa = PBXGroup;
 			children = (
+				C2BADBDF1FBFAAAB009D02C5 /* hamming.txt */,
+				C2BADBDE1FBFAAAB009D02C5 /* hann.txt */,
+				C2BADBE01FBFAAAB009D02C5 /* triangular.txt */,
+				C2BADBD31FBFA89A009D02C5 /* blackmanharris62.txt */,
+				C2BADBD41FBFA89A009D02C5 /* blackmanharris70.txt */,
+				C2BADBD51FBFA89B009D02C5 /* blackmanharris74.txt */,
+				C2BADBD21FBFA89A009D02C5 /* blackmanharris92.txt */,
 				C2EC95B51FBF6A1500D384C5 /* spectrumInput.txt */,
 				C2EC95B61FBF6A1500D384C5 /* squareWave.txt */,
 				C2EC95B71FBF6A1500D384C5 /* varyingSquareWave.txt */,
@@ -4541,6 +4569,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2EC96D41FBF6A9100D384C5 /* impulses_1second_22050_st_bad_stream_info.flac in Resources */,
+				C2BADBE51FBFAAAB009D02C5 /* triangular.txt in Resources */,
+				C2BADBDC1FBFA89B009D02C5 /* blackmanharris74.txt in Resources */,
 				C2EC96C31FBF6A8A00D384C5 /* impulses_1second_48000.flac in Resources */,
 				C2EC96731FBF6A5000D384C5 /* test.ape in Resources */,
 				C2EC96701FBF6A5000D384C5 /* test.mp3 in Resources */,
@@ -4581,6 +4611,7 @@
 				C2EC96DE1FBF6AA100D384C5 /* impulses_1second_48000.mp3 in Resources */,
 				C2EC96BA1FBF6A8400D384C5 /* impulses_1second_48000_st.aiff in Resources */,
 				C2EC96B01FBF6A7F00D384C5 /* impulses_1samp_44100.wav in Resources */,
+				C2BADBDA1FBFA89B009D02C5 /* blackmanharris70.txt in Resources */,
 				C2EC96D31FBF6A9100D384C5 /* impulses_1second_22050_bad_stream_info.flac in Resources */,
 				C2EC96F01FBF6AC800D384C5 /* multistream1.mka in Resources */,
 				C2EC96DF1FBF6AA100D384C5 /* impulses_1second_22050.mp3 in Resources */,
@@ -4598,6 +4629,7 @@
 				C2EC96681FBF6A4800D384C5 /* sine_440_5000period.wav in Resources */,
 				C2EC96AE1FBF6A7F00D384C5 /* impulses_1samp_44100_st.wav in Resources */,
 				C2EC96FB1FBF6ACD00D384C5 /* 1kHz_sine_-20LUFS-16bit.flac in Resources */,
+				C2BADBE31FBFAAAB009D02C5 /* hamming.txt in Resources */,
 				C2EC96C71FBF6A8A00D384C5 /* impulses_1second_44100_st.flac in Resources */,
 				C2EC967F1FBF6A5E00D384C5 /* 4channels.flac in Resources */,
 				C2EC970C1FBF6AD300D384C5 /* empty.ogg in Resources */,
@@ -4629,6 +4661,7 @@
 				C2EC96A31FBF6A7800D384C5 /* impulses_1second_22050_st.wav in Resources */,
 				C2EC96511FBF6A3C00D384C5 /* dubstep.mp3 in Resources */,
 				C2EC96391FBF6A2A00D384C5 /* frequencyBands.txt in Resources */,
+				C2BADBE11FBFAAAB009D02C5 /* hann.txt in Resources */,
 				C2EC96531FBF6A3C00D384C5 /* cat_purrrr24bit.wav in Resources */,
 				C2EC96C41FBF6A8A00D384C5 /* impulses_1second_44100.flac in Resources */,
 				C2EC96E11FBF6AA100D384C5 /* impulses_1second_44100_st.mp3 in Resources */,
@@ -4643,6 +4676,7 @@
 				C2EC96881FBF6A6500D384C5 /* noise_pink.wav in Resources */,
 				C2EC96961FBF6A7100D384C5 /* impulses_1second_22050_st.ogg in Resources */,
 				C2EC970B1FBF6AD300D384C5 /* empty.wav in Resources */,
+				C2BADBD81FBFA89B009D02C5 /* blackmanharris62.txt in Resources */,
 				C2EC96551FBF6A3C00D384C5 /* dubstep.flac in Resources */,
 				C2EC96DD1FBF6AA100D384C5 /* impulses_1second_48000_st.mp3 in Resources */,
 				C2EC96AC1FBF6A7F00D384C5 /* impulses_1samp_48000.wav in Resources */,
@@ -4651,6 +4685,7 @@
 				C2EC96931FBF6A7100D384C5 /* impulses_1second_48000.ogg in Resources */,
 				C2EC96691FBF6A4800D384C5 /* unsupported.au in Resources */,
 				C2EC96E91FBF6AAF00D384C5 /* 1989_samples.wav in Resources */,
+				C2BADBD61FBFA89B009D02C5 /* blackmanharris92.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4666,6 +4701,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2EC96DB1FBF6A9200D384C5 /* impulses_1second_22050_st_bad_stream_info.flac in Resources */,
+				C2BADBE61FBFAAAB009D02C5 /* triangular.txt in Resources */,
+				C2BADBDD1FBFA89B009D02C5 /* blackmanharris74.txt in Resources */,
 				C2EC96C91FBF6A8A00D384C5 /* impulses_1second_48000.flac in Resources */,
 				C2EC96791FBF6A5100D384C5 /* test.ape in Resources */,
 				C2EC96761FBF6A5100D384C5 /* test.mp3 in Resources */,
@@ -4706,6 +4743,7 @@
 				C2EC96E41FBF6AA200D384C5 /* impulses_1second_48000.mp3 in Resources */,
 				C2EC96C01FBF6A8500D384C5 /* impulses_1second_48000_st.aiff in Resources */,
 				C2EC96B61FBF6A7F00D384C5 /* impulses_1samp_44100.wav in Resources */,
+				C2BADBDB1FBFA89B009D02C5 /* blackmanharris70.txt in Resources */,
 				C2EC96DA1FBF6A9200D384C5 /* impulses_1second_22050_bad_stream_info.flac in Resources */,
 				C2EC96EE1FBF6AC700D384C5 /* multistream1.mka in Resources */,
 				C2EC96E51FBF6AA200D384C5 /* impulses_1second_22050.mp3 in Resources */,
@@ -4723,6 +4761,7 @@
 				C2EC966C1FBF6A4900D384C5 /* sine_440_5000period.wav in Resources */,
 				C2EC96B41FBF6A7F00D384C5 /* impulses_1samp_44100_st.wav in Resources */,
 				C2EC97081FBF6ACE00D384C5 /* 1kHz_sine_-20LUFS-16bit.flac in Resources */,
+				C2BADBE41FBFAAAB009D02C5 /* hamming.txt in Resources */,
 				C2EC96CD1FBF6A8A00D384C5 /* impulses_1second_44100_st.flac in Resources */,
 				C2EC96821FBF6A5F00D384C5 /* 4channels.flac in Resources */,
 				C2EC97101FBF6AD400D384C5 /* empty.ogg in Resources */,
@@ -4754,6 +4793,7 @@
 				C2EC96A91FBF6A7800D384C5 /* impulses_1second_22050_st.wav in Resources */,
 				C2EC96611FBF6A3D00D384C5 /* dubstep.mp3 in Resources */,
 				C2EC963F1FBF6A2B00D384C5 /* frequencyBands.txt in Resources */,
+				C2BADBE21FBFAAAB009D02C5 /* hann.txt in Resources */,
 				C2EC96631FBF6A3D00D384C5 /* cat_purrrr24bit.wav in Resources */,
 				C2EC96CA1FBF6A8A00D384C5 /* impulses_1second_44100.flac in Resources */,
 				C2EC96E71FBF6AA200D384C5 /* impulses_1second_44100_st.mp3 in Resources */,
@@ -4768,6 +4808,7 @@
 				C2EC968E1FBF6A6500D384C5 /* noise_pink.wav in Resources */,
 				C2EC969C1FBF6A7200D384C5 /* impulses_1second_22050_st.ogg in Resources */,
 				C2EC970F1FBF6AD400D384C5 /* empty.wav in Resources */,
+				C2BADBD91FBFA89B009D02C5 /* blackmanharris62.txt in Resources */,
 				C2EC96651FBF6A3D00D384C5 /* dubstep.flac in Resources */,
 				C2EC96E31FBF6AA200D384C5 /* impulses_1second_48000_st.mp3 in Resources */,
 				C2EC96B21FBF6A7F00D384C5 /* impulses_1samp_48000.wav in Resources */,
@@ -4776,6 +4817,7 @@
 				C2EC96991FBF6A7200D384C5 /* impulses_1second_48000.ogg in Resources */,
 				C2EC966D1FBF6A4900D384C5 /* unsupported.au in Resources */,
 				C2EC96EB1FBF6AB000D384C5 /* 1989_samples.wav in Resources */,
+				C2BADBD71FBFA89B009D02C5 /* blackmanharris92.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
