@@ -92,11 +92,11 @@ using namespace essentia;
   Parameter::ParamType paramType;
 
   switch (type) {
-    case ParameterWrapperTypeUndefined:                paramType = Parameter::UNDEFINED;
-    case ParameterWrapperTypeReal:                     paramType = Parameter::REAL;
-    case ParameterWrapperTypeString:                   paramType = Parameter::STRING;
-    case ParameterWrapperTypeBoolean:                  paramType = Parameter::BOOL;
-    case ParameterWrapperTypeInteger:                  paramType = Parameter::INT;
+    case ParameterWrapperTypeUndefined:             paramType = Parameter::UNDEFINED;
+    case ParameterWrapperTypeReal:                  paramType = Parameter::REAL;
+    case ParameterWrapperTypeString:                paramType = Parameter::STRING;
+    case ParameterWrapperTypeBoolean:               paramType = Parameter::BOOL;
+    case ParameterWrapperTypeInteger:               paramType = Parameter::INT;
     case ParameterWrapperTypeRealVec:               paramType = Parameter::VECTOR_REAL;
     case ParameterWrapperTypeStringVec:             paramType = Parameter::VECTOR_STRING;
     case ParameterWrapperTypeStringVecMap:          paramType = Parameter::MAP_VECTOR_STRING;
@@ -133,7 +133,7 @@ using namespace essentia;
  @return The newly created parameter wrapper configured with `value`.
 */
 + (instancetype)parameterWrapperWithBool:(OBJCBool)value {
-  return [self parameterWrapperForRValueParameter: Parameter(value.boolValue)];
+  return [self parameterWrapperForRValueParameter: Parameter((bool)value.boolValue)];
 }
 
 /**
