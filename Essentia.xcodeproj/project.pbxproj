@@ -1289,6 +1289,12 @@
 		C2BADBE41FBFAAAB009D02C5 /* hamming.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBDF1FBFAAAB009D02C5 /* hamming.txt */; };
 		C2BADBE51FBFAAAB009D02C5 /* triangular.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBE01FBFAAAB009D02C5 /* triangular.txt */; };
 		C2BADBE61FBFAAAB009D02C5 /* triangular.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBE01FBFAAAB009D02C5 /* triangular.txt */; };
+		C2BADBFE1FBFC4BD009D02C5 /* AVAudioPCMBuffer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EC95B01FBF6A1500D384C5 /* AVAudioPCMBuffer+Extensions.swift */; };
+		C2BADBFF1FBFC4BD009D02C5 /* AVAudioPCMBuffer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EC95B01FBF6A1500D384C5 /* AVAudioPCMBuffer+Extensions.swift */; };
+		C2BADC031FC0878E009D02C5 /* Zip.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BADC021FC0878E009D02C5 /* Zip.swift */; };
+		C2BADC041FC0878E009D02C5 /* Zip.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BADC021FC0878E009D02C5 /* Zip.swift */; };
+		C2BADC061FC0926E009D02C5 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BADC051FC0926E009D02C5 /* Strings.swift */; };
+		C2BADC071FC0926E009D02C5 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BADC051FC0926E009D02C5 /* Strings.swift */; };
 		C2EC95261FBF660500D384C5 /* fileoutputproxy.h in Headers */ = {isa = PBXBuildFile; fileRef = C23A34551FBF5A2A0083F6CE /* fileoutputproxy.h */; };
 		C2EC95271FBF660600D384C5 /* fileoutputproxy.h in Headers */ = {isa = PBXBuildFile; fileRef = C23A34551FBF5A2A0083F6CE /* fileoutputproxy.h */; };
 		C2EC95281FBF660B00D384C5 /* fileoutputproxy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C23A34611FBF5A2A0083F6CE /* fileoutputproxy.cpp */; };
@@ -1522,12 +1528,10 @@
 		C2EC97131FBF6AD800D384C5 /* silence.flac in Resources */ = {isa = PBXBuildFile; fileRef = C2EC95311FBF6A1500D384C5 /* silence.flac */; };
 		C2EC97141FBF6AD900D384C5 /* silence.flac in Resources */ = {isa = PBXBuildFile; fileRef = C2EC95311FBF6A1500D384C5 /* silence.flac */; };
 		C2EC97151FBF6B0E00D384C5 /* SpecificationHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EC95AF1FBF6A1500D384C5 /* SpecificationHelpers.swift */; };
-		C2EC97161FBF6B0E00D384C5 /* AVAudioPCMBuffer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EC95B01FBF6A1500D384C5 /* AVAudioPCMBuffer+Extensions.swift */; };
 		C2EC97171FBF6B0E00D384C5 /* RTFHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EC95B11FBF6A1500D384C5 /* RTFHelpers.swift */; };
 		C2EC97181FBF6B0E00D384C5 /* Assertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EC95B21FBF6A1500D384C5 /* Assertions.swift */; };
 		C2EC97191FBF6B0E00D384C5 /* Attachments.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EC95B31FBF6A1500D384C5 /* Attachments.swift */; };
 		C2EC971A1FBF6B0F00D384C5 /* SpecificationHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EC95AF1FBF6A1500D384C5 /* SpecificationHelpers.swift */; };
-		C2EC971B1FBF6B0F00D384C5 /* AVAudioPCMBuffer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EC95B01FBF6A1500D384C5 /* AVAudioPCMBuffer+Extensions.swift */; };
 		C2EC971C1FBF6B0F00D384C5 /* RTFHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EC95B11FBF6A1500D384C5 /* RTFHelpers.swift */; };
 		C2EC971D1FBF6B0F00D384C5 /* Assertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EC95B21FBF6A1500D384C5 /* Assertions.swift */; };
 		C2EC971E1FBF6B0F00D384C5 /* Attachments.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EC95B31FBF6A1500D384C5 /* Attachments.swift */; };
@@ -2241,6 +2245,8 @@
 		C2BADBDE1FBFAAAB009D02C5 /* hann.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hann.txt; sourceTree = "<group>"; };
 		C2BADBDF1FBFAAAB009D02C5 /* hamming.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hamming.txt; sourceTree = "<group>"; };
 		C2BADBE01FBFAAAB009D02C5 /* triangular.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = triangular.txt; sourceTree = "<group>"; };
+		C2BADC021FC0878E009D02C5 /* Zip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zip.swift; sourceTree = "<group>"; };
+		C2BADC051FC0926E009D02C5 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		C2EC95311FBF6A1500D384C5 /* silence.flac */ = {isa = PBXFileReference; lastKnownFileType = file; path = silence.flac; sourceTree = "<group>"; };
 		C2EC95331FBF6A1500D384C5 /* empty.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = empty.wav; sourceTree = "<group>"; };
 		C2EC95341FBF6A1500D384C5 /* empty.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = empty.ogg; sourceTree = "<group>"; };
@@ -2615,6 +2621,9 @@
 		C23A33B81FBF5A2A0083F6CE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				C2BADC051FC0926E009D02C5 /* Strings.swift */,
+				C2BADC021FC0878E009D02C5 /* Zip.swift */,
+				C2EC95B01FBF6A1500D384C5 /* AVAudioPCMBuffer+Extensions.swift */,
 				C23A33B91FBF5A2A0083F6CE /* KeyPathConvenienceExtensions.swift */,
 				C23A33BA1FBF5A2A0083F6CE /* DictionaryMerging.swift */,
 				C23A33BB1FBF5A2A0083F6CE /* CollectionCreationOperators.swift */,
@@ -3713,7 +3722,6 @@
 			isa = PBXGroup;
 			children = (
 				C2EC95AF1FBF6A1500D384C5 /* SpecificationHelpers.swift */,
-				C2EC95B01FBF6A1500D384C5 /* AVAudioPCMBuffer+Extensions.swift */,
 				C2EC95B11FBF6A1500D384C5 /* RTFHelpers.swift */,
 				C2EC95B21FBF6A1500D384C5 /* Assertions.swift */,
 				C2EC95B31FBF6A1500D384C5 /* Attachments.swift */,
@@ -4904,6 +4912,7 @@
 				C23A368F1FBF5A2B0083F6CE /* equalloudness.cpp in Sources */,
 				C23A381F1FBF5A2B0083F6CE /* distributionshape.cpp in Sources */,
 				C23A36D91FBF5A2B0083F6CE /* sbic.cpp in Sources */,
+				C2BADC061FC0926E009D02C5 /* Strings.swift in Sources */,
 				C23A38B31FBF5A2C0083F6CE /* streamingalgorithmcomposite.cpp in Sources */,
 				C23A380C1FBF5A2B0083F6CE /* onsetrate.cpp in Sources */,
 				C23A37DF1FBF5A2B0083F6CE /* tempotapmaxagreement.cpp in Sources */,
@@ -4978,6 +4987,7 @@
 				C23A364C1FBF5A2B0083F6CE /* ParameterWrapper.mm in Sources */,
 				C23A388B1FBF5A2C0083F6CE /* FreesoundRhythmDescriptors.cpp in Sources */,
 				C23A36E81FBF5A2B0083F6CE /* maxtototal.cpp in Sources */,
+				C2BADC031FC0878E009D02C5 /* Zip.swift in Sources */,
 				C23A376B1FBF5A2B0083F6CE /* stochasticmodelsynth.cpp in Sources */,
 				C23A36351FBF5A2B0083F6CE /* IODataType.mm in Sources */,
 				C23A37A61FBF5A2B0083F6CE /* binaryoperatorstream.cpp in Sources */,
@@ -5046,6 +5056,7 @@
 				C23A36C91FBF5A2B0083F6CE /* predominantpitchmelodia.cpp in Sources */,
 				C2EC95281FBF660B00D384C5 /* fileoutputproxy.cpp in Sources */,
 				C23A36621FBF5A2B0083F6CE /* Input.swift in Sources */,
+				C2BADBFE1FBFC4BD009D02C5 /* AVAudioPCMBuffer+Extensions.swift in Sources */,
 				C23A38A11FBF5A2C0083F6CE /* devnull.cpp in Sources */,
 				C23A38341FBF5A2B0083F6CE /* flatness.cpp in Sources */,
 				C23A37C11FBF5A2B0083F6CE /* bpf.cpp in Sources */,
@@ -5130,7 +5141,6 @@
 				C2EC97151FBF6B0E00D384C5 /* SpecificationHelpers.swift in Sources */,
 				C2EC97171FBF6B0E00D384C5 /* RTFHelpers.swift in Sources */,
 				C2EC97191FBF6B0E00D384C5 /* Attachments.swift in Sources */,
-				C2EC97161FBF6B0E00D384C5 /* AVAudioPCMBuffer+Extensions.swift in Sources */,
 				C2EC96331FBF6A1E00D384C5 /* EssentiaTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5275,6 +5285,7 @@
 				C23A391C1FBF5B7B0083F6CE /* chordsdetectionbeats.cpp in Sources */,
 				C23A3B4C1FBF63540083F6CE /* VectorOutput.swift in Sources */,
 				C23A3B3B1FBF63160083F6CE /* NSString+BridgingExtensions.hpp in Sources */,
+				C2BADC071FC0926E009D02C5 /* Strings.swift in Sources */,
 				C23A398B1FBF5C6E0083F6CE /* sprmodelsynth.cpp in Sources */,
 				C23A3B481FBF63540083F6CE /* Parameter.swift in Sources */,
 				C23A39521FBF5C1D0083F6CE /* extractor.cpp in Sources */,
@@ -5349,6 +5360,7 @@
 				C23A393C1FBF5BF10083F6CE /* fadedetection.cpp in Sources */,
 				C23A39921FBF5C6E0083F6CE /* sinemodelsynth.cpp in Sources */,
 				C23A39DA1FBF5CCF0083F6CE /* monomixer.cpp in Sources */,
+				C2BADBFF1FBFC4BD009D02C5 /* AVAudioPCMBuffer+Extensions.swift in Sources */,
 				C23A39B81FBF5CCF0083F6CE /* trimmer.cpp in Sources */,
 				C23A3B491FBF63540083F6CE /* Algorithm.swift in Sources */,
 				C23A3A211FBF5D880083F6CE /* loopbpmconfidence.cpp in Sources */,
@@ -5373,6 +5385,7 @@
 				C23A3ADC1FBF5F090083F6CE /* configurable.cpp in Sources */,
 				C23A39331FBF5BF10083F6CE /* sbic.cpp in Sources */,
 				C23A3A631FBF5DB20083F6CE /* decrease.cpp in Sources */,
+				C2BADC041FC0878E009D02C5 /* Zip.swift in Sources */,
 				C23A3AE21FBF5F160083F6CE /* ringbuffervectoroutput.cpp in Sources */,
 				C23A39D21FBF5CCF0083F6CE /* frametoreal.cpp in Sources */,
 				C23A3A051FBF5CCF0083F6CE /* realaccumulator.cpp in Sources */,
@@ -5456,7 +5469,6 @@
 				C2EC971A1FBF6B0F00D384C5 /* SpecificationHelpers.swift in Sources */,
 				C2EC971C1FBF6B0F00D384C5 /* RTFHelpers.swift in Sources */,
 				C2EC971E1FBF6B0F00D384C5 /* Attachments.swift in Sources */,
-				C2EC971B1FBF6B0F00D384C5 /* AVAudioPCMBuffer+Extensions.swift in Sources */,
 				C2EC96341FBF6A1E00D384C5 /* EssentiaTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5668,7 +5680,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -5693,7 +5705,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;

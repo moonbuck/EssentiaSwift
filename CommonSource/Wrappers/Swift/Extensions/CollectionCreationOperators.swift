@@ -34,17 +34,3 @@ extension Array {
 
 }
 
-extension String {
-
-  /// Operator providing a more convenient way to create a string of a repeated characeter
-  /// sequence.
-  ///
-  /// - Parameters:
-  ///   - lhs: The character sequence to repeat.
-  ///   - rhs: The number of times to repeat `lhs`.
-  /// - Returns: A string composed of `lhs` repeated `rhs` times.
-  public static func *(lhs: String, rhs: Int) -> String {
-    return String(repeating: lhs, count: rhs)
-  }
-
-}
