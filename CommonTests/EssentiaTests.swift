@@ -52,7 +52,7 @@ func monoBuffer(url: URL) -> AVAudioPCMBuffer {
 ///   - url: The URL for the audio file with which to fill the buffer.
 ///   - forceEvenCount: Flag indicating whether the returned array should have an even count.
 /// - Returns: An array with the signal from `url`.
-func monoBufferData(url: URL, forceEvenCount: Bool = true) -> [Float] {
+func monoBufferData(url: URL, forceEvenCount: Bool = false) -> [Float] {
   let buffer = monoBuffer(url: url)
   guard let signal = buffer.floatChannelData?.pointee else {
     fatalError("Failed to get raw signal from buffer`.")
@@ -539,138 +539,8 @@ class EssentiaTests: XCTestCase {
       XCTAssertEqual(pool[singleStringVec: "singleStringVector\(index)"], stringVec)
     }
 
-    XCTAssertEqual(pool.jsonRepresentation, """
-                    {
-                      "singleString0" : "1",
-                      "stringVector" : [
-                        [
-                          "11",
-                          "12",
-                          "13"
-                        ],
-                        [
-                          "21",
-                          "22",
-                          "23"
-                        ],
-                        [
-                          "31",
-                          "32",
-                          "33"
-                        ]
-                      ],
-                      "singleStringVector2" : [
-                        "31",
-                        "32",
-                        "33"
-                      ],
-                      "singleRealVector0" : [
-                        1.1000000238418579,
-                        1.2000000476837158,
-                        1.2999999523162842
-                      ],
-                      "real" : [
-                        1,
-                        2,
-                        3
-                      ],
-                      "singleString1" : "2",
-                      "string" : [
-                        "1",
-                        "2",
-                        "3"
-                      ],
-                      "singleReal0" : 1,
-                      "stereoSample" : [
-                        {
-                          "right" : 1.2000000476837158,
-                          "left" : 1.1000000238418579
-                        },
-                        {
-                          "right" : 2.2000000476837158,
-                          "left" : 2.0999999046325684
-                        }
-                      ],
-                      "singleString2" : "3",
-                      "singleReal1" : 2,
-                      "singleReal2" : 3,
-                      "singleStringVector0" : [
-                        "11",
-                        "12",
-                        "13"
-                      ],
-                      "singleRealVector2" : [
-                        3.0999999046325684,
-                        3.2000000476837158,
-                        3.2999999523162842
-                      ],
-                      "singleStringVector1" : [
-                        "21",
-                        "22",
-                        "23"
-                      ],
-                      "realMatrix" : [
-                        [
-                          [
-                            11.100000381469727,
-                            11.199999809265137,
-                            11.300000190734863
-                          ],
-                          [
-                            12.100000381469727,
-                            12.199999809265137,
-                            12.300000190734863
-                          ]
-                        ],
-                        [
-                          [
-                            21.100000381469727,
-                            21.200000762939453,
-                            21.299999237060547
-                          ],
-                          [
-                            22.100000381469727,
-                            22.200000762939453,
-                            22.299999237060547
-                          ]
-                        ],
-                        [
-                          [
-                            31.100000381469727,
-                            31.200000762939453,
-                            31.299999237060547
-                          ],
-                          [
-                            32.099998474121094,
-                            32.200000762939453,
-                            32.299999237060547
-                          ]
-                        ]
-                      ],
-                      "realVector" : [
-                        [
-                          1.1000000238418579,
-                          1.2000000476837158,
-                          1.2999999523162842
-                        ],
-                        [
-                          2.0999999046325684,
-                          2.2000000476837158,
-                          2.2999999523162842
-                        ],
-                        [
-                          3.0999999046325684,
-                          3.2000000476837158,
-                          3.2999999523162842
-                        ]
-                      ],
-                      "singleRealVector1" : [
-                        2.0999999046325684,
-                        2.2000000476837158,
-                        2.2999999523162842
-                      ]
-                    }
-                    """)
+    XCTAssertEqual(pool.jsonRepresentation,
+                   try! String(contentsOf: bundleURL(name: "pool", ext: "json")))
 
   }
 
@@ -1455,8 +1325,6 @@ class EssentiaTests: XCTestCase {
 
     /*
      Test the algorithm with a sinusoid.
-     Note: Passing would require broadening the accuracy value from 1e-5 (used in python)
-           to 0.00265293219 for third magnitude average.
      */
 
     let audioSignal = monoBufferData(url: bundleURL(name: "sin5000", ext: "wav"))
@@ -1889,7 +1757,7 @@ class EssentiaTests: XCTestCase {
      Test with white noise.
      */
 
-    let whiteNoise = loadVector(name: "pitchSalience")
+    let whiteNoise = loadVector(name: "pitchsalience_whitenoise1")
 
     let vectorInput1 = VectorInput<[Float]>([whiteNoise])
     let spectrum1 = StreamingAlgorithm<Streaming.Spectrum>()
@@ -1910,11 +1778,9 @@ class EssentiaTests: XCTestCase {
      Note: Not sure why the varying square wave salience is off.
      */
 
-    let pureTone = (0..<8000).map {(i: Int) -> Float in sinf(2 * Float.pi * 440 * Float(i) / 8000)}
-
-    let vectorInput2 = VectorInput<Float>(pureTone)
-    let frameCutter = StreamingAlgorithm<Streaming.FrameCutter>()
-    let windowing = StreamingAlgorithm<Streaming.Windowing>()
+    let vectorInput2 = VectorInput<Float>(loadVector(name: "pitchsalience_puretone"))
+    let frameCutter2 = StreamingAlgorithm<Streaming.FrameCutter>()
+    let windowing2 = StreamingAlgorithm<Streaming.Windowing>()
     let spectrum2 = StreamingAlgorithm<Streaming.Spectrum>()
     let pitchSalience2 = StreamingAlgorithm<Streaming.PitchSalience>([
       .sampleRate: 8000,
@@ -1924,80 +1790,129 @@ class EssentiaTests: XCTestCase {
 
     let pool = Pool()
 
-    vectorInput2[output: .data] >> frameCutter[input: .signal]
-    frameCutter[output: .frame] >> windowing[input: .frame]
-    windowing[output: .frame] >> spectrum2[input: .frame]
+    vectorInput2[output: .data] >> frameCutter2[input: .signal]
+    frameCutter2[output: .frame] >> windowing2[input: .frame]
+    windowing2[output: .frame] >> spectrum2[input: .frame]
     spectrum2[output: .spectrum] >> pitchSalience2[input: .spectrum]
     pitchSalience2[output: .pitchSalience] >> pool[input: "pureTone"]
 
     let network2 = Network(generator: vectorInput2)
     network2.run()
 
-    let sineSweep = (0..<8000).map {
-      (i:Int) -> Float in
-        let y = Float(i) / 8000
-        let x = 20 + 440 * y
-        return sinf(2 * Float.pi * x * y)
-    }
-
-    vectorInput2.vector = sineSweep
-    vectorInput2.reset()
-
-    pitchSalience2[output: .pitchSalience] >! pool[input: "pureTone"]
-    pitchSalience2[output: .pitchSalience] >> pool[input: "sineSweep"]
-
-    network2.update()
-    network2.run()
-
-    vectorInput2.vector = whiteNoise
-    vectorInput2.reset()
-
-    pitchSalience2[output: .pitchSalience] >! pool[input: "sineSweep"]
-    pitchSalience2[output: .pitchSalience] >> pool[input: "whiteNoise"]
-
-    network2.update()
-    network2.run()
-
-    let squareWave = loadVector(name: "squareWave")
-
-    vectorInput2.vector = squareWave
-    vectorInput2.reset()
-
-    pitchSalience2[output: .pitchSalience] >! pool[input: "whiteNoise"]
-    pitchSalience2[output: .pitchSalience] >> pool[input: "squareWave"]
-
-    network2.update()
-    network2.run()
-
-    let vSquareWave = loadVector(name: "varyingSquareWave")
-
-    vectorInput2.vector = vSquareWave
-    vectorInput2.reset()
-
-    pitchSalience2[output: .pitchSalience] >! pool[input: "squareWave"]
-    pitchSalience2[output: .pitchSalience] >> pool[input: "varyingSquareWave"]
-
-    network2.update()
-    network2.run()
-
     let pureToneValues = pool[realVec: "pureTone"]
-    let whiteNoiseValues = pool[realVec: "whiteNoise"]
+
+    XCTAssertEqual(pureToneValues, loadVector(name: "puretone_saliencevalues"), accuracy: 1e-5)
+
+    let vectorInput3 = VectorInput<Float>(loadVector(name: "pitchsalience_sinesweep"))
+    let frameCutter3 = StreamingAlgorithm<Streaming.FrameCutter>()
+    let windowing3 = StreamingAlgorithm<Streaming.Windowing>()
+    let spectrum3 = StreamingAlgorithm<Streaming.Spectrum>()
+    let pitchSalience3 = StreamingAlgorithm<Streaming.PitchSalience>([
+      .sampleRate: 8000,
+      .lowBoundary: 100,
+      .highBoundary: 3999
+      ])
+
+    vectorInput3[output: .data] >> frameCutter3[input: .signal]
+    frameCutter3[output: .frame] >> windowing3[input: .frame]
+    windowing3[output: .frame] >> spectrum3[input: .frame]
+    spectrum3[output: .spectrum] >> pitchSalience3[input: .spectrum]
+    pitchSalience3[output: .pitchSalience] >> pool[input: "sineSweep"]
+
+    let network3 = Network(generator: vectorInput3)
+    network3.run()
+
     let sineSweepValues = pool[realVec: "sineSweep"]
+
+    XCTAssertEqual(sineSweepValues, loadVector(name: "sinesweep_saliencevalues"), accuracy: 1e-5)
+
+    let vectorInput4 = VectorInput<Float>(loadVector(name: "pitchsalience_whitenoise2"))
+    let frameCutter4 = StreamingAlgorithm<Streaming.FrameCutter>()
+    let windowing4 = StreamingAlgorithm<Streaming.Windowing>()
+    let spectrum4 = StreamingAlgorithm<Streaming.Spectrum>()
+    let pitchSalience4 = StreamingAlgorithm<Streaming.PitchSalience>([
+      .sampleRate: 8000,
+      .lowBoundary: 100,
+      .highBoundary: 3999
+      ])
+
+    vectorInput4[output: .data] >> frameCutter4[input: .signal]
+    frameCutter4[output: .frame] >> windowing4[input: .frame]
+    windowing4[output: .frame] >> spectrum4[input: .frame]
+    spectrum4[output: .spectrum] >> pitchSalience4[input: .spectrum]
+    pitchSalience4[output: .pitchSalience] >> pool[input: "whiteNoise"]
+
+    let network4 = Network(generator: vectorInput4)
+    network4.run()
+
+    let whiteNoiseValues = pool[realVec: "whiteNoise"]
+
+    XCTAssertEqual(whiteNoiseValues, loadVector(name: "whitenoise_saliencevalues"), accuracy: 1e-5)
+
+    let vectorInput5 = VectorInput<Float>(loadVector(name: "pitchsalience_squarewave"))
+    let frameCutter5 = StreamingAlgorithm<Streaming.FrameCutter>()
+    let windowing5 = StreamingAlgorithm<Streaming.Windowing>()
+    let spectrum5 = StreamingAlgorithm<Streaming.Spectrum>()
+    let pitchSalience5 = StreamingAlgorithm<Streaming.PitchSalience>([
+      .sampleRate: 8000,
+      .lowBoundary: 100,
+      .highBoundary: 3999
+      ])
+
+
+    vectorInput5[output: .data] >> frameCutter5[input: .signal]
+    frameCutter5[output: .frame] >> windowing5[input: .frame]
+    windowing5[output: .frame] >> spectrum5[input: .frame]
+    spectrum5[output: .spectrum] >> pitchSalience5[input: .spectrum]
+    pitchSalience5[output: .pitchSalience] >> pool[input: "squareWave"]
+
+    let network5 = Network(generator: vectorInput5)
+    network5.run()
+
     let squareWaveValues = pool[realVec: "squareWave"]
+
+    XCTAssertEqual(squareWaveValues, loadVector(name: "squarewave_saliencevalues"), accuracy: 1e-5)
+
+    let vectorInput6 = VectorInput<Float>(loadVector(name: "pitchsalience_varyingsquarewave"))
+    let frameCutter6 = StreamingAlgorithm<Streaming.FrameCutter>()
+    let windowing6 = StreamingAlgorithm<Streaming.Windowing>()
+    let spectrum6 = StreamingAlgorithm<Streaming.Spectrum>()
+    let pitchSalience6 = StreamingAlgorithm<Streaming.PitchSalience>([
+      .sampleRate: 8000,
+      .lowBoundary: 100,
+      .highBoundary: 3999
+      ])
+
+    vectorInput6[output: .data] >> frameCutter6[input: .signal]
+    frameCutter6[output: .frame] >> windowing6[input: .frame]
+    windowing6[output: .frame] >> spectrum6[input: .frame]
+    spectrum6[output: .spectrum] >> pitchSalience6[input: .spectrum]
+    pitchSalience6[output: .pitchSalience] >> pool[input: "varyingSquareWave"]
+
+    let network6 = Network(generator: vectorInput6)
+    network6.run()
+
     let vSquareWaveValues = pool[realVec: "varyingSquareWave"]
 
+    XCTAssertEqual(vSquareWaveValues, loadVector(name: "varyingsquarewave_saliencevalues"), accuracy: 1e-5)
+
+    // 0.0346908001554
     var pureToneMean: Float = 0
     vDSP_meanv(pureToneValues, 1, &pureToneMean, vDSP_Length(pureToneValues.count))
 
+    // 0.179461378385
     var whiteNoiseMean: Float = 0
     vDSP_meanv(whiteNoiseValues, 1, &whiteNoiseMean, vDSP_Length(whiteNoiseValues.count))
 
+    // 0.044844484395
     var sineSweepMean: Float = 0
     vDSP_meanv(sineSweepValues, 1, &sineSweepMean, vDSP_Length(sineSweepValues.count))
 
+    // 0.38006446642
     var squareWaveMean: Float = 0
     vDSP_meanv(squareWaveValues, 1, &squareWaveMean, vDSP_Length(squareWaveValues.count))
 
+    // 0.349530152342
     var vSquareWaveMean: Float = 0
     vDSP_meanv(vSquareWaveValues, 1, &vSquareWaveMean, vDSP_Length(vSquareWaveValues.count))
 
@@ -2018,70 +1933,70 @@ class EssentiaTests: XCTestCase {
      Test with harmonic input.
      */
 
-    let pitchSalience3 = StandardAlgorithm<Standard.PitchSalience>([
+    let pitchSalience7 = StandardAlgorithm<Standard.PitchSalience>([
       .sampleRate: 38,
       .lowBoundary: 1.9,
       .highBoundary: 17.1
       ])
 
-    pitchSalience3[realVecInput: .spectrum] = [0.0, 1.0] * 9 + [0.0]
-    pitchSalience3.compute()
+    pitchSalience7[realVecInput: .spectrum] = [0.0, 1.0] * 9 + [0.0]
+    pitchSalience7.compute()
 
-    XCTAssertEqual(pitchSalience3[realOutput: .pitchSalience], 0.88888888, accuracy: 1e-6)
+    XCTAssertEqual(pitchSalience7[realOutput: .pitchSalience], 0.88888888, accuracy: 1e-6)
 
     /*
      Test with a full spectrum.
      */
 
-    let pitchSalience4 = StandardAlgorithm<Standard.PitchSalience>([
+    let pitchSalience8 = StandardAlgorithm<Standard.PitchSalience>([
       .sampleRate: 18,
       .lowBoundary: 1,
       .highBoundary: 8
       ])
 
-    pitchSalience4[realVecInput: .spectrum] = [4, 5, 7, 2, 1, 4, 5, 6, 10]
-    pitchSalience4.compute()
+    pitchSalience8[realVecInput: .spectrum] = [4, 5, 7, 2, 1, 4, 5, 6, 10]
+    pitchSalience8.compute()
 
-    XCTAssertEqual(pitchSalience4[realOutput: .pitchSalience], 0.68014699220657349, accuracy: 1e-7)
+    XCTAssertEqual(pitchSalience8[realOutput: .pitchSalience], 0.68014699220657349, accuracy: 1e-7)
 
     /*
      Test on-peak boundries.
      */
 
-    let pitchSalience5 = StandardAlgorithm<Standard.PitchSalience>([
+    let pitchSalience9 = StandardAlgorithm<Standard.PitchSalience>([
       .lowBoundary: 40,
       .highBoundary: 40
       ])
 
-    pitchSalience5[realVecInput: .spectrum] = [4, 0, 0, 0, 0, 0, 0, 0, 0, 0] as [Float] * 2205
-    pitchSalience5.compute()
+    pitchSalience9[realVecInput: .spectrum] = [4, 0, 0, 0, 0, 0, 0, 0, 0, 0] as [Float] * 2205
+    pitchSalience9.compute()
 
-    XCTAssertGreaterThan(pitchSalience5[realOutput: .pitchSalience], 0.9)
+    XCTAssertGreaterThan(pitchSalience9[realOutput: .pitchSalience], 0.9)
 
     /*
      Test off-peak boundaries.
      */
 
-    let pitchSalience6 = StandardAlgorithm<Standard.PitchSalience>([
+    let pitchSalience10 = StandardAlgorithm<Standard.PitchSalience>([
       .lowBoundary: 41,
       .highBoundary: 41
       ])
 
-    pitchSalience6[realVecInput: .spectrum] = [4, 0, 0, 0, 0, 0, 0, 0, 0, 0] as [Float] * 2205
-    pitchSalience6.compute()
+    pitchSalience10[realVecInput: .spectrum] = [4, 0, 0, 0, 0, 0, 0, 0, 0, 0] as [Float] * 2205
+    pitchSalience10.compute()
 
-    XCTAssertLessThan(pitchSalience6[realOutput: .pitchSalience], 0.1)
+    XCTAssertLessThan(pitchSalience10[realOutput: .pitchSalience], 0.1)
 
     /*
      Test with silence.
      */
 
-    let pitchSalience7 = StandardAlgorithm<Standard.PitchSalience>()
+    let pitchSalience11 = StandardAlgorithm<Standard.PitchSalience>()
 
-    pitchSalience7[realVecInput: .spectrum] = [0.0] * 1024
-    pitchSalience7.compute()
+    pitchSalience11[realVecInput: .spectrum] = [0.0] * 1024
+    pitchSalience11.compute()
 
-    XCTAssertEqual(pitchSalience7[realOutput: .pitchSalience], 0.0)
+    XCTAssertEqual(pitchSalience11[realOutput: .pitchSalience], 0.0)
 
 
   }
@@ -2224,7 +2139,7 @@ class EssentiaTests: XCTestCase {
     windowing4[realVecInput: .frame] = input
     windowing4.compute()
 
-    var expected = loadVector(name: "hamming")
+    var expected = loadVector(name: "windowing_hamming")
     normalize(&expected)
 
     XCTAssertEqual(windowing4[realVecOutput: .frame], expected, accuracy: 1e-6)
@@ -2239,7 +2154,7 @@ class EssentiaTests: XCTestCase {
     windowing5[realVecInput: .frame] = input
     windowing5.compute()
 
-    expected = loadVector(name: "hann")
+    expected = loadVector(name: "windowing_hann")
     normalize(&expected)
 
     XCTAssertEqual(windowing5[realVecOutput: .frame], expected, accuracy: 1e-6)
@@ -2254,7 +2169,7 @@ class EssentiaTests: XCTestCase {
     windowing6[realVecInput: .frame] = input
     windowing6.compute()
 
-    expected = loadVector(name: "triangular")
+    expected = loadVector(name: "windowing_triangular")
     normalize(&expected)
 
     XCTAssertEqual(windowing6[realVecOutput: .frame], expected, accuracy: 1e-6)
@@ -2284,7 +2199,7 @@ class EssentiaTests: XCTestCase {
     windowing8[realVecInput: .frame] = input
     windowing8.compute()
 
-    expected = loadVector(name: "blackmanharris62")
+    expected = loadVector(name: "windowing_blackmanharris62")
     normalize(&expected)
 
     XCTAssertEqual(windowing8[realVecOutput: .frame], expected, accuracy: 1e-5)
@@ -2299,7 +2214,7 @@ class EssentiaTests: XCTestCase {
     windowing9[realVecInput: .frame] = input
     windowing9.compute()
 
-    expected = loadVector(name: "blackmanharris70")
+    expected = loadVector(name: "windowing_blackmanharris70")
     normalize(&expected)
 
     XCTAssertEqual(windowing9[realVecOutput: .frame], expected, accuracy: 1e-5)
@@ -2314,7 +2229,7 @@ class EssentiaTests: XCTestCase {
     windowing10[realVecInput: .frame] = input
     windowing10.compute()
 
-    expected = loadVector(name: "blackmanharris74")
+    expected = loadVector(name: "windowing_blackmanharris74")
     normalize(&expected)
 
     XCTAssertEqual(windowing10[realVecOutput: .frame], expected, accuracy: 1e-5)
@@ -2329,7 +2244,7 @@ class EssentiaTests: XCTestCase {
     windowing11[realVecInput: .frame] = input
     windowing11.compute()
 
-    expected = loadVector(name: "blackmanharris92")
+    expected = loadVector(name: "windowing_blackmanharris92")
     normalize(&expected)
 
     XCTAssertEqual(windowing11[realVecOutput: .frame], expected, accuracy: 1e-3)

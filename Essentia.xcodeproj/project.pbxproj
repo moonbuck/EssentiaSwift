@@ -1275,20 +1275,44 @@
 		C23A3B5A1FBF636B0083F6CE /* Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23A33BC1FBF5A2A0083F6CE /* Debugging.swift */; };
 		C23A3B601FBF649E0083F6CE /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C23A3B5E1FBF64510083F6CE /* Accelerate.framework */; };
 		C23A3B611FBF64AC0083F6CE /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C23A3B5C1FBF64220083F6CE /* Accelerate.framework */; };
-		C2BADBD61FBFA89B009D02C5 /* blackmanharris92.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBD21FBFA89A009D02C5 /* blackmanharris92.txt */; };
-		C2BADBD71FBFA89B009D02C5 /* blackmanharris92.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBD21FBFA89A009D02C5 /* blackmanharris92.txt */; };
-		C2BADBD81FBFA89B009D02C5 /* blackmanharris62.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBD31FBFA89A009D02C5 /* blackmanharris62.txt */; };
-		C2BADBD91FBFA89B009D02C5 /* blackmanharris62.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBD31FBFA89A009D02C5 /* blackmanharris62.txt */; };
-		C2BADBDA1FBFA89B009D02C5 /* blackmanharris70.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBD41FBFA89A009D02C5 /* blackmanharris70.txt */; };
-		C2BADBDB1FBFA89B009D02C5 /* blackmanharris70.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBD41FBFA89A009D02C5 /* blackmanharris70.txt */; };
-		C2BADBDC1FBFA89B009D02C5 /* blackmanharris74.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBD51FBFA89B009D02C5 /* blackmanharris74.txt */; };
-		C2BADBDD1FBFA89B009D02C5 /* blackmanharris74.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBD51FBFA89B009D02C5 /* blackmanharris74.txt */; };
-		C2BADBE11FBFAAAB009D02C5 /* hann.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBDE1FBFAAAB009D02C5 /* hann.txt */; };
-		C2BADBE21FBFAAAB009D02C5 /* hann.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBDE1FBFAAAB009D02C5 /* hann.txt */; };
-		C2BADBE31FBFAAAB009D02C5 /* hamming.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBDF1FBFAAAB009D02C5 /* hamming.txt */; };
-		C2BADBE41FBFAAAB009D02C5 /* hamming.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBDF1FBFAAAB009D02C5 /* hamming.txt */; };
-		C2BADBE51FBFAAAB009D02C5 /* triangular.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBE01FBFAAAB009D02C5 /* triangular.txt */; };
-		C2BADBE61FBFAAAB009D02C5 /* triangular.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBE01FBFAAAB009D02C5 /* triangular.txt */; };
+		C2B7180E1FC0F86600ECB0A6 /* pool.json in Resources */ = {isa = PBXBuildFile; fileRef = C2B7180D1FC0F86600ECB0A6 /* pool.json */; };
+		C2B7180F1FC0F86600ECB0A6 /* pool.json in Resources */ = {isa = PBXBuildFile; fileRef = C2B7180D1FC0F86600ECB0A6 /* pool.json */; };
+		C2B718161FC1034F00ECB0A6 /* pitchsalience_sinesweep.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2B718101FC1034E00ECB0A6 /* pitchsalience_sinesweep.txt */; };
+		C2B718171FC1034F00ECB0A6 /* pitchsalience_sinesweep.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2B718101FC1034E00ECB0A6 /* pitchsalience_sinesweep.txt */; };
+		C2B718181FC1034F00ECB0A6 /* pitchsalience_puretone.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2B718111FC1034E00ECB0A6 /* pitchsalience_puretone.txt */; };
+		C2B718191FC1034F00ECB0A6 /* pitchsalience_puretone.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2B718111FC1034E00ECB0A6 /* pitchsalience_puretone.txt */; };
+		C2B7181A1FC1034F00ECB0A6 /* pitchsalience_realwhitenoise.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2B718121FC1034F00ECB0A6 /* pitchsalience_realwhitenoise.txt */; };
+		C2B7181B1FC1034F00ECB0A6 /* pitchsalience_realwhitenoise.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2B718121FC1034F00ECB0A6 /* pitchsalience_realwhitenoise.txt */; };
+		C2B7181C1FC1034F00ECB0A6 /* pitchsalience_squarewave.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2B718131FC1034F00ECB0A6 /* pitchsalience_squarewave.txt */; };
+		C2B7181D1FC1034F00ECB0A6 /* pitchsalience_squarewave.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2B718131FC1034F00ECB0A6 /* pitchsalience_squarewave.txt */; };
+		C2B7181E1FC1034F00ECB0A6 /* pitchsalience_whitenoise2.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2B718141FC1034F00ECB0A6 /* pitchsalience_whitenoise2.txt */; };
+		C2B7181F1FC1034F00ECB0A6 /* pitchsalience_whitenoise2.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2B718141FC1034F00ECB0A6 /* pitchsalience_whitenoise2.txt */; };
+		C2B718201FC1034F00ECB0A6 /* pitchsalience_varyingsquarewave.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2B718151FC1034F00ECB0A6 /* pitchsalience_varyingsquarewave.txt */; };
+		C2B718211FC1034F00ECB0A6 /* pitchsalience_varyingsquarewave.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2B718151FC1034F00ECB0A6 /* pitchsalience_varyingsquarewave.txt */; };
+		C2B718271FC10E5C00ECB0A6 /* squarewave_saliencevalues.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2B718221FC10E5C00ECB0A6 /* squarewave_saliencevalues.txt */; };
+		C2B718281FC10E5C00ECB0A6 /* squarewave_saliencevalues.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2B718221FC10E5C00ECB0A6 /* squarewave_saliencevalues.txt */; };
+		C2B718291FC10E5C00ECB0A6 /* varyingsquarewave_saliencevalues.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2B718231FC10E5C00ECB0A6 /* varyingsquarewave_saliencevalues.txt */; };
+		C2B7182A1FC10E5C00ECB0A6 /* varyingsquarewave_saliencevalues.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2B718231FC10E5C00ECB0A6 /* varyingsquarewave_saliencevalues.txt */; };
+		C2B7182B1FC10E5C00ECB0A6 /* sinesweep_saliencevalues.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2B718241FC10E5C00ECB0A6 /* sinesweep_saliencevalues.txt */; };
+		C2B7182C1FC10E5C00ECB0A6 /* sinesweep_saliencevalues.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2B718241FC10E5C00ECB0A6 /* sinesweep_saliencevalues.txt */; };
+		C2B7182D1FC10E5C00ECB0A6 /* whitenoise_saliencevalues.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2B718251FC10E5C00ECB0A6 /* whitenoise_saliencevalues.txt */; };
+		C2B7182E1FC10E5C00ECB0A6 /* whitenoise_saliencevalues.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2B718251FC10E5C00ECB0A6 /* whitenoise_saliencevalues.txt */; };
+		C2B7182F1FC10E5C00ECB0A6 /* puretone_saliencevalues.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2B718261FC10E5C00ECB0A6 /* puretone_saliencevalues.txt */; };
+		C2B718301FC10E5C00ECB0A6 /* puretone_saliencevalues.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2B718261FC10E5C00ECB0A6 /* puretone_saliencevalues.txt */; };
+		C2BADBD61FBFA89B009D02C5 /* windowing_blackmanharris92.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBD21FBFA89A009D02C5 /* windowing_blackmanharris92.txt */; };
+		C2BADBD71FBFA89B009D02C5 /* windowing_blackmanharris92.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBD21FBFA89A009D02C5 /* windowing_blackmanharris92.txt */; };
+		C2BADBD81FBFA89B009D02C5 /* windowing_blackmanharris62.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBD31FBFA89A009D02C5 /* windowing_blackmanharris62.txt */; };
+		C2BADBD91FBFA89B009D02C5 /* windowing_blackmanharris62.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBD31FBFA89A009D02C5 /* windowing_blackmanharris62.txt */; };
+		C2BADBDA1FBFA89B009D02C5 /* windowing_blackmanharris70.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBD41FBFA89A009D02C5 /* windowing_blackmanharris70.txt */; };
+		C2BADBDB1FBFA89B009D02C5 /* windowing_blackmanharris70.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBD41FBFA89A009D02C5 /* windowing_blackmanharris70.txt */; };
+		C2BADBDC1FBFA89B009D02C5 /* windowing_blackmanharris74.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBD51FBFA89B009D02C5 /* windowing_blackmanharris74.txt */; };
+		C2BADBDD1FBFA89B009D02C5 /* windowing_blackmanharris74.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBD51FBFA89B009D02C5 /* windowing_blackmanharris74.txt */; };
+		C2BADBE11FBFAAAB009D02C5 /* windowing_hann.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBDE1FBFAAAB009D02C5 /* windowing_hann.txt */; };
+		C2BADBE21FBFAAAB009D02C5 /* windowing_hann.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBDE1FBFAAAB009D02C5 /* windowing_hann.txt */; };
+		C2BADBE31FBFAAAB009D02C5 /* windowing_hamming.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBDF1FBFAAAB009D02C5 /* windowing_hamming.txt */; };
+		C2BADBE41FBFAAAB009D02C5 /* windowing_hamming.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBDF1FBFAAAB009D02C5 /* windowing_hamming.txt */; };
+		C2BADBE51FBFAAAB009D02C5 /* windowing_triangular.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBE01FBFAAAB009D02C5 /* windowing_triangular.txt */; };
+		C2BADBE61FBFAAAB009D02C5 /* windowing_triangular.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBE01FBFAAAB009D02C5 /* windowing_triangular.txt */; };
 		C2BADBFE1FBFC4BD009D02C5 /* AVAudioPCMBuffer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EC95B01FBF6A1500D384C5 /* AVAudioPCMBuffer+Extensions.swift */; };
 		C2BADBFF1FBFC4BD009D02C5 /* AVAudioPCMBuffer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EC95B01FBF6A1500D384C5 /* AVAudioPCMBuffer+Extensions.swift */; };
 		C2BADC031FC0878E009D02C5 /* Zip.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BADC021FC0878E009D02C5 /* Zip.swift */; };
@@ -1306,17 +1330,13 @@
 		C2EC96331FBF6A1E00D384C5 /* EssentiaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EC95BB1FBF6A1500D384C5 /* EssentiaTests.swift */; };
 		C2EC96341FBF6A1E00D384C5 /* EssentiaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EC95BB1FBF6A1500D384C5 /* EssentiaTests.swift */; };
 		C2EC96351FBF6A2A00D384C5 /* spectrumInput.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2EC95B51FBF6A1500D384C5 /* spectrumInput.txt */; };
-		C2EC96361FBF6A2A00D384C5 /* squareWave.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2EC95B61FBF6A1500D384C5 /* squareWave.txt */; };
-		C2EC96371FBF6A2A00D384C5 /* varyingSquareWave.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2EC95B71FBF6A1500D384C5 /* varyingSquareWave.txt */; };
 		C2EC96381FBF6A2A00D384C5 /* spectrumOutput.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2EC95B81FBF6A1500D384C5 /* spectrumOutput.txt */; };
 		C2EC96391FBF6A2A00D384C5 /* frequencyBands.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2EC95B91FBF6A1500D384C5 /* frequencyBands.txt */; };
-		C2EC963A1FBF6A2A00D384C5 /* pitchSalience.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2EC95BA1FBF6A1500D384C5 /* pitchSalience.txt */; };
+		C2EC963A1FBF6A2A00D384C5 /* pitchsalience_whitenoise1.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2EC95BA1FBF6A1500D384C5 /* pitchsalience_whitenoise1.txt */; };
 		C2EC963B1FBF6A2B00D384C5 /* spectrumInput.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2EC95B51FBF6A1500D384C5 /* spectrumInput.txt */; };
-		C2EC963C1FBF6A2B00D384C5 /* squareWave.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2EC95B61FBF6A1500D384C5 /* squareWave.txt */; };
-		C2EC963D1FBF6A2B00D384C5 /* varyingSquareWave.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2EC95B71FBF6A1500D384C5 /* varyingSquareWave.txt */; };
 		C2EC963E1FBF6A2B00D384C5 /* spectrumOutput.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2EC95B81FBF6A1500D384C5 /* spectrumOutput.txt */; };
 		C2EC963F1FBF6A2B00D384C5 /* frequencyBands.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2EC95B91FBF6A1500D384C5 /* frequencyBands.txt */; };
-		C2EC96401FBF6A2B00D384C5 /* pitchSalience.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2EC95BA1FBF6A1500D384C5 /* pitchSalience.txt */; };
+		C2EC96401FBF6A2B00D384C5 /* pitchsalience_whitenoise1.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2EC95BA1FBF6A1500D384C5 /* pitchsalience_whitenoise1.txt */; };
 		C2EC96411FBF6A3500D384C5 /* C4-E♭4-G4_Boesendorfer_Grand_Piano.aif in Resources */ = {isa = PBXBuildFile; fileRef = C2EC95AB1FBF6A1500D384C5 /* C4-E♭4-G4_Boesendorfer_Grand_Piano.aif */; };
 		C2EC96421FBF6A3500D384C5 /* 16-Bar-Progression_Boesendorfer_Grand_Piano.aif in Resources */ = {isa = PBXBuildFile; fileRef = C2EC95AC1FBF6A1500D384C5 /* 16-Bar-Progression_Boesendorfer_Grand_Piano.aif */; };
 		C2EC96431FBF6A3500D384C5 /* C4-E♭4-G4_Boesendorfer_Grand_Piano-Trimmed.aif in Resources */ = {isa = PBXBuildFile; fileRef = C2EC95AD1FBF6A1500D384C5 /* C4-E♭4-G4_Boesendorfer_Grand_Piano-Trimmed.aif */; };
@@ -1561,7 +1581,6 @@
 		C23A334A1FBF57370083F6CE /* Essentia_MacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Essentia_MacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C23A335A1FBF57870083F6CE /* Essentia.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Essentia.h; sourceTree = "<group>"; };
 		C23A335B1FBF57870083F6CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C23A335D1FBF57BF0083F6CE /* Essentia_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Essentia_iOSTests.swift; sourceTree = "<group>"; };
 		C23A335E1FBF57BF0083F6CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C23A33671FBF5A2A0083F6CE /* TypeProxyWrapper+BridgingExtensions.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = "TypeProxyWrapper+BridgingExtensions.hpp"; sourceTree = "<group>"; };
 		C23A33681FBF5A2A0083F6CE /* PoolWrapper+BridgingExtensions.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = "PoolWrapper+BridgingExtensions.hpp"; sourceTree = "<group>"; };
@@ -2238,13 +2257,25 @@
 		C23A3A7C1FBF5E390083F6CE /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
 		C23A3B5C1FBF64220083F6CE /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Accelerate.framework; sourceTree = DEVELOPER_DIR; };
 		C23A3B5E1FBF64510083F6CE /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
-		C2BADBD21FBFA89A009D02C5 /* blackmanharris92.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = blackmanharris92.txt; sourceTree = "<group>"; };
-		C2BADBD31FBFA89A009D02C5 /* blackmanharris62.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = blackmanharris62.txt; sourceTree = "<group>"; };
-		C2BADBD41FBFA89A009D02C5 /* blackmanharris70.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = blackmanharris70.txt; sourceTree = "<group>"; };
-		C2BADBD51FBFA89B009D02C5 /* blackmanharris74.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = blackmanharris74.txt; sourceTree = "<group>"; };
-		C2BADBDE1FBFAAAB009D02C5 /* hann.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hann.txt; sourceTree = "<group>"; };
-		C2BADBDF1FBFAAAB009D02C5 /* hamming.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hamming.txt; sourceTree = "<group>"; };
-		C2BADBE01FBFAAAB009D02C5 /* triangular.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = triangular.txt; sourceTree = "<group>"; };
+		C2B7180D1FC0F86600ECB0A6 /* pool.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pool.json; sourceTree = "<group>"; };
+		C2B718101FC1034E00ECB0A6 /* pitchsalience_sinesweep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchsalience_sinesweep.txt; sourceTree = "<group>"; };
+		C2B718111FC1034E00ECB0A6 /* pitchsalience_puretone.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchsalience_puretone.txt; sourceTree = "<group>"; };
+		C2B718121FC1034F00ECB0A6 /* pitchsalience_realwhitenoise.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchsalience_realwhitenoise.txt; sourceTree = "<group>"; };
+		C2B718131FC1034F00ECB0A6 /* pitchsalience_squarewave.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchsalience_squarewave.txt; sourceTree = "<group>"; };
+		C2B718141FC1034F00ECB0A6 /* pitchsalience_whitenoise2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchsalience_whitenoise2.txt; sourceTree = "<group>"; };
+		C2B718151FC1034F00ECB0A6 /* pitchsalience_varyingsquarewave.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchsalience_varyingsquarewave.txt; sourceTree = "<group>"; };
+		C2B718221FC10E5C00ECB0A6 /* squarewave_saliencevalues.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = squarewave_saliencevalues.txt; sourceTree = "<group>"; };
+		C2B718231FC10E5C00ECB0A6 /* varyingsquarewave_saliencevalues.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = varyingsquarewave_saliencevalues.txt; sourceTree = "<group>"; };
+		C2B718241FC10E5C00ECB0A6 /* sinesweep_saliencevalues.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sinesweep_saliencevalues.txt; sourceTree = "<group>"; };
+		C2B718251FC10E5C00ECB0A6 /* whitenoise_saliencevalues.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = whitenoise_saliencevalues.txt; sourceTree = "<group>"; };
+		C2B718261FC10E5C00ECB0A6 /* puretone_saliencevalues.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = puretone_saliencevalues.txt; sourceTree = "<group>"; };
+		C2BADBD21FBFA89A009D02C5 /* windowing_blackmanharris92.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = windowing_blackmanharris92.txt; sourceTree = "<group>"; };
+		C2BADBD31FBFA89A009D02C5 /* windowing_blackmanharris62.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = windowing_blackmanharris62.txt; sourceTree = "<group>"; };
+		C2BADBD41FBFA89A009D02C5 /* windowing_blackmanharris70.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = windowing_blackmanharris70.txt; sourceTree = "<group>"; };
+		C2BADBD51FBFA89B009D02C5 /* windowing_blackmanharris74.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = windowing_blackmanharris74.txt; sourceTree = "<group>"; };
+		C2BADBDE1FBFAAAB009D02C5 /* windowing_hann.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = windowing_hann.txt; sourceTree = "<group>"; };
+		C2BADBDF1FBFAAAB009D02C5 /* windowing_hamming.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = windowing_hamming.txt; sourceTree = "<group>"; };
+		C2BADBE01FBFAAAB009D02C5 /* windowing_triangular.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = windowing_triangular.txt; sourceTree = "<group>"; };
 		C2BADC021FC0878E009D02C5 /* Zip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zip.swift; sourceTree = "<group>"; };
 		C2BADC051FC0926E009D02C5 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		C2EC95311FBF6A1500D384C5 /* silence.flac */ = {isa = PBXFileReference; lastKnownFileType = file; path = silence.flac; sourceTree = "<group>"; };
@@ -2360,11 +2391,9 @@
 		C2EC95B21FBF6A1500D384C5 /* Assertions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assertions.swift; sourceTree = "<group>"; };
 		C2EC95B31FBF6A1500D384C5 /* Attachments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attachments.swift; sourceTree = "<group>"; };
 		C2EC95B51FBF6A1500D384C5 /* spectrumInput.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = spectrumInput.txt; sourceTree = "<group>"; };
-		C2EC95B61FBF6A1500D384C5 /* squareWave.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = squareWave.txt; sourceTree = "<group>"; };
-		C2EC95B71FBF6A1500D384C5 /* varyingSquareWave.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = varyingSquareWave.txt; sourceTree = "<group>"; };
 		C2EC95B81FBF6A1500D384C5 /* spectrumOutput.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = spectrumOutput.txt; sourceTree = "<group>"; };
 		C2EC95B91FBF6A1500D384C5 /* frequencyBands.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frequencyBands.txt; sourceTree = "<group>"; };
-		C2EC95BA1FBF6A1500D384C5 /* pitchSalience.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchSalience.txt; sourceTree = "<group>"; };
+		C2EC95BA1FBF6A1500D384C5 /* pitchsalience_whitenoise1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchsalience_whitenoise1.txt; sourceTree = "<group>"; };
 		C2EC95BB1FBF6A1500D384C5 /* EssentiaTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EssentiaTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -2443,7 +2472,6 @@
 				C2EC95B41FBF6A1500D384C5 /* data */,
 				C2EC95BB1FBF6A1500D384C5 /* EssentiaTests.swift */,
 				C2EC95AE1FBF6A1500D384C5 /* Helpers */,
-				C23A335D1FBF57BF0083F6CE /* Essentia_iOSTests.swift */,
 				C23A335E1FBF57BF0083F6CE /* Info.plist */,
 			);
 			path = CommonTests;
@@ -3732,19 +3760,29 @@
 		C2EC95B41FBF6A1500D384C5 /* data */ = {
 			isa = PBXGroup;
 			children = (
-				C2BADBDF1FBFAAAB009D02C5 /* hamming.txt */,
-				C2BADBDE1FBFAAAB009D02C5 /* hann.txt */,
-				C2BADBE01FBFAAAB009D02C5 /* triangular.txt */,
-				C2BADBD31FBFA89A009D02C5 /* blackmanharris62.txt */,
-				C2BADBD41FBFA89A009D02C5 /* blackmanharris70.txt */,
-				C2BADBD51FBFA89B009D02C5 /* blackmanharris74.txt */,
-				C2BADBD21FBFA89A009D02C5 /* blackmanharris92.txt */,
+				C2B718261FC10E5C00ECB0A6 /* puretone_saliencevalues.txt */,
+				C2B718241FC10E5C00ECB0A6 /* sinesweep_saliencevalues.txt */,
+				C2B718221FC10E5C00ECB0A6 /* squarewave_saliencevalues.txt */,
+				C2B718231FC10E5C00ECB0A6 /* varyingsquarewave_saliencevalues.txt */,
+				C2B718251FC10E5C00ECB0A6 /* whitenoise_saliencevalues.txt */,
+				C2B718111FC1034E00ECB0A6 /* pitchsalience_puretone.txt */,
+				C2B718121FC1034F00ECB0A6 /* pitchsalience_realwhitenoise.txt */,
+				C2B718101FC1034E00ECB0A6 /* pitchsalience_sinesweep.txt */,
+				C2B718131FC1034F00ECB0A6 /* pitchsalience_squarewave.txt */,
+				C2B718151FC1034F00ECB0A6 /* pitchsalience_varyingsquarewave.txt */,
+				C2EC95BA1FBF6A1500D384C5 /* pitchsalience_whitenoise1.txt */,
+				C2B718141FC1034F00ECB0A6 /* pitchsalience_whitenoise2.txt */,
+				C2B7180D1FC0F86600ECB0A6 /* pool.json */,
+				C2BADBDF1FBFAAAB009D02C5 /* windowing_hamming.txt */,
+				C2BADBDE1FBFAAAB009D02C5 /* windowing_hann.txt */,
+				C2BADBE01FBFAAAB009D02C5 /* windowing_triangular.txt */,
+				C2BADBD31FBFA89A009D02C5 /* windowing_blackmanharris62.txt */,
+				C2BADBD41FBFA89A009D02C5 /* windowing_blackmanharris70.txt */,
+				C2BADBD51FBFA89B009D02C5 /* windowing_blackmanharris74.txt */,
+				C2BADBD21FBFA89A009D02C5 /* windowing_blackmanharris92.txt */,
 				C2EC95B51FBF6A1500D384C5 /* spectrumInput.txt */,
-				C2EC95B61FBF6A1500D384C5 /* squareWave.txt */,
-				C2EC95B71FBF6A1500D384C5 /* varyingSquareWave.txt */,
 				C2EC95B81FBF6A1500D384C5 /* spectrumOutput.txt */,
 				C2EC95B91FBF6A1500D384C5 /* frequencyBands.txt */,
-				C2EC95BA1FBF6A1500D384C5 /* pitchSalience.txt */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -4577,8 +4615,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2EC96D41FBF6A9100D384C5 /* impulses_1second_22050_st_bad_stream_info.flac in Resources */,
-				C2BADBE51FBFAAAB009D02C5 /* triangular.txt in Resources */,
-				C2BADBDC1FBFA89B009D02C5 /* blackmanharris74.txt in Resources */,
+				C2BADBE51FBFAAAB009D02C5 /* windowing_triangular.txt in Resources */,
+				C2BADBDC1FBFA89B009D02C5 /* windowing_blackmanharris74.txt in Resources */,
 				C2EC96C31FBF6A8A00D384C5 /* impulses_1second_48000.flac in Resources */,
 				C2EC96731FBF6A5000D384C5 /* test.ape in Resources */,
 				C2EC96701FBF6A5000D384C5 /* test.mp3 in Resources */,
@@ -4607,21 +4645,24 @@
 				C2EC96D51FBF6A9100D384C5 /* impulses_1second_44100_st_bad_stream_info.flac in Resources */,
 				C2EC96971FBF6A7100D384C5 /* impulses_1second_22050.ogg in Resources */,
 				C2EC96741FBF6A5000D384C5 /* test.ogg in Resources */,
+				C2B7180E1FC0F86600ECB0A6 /* pool.json in Resources */,
 				C2EC96801FBF6A5E00D384C5 /* 4channels.wav in Resources */,
 				C2EC969F1FBF6A7800D384C5 /* impulses_1second_48000_st.wav in Resources */,
-				C2EC96361FBF6A2A00D384C5 /* squareWave.txt in Resources */,
 				C2EC96CF1FBF6A9100D384C5 /* impulses_1second_48000_st_bad_stream_info.flac in Resources */,
 				C2EC96F31FBF6ACD00D384C5 /* seq-3341-7_seq-3342-5-16bit.flac in Resources */,
-				C2EC96371FBF6A2A00D384C5 /* varyingSquareWave.txt in Resources */,
+				C2B718201FC1034F00ECB0A6 /* pitchsalience_varyingsquarewave.txt in Resources */,
 				C2EC96B81FBF6A8400D384C5 /* impulses_1second_22050_st.aiff in Resources */,
 				C2EC967C1FBF6A5700D384C5 /* sin_30_seconds_eqloud.wav in Resources */,
 				C2EC96AD1FBF6A7F00D384C5 /* impulses_1samp_22050_st.wav in Resources */,
+				C2B7182F1FC10E5C00ECB0A6 /* puretone_saliencevalues.txt in Resources */,
 				C2EC96DE1FBF6AA100D384C5 /* impulses_1second_48000.mp3 in Resources */,
 				C2EC96BA1FBF6A8400D384C5 /* impulses_1second_48000_st.aiff in Resources */,
 				C2EC96B01FBF6A7F00D384C5 /* impulses_1samp_44100.wav in Resources */,
-				C2BADBDA1FBFA89B009D02C5 /* blackmanharris70.txt in Resources */,
+				C2BADBDA1FBFA89B009D02C5 /* windowing_blackmanharris70.txt in Resources */,
+				C2B7182D1FC10E5C00ECB0A6 /* whitenoise_saliencevalues.txt in Resources */,
 				C2EC96D31FBF6A9100D384C5 /* impulses_1second_22050_bad_stream_info.flac in Resources */,
 				C2EC96F01FBF6AC800D384C5 /* multistream1.mka in Resources */,
+				C2B7182B1FC10E5C00ECB0A6 /* sinesweep_saliencevalues.txt in Resources */,
 				C2EC96DF1FBF6AA100D384C5 /* impulses_1second_22050.mp3 in Resources */,
 				C2EC96891FBF6A6500D384C5 /* sin_pattern_decreasing.wav in Resources */,
 				C2EC96541FBF6A3C00D384C5 /* techno_loop.wav in Resources */,
@@ -4637,15 +4678,18 @@
 				C2EC96681FBF6A4800D384C5 /* sine_440_5000period.wav in Resources */,
 				C2EC96AE1FBF6A7F00D384C5 /* impulses_1samp_44100_st.wav in Resources */,
 				C2EC96FB1FBF6ACD00D384C5 /* 1kHz_sine_-20LUFS-16bit.flac in Resources */,
-				C2BADBE31FBFAAAB009D02C5 /* hamming.txt in Resources */,
+				C2BADBE31FBFAAAB009D02C5 /* windowing_hamming.txt in Resources */,
 				C2EC96C71FBF6A8A00D384C5 /* impulses_1second_44100_st.flac in Resources */,
 				C2EC967F1FBF6A5E00D384C5 /* 4channels.flac in Resources */,
+				C2B718291FC10E5C00ECB0A6 /* varyingsquarewave_saliencevalues.txt in Resources */,
 				C2EC970C1FBF6AD300D384C5 /* empty.ogg in Resources */,
 				C2EC96F51FBF6ACD00D384C5 /* seq-3341-4-16bit-v02.flac in Resources */,
 				C2EC96471FBF6A3C00D384C5 /* dubstep.wav in Resources */,
 				C2EC96421FBF6A3500D384C5 /* 16-Bar-Progression_Boesendorfer_Grand_Piano.aif in Resources */,
 				C2EC96811FBF6A5E00D384C5 /* 4channels.aiff in Resources */,
 				C2EC96501FBF6A3C00D384C5 /* cat_purrrr22050.wav in Resources */,
+				C2B718271FC10E5C00ECB0A6 /* squarewave_saliencevalues.txt in Resources */,
+				C2B718161FC1034F00ECB0A6 /* pitchsalience_sinesweep.txt in Resources */,
 				C2EC96861FBF6A6500D384C5 /* sin440_0db.wav in Resources */,
 				C2EC96C61FBF6A8A00D384C5 /* impulses_1second_48000_st.flac in Resources */,
 				C2EC96911FBF6A6C00D384C5 /* impulses_1second_441002.wav in Resources */,
@@ -4658,9 +4702,11 @@
 				C2EC96FD1FBF6ACD00D384C5 /* seq-3342-2-16bit.flac in Resources */,
 				C2EC964E1FBF6A3C00D384C5 /* dubstep.ogg in Resources */,
 				C2EC96E01FBF6AA100D384C5 /* impulses_1second_44100.mp3 in Resources */,
-				C2EC963A1FBF6A2A00D384C5 /* pitchSalience.txt in Resources */,
+				C2EC963A1FBF6A2A00D384C5 /* pitchsalience_whitenoise1.txt in Resources */,
 				C2EC970D1FBF6AD300D384C5 /* empty.mp3 in Resources */,
+				C2B718181FC1034F00ECB0A6 /* pitchsalience_puretone.txt in Resources */,
 				C2EC96A21FBF6A7800D384C5 /* impulses_1second_44100.wav in Resources */,
+				C2B7181E1FC1034F00ECB0A6 /* pitchsalience_whitenoise2.txt in Resources */,
 				C2EC96D01FBF6A9100D384C5 /* impulses_1second_48000_bad_stream_info.flac in Resources */,
 				C2EC970E1FBF6AD300D384C5 /* empty.aiff in Resources */,
 				C2EC96F71FBF6ACD00D384C5 /* 1kHz_sine_-26LUFS-16bit.flac in Resources */,
@@ -4669,7 +4715,7 @@
 				C2EC96A31FBF6A7800D384C5 /* impulses_1second_22050_st.wav in Resources */,
 				C2EC96511FBF6A3C00D384C5 /* dubstep.mp3 in Resources */,
 				C2EC96391FBF6A2A00D384C5 /* frequencyBands.txt in Resources */,
-				C2BADBE11FBFAAAB009D02C5 /* hann.txt in Resources */,
+				C2BADBE11FBFAAAB009D02C5 /* windowing_hann.txt in Resources */,
 				C2EC96531FBF6A3C00D384C5 /* cat_purrrr24bit.wav in Resources */,
 				C2EC96C41FBF6A8A00D384C5 /* impulses_1second_44100.flac in Resources */,
 				C2EC96E11FBF6AA100D384C5 /* impulses_1second_44100_st.mp3 in Resources */,
@@ -4684,16 +4730,18 @@
 				C2EC96881FBF6A6500D384C5 /* noise_pink.wav in Resources */,
 				C2EC96961FBF6A7100D384C5 /* impulses_1second_22050_st.ogg in Resources */,
 				C2EC970B1FBF6AD300D384C5 /* empty.wav in Resources */,
-				C2BADBD81FBFA89B009D02C5 /* blackmanharris62.txt in Resources */,
+				C2BADBD81FBFA89B009D02C5 /* windowing_blackmanharris62.txt in Resources */,
 				C2EC96551FBF6A3C00D384C5 /* dubstep.flac in Resources */,
 				C2EC96DD1FBF6AA100D384C5 /* impulses_1second_48000_st.mp3 in Resources */,
 				C2EC96AC1FBF6A7F00D384C5 /* impulses_1samp_48000.wav in Resources */,
 				C2EC96981FBF6A7100D384C5 /* impulses_1second_44100.ogg in Resources */,
 				C2EC96A01FBF6A7800D384C5 /* impulses_1second_48000.wav in Resources */,
+				C2B7181C1FC1034F00ECB0A6 /* pitchsalience_squarewave.txt in Resources */,
 				C2EC96931FBF6A7100D384C5 /* impulses_1second_48000.ogg in Resources */,
+				C2B7181A1FC1034F00ECB0A6 /* pitchsalience_realwhitenoise.txt in Resources */,
 				C2EC96691FBF6A4800D384C5 /* unsupported.au in Resources */,
 				C2EC96E91FBF6AAF00D384C5 /* 1989_samples.wav in Resources */,
-				C2BADBD61FBFA89B009D02C5 /* blackmanharris92.txt in Resources */,
+				C2BADBD61FBFA89B009D02C5 /* windowing_blackmanharris92.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4709,8 +4757,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2EC96DB1FBF6A9200D384C5 /* impulses_1second_22050_st_bad_stream_info.flac in Resources */,
-				C2BADBE61FBFAAAB009D02C5 /* triangular.txt in Resources */,
-				C2BADBDD1FBFA89B009D02C5 /* blackmanharris74.txt in Resources */,
+				C2BADBE61FBFAAAB009D02C5 /* windowing_triangular.txt in Resources */,
+				C2BADBDD1FBFA89B009D02C5 /* windowing_blackmanharris74.txt in Resources */,
 				C2EC96C91FBF6A8A00D384C5 /* impulses_1second_48000.flac in Resources */,
 				C2EC96791FBF6A5100D384C5 /* test.ape in Resources */,
 				C2EC96761FBF6A5100D384C5 /* test.mp3 in Resources */,
@@ -4739,21 +4787,24 @@
 				C2EC96DC1FBF6A9200D384C5 /* impulses_1second_44100_st_bad_stream_info.flac in Resources */,
 				C2EC969D1FBF6A7200D384C5 /* impulses_1second_22050.ogg in Resources */,
 				C2EC967A1FBF6A5100D384C5 /* test.ogg in Resources */,
+				C2B7180F1FC0F86600ECB0A6 /* pool.json in Resources */,
 				C2EC96831FBF6A5F00D384C5 /* 4channels.wav in Resources */,
 				C2EC96A51FBF6A7800D384C5 /* impulses_1second_48000_st.wav in Resources */,
-				C2EC963C1FBF6A2B00D384C5 /* squareWave.txt in Resources */,
 				C2EC96D61FBF6A9200D384C5 /* impulses_1second_48000_st_bad_stream_info.flac in Resources */,
 				C2EC97001FBF6ACE00D384C5 /* seq-3341-7_seq-3342-5-16bit.flac in Resources */,
-				C2EC963D1FBF6A2B00D384C5 /* varyingSquareWave.txt in Resources */,
+				C2B718211FC1034F00ECB0A6 /* pitchsalience_varyingsquarewave.txt in Resources */,
 				C2EC96BE1FBF6A8500D384C5 /* impulses_1second_22050_st.aiff in Resources */,
 				C2EC967E1FBF6A5800D384C5 /* sin_30_seconds_eqloud.wav in Resources */,
 				C2EC96B31FBF6A7F00D384C5 /* impulses_1samp_22050_st.wav in Resources */,
+				C2B718301FC10E5C00ECB0A6 /* puretone_saliencevalues.txt in Resources */,
 				C2EC96E41FBF6AA200D384C5 /* impulses_1second_48000.mp3 in Resources */,
 				C2EC96C01FBF6A8500D384C5 /* impulses_1second_48000_st.aiff in Resources */,
 				C2EC96B61FBF6A7F00D384C5 /* impulses_1samp_44100.wav in Resources */,
-				C2BADBDB1FBFA89B009D02C5 /* blackmanharris70.txt in Resources */,
+				C2BADBDB1FBFA89B009D02C5 /* windowing_blackmanharris70.txt in Resources */,
+				C2B7182E1FC10E5C00ECB0A6 /* whitenoise_saliencevalues.txt in Resources */,
 				C2EC96DA1FBF6A9200D384C5 /* impulses_1second_22050_bad_stream_info.flac in Resources */,
 				C2EC96EE1FBF6AC700D384C5 /* multistream1.mka in Resources */,
+				C2B7182C1FC10E5C00ECB0A6 /* sinesweep_saliencevalues.txt in Resources */,
 				C2EC96E51FBF6AA200D384C5 /* impulses_1second_22050.mp3 in Resources */,
 				C2EC968F1FBF6A6500D384C5 /* sin_pattern_decreasing.wav in Resources */,
 				C2EC96641FBF6A3D00D384C5 /* techno_loop.wav in Resources */,
@@ -4769,15 +4820,18 @@
 				C2EC966C1FBF6A4900D384C5 /* sine_440_5000period.wav in Resources */,
 				C2EC96B41FBF6A7F00D384C5 /* impulses_1samp_44100_st.wav in Resources */,
 				C2EC97081FBF6ACE00D384C5 /* 1kHz_sine_-20LUFS-16bit.flac in Resources */,
-				C2BADBE41FBFAAAB009D02C5 /* hamming.txt in Resources */,
+				C2BADBE41FBFAAAB009D02C5 /* windowing_hamming.txt in Resources */,
 				C2EC96CD1FBF6A8A00D384C5 /* impulses_1second_44100_st.flac in Resources */,
 				C2EC96821FBF6A5F00D384C5 /* 4channels.flac in Resources */,
+				C2B7182A1FC10E5C00ECB0A6 /* varyingsquarewave_saliencevalues.txt in Resources */,
 				C2EC97101FBF6AD400D384C5 /* empty.ogg in Resources */,
 				C2EC97021FBF6ACE00D384C5 /* seq-3341-4-16bit-v02.flac in Resources */,
 				C2EC96571FBF6A3D00D384C5 /* dubstep.wav in Resources */,
 				C2EC96451FBF6A3600D384C5 /* 16-Bar-Progression_Boesendorfer_Grand_Piano.aif in Resources */,
 				C2EC96841FBF6A5F00D384C5 /* 4channels.aiff in Resources */,
 				C2EC96601FBF6A3D00D384C5 /* cat_purrrr22050.wav in Resources */,
+				C2B718281FC10E5C00ECB0A6 /* squarewave_saliencevalues.txt in Resources */,
+				C2B718171FC1034F00ECB0A6 /* pitchsalience_sinesweep.txt in Resources */,
 				C2EC968C1FBF6A6500D384C5 /* sin440_0db.wav in Resources */,
 				C2EC96CC1FBF6A8A00D384C5 /* impulses_1second_48000_st.flac in Resources */,
 				C2EC96921FBF6A6C00D384C5 /* impulses_1second_441002.wav in Resources */,
@@ -4790,9 +4844,11 @@
 				C2EC970A1FBF6ACE00D384C5 /* seq-3342-2-16bit.flac in Resources */,
 				C2EC965E1FBF6A3D00D384C5 /* dubstep.ogg in Resources */,
 				C2EC96E61FBF6AA200D384C5 /* impulses_1second_44100.mp3 in Resources */,
-				C2EC96401FBF6A2B00D384C5 /* pitchSalience.txt in Resources */,
+				C2EC96401FBF6A2B00D384C5 /* pitchsalience_whitenoise1.txt in Resources */,
 				C2EC97111FBF6AD400D384C5 /* empty.mp3 in Resources */,
+				C2B718191FC1034F00ECB0A6 /* pitchsalience_puretone.txt in Resources */,
 				C2EC96A81FBF6A7800D384C5 /* impulses_1second_44100.wav in Resources */,
+				C2B7181F1FC1034F00ECB0A6 /* pitchsalience_whitenoise2.txt in Resources */,
 				C2EC96D71FBF6A9200D384C5 /* impulses_1second_48000_bad_stream_info.flac in Resources */,
 				C2EC97121FBF6AD400D384C5 /* empty.aiff in Resources */,
 				C2EC97041FBF6ACE00D384C5 /* 1kHz_sine_-26LUFS-16bit.flac in Resources */,
@@ -4801,7 +4857,7 @@
 				C2EC96A91FBF6A7800D384C5 /* impulses_1second_22050_st.wav in Resources */,
 				C2EC96611FBF6A3D00D384C5 /* dubstep.mp3 in Resources */,
 				C2EC963F1FBF6A2B00D384C5 /* frequencyBands.txt in Resources */,
-				C2BADBE21FBFAAAB009D02C5 /* hann.txt in Resources */,
+				C2BADBE21FBFAAAB009D02C5 /* windowing_hann.txt in Resources */,
 				C2EC96631FBF6A3D00D384C5 /* cat_purrrr24bit.wav in Resources */,
 				C2EC96CA1FBF6A8A00D384C5 /* impulses_1second_44100.flac in Resources */,
 				C2EC96E71FBF6AA200D384C5 /* impulses_1second_44100_st.mp3 in Resources */,
@@ -4816,16 +4872,18 @@
 				C2EC968E1FBF6A6500D384C5 /* noise_pink.wav in Resources */,
 				C2EC969C1FBF6A7200D384C5 /* impulses_1second_22050_st.ogg in Resources */,
 				C2EC970F1FBF6AD400D384C5 /* empty.wav in Resources */,
-				C2BADBD91FBFA89B009D02C5 /* blackmanharris62.txt in Resources */,
+				C2BADBD91FBFA89B009D02C5 /* windowing_blackmanharris62.txt in Resources */,
 				C2EC96651FBF6A3D00D384C5 /* dubstep.flac in Resources */,
 				C2EC96E31FBF6AA200D384C5 /* impulses_1second_48000_st.mp3 in Resources */,
 				C2EC96B21FBF6A7F00D384C5 /* impulses_1samp_48000.wav in Resources */,
 				C2EC969E1FBF6A7200D384C5 /* impulses_1second_44100.ogg in Resources */,
 				C2EC96A61FBF6A7800D384C5 /* impulses_1second_48000.wav in Resources */,
+				C2B7181D1FC1034F00ECB0A6 /* pitchsalience_squarewave.txt in Resources */,
 				C2EC96991FBF6A7200D384C5 /* impulses_1second_48000.ogg in Resources */,
+				C2B7181B1FC1034F00ECB0A6 /* pitchsalience_realwhitenoise.txt in Resources */,
 				C2EC966D1FBF6A4900D384C5 /* unsupported.au in Resources */,
 				C2EC96EB1FBF6AB000D384C5 /* 1989_samples.wav in Resources */,
-				C2BADBD71FBFA89B009D02C5 /* blackmanharris92.txt in Resources */,
+				C2BADBD71FBFA89B009D02C5 /* windowing_blackmanharris92.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

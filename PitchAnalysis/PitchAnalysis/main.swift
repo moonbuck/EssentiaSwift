@@ -192,7 +192,8 @@ case 1:
 
   pitchDetect.compute()
 
-  print(zip(pitchDetect[realVecOutput: .pitch], pitchDetect[realVecOutput: .pitchConfidence]).enumerated())
+  print(zip(pitchDetect[realVecOutput: .pitch],
+            pitchDetect[realVecOutput: .pitchConfidence]).enumerated())
 
 case 2:
 
