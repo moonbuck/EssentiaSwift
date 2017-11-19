@@ -1275,6 +1275,14 @@
 		C23A3B5A1FBF636B0083F6CE /* Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23A33BC1FBF5A2A0083F6CE /* Debugging.swift */; };
 		C23A3B601FBF649E0083F6CE /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C23A3B5E1FBF64510083F6CE /* Accelerate.framework */; };
 		C23A3B611FBF64AC0083F6CE /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C23A3B5C1FBF64220083F6CE /* Accelerate.framework */; };
+		C27C40311FC1FFFB005CB8BA /* spectralpeaks_sinusoidfrequencies.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C402E1FC1FFFB005CB8BA /* spectralpeaks_sinusoidfrequencies.txt */; };
+		C27C40321FC1FFFB005CB8BA /* spectralpeaks_sinusoidfrequencies.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C402E1FC1FFFB005CB8BA /* spectralpeaks_sinusoidfrequencies.txt */; };
+		C27C403B1FC2182D005CB8BA /* spectralpeaks_spectrum.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C403A1FC2182C005CB8BA /* spectralpeaks_spectrum.txt */; };
+		C27C403C1FC2182D005CB8BA /* spectralpeaks_spectrum.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C403A1FC2182C005CB8BA /* spectralpeaks_spectrum.txt */; };
+		C27C403F1FC2188E005CB8BA /* spectralpeaks_expectedfrequencies.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C403D1FC2188E005CB8BA /* spectralpeaks_expectedfrequencies.txt */; };
+		C27C40401FC2188E005CB8BA /* spectralpeaks_expectedfrequencies.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C403D1FC2188E005CB8BA /* spectralpeaks_expectedfrequencies.txt */; };
+		C27C40411FC2188E005CB8BA /* spectralpeaks_expectedmagnitudes.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C403E1FC2188E005CB8BA /* spectralpeaks_expectedmagnitudes.txt */; };
+		C27C40421FC2188E005CB8BA /* spectralpeaks_expectedmagnitudes.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C403E1FC2188E005CB8BA /* spectralpeaks_expectedmagnitudes.txt */; };
 		C2B7180E1FC0F86600ECB0A6 /* pool.json in Resources */ = {isa = PBXBuildFile; fileRef = C2B7180D1FC0F86600ECB0A6 /* pool.json */; };
 		C2B7180F1FC0F86600ECB0A6 /* pool.json in Resources */ = {isa = PBXBuildFile; fileRef = C2B7180D1FC0F86600ECB0A6 /* pool.json */; };
 		C2B718161FC1034F00ECB0A6 /* pitchsalience_sinesweep.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2B718101FC1034E00ECB0A6 /* pitchsalience_sinesweep.txt */; };
@@ -2257,6 +2265,10 @@
 		C23A3A7C1FBF5E390083F6CE /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
 		C23A3B5C1FBF64220083F6CE /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Accelerate.framework; sourceTree = DEVELOPER_DIR; };
 		C23A3B5E1FBF64510083F6CE /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		C27C402E1FC1FFFB005CB8BA /* spectralpeaks_sinusoidfrequencies.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = spectralpeaks_sinusoidfrequencies.txt; sourceTree = "<group>"; };
+		C27C403A1FC2182C005CB8BA /* spectralpeaks_spectrum.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = spectralpeaks_spectrum.txt; sourceTree = "<group>"; };
+		C27C403D1FC2188E005CB8BA /* spectralpeaks_expectedfrequencies.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = spectralpeaks_expectedfrequencies.txt; sourceTree = "<group>"; };
+		C27C403E1FC2188E005CB8BA /* spectralpeaks_expectedmagnitudes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = spectralpeaks_expectedmagnitudes.txt; sourceTree = "<group>"; };
 		C2B7180D1FC0F86600ECB0A6 /* pool.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pool.json; sourceTree = "<group>"; };
 		C2B718101FC1034E00ECB0A6 /* pitchsalience_sinesweep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchsalience_sinesweep.txt; sourceTree = "<group>"; };
 		C2B718111FC1034E00ECB0A6 /* pitchsalience_puretone.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchsalience_puretone.txt; sourceTree = "<group>"; };
@@ -3760,6 +3772,10 @@
 		C2EC95B41FBF6A1500D384C5 /* data */ = {
 			isa = PBXGroup;
 			children = (
+				C27C403D1FC2188E005CB8BA /* spectralpeaks_expectedfrequencies.txt */,
+				C27C403E1FC2188E005CB8BA /* spectralpeaks_expectedmagnitudes.txt */,
+				C27C403A1FC2182C005CB8BA /* spectralpeaks_spectrum.txt */,
+				C27C402E1FC1FFFB005CB8BA /* spectralpeaks_sinusoidfrequencies.txt */,
 				C2B718261FC10E5C00ECB0A6 /* puretone_saliencevalues.txt */,
 				C2B718241FC10E5C00ECB0A6 /* sinesweep_saliencevalues.txt */,
 				C2B718221FC10E5C00ECB0A6 /* squarewave_saliencevalues.txt */,
@@ -4643,6 +4659,7 @@
 				C2EC96EF1FBF6AC800D384C5 /* multistream2.mka in Resources */,
 				C2EC96B91FBF6A8400D384C5 /* impulses_1second_44100.aiff in Resources */,
 				C2EC96D51FBF6A9100D384C5 /* impulses_1second_44100_st_bad_stream_info.flac in Resources */,
+				C27C403F1FC2188E005CB8BA /* spectralpeaks_expectedfrequencies.txt in Resources */,
 				C2EC96971FBF6A7100D384C5 /* impulses_1second_22050.ogg in Resources */,
 				C2EC96741FBF6A5000D384C5 /* test.ogg in Resources */,
 				C2B7180E1FC0F86600ECB0A6 /* pool.json in Resources */,
@@ -4710,6 +4727,7 @@
 				C2EC96D01FBF6A9100D384C5 /* impulses_1second_48000_bad_stream_info.flac in Resources */,
 				C2EC970E1FBF6AD300D384C5 /* empty.aiff in Resources */,
 				C2EC96F71FBF6ACD00D384C5 /* 1kHz_sine_-26LUFS-16bit.flac in Resources */,
+				C27C403B1FC2182D005CB8BA /* spectralpeaks_spectrum.txt in Resources */,
 				C2EC966F1FBF6A5000D384C5 /* test-unicode.flac in Resources */,
 				C2EC96871FBF6A6500D384C5 /* beat_120_240_180.wav in Resources */,
 				C2EC96A31FBF6A7800D384C5 /* impulses_1second_22050_st.wav in Resources */,
@@ -4734,7 +4752,9 @@
 				C2EC96551FBF6A3C00D384C5 /* dubstep.flac in Resources */,
 				C2EC96DD1FBF6AA100D384C5 /* impulses_1second_48000_st.mp3 in Resources */,
 				C2EC96AC1FBF6A7F00D384C5 /* impulses_1samp_48000.wav in Resources */,
+				C27C40411FC2188E005CB8BA /* spectralpeaks_expectedmagnitudes.txt in Resources */,
 				C2EC96981FBF6A7100D384C5 /* impulses_1second_44100.ogg in Resources */,
+				C27C40311FC1FFFB005CB8BA /* spectralpeaks_sinusoidfrequencies.txt in Resources */,
 				C2EC96A01FBF6A7800D384C5 /* impulses_1second_48000.wav in Resources */,
 				C2B7181C1FC1034F00ECB0A6 /* pitchsalience_squarewave.txt in Resources */,
 				C2EC96931FBF6A7100D384C5 /* impulses_1second_48000.ogg in Resources */,
@@ -4785,6 +4805,7 @@
 				C2EC96ED1FBF6AC700D384C5 /* multistream2.mka in Resources */,
 				C2EC96BF1FBF6A8500D384C5 /* impulses_1second_44100.aiff in Resources */,
 				C2EC96DC1FBF6A9200D384C5 /* impulses_1second_44100_st_bad_stream_info.flac in Resources */,
+				C27C40401FC2188E005CB8BA /* spectralpeaks_expectedfrequencies.txt in Resources */,
 				C2EC969D1FBF6A7200D384C5 /* impulses_1second_22050.ogg in Resources */,
 				C2EC967A1FBF6A5100D384C5 /* test.ogg in Resources */,
 				C2B7180F1FC0F86600ECB0A6 /* pool.json in Resources */,
@@ -4852,6 +4873,7 @@
 				C2EC96D71FBF6A9200D384C5 /* impulses_1second_48000_bad_stream_info.flac in Resources */,
 				C2EC97121FBF6AD400D384C5 /* empty.aiff in Resources */,
 				C2EC97041FBF6ACE00D384C5 /* 1kHz_sine_-26LUFS-16bit.flac in Resources */,
+				C27C403C1FC2182D005CB8BA /* spectralpeaks_spectrum.txt in Resources */,
 				C2EC96751FBF6A5100D384C5 /* test-unicode.flac in Resources */,
 				C2EC968D1FBF6A6500D384C5 /* beat_120_240_180.wav in Resources */,
 				C2EC96A91FBF6A7800D384C5 /* impulses_1second_22050_st.wav in Resources */,
@@ -4876,7 +4898,9 @@
 				C2EC96651FBF6A3D00D384C5 /* dubstep.flac in Resources */,
 				C2EC96E31FBF6AA200D384C5 /* impulses_1second_48000_st.mp3 in Resources */,
 				C2EC96B21FBF6A7F00D384C5 /* impulses_1samp_48000.wav in Resources */,
+				C27C40421FC2188E005CB8BA /* spectralpeaks_expectedmagnitudes.txt in Resources */,
 				C2EC969E1FBF6A7200D384C5 /* impulses_1second_44100.ogg in Resources */,
+				C27C40321FC1FFFB005CB8BA /* spectralpeaks_sinusoidfrequencies.txt in Resources */,
 				C2EC96A61FBF6A7800D384C5 /* impulses_1second_48000.wav in Resources */,
 				C2B7181D1FC1034F00ECB0A6 /* pitchsalience_squarewave.txt in Resources */,
 				C2EC96991FBF6A7200D384C5 /* impulses_1second_48000.ogg in Resources */,

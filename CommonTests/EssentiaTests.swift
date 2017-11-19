@@ -77,6 +77,22 @@ func loadVector(name: String) -> [Float] {
   return (text.split(separator: "\n") as [NSString]).map(\.floatValue)
 }
 
+/// Simple helper that loads values from a text file into a two dimensional array of float values.
+/// Inner arrays are delimited by consecutive newline characters.
+///
+/// - Parameters:
+///   - name: The name of the bundled file.
+/// - Returns: A two dimensional array of the float values parsed from the file.
+func loadVectorVector(name: String) -> [[Float]] {
+  let url = bundleURL(name: name, ext: "txt")
+  guard let text = try? String(contentsOf: url) else {
+    fatalError("Failed to load text from file: '\(name).txt'.")
+  }
+
+  return (text as NSString).components(separatedBy: "\n\n")
+          .map({($0.split(separator: "\n") as [NSString]).map(\.floatValue)})
+}
+
 class EssentiaTests: XCTestCase {
 
   /// The audio signal used as input when testing various algorithms.
@@ -718,12 +734,12 @@ class EssentiaTests: XCTestCase {
                                            DSPComplex(real: 2, imag: 0),
                                            DSPComplex(real: 3, imag: 0)]
     let complexRealVectorInput = VectorInput<DSPComplex>(complexRealVector)
-    XCTAssertEqual(complexRealVectorInput.vector, complexRealVector)
+    XCTAssertEqual(complexRealVectorInput.vector, complexRealVector, accuracy: 0)
     let complexRealVectorʹ: [DSPComplex] = [DSPComplex(real: 4, imag: 0),
                                             DSPComplex(real: 5, imag: 0),
                                             DSPComplex(real: 6, imag: 0)]
     complexRealVectorInput.vector = complexRealVectorʹ
-    XCTAssertEqual(complexRealVectorInput.vector, complexRealVectorʹ)
+    XCTAssertEqual(complexRealVectorInput.vector, complexRealVectorʹ, accuracy: 0)
 
   }
 
@@ -1115,7 +1131,7 @@ class EssentiaTests: XCTestCase {
     network.run()
 
     XCTAssertAverageEqual(pool[realVec: "tuningCents"], 0.0, accuracy: 4.0)
-    XCTAssertAverageEqual(pool[realVec: "tuningFrequency"], Float(440), accuracy: 0.5)
+    XCTAssertAverageEqual(pool[realVec: "tuningFrequency"], Float(440), deviation: 0.5)
 
     /*
       Test that empty input produces the expected values.
@@ -1149,60 +1165,30 @@ class EssentiaTests: XCTestCase {
 
     /*
      Regression test for various peak shapes.
-     Note: Passing would require broadening the accuracy value for the assertion on the
-           frequencies from 1e-5 (used in python) to 1e-4.
      */
-
-    var spectrum1: [Float] = [0.0] * 100
-    spectrum1[0..<3] = [0.5, 0.4, 0.3]
-    spectrum1[10..<13] = [0.5, 0.6, 0.5]
-    spectrum1[20..<25] = [0.8, 0.95, 0.95, 0.95, 0.8]
-    spectrum1[30..<35] = [0.5, 0.6, 0.6, 0.6, 0.7]
-    spectrum1[40..<44] = [0.5, 0.6, 0.6, 0.7]
-    spectrum1[50..<55] = [0.7, 0.6, 0.6, 0.6, 0.5]
-    spectrum1[60..<65] = [0.7, 0.6, 0.6, 0.6, 0.7]
-    spectrum1[70..<75] = [0.7, 0.5, 0.7, 0.5, 0.7]
-    spectrum1[97...  ] = [0.3, 0.4, 0.5]
-
-    let expected: [(frequency: Float, magnitude: Float)] = [
-      (0, 0.5),
-      (11, 0.6),
-      (22, 0.95),
-      (33.625, 0.75625),
-      (42.625, 0.75625),
-      (50.375, 0.75625),
-      (60.375, 0.75625),
-      (63.625, 0.75625),
-      (70.2778, 0.734722),
-      (72, 0.7),
-      (73.7222, 0.734722),
-      (99, 0.5)
-    ]
 
     let spectralPeaks1 = StandardAlgorithm<Standard.SpectralPeaks>([
       .sampleRate: 198,
       .maxPeaks: 100,
       .maxFrequency: 99,
       .minFrequency: 0,
-      .magnitudeThreshold: 0.000001,
+      .magnitudeThreshold: 1e-6,
       .orderBy: "frequency"
       ])
 
-    spectralPeaks1[realVecInput: .spectrum] = spectrum1
+    spectralPeaks1[realVecInput: .spectrum] = loadVector(name: "spectralpeaks_spectrum")
     spectralPeaks1.compute()
 
-    let actual: [(frequency: Float, magnitude: Float)] =
-      Array(zip(spectralPeaks1[realVecOutput: .frequencies],
-                spectralPeaks1[realVecOutput: .magnitudes]))
+    XCTAssertEqual(spectralPeaks1[realVecOutput: .frequencies],
+                   loadVector(name: "spectralpeaks_expectedfrequencies"),
+                   deviation: 1e-5)
 
-    for (actual, expected) in zip(actual, expected) {
-      XCTAssertEqual(actual.frequency, expected.frequency, accuracy: 1e-5)
-      XCTAssertEqual(actual.magnitude, expected.magnitude, accuracy: 1e-5)
-    }
+    XCTAssertEqual(spectralPeaks1[realVecOutput: .magnitudes],
+                   loadVector(name: "spectralpeaks_expectedmagnitudes"),
+                   accuracy: 1e-5)
 
     /*
      Test with a sinusoid.
-     Note: Passing would require broadening the accuracy value from 1e-3 (used in python) to 0.89.
      */
 
     let audioSignal = monoBufferData(url: bundleURL(name: "sin5000", ext: "wav"))
@@ -1231,7 +1217,10 @@ class EssentiaTests: XCTestCase {
     let network = Network(generator: vectorInput)
     network.run()
 
-    XCTAssertAverageEqual(Array(vectorOutput.vector.joined()), 5000, accuracy: 1e-3)
+    XCTAssertEqual(vectorOutput.vector,
+                   loadVectorVector(name: "spectralpeaks_sinusoidfrequencies"),
+                   deviation: 1e-3)
+
 
     /*
      Test that all-zero input leads to empty output arrays.
@@ -1775,7 +1764,6 @@ class EssentiaTests: XCTestCase {
 
     /*
      Test with various real signals.
-     Note: Not sure why the varying square wave salience is off.
      */
 
     let vectorInput2 = VectorInput<Float>(loadVector(name: "pitchsalience_puretone"))

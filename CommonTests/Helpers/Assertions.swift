@@ -52,6 +52,22 @@ private func description<T>(of values: [[[T]]]) -> String {
 
 }
 
+/// Determines whether a value is equal to an expected value.
+///
+/// - Parameters:
+///   - actual: The value to test.
+///   - expected: The expected value.
+///   - deviation: The allowable deviation between values.
+/// - Returns: Whether `actual` is equal to `expected`.
+private func equal<T:FloatingPoint>(_ actual: T, _ expected: T, deviation: T) -> Bool {
+  guard !(actual.isNaN || expected.isNaN) else { return false }
+  let diff: T
+  if expected == 0 { diff = abs(actual) }
+  else if actual == 0 { diff = abs(expected) }
+  else { diff = abs((actual - expected) / abs (expected)) }
+  return diff <= deviation
+}
+
 
 /// Asserts that two two dimensional arrays are equal.
 ///
@@ -411,6 +427,282 @@ public func XCTAssertEqual(_ array1: [[[DSPComplex]]],
 
 }
 
+/// Asserts that two arrays of floating point numbers are equal with a certain accuracy.
+///
+/// - Parameters:
+///   - array1: An array of floating point numbers.
+///   - array2: Another array of floating point numbers.
+///   - deviation: Describes the maximum deviation between values before considering them unequal.
+///   - message: An optional description of the failure.
+///   - file: The file in which failure occurred. Defaults to the file name of the test case in
+///           which this function was called.
+///   - line: The line number on which failure occurred. Defaults to the line number on which this
+///           function was called.
+public func XCTAssertEqual<T:FloatingPoint>(_ array1: [T],
+                                            _ array2: [T],
+                                            deviation: T = 0,
+                                            _ message: @autoclosure () -> String = "",
+                                            file: StaticString = #file,
+                                            line: UInt = #line)
+{
+
+  let didFail = array1.count != array2.count || !array1.elementsEqual(array2, by: {
+    equal($0, $1, deviation: deviation)
+  })
+
+  guard didFail else  { return }
+
+  let failureDescription = """
+    XCTAssertEqual failed: ("\(description(of: array1))") is not equal to \
+    ("\(description(of: array2))") with deviation  ("\(deviation)")
+    """
+
+  _XCTPreformattedFailureHandler(_XCTCurrentTestCase(),
+                                 true,
+                                 file.description,
+                                 Int(line),
+                                 failureDescription, message())
+
+}
+
+/// Asserts that two two dimensional arrays of floating point numbers are equal with a certain
+/// accuracy.
+///
+/// - Parameters:
+///   - array1: A two dimensional array of floating point numbers.
+///   - array2: Another two dimensional array of floating point numbers.
+///   - deviation: Describes the maximum deviation between values before considering them unequal.
+///   - message: An optional description of the failure.
+///   - file: The file in which failure occurred. Defaults to the file name of the test case in
+///           which this function was called.
+///   - line: The line number on which failure occurred. Defaults to the line number on which this
+///           function was called.
+public func XCTAssertEqual<T:FloatingPoint>(_ array1: [[T]],
+                                            _ array2: [[T]],
+                                            deviation: T = 0,
+                                            _ message: @autoclosure () -> String = "",
+                                            file: StaticString = #file,
+                                            line: UInt = #line)
+{
+
+  var didFail = array1.count != array2.count
+
+  if !didFail {
+
+    for (first, second) in zip(array1, array2) {
+      guard first.elementsEqual(second, by: {
+        equal($0, $1, deviation: deviation)
+      }) else { didFail = true; break }
+    }
+
+  }
+
+  guard didFail else  { return }
+
+  let failureDescription = """
+    XCTAssertEqual failed: ("\(description(of: array1))") is not equal to \
+    ("\(description(of: array2))") with deviation  ("\(deviation)")
+    """
+
+  _XCTPreformattedFailureHandler(_XCTCurrentTestCase(),
+                                 true,
+                                 file.description,
+                                 Int(line),
+                                 failureDescription, message())
+
+}
+
+/// Asserts that two three dimensional arrays of floating point numbers are equal with a certain
+/// accuracy.
+///
+/// - Parameters:
+///   - array1: A three dimensional array of floating point numbers.
+///   - array2: Another three dimensional array of floating point numbers.
+///   - deviation: Describes the maximum deviation between values before considering them unequal.
+///   - message: An optional description of the failure.
+///   - file: The file in which failure occurred. Defaults to the file name of the test case in
+///           which this function was called.
+///   - line: The line number on which failure occurred. Defaults to the line number on which this
+///           function was called.
+public func XCTAssertEqual<T:FloatingPoint>(_ array1: [[[T]]],
+                                            _ array2: [[[T]]],
+                                            deviation: T = 0,
+                                            _ message: @autoclosure () -> String = "",
+                                            file: StaticString = #file,
+                                            line: UInt = #line)
+{
+
+  var didFail = array1.count != array2.count
+
+  if !didFail {
+
+    Outer: for (firstOuter, secondOuter) in zip(array1, array2) {
+
+      guard firstOuter.count == secondOuter.count else { didFail = true; break Outer }
+
+      for (first, second) in zip(firstOuter, secondOuter) {
+        guard first.elementsEqual(second, by: {
+          equal($0, $1, deviation: deviation)
+        }) else { didFail = true; break Outer }
+      }
+
+    }
+
+  }
+
+  guard didFail else  { return }
+
+  let failureDescription = """
+    XCTAssertEqual failed: ("\(description(of: array1))") is not equal to \
+    ("\(description(of: array2))") with deviation  ("\(deviation)")
+    """
+
+  _XCTPreformattedFailureHandler(_XCTCurrentTestCase(),
+                                 true,
+                                 file.description,
+                                 Int(line),
+                                 failureDescription, message())
+
+}
+
+/// Asserts that two arrays of complex numbers are equal with a certain accuracy.
+///
+/// - Parameters:
+///   - array1: An array of complex numbers.
+///   - array2: Another array of complex numbers.
+///   - deviation: Describes the maximum deviation between values before considering them unequal.
+///   - message: An optional description of the failure.
+///   - file: The file in which failure occurred. Defaults to the file name of the test case in
+///           which this function was called.
+///   - line: The line number on which failure occurred. Defaults to the line number on which this
+///           function was called.
+public func XCTAssertEqual(_ array1: [DSPComplex],
+                           _ array2: [DSPComplex],
+                           deviation: Float = 0,
+                           _ message: @autoclosure () -> String = "",
+                           file: StaticString = #file,
+                           line: UInt = #line)
+{
+
+  let didFail = array1.count != array2.count || !array1.elementsEqual(array2, by: {
+    equal($0.real, $1.real, deviation: deviation) && equal($0.imag, $1.imag, deviation: deviation)
+  })
+
+  guard didFail else  { return }
+
+  let failureDescription = """
+    XCTAssertEqual failed: ("\(description(of: array1))") is not equal to \
+    ("\(description(of: array2))") with deviation  ("\(deviation)")
+    """
+
+  _XCTPreformattedFailureHandler(_XCTCurrentTestCase(),
+                                 true,
+                                 file.description,
+                                 Int(line),
+                                 failureDescription, message())
+
+}
+
+/// Asserts that two two dimensional arrays of complex numbers are equal with a certain accuracy.
+///
+/// - Parameters:
+///   - array1: A two dimensional array of complex numbers.
+///   - array2: Another two dimensional array of complex numbers.
+///   - deviation: Describes the maximum deviation between values before considering them unequal.
+///   - message: An optional description of the failure.
+///   - file: The file in which failure occurred. Defaults to the file name of the test case in
+///           which this function was called.
+///   - line: The line number on which failure occurred. Defaults to the line number on which this
+///           function was called.
+public func XCTAssertEqual(_ array1: [[DSPComplex]],
+                           _ array2: [[DSPComplex]],
+                           deviation: Float = 0,
+                           _ message: @autoclosure () -> String = "",
+                           file: StaticString = #file,
+                           line: UInt = #line)
+{
+
+  var didFail = array1.count != array2.count
+
+  if !didFail {
+
+    for (first, second) in zip(array1, array2) {
+      guard first.elementsEqual(second, by: {
+        equal($0.real, $1.real, deviation: deviation)
+          && equal($0.imag, $1.imag, deviation: deviation)
+      }) else { didFail = true; break }
+    }
+
+  }
+
+  guard didFail else  { return }
+
+  let failureDescription = """
+    XCTAssertEqual failed: ("\(description(of: array1))") is not equal to \
+    ("\(description(of: array2))") with deviation  ("\(deviation)")
+    """
+
+  _XCTPreformattedFailureHandler(_XCTCurrentTestCase(),
+                                 true,
+                                 file.description,
+                                 Int(line),
+                                 failureDescription, message())
+
+}
+
+/// Asserts that two three dimensional arrays of complex numbers are equal with a certain accuracy.
+///
+/// - Parameters:
+///   - array1: A three dimensional array of complex numbers.
+///   - array2: Another three dimensional array of complex numbers.
+///   - deviation: Describes the maximum deviation between values before considering them unequal.
+///   - message: An optional description of the failure.
+///   - file: The file in which failure occurred. Defaults to the file name of the test case in
+///           which this function was called.
+///   - line: The line number on which failure occurred. Defaults to the line number on which this
+///           function was called.
+public func XCTAssertEqual(_ array1: [[[DSPComplex]]],
+                           _ array2: [[[DSPComplex]]],
+                           deviation: Float = 0,
+                           _ message: @autoclosure () -> String = "",
+                           file: StaticString = #file,
+                           line: UInt = #line)
+{
+
+  var didFail = array1.count != array2.count
+
+  if !didFail {
+
+    Outer: for (firstOuter, secondOuter) in zip(array1, array2) {
+
+      guard firstOuter.count == secondOuter.count else { didFail = true; break Outer }
+
+      for (first, second) in zip(firstOuter, secondOuter) {
+        guard first.elementsEqual(second, by: {
+          equal($0.real, $1.real, deviation: deviation)
+            && equal($0.imag, $1.imag, deviation: deviation)
+        }) else { didFail = true; break Outer }
+      }
+
+    }
+
+  }
+
+  guard didFail else  { return }
+
+  let failureDescription = """
+    XCTAssertEqual failed: ("\(description(of: array1))") is not equal to \
+    ("\(description(of: array2))") with deviation  ("\(deviation)")
+    """
+
+  _XCTPreformattedFailureHandler(_XCTCurrentTestCase(),
+                                 true,
+                                 file.description,
+                                 Int(line),
+                                 failureDescription, message())
+
+}
+
 /// Asserts that an array of floating point numbers contains no `nan` or `inf`
 /// values.
 ///
@@ -694,6 +986,43 @@ public func XCTAssertAverageEqual<T:FloatingPoint>(_ array: [T],
   let failureDescription = """
     XCTAssertAverageEqual failed: ("\(average)") is not equal to ("\(expected)") \
     +/- ("\(accuracy)")
+    """
+
+  _XCTPreformattedFailureHandler(_XCTCurrentTestCase(),
+                                 true,
+                                 file.description,
+                                 Int(line),
+                                 failureDescription, message())
+
+}
+
+/// Asserts that the average of the floating point numbers in an array is equal to an expected
+/// value with a certain accuracy.
+///
+/// - Parameters:
+///   - array: An array of floating point numbers.
+///   - expected: The expected average for the values in `array`.
+///   - deviation: Describes the maximum deviation between the average of `array` and `expected`.
+///   - message: An optional description of the failure.
+///   - file: The file in which failure occurred. Defaults to the file name of the test case in
+///           which this function was called.
+///   - line: The line number on which failure occurred. Defaults to the line number on which this
+///           function was called.
+public func XCTAssertAverageEqual<T:FloatingPoint>(_ array: [T],
+                                                   _ expected: T,
+                                                   deviation: T = 0,
+                                                   _ message: @autoclosure () -> String = "",
+                                                   file: StaticString = #file,
+                                                   line: UInt = #line)
+{
+
+  let average = array.reduce(0, +) / T(array.count)
+
+  guard !equal(average, expected, deviation: deviation) else  { return }
+
+  let failureDescription = """
+    XCTAssertAverageEqual failed: ("\(average)") is not equal to ("\(expected)") \
+    with deviation  ("\(deviation)")
     """
 
   _XCTPreformattedFailureHandler(_XCTCurrentTestCase(),
