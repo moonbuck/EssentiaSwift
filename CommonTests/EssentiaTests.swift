@@ -1740,7 +1740,7 @@ class EssentiaTests: XCTestCase {
 
   /// Tests the functionality of the `PitchSalienceFunction` algorithm. Values taken from
   /// `test_pitchsalience.py`.
-  func testPitchSalienceFunction() {
+  func testPitchSalience() {
 
     /*
      Test with white noise.
@@ -1985,8 +1985,16 @@ class EssentiaTests: XCTestCase {
     pitchSalience11.compute()
 
     XCTAssertEqual(pitchSalience11[realOutput: .pitchSalience], 0.0)
+  }
 
+  func testPitchSalienceFunction() {
+    //TODO: Implement the  function
+    XCTFail("\(#function) not yet implemented.")
+  }
 
+  func testPitchSalienceFunctionPeaks() {
+    //TODO: Implement the  function
+    XCTFail("\(#function) not yet implemented.")
   }
 
   /// Tests the functionality of the `HighResolutionFeatures` algorithm. Values taken from
@@ -2239,30 +2247,234 @@ class EssentiaTests: XCTestCase {
 
   }
 
-/*
-   Possible test subjects:
-     MultiPitchKlapuri
-     MultiPitchMelodia
-     PitchContourSegmentation
-     PitchContours
-     PitchContoursMelody
-     PitchContoursMultiMelody
-     PitchFilter
-     PitchMelodia
-     PitchSalienceFunctionPeaks
-     AutoCorrelation
-     FFTC
-     OverlapAdd
-     PeakDetection
-     WarpedAutoCorrelation
-     PCA
-     Extractor
-     LowLevelSpectralEqloudExtractor
-     LowLevelSpectralExtractor
-     SpectrumCQ
-     TuningFrequencyExtractor
- */
+  func testMultiPitchKlapuri() {
+    //TODO: Implement the  function
+    XCTFail("\(#function) not yet implemented.")
+  }
 
+  func testMultiPitchMelodia() {
+    //TODO: Implement the  function
+    XCTFail("\(#function) not yet implemented.")
+  }
+
+  func testPitchContours() {
+    //TODO: Implement the  function
+    XCTFail("\(#function) not yet implemented.")
+  }
+
+  func testPitchContoursMultiMelody() {
+    //TODO: Implement the  function
+    XCTFail("\(#function) not yet implemented.")
+  }
+
+  /// Tests the functionality of the PitchYin algorithm. Values taken from `test_pitchyin.py`.
+  func testPitchYin() {
+
+    /// A simple helper for running the algorithm and testing its output.
+    ///
+    /// - Parameters:
+    ///   - signal: The signal to feed into the algorithm.
+    ///   - frequency: The frequency present in `signal`.
+    ///   - deviation: Max allowable deviation values for pitch and pitch confidence.
+    ///                Default is `(pitch: 0, confidence: 0.1)`
+    ///   - file: The file to use in assertion statements. Default is `#file`.
+    ///   - line: The line to use in assertion statements. Default is `#line`.
+    func runtTest(signal: [Float],
+                  frequency: Float,
+                  precision: (pitch: Float, confidence: Float) = (1, 0.1),
+                  file: StaticString = #file,
+                  line: UInt = #line)
+    {
+
+      let vectorInput = VectorInput<Float>(signal)
+
+      let frameCutter = StreamingAlgorithm<Streaming.FrameCutter>([
+        .frameSize: 1024, .hopSize: 1024
+        ])
+
+      let pitchYin = StreamingAlgorithm<Streaming.PitchYin>([
+        .frameSize: 1024, .sampleRate: 44100
+        ])
+
+      let pool = Pool()
+
+      vectorInput[output: .data] >> frameCutter[input: .signal]
+      frameCutter[output: .frame] >> pitchYin[input: .signal]
+      pitchYin[output: .pitch] >> pool[input: "pitch"]
+      pitchYin[output: .pitchConfidence] >> pool[input: "confidence"]
+
+      let network = Network(generator: vectorInput)
+      network.run()
+
+      XCTAssertAverageEqual(pool[realVec: "pitch"], frequency,
+                            deviation: precision.pitch, file: file, line: line)
+      XCTAssertAverageEqual(pool[realVec: "confidence"], 1,
+                            deviation: precision.confidence, file: file, line: line)
+
+    }
+
+
+    /*
+     Test with all-zero input.
+     */
+
+    let pitchYin1 = StandardAlgorithm<Standard.PitchYin>()
+    pitchYin1[realVecInput: .signal] = [0.0] * 2048
+    pitchYin1.compute()
+
+    XCTAssertEqual(pitchYin1[realOutput: .pitch], 0)
+    XCTAssertEqual(pitchYin1[realOutput: .pitchConfidence], 0)
+
+    /*
+     Test with a 440Hz sine wave.
+     */
+
+    let signal1: [Float] = (0..<44100).map({ (index: Int) -> Float in
+      sinf((2 * Float.pi * 440 * Float(index)) / 44100)
+    })
+
+    runtTest(signal: signal1, frequency: 440)
+
+    /*
+     Test with a band-limited square wave.
+     */
+
+    let signal2: [Float] = (0..<44100).map { [w = 2 * Float.pi * 660] (i: Int) -> Float in
+      var sample: Float = 0
+      for h in 0..<10 {
+        sample += 0.5 / (2 * Float(h) + 1) * sinf((2 * Float(h) + 1) * Float(i) * w / 44100)
+      }
+      return sample
+    }
+
+    runtTest(signal: signal2, frequency: 660)
+
+
+    /*
+     Test with a band-limited saw wave.
+     */
+
+    let signal3: [Float] = (0..<44100).map { [w = 2 * Float.pi * 660] (i: Int) -> Float in
+      guard i > 0 else { return 0 }
+      var sample: Float = 0
+      for h in 1..<11 {
+        sample += 1 / Float(h) * sinf(Float(h) * Float(i) * w / 44100)
+      }
+      return sample
+    }
+
+    runtTest(signal: signal3, frequency: 660, precision: (1.1, 0.1))
+
+    /*
+     Test with a masked, band-limited saw wave.
+     */
+
+    var signal4: [Float] = [0.0] * 44100
+    let w = 2 * Float.pi * 440
+
+    let subw = 2 * Float.pi * 340
+
+    for i in 1..<44100 {
+
+      signal4[i] += Float(4 * (drand48() - 0.5)) // White noise.
+      (1..<10).forEach({signal4[i] += 1 / Float($0) * sinf(Float(i) * Float($0) * w / 44100)})
+      signal4[i] += 0.5 * sinf(Float(i) * subw / 44100)
+
+    }
+
+    let lowPass = StandardAlgorithm<Standard.LowPass>()
+    lowPass[realVecInput: .signal] = signal4
+    lowPass.compute()
+    signal4 = lowPass[realVecOutput: .signal]
+
+    var five: Float = 5
+    vDSP_vsmul(signal4, 1, &five, &signal4, 1, 44100)
+
+    var max: Float = 0; vDSP_maxv(signal4, 1, &max, 44100); max += 1
+    vDSP_vsdiv(signal4, 1, &max, &signal4, 1, 44100)
+
+    runtTest(signal: signal4, frequency: 440, precision: (1.5, 0.3))
+
+    /*
+     Test with a real case.
+     Note: The python test for this actually fails. The test performed here checks that the
+           algorithm output matches the output when run using python.
+     */
+
+    let vectorInput = VectorInput<[Float]>(loadVectorVector(name: "pitchyin_mozartframes"))
+    let pitchYin2 = StreamingAlgorithm<Streaming.PitchYin>([.frameSize: 1024, .sampleRate: 44100])
+    let pool = Pool()
+
+    vectorInput[output: .data] >> pitchYin2[input: .signal]
+    pitchYin2[output: .pitch] >> pool[input: "pitch"]
+    pitchYin2[output: .pitchConfidence] >> pool[input: "confidence"]
+
+    let network = Network(generator: vectorInput)
+    network.run()
+
+    XCTAssertEqual(pool[realVec: "pitch"], loadVector(name: "pitchyin_expectedpitch"),
+                   deviation: 1e-4)
+
+    XCTAssertEqual(pool[realVec: "confidence"], loadVector(name: "pitchyin_expectedconfidence"),
+                   deviation: 5e-5)
+
+  }
+
+  func testPitchYinFFT() {
+    //TODO: Implement the  function
+    XCTFail("\(#function) not yet implemented.")
+  }
+
+  func testPredominantPitchMelodia() {
+    //TODO: Implement the  function
+    XCTFail("\(#function) not yet implemented.")
+  }
+
+  func testPitchFilter() {
+    //TODO: Implement the  function
+    XCTFail("\(#function) not yet implemented.")
+  }
+
+  func testConstantQ() {
+    //TODO: Implement the  function
+    XCTFail("\(#function) not yet implemented.")
+  }
+
+  func testChordsDetection() {
+    //TODO: Implement the  function
+    XCTFail("\(#function) not yet implemented.")
+  }
+
+  func testExtractor() {
+    //TODO: Implement the  function
+    XCTFail("\(#function) not yet implemented.")
+  }
+
+  func testKey() {
+    //TODO: Implement the  function
+    XCTFail("\(#function) not yet implemented.")
+  }
+
+  func testKeyExtractor() {
+    //TODO: Implement the  function
+    XCTFail("\(#function) not yet implemented.")
+  }
+
+  func testSpectrumCQ() {
+    //TODO: Implement the  function
+    XCTFail("\(#function) not yet implemented.")
+  }
+
+  func testTonalExtractor() {
+    //TODO: Implement the  function
+    XCTFail("\(#function) not yet implemented.")
+  }
+
+  func testTristimulus() {
+    //TODO: Implement the  function
+    XCTFail("\(#function) not yet implemented.")
+  }
 
 }
+
 
