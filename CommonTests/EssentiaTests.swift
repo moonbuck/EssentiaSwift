@@ -39,10 +39,10 @@ func bundleURL(name: String, ext: String) -> URL {
 /// - Parameter url: The URL for the audio file with which to fill the buffer.
 /// - Returns: A mono channel buffer with the contents of `url`.
 func monoBuffer(url: URL) -> AVAudioPCMBuffer {
-  guard let buffer = (try? AVAudioPCMBuffer(contentsOf: url))?.mono else {
+  guard let buffer = (try? AVAudioPCMBuffer(contentsOf: url)) else {
     fatalError("Failed to create audio buffer using `url`.")
   }
-  return buffer
+  return buffer.downmixed()
 }
 
 /// Simple helper that extracts the underlying data from a buffer filled with the
@@ -2313,7 +2313,6 @@ class EssentiaTests: XCTestCase {
 
     }
 
-
     /*
      Test with all-zero input.
      */
@@ -2336,7 +2335,7 @@ class EssentiaTests: XCTestCase {
     runtTest(signal: signal1, frequency: 440)
 
     /*
-     Test with a band-limited square wave.
+     Test with a 660Hz band-limited square wave.
      */
 
     let signal2: [Float] = (0..<44100).map { [w = 2 * Float.pi * 660] (i: Int) -> Float in
@@ -2351,7 +2350,7 @@ class EssentiaTests: XCTestCase {
 
 
     /*
-     Test with a band-limited saw wave.
+     Test with a 660Hz band-limited saw wave.
      */
 
     let signal3: [Float] = (0..<44100).map { [w = 2 * Float.pi * 660] (i: Int) -> Float in
@@ -2366,7 +2365,7 @@ class EssentiaTests: XCTestCase {
     runtTest(signal: signal3, frequency: 660, precision: (1.1, 0.1))
 
     /*
-     Test with a masked, band-limited saw wave.
+     Test with a masked 440Hz band-limited saw wave.
      */
 
     var signal4: [Float] = [0.0] * 44100
@@ -2375,11 +2374,8 @@ class EssentiaTests: XCTestCase {
     let subw = 2 * Float.pi * 340
 
     for i in 1..<44100 {
-
       signal4[i] += Float(4 * (drand48() - 0.5)) // White noise.
       (1..<10).forEach({signal4[i] += 1 / Float($0) * sinf(Float(i) * Float($0) * w / 44100)})
-      signal4[i] += 0.5 * sinf(Float(i) * subw / 44100)
-
     }
 
     let lowPass = StandardAlgorithm<Standard.LowPass>()
@@ -2389,6 +2385,11 @@ class EssentiaTests: XCTestCase {
 
     var five: Float = 5
     vDSP_vsmul(signal4, 1, &five, &signal4, 1, 44100)
+
+    for i in 1..<44100 {
+      (1..<10).forEach({signal4[i] += 0.1 / Float($0) * sinf(Float(i) * Float($0) * w / 44100)})
+      signal4[i] += 0.5 * sinf(Float(i) * subw / 44100)
+    }
 
     var max: Float = 0; vDSP_maxv(signal4, 1, &max, 44100); max += 1
     vDSP_vsdiv(signal4, 1, &max, &signal4, 1, 44100)
@@ -2420,7 +2421,328 @@ class EssentiaTests: XCTestCase {
 
   }
 
+  /// Tests functionality of the PitchYinFFT algorithm. Values taken from `test_pitchyinfft.py`.
   func testPitchYinFFT() {
+
+    /// A simple helper for running the algorithm and testing its output.
+    ///
+    /// - Parameters:
+    ///   - signal: The signal to feed into the algorithm.
+    ///   - frequency: The frequency present in `signal`.
+    ///   - deviation: Max allowable deviation values for pitch and pitch confidence.
+    ///                Default is `(pitch: 0, confidence: 0.1)`
+    ///   - file: The file to use in assertion statements. Default is `#file`.
+    ///   - line: The line to use in assertion statements. Default is `#line`.
+    func runtTest(signal: [Float],
+                  frequency: Float,
+                  precision: (pitch: Float, confidence: Float) = (1, 0.1),
+                  file: StaticString = #file,
+                  line: UInt = #line)
+    {
+
+      let vectorInput = VectorInput<Float>(signal)
+
+      let frameCutter = StreamingAlgorithm<Streaming.FrameCutter>([
+        .frameSize: 1024, .hopSize: 1024
+        ])
+
+      let windowing = StreamingAlgorithm<Streaming.Windowing>([.type: "hann"])
+
+      let spectrum = StreamingAlgorithm<Streaming.Spectrum>()
+
+      let pitchYinFFT = StreamingAlgorithm<Streaming.PitchYinFFT>([
+        .frameSize: 1024, .sampleRate: 44100
+        ])
+
+      let pool = Pool()
+
+      vectorInput[output: .data] >> frameCutter[input: .signal]
+      frameCutter[output: .frame] >> windowing[input: .frame]
+      windowing[output: .frame] >> spectrum[input: .frame]
+      spectrum[output: .spectrum] >> pitchYinFFT[input: .spectrum]
+      pitchYinFFT[output: .pitch] >> pool[input: "pitch"]
+      pitchYinFFT[output: .pitchConfidence] >> pool[input: "confidence"]
+
+      let network = Network(generator: vectorInput)
+      network.run()
+
+      XCTAssertAverageEqual(pool[realVec: "pitch"], frequency,
+                            deviation: precision.pitch, file: file, line: line)
+      XCTAssertAverageEqual(pool[realVec: "confidence"], 1,
+                            deviation: precision.confidence, file: file, line: line)
+
+    }
+
+    /*
+     Test with all-zero input.
+     */
+
+    let pitchYinFFT1 = StandardAlgorithm<Standard.PitchYinFFT>()
+    pitchYinFFT1[realVecInput: .spectrum] = [0.0] * 1024
+    pitchYinFFT1.compute()
+
+    XCTAssertEqual(pitchYinFFT1[realOutput: .pitch], 0)
+    XCTAssertEqual(pitchYinFFT1[realOutput: .pitchConfidence], 0)
+
+    /*
+     Test with a 440Hz sine wave.
+     */
+
+    let signal1: [Float] = (0..<44100).map({ (index: Int) -> Float in
+      sinf((2 * Float.pi * 440 * Float(index)) / 44100)
+    })
+
+    runtTest(signal: signal1, frequency: 440)
+
+    /*
+     Test with a 660Hz band-limited square wave.
+     */
+
+    let signal2: [Float] = (0..<44100).map { [w = 2 * Float.pi * 660] (i: Int) -> Float in
+      var sample: Float = 0
+      for h in 0..<10 {
+        sample += 0.5 / (2 * Float(h) + 1) * sinf((2 * Float(h) + 1) * Float(i) * w / 44100)
+      }
+      return sample
+    }
+
+    runtTest(signal: signal2, frequency: 660)
+
+    /*
+     Test with a 660Hz band-limited saw wave.
+     */
+
+    let signal3: [Float] = (0..<44100).map { [w = 2 * Float.pi * 660] (i: Int) -> Float in
+      guard i > 0 else { return 0 }
+      var sample: Float = 0
+      for h in 1..<11 {
+        sample += 1 / Float(h) * sinf(Float(h) * Float(i) * w / 44100)
+      }
+      return sample
+    }
+
+    runtTest(signal: signal3, frequency: 660, precision: (1.1, 0.1))
+
+    /*
+     Test with a masked 440Hz band-limited saw wave.
+     */
+
+    var signal4: [Float] = [0.0] * 44100
+    let w = 2 * Float.pi * 440
+
+    let subw = 2 * Float.pi * 340
+
+    for i in 1..<44100 {
+      signal4[i] += Float(4 * (drand48() - 0.5)) // White noise.
+      (1..<10).forEach({signal4[i] += 1 / Float($0) * sinf(Float(i) * Float($0) * w / 44100)})
+    }
+
+    let lowPass = StandardAlgorithm<Standard.LowPass>()
+    lowPass[realVecInput: .signal] = signal4
+    lowPass.compute()
+    signal4 = lowPass[realVecOutput: .signal]
+
+    var five: Float = 5
+    vDSP_vsmul(signal4, 1, &five, &signal4, 1, 44100)
+
+    for i in 1..<44100 {
+      (1..<10).forEach({signal4[i] += 0.1 / Float($0) * sinf(Float(i) * Float($0) * w / 44100)})
+      signal4[i] += 0.5 * sinf(Float(i) * subw / 44100)
+    }
+
+    var max: Float = 0; vDSP_maxv(signal4, 1, &max, 44100); max += 1
+    vDSP_vsdiv(signal4, 1, &max, &signal4, 1, 44100)
+
+    runtTest(signal: signal4, frequency: 440, precision: (1.5, 0.3))
+
+    /*
+     Test with a real case.
+     Note: The python test for this actually fails. The test performed here checks that the
+           algorithm output matches the output when run using python.
+     TODO: The failures may be due to the algorithm receiving non-zero values for what should
+           be a first frame filled with zeros. The python `FrameGenerator` yields a first
+           frame of zeros but `FrameCutter` seems not to do the same given the same signal.
+     */
+
+    let vectorInput = VectorInput<Float>(loadVector(name: "mozart_c_major_30sec_samples"))
+
+    let frameCutter = StreamingAlgorithm<Streaming.FrameCutter>([
+      .frameSize: 1024, .hopSize: 512
+      ])
+
+    let windowing = StreamingAlgorithm<Streaming.Windowing>([.type: "hann"])
+
+    let spectrum = StreamingAlgorithm<Streaming.Spectrum>()
+
+    let pitchYinFFT2 = StreamingAlgorithm<Streaming.PitchYinFFT>([
+      .frameSize: 1024, .sampleRate: 44100
+      ])
+
+    let pool = Pool()
+
+    vectorInput[output: .data] >> frameCutter[input: .signal]
+    vectorInput[output: .data] >> pool[input: "inputSignal"]
+    frameCutter[output: .frame] >> windowing[input: .frame]
+    frameCutter[output: .frame] >> pool[input:"cutFrames"]
+    windowing[output: .frame] >> spectrum[input: .frame]
+    windowing[output: .frame] >> pool[input: "windowedFrames"]
+    spectrum[output: .spectrum] >> pitchYinFFT2[input: .spectrum]
+    spectrum[output: .spectrum] >> pool[input: "spectrumFrames"]
+    pitchYinFFT2[output: .pitch] >> pool[input: "pitch"]
+    pitchYinFFT2[output: .pitchConfidence] >> pool[input: "confidence"]
+
+    let network = Network(generator: vectorInput)
+    network.run()
+
+    add(XCTAttachment(data: pool.jsonRepresentation.data(using: .utf8)!,
+                      uniformTypeIdentifier: "public.text",
+                      lifetime: .keepAlways))
+
+
+    XCTAssertEqual(pool[realVec: "pitch"],
+                   loadVector(name: "pitchyinfft_expectedpitch"),
+                   deviation: 1e-4)
+
+    XCTAssertEqual(pool[realVec: "confidence"],
+                   loadVector(name: "pitchyinfft_expectedconfidence"),
+                   deviation: 5e-5)
+
+  }
+
+  /// Tests that audio signals passed to algorithms are handled in a way that is compatible
+  /// with the unavailable `MonoLoader` algorithm. Values taken from `test_monoloader.py`.
+  func testAudioLoading() {
+
+    /// Helper for rounding a value. Implementation is a port of the same helper function in
+    /// test_monoloader.py.
+    ///
+    /// - Parameter value: The value to round.
+    /// - Returns: `value` rounded to an integer.
+    func rounded(_ value: Float) -> Int { return Int(value >= 0 ? value + 0.5 : value - 0.5) }
+
+    /// Helper for computing the sum of all samples in a signal.
+    ///
+    /// - Parameter signal: The signal to sum.
+    /// - Returns: The sum of all the samples in `signal`.
+    func sum(_ signal: [Float]) -> Float {
+      var result: Float = 0
+      vDSP_sve(signal, 1, &result, vDSP_Length(signal.count))
+      return result
+    }
+
+    /// Helper for loading audio from a file with the same parameters one would use
+    /// with `MonoLoader`.
+    ///
+    /// - Parameters:
+    ///   - url: The url for the file to load.
+    ///   - method: The method to use when downmixing the signal.
+    ///   - sampleRate: The desired sample rate for the buffer.
+    ///   - file: The file in which failure occurred. Defaults to the file name of the test case in
+    ///           which this function was called.
+    ///   - line: The line number on which failure occurred. Defaults to the line number on which this
+    ///           function was called.
+    /// - Returns: The signal loaded from `url` at `sampleRate` and downmixed using `method`.
+    func loadAudio(url: URL,
+                   downMix method: AVAudioPCMBuffer.DownmixMethod,
+                   sampleRate: Double,
+                   file: StaticString = #file,
+                   line: UInt = #line) -> [Float]
+    {
+      guard let buffer = (try? AVAudioPCMBuffer(contentsOf: url)) else {
+        XCTFail("Failed to create audio buffer using `url`.", file: file, line: line)
+        return []
+      }
+
+      let downmixedBuffer = buffer.downmixed(method: method, sampleRate: sampleRate)
+
+      guard let signal = downmixedBuffer.floatChannelData?.pointee else {
+        XCTFail("Failed to get raw signal from buffer`.", file: file, line: line)
+        return []
+      }
+
+      return Array(UnsafeBufferPointer(start: signal, count: Int(downmixedBuffer.frameLength)))
+
+    }
+
+    /*
+     Test with an audio file sampled at 44100Hz.
+     */
+
+    let url1 = bundleURL(name: "impulses_1second_44100_st", ext: "wav")
+    let left1 = loadAudio(url: url1, downMix: .left, sampleRate: 44100)
+    let right1 = loadAudio(url: url1, downMix: .right, sampleRate: 44100)
+    let mix1 = loadAudio(url: url1, downMix: .mix, sampleRate: 44100)
+
+    XCTAssertEqual(rounded(sum(left1)), 9)
+    XCTAssertEqual(rounded(sum(right1)), 9)
+    XCTAssertEqual(rounded(sum(mix1)), 9)
+
+    /*
+     Test with an audio file sampled at 22050Hz.
+     */
+
+    let url2 = bundleURL(name: "impulses_1second_22050_st", ext: "wav")
+    let left2 = loadAudio(url: url2, downMix: .left, sampleRate: 22050)
+    let right2 = loadAudio(url: url2, downMix: .right, sampleRate: 22050)
+    let mix2 = loadAudio(url: url2, downMix: .mix, sampleRate: 22050)
+
+    XCTAssertEqual(rounded(sum(left2)), 9)
+    XCTAssertEqual(rounded(sum(right2)), 9)
+    XCTAssertEqual(rounded(sum(mix2)), 9)
+
+    /*
+     Test with an audio file sampled at 48000Hz.
+     */
+
+    let url3 = bundleURL(name: "impulses_1second_48000_st", ext: "wav")
+    let left3 = loadAudio(url: url3, downMix: .left, sampleRate: 48000)
+    let right3 = loadAudio(url: url3, downMix: .right, sampleRate: 48000)
+    let mix3 = loadAudio(url: url3, downMix: .mix, sampleRate: 48000)
+
+    XCTAssertEqual(rounded(sum(left3)), 9)
+    XCTAssertEqual(rounded(sum(right3)), 9)
+    XCTAssertEqual(rounded(sum(mix3)), 9)
+
+    /*
+     Test with an empty audio file.
+     */
+
+    XCTAssert(loadAudio(url: bundleURL(name: "empty", ext: "wav"),
+                        downMix: .left, sampleRate: 44100).isEmpty)
+
+    /*
+     Test with an audio file containing more impulses in one channel than the other.
+     */
+
+    let url4 = bundleURL(name: "impulses_1second_441002", ext: "wav")
+    let left4 = loadAudio(url: url4, downMix: .left, sampleRate: 44100)
+    let right4 = loadAudio(url: url4, downMix: .right, sampleRate: 44100)
+    let mix4 = loadAudio(url: url4, downMix: .mix, sampleRate: 44100)
+
+
+    XCTAssertEqual(rounded(sum(left4)), 10)
+    XCTAssertEqual(rounded(sum(right4)), 9)
+    XCTAssertEqual(sum(mix4), 9.5, accuracy: 0.1)
+
+    /*
+     Test the sample values for an audio file compared with the same audio file loaded
+     via `MonoLoader` in python.
+     TODO: Implement the test case
+     */
+    XCTFail("Implement comparison of mozart_c_major_30sec.wav samples with python values.")
+
+  }
+
+  /// Tests the functionality of the FrameCutter algorithm in standard mode. Values taken
+  /// from `test_framecutter.py`.
+  func testStandardFrameCutter() {
+    //TODO: Implement the  function
+    XCTFail("\(#function) not yet implemented.")
+  }
+
+  /// Tests the functionality of the FrameCutter algorithm in streaming mode. Values taken
+  /// from `test_framecutter_streaming.py`.
+  func testStreamingFrameCutter() {
     //TODO: Implement the  function
     XCTFail("\(#function) not yet implemented.")
   }
@@ -2440,6 +2762,8 @@ class EssentiaTests: XCTestCase {
     XCTFail("\(#function) not yet implemented.")
   }
 
+  /// Tests the functionality of the ChordsDetection algorithm. Values taken from
+  /// `test_chordsdetection_streaming.py`.
   func testChordsDetection() {
     //TODO: Implement the  function
     XCTFail("\(#function) not yet implemented.")
@@ -2470,6 +2794,8 @@ class EssentiaTests: XCTestCase {
     XCTFail("\(#function) not yet implemented.")
   }
 
+  /// Tests the functionality of the Tristimulus algorithm. Values taken from
+  /// `test_tristimulus.py`.
   func testTristimulus() {
     //TODO: Implement the  function
     XCTFail("\(#function) not yet implemented.")

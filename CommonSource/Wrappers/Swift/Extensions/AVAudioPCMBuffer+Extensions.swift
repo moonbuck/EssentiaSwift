@@ -7,9 +7,13 @@
 //
 import Foundation
 import AVFoundation
+import Accelerate
 
 /// Extending `AVAudioPCMBuffer` to more easily work with mono and/or 64 bit formats.
 extension AVAudioPCMBuffer {
+
+  /// A type for specifying how a stereo signal should be downmixed into a mono signal.
+  public enum DownmixMethod { case left, right, mix }
 
   /// Derived property for the buffer downmixed to mono.
   public var mono: AVAudioPCMBuffer {
@@ -83,14 +87,31 @@ extension AVAudioPCMBuffer {
 
   }
 
-  /// Derived property for the buffer downmixed to mono and with 64 bit values.
-  public var mono64: AVAudioPCMBuffer {
+  /// Creates a mono version of the buffer using the specified method to downmix the signal.
+  ///
+  /// - Parameters:
+  ///   - method: The method to use when downmixing.
+  ///   - sampleRate: The sample rate for the new buffer or `nil` to use the buffer's rate.
+  /// - Returns: `self` if the buffer is already a mono signal and a downmixed buffer otherwise.
+  public func downmixed(method: DownmixMethod = .mix,
+                        sampleRate: Double? = nil) -> AVAudioPCMBuffer
+  {
+
+    guard sampleRate == nil || format.sampleRate == sampleRate! else {
+
+      guard let resampledBuffer = try? convert(sourceBuffer: self, to: sampleRate!) else {
+        fatalError("Failed to resample buffer to \(sampleRate!).")
+      }
+
+      return resampledBuffer.downmixed(method: method)
+
+    }
 
     // Check that the buffer isn't already mono or just return it.
-    guard format.channelCount > 1 || format.commonFormat != .pcmFormatFloat64 else { return self }
+    guard format.channelCount > 1 else { return self }
 
     // Create a new format the same as the current format except for the number of channels.
-    guard let newFormat = AVAudioFormat(commonFormat: .pcmFormatFloat64,
+    guard let newFormat = AVAudioFormat(commonFormat: format.commonFormat,
                                         sampleRate: format.sampleRate,
                                         channels: 1,
                                         interleaved: format.isInterleaved)
@@ -112,70 +133,104 @@ extension AVAudioPCMBuffer {
       fatalError("Failed to create new buffer using mono format.")
     }
 
-    // Create a flag for indicating whether the source buffer has been returned from the callback.
-    var sourceBufferReturned = false
+    switch method {
 
-    // Create the callback that feeds input to the converter.
-    let inputBlock: AVAudioConverterInputBlock = {
-      [unowned self] in
+    case .left:
 
-      // Check whether the buffer's content has already been provided.
-      guard !sourceBufferReturned else {
-        $1.pointee = .endOfStream
-        return nil
+      guard let leftChannel = floatChannelData?.pointee else {
+        fatalError("Failed to get left channel from the buffer.")
       }
 
-      $1.pointee = .haveData
-      sourceBufferReturned = true
+      guard let monoChannel = monoBuffer.floatChannelData?.pointee else {
+        fatalError("Failed to get mono channel from the new buffer.")
+      }
 
-      return self
+      guard stride == 1 else {
+        fatalError("Downmixing interleaved buffers not yet implemented.")
+      }
 
-    }
+      let count = vDSP_Length(frameLength)
+      vDSP_mmov(leftChannel, monoChannel, count, 1, count, count)
 
-    // Create an error pointer.
-    var error: NSError? = nil
-
-    // Convert the buffer.
-    let status = audioConverter.convert(to: monoBuffer, error: &error, withInputFrom: inputBlock)
-
-    // Check thet status.
-    switch status {
-
-    case .haveData, .inputRanDry:
-      // The mono buffer has data.
+      monoBuffer.frameLength = frameLength
 
       return monoBuffer
 
-    case .endOfStream, .error:
-      // Conversion failed and/or target buffer has no data.
+    case .right:
 
-      fatalError("Conversion to single channel failed: \(error!)")
+      assert(format.channelCount > 1, "Expected more than one audio channel.")
+
+      guard let channelData = floatChannelData else {
+        fatalError("Failed to get channels from the buffer.")
+      }
+
+      let rightChannel = (channelData + 1).pointee
+
+      guard let monoChannel = monoBuffer.floatChannelData?.pointee else {
+        fatalError("Failed to get mono channel from the new buffer.")
+      }
+
+      guard stride == 1 else {
+        fatalError("Downmixing interleaved buffers not yet implemented.")
+      }
+
+      let count = vDSP_Length(frameLength)
+      vDSP_mmov(rightChannel, monoChannel, count, 1, count, count)
+
+      monoBuffer.frameLength = frameLength
+
+      return monoBuffer
+
+
+    case .mix:
+
+      // Not sure if this affects anything.
+      audioConverter.downmix = true
+
+      // Create a flag for indicating whether the source buffer has been returned from the callback.
+      var sourceBufferReturned = false
+
+      // Create the callback that feeds input to the converter.
+      let inputBlock: AVAudioConverterInputBlock = {
+        [unowned self] in
+
+        // Check whether the buffer's content has already been provided.
+        guard !sourceBufferReturned else {
+          $1.pointee = .endOfStream
+          return nil
+        }
+
+        $1.pointee = .haveData
+        sourceBufferReturned = true
+
+        return self
+
+      }
+
+      // Create an error pointer.
+      var error: NSError? = nil
+
+      // Convert the buffer.
+      let status = audioConverter.convert(to: monoBuffer, error: &error, withInputFrom: inputBlock)
+
+      // Check thet status.
+      switch status {
+
+      case .haveData, .inputRanDry:
+        // The mono buffer has data.
+
+        return monoBuffer
+
+      case .endOfStream, .error:
+        // Conversion failed and/or target buffer has no data.
+
+        fatalError("Conversion to single channel failed: \(error!)")
+
+      }
 
     }
 
-  }
 
-  /// Accessor for the underlying audio as 64 bit values or `nil` if buffer is not 64 bit.
-  public var float64ChannelData: UnsafePointer<UnsafeMutablePointer<Float64>>? {
-
-    guard case .pcmFormatFloat64 = format.commonFormat else { return nil }
-
-
-    let underlyingBuffers = UnsafeMutableAudioBufferListPointer(mutableAudioBufferList)
-
-    let channels = UnsafeMutablePointer<UnsafeMutablePointer<Float64>>.allocate(capacity: Int(format.channelCount))
-
-    for (index, channelBuffer) in underlyingBuffers.enumerated() {
-
-      guard let channelData = channelBuffer.mData else { return nil }
-
-      let float64ChannelData = channelData.bindMemory(to: Float64.self, capacity: Int(frameCapacity))
-
-      (channels + index).initialize(to: float64ChannelData)
-
-    }
-
-    return UnsafePointer(channels)
 
   }
 
@@ -195,8 +250,141 @@ extension AVAudioPCMBuffer {
     // Create a PCM buffer with capacity for the contents of `audioFile`.
     self.init(pcmFormat: audioFile.processingFormat, frameCapacity: capacity)!
 
+    // Make sure there are sample to read into the buffer.
+    guard audioFile.length > 0 else { return }
+
     // Read the audio file into the buffer.
     try audioFile.read(into: self)
+
+  }
+
+}
+
+/// Creates and configures a new `AVAudioConverter` instance using the specified formats.
+///
+/// - Parameters:
+///   - sourceFormat: The source format for the converter.
+///   - targetFormat: The destination format for the converter.
+/// - Returns: The newly created and configured converter.
+/// - Throws: `MultirateAudioPCMBuffer.Error.failureToCreateConverter`
+private func audioConverter(withSourceFormat sourceFormat: AVAudioFormat,
+                            targetFormat: AVAudioFormat) throws -> AVAudioConverter
+{
+
+  // Create the converter.
+  guard let converter = AVAudioConverter(from: sourceFormat, to: targetFormat) else {
+
+    throw AVAudioPCMBuffer.Error.failureToCreateConverter
+
+  }
+
+  // Configure the converter for maximum quality.
+  converter.sampleRateConverterQuality = AVAudioQuality.max.rawValue
+
+  // Configure the converter to use a 'mastering' grade algorithm for down(mixing/sampling).
+  converter.sampleRateConverterAlgorithm = AVSampleRateConverterAlgorithm_Mastering
+
+  // Configure the converter to operate without 'priming'.
+  converter.primeMethod = .none
+
+  return converter
+
+}
+
+/// Converts a buffer with a stereo or mono signal to a mono signal at the specified sample rate.
+///
+/// - Parameters:
+///   - sourceBuffer: The buffer with the signal to convert.
+///   - rate: The sample rate to which the signal will be converted.
+/// - Returns: A buffer with the converted signal.
+/// - Throws: Any error that arises from a problem audio format or invalid buffer data.
+private func convert(sourceBuffer: AVAudioPCMBuffer, to rate: Double) throws -> AVAudioPCMBuffer {
+
+  // Create the target format.
+  guard let targetFormat = AVAudioFormat(commonFormat: .pcmFormatFloat32,
+                                         sampleRate: rate,
+                                         channels: 1,
+                                         interleaved: false)
+    else
+  {
+    throw AVAudioPCMBuffer.Error.invalidFormat
+  }
+
+  // Get the input format from the buffer.
+  let sourceFormat = sourceBuffer.format
+
+  // Create a new audio converter.
+  let converter = try audioConverter(withSourceFormat: sourceFormat, targetFormat: targetFormat)
+
+  // Calculate the scaling factor for the sample count.
+  let scalingFactor = rate / sourceBuffer.format.sampleRate
+
+  // Get the total number of frames in the source buffer.
+  let sourceTotalFrames = Int(sourceBuffer.frameLength)
+
+  // Calculate the frame capacity needed for the downsampled buffer.
+  let targetTotalFrames = Int((Float64(sourceTotalFrames) * scalingFactor).rounded(.up))
+
+  // Create a buffer to hold the converted signal.
+  guard let targetBuffer = AVAudioPCMBuffer(pcmFormat: targetFormat,
+                                            frameCapacity: AVAudioFrameCount(targetTotalFrames))
+  else
+  {
+    throw AVAudioPCMBuffer.Error.invalidBuffer
+  }
+
+  // Create a flag for indicating whether the source buffer has been returned from the callback.
+  var sourceBufferReturned = false
+
+  // Create the callback that feeds input to the converter.
+  let inputBlock: AVAudioConverterInputBlock = {
+
+    guard !sourceBufferReturned else {
+      $1.pointee = .endOfStream
+      return nil
+    }
+
+    $1.pointee = .haveData
+    sourceBufferReturned = true
+
+    return sourceBuffer
+
+  }
+
+  // Create an error pointer.
+  var error: NSError? = nil
+
+  // Convert the buffer.
+  let status = converter.convert(to: targetBuffer, error: &error, withInputFrom: inputBlock)
+
+  // Check thet status.
+  switch status {
+
+    case .haveData, .inputRanDry:
+      // The target buffer has data.
+
+      return targetBuffer
+
+    case .endOfStream, .error:
+      // Conversion failed and/or target buffer has no data.
+
+      throw error ?? AVAudioPCMBuffer.Error.conversionError
+
+  }
+
+}
+
+extension AVAudioPCMBuffer {
+
+  public enum Error: String, Swift.Error {
+
+    case invalidSampleRate = "The supplied buffer must have a sample rate ≥ 44100 Hz."
+    case failureToCreateConverter = "Failed to create the `AVAudioConverter`."
+    case invalidFormat = "Invalid audio format configuration."
+    case invalidBuffer = "Invalid buffer configuration."
+    case conversionError = "Error converting buffer."
+    case channelDataError = "Failed to access the buffer's channel data."
+    case invalidFile = "Failed to load audio file content."
 
   }
 

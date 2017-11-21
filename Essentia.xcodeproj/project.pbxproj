@@ -1283,16 +1283,18 @@
 		C27C40401FC2188E005CB8BA /* spectralpeaks_expectedfrequencies.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C403D1FC2188E005CB8BA /* spectralpeaks_expectedfrequencies.txt */; };
 		C27C40411FC2188E005CB8BA /* spectralpeaks_expectedmagnitudes.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C403E1FC2188E005CB8BA /* spectralpeaks_expectedmagnitudes.txt */; };
 		C27C40421FC2188E005CB8BA /* spectralpeaks_expectedmagnitudes.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C403E1FC2188E005CB8BA /* spectralpeaks_expectedmagnitudes.txt */; };
-		C27C40451FC32FA7005CB8BA /* pitchyin_pitch.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C40431FC32FA7005CB8BA /* pitchyin_pitch.txt */; };
-		C27C40461FC32FA7005CB8BA /* pitchyin_pitch.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C40431FC32FA7005CB8BA /* pitchyin_pitch.txt */; };
-		C27C40471FC32FA7005CB8BA /* pitchyin_conf.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C40441FC32FA7005CB8BA /* pitchyin_conf.txt */; };
-		C27C40481FC32FA7005CB8BA /* pitchyin_conf.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C40441FC32FA7005CB8BA /* pitchyin_conf.txt */; };
 		C27C404B1FC335FE005CB8BA /* pitchyin_expectedpitch.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C40491FC335FE005CB8BA /* pitchyin_expectedpitch.txt */; };
 		C27C404C1FC335FE005CB8BA /* pitchyin_expectedpitch.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C40491FC335FE005CB8BA /* pitchyin_expectedpitch.txt */; };
 		C27C404D1FC335FE005CB8BA /* pitchyin_expectedconfidence.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C404A1FC335FE005CB8BA /* pitchyin_expectedconfidence.txt */; };
 		C27C404E1FC335FE005CB8BA /* pitchyin_expectedconfidence.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C404A1FC335FE005CB8BA /* pitchyin_expectedconfidence.txt */; };
 		C27C40501FC338BB005CB8BA /* pitchyin_mozartframes.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C404F1FC338BB005CB8BA /* pitchyin_mozartframes.txt */; };
 		C27C40511FC338BB005CB8BA /* pitchyin_mozartframes.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C404F1FC338BB005CB8BA /* pitchyin_mozartframes.txt */; };
+		C27C40541FC39A0E005CB8BA /* pitchyinfft_expectedpitch.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C40521FC39A0E005CB8BA /* pitchyinfft_expectedpitch.txt */; };
+		C27C40551FC39A0E005CB8BA /* pitchyinfft_expectedpitch.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C40521FC39A0E005CB8BA /* pitchyinfft_expectedpitch.txt */; };
+		C27C40561FC39A0E005CB8BA /* pitchyinfft_expectedconfidence.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C40531FC39A0E005CB8BA /* pitchyinfft_expectedconfidence.txt */; };
+		C27C40571FC39A0E005CB8BA /* pitchyinfft_expectedconfidence.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C40531FC39A0E005CB8BA /* pitchyinfft_expectedconfidence.txt */; };
+		C27C40591FC39C27005CB8BA /* mozart_c_major_30sec_samples.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C40581FC39C27005CB8BA /* mozart_c_major_30sec_samples.txt */; };
+		C27C405A1FC39C27005CB8BA /* mozart_c_major_30sec_samples.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C40581FC39C27005CB8BA /* mozart_c_major_30sec_samples.txt */; };
 		C2B7180E1FC0F86600ECB0A6 /* pool.json in Resources */ = {isa = PBXBuildFile; fileRef = C2B7180D1FC0F86600ECB0A6 /* pool.json */; };
 		C2B7180F1FC0F86600ECB0A6 /* pool.json in Resources */ = {isa = PBXBuildFile; fileRef = C2B7180D1FC0F86600ECB0A6 /* pool.json */; };
 		C2B718161FC1034F00ECB0A6 /* pitchsalience_sinesweep.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2B718101FC1034E00ECB0A6 /* pitchsalience_sinesweep.txt */; };
@@ -2279,11 +2281,12 @@
 		C27C403A1FC2182C005CB8BA /* spectralpeaks_spectrum.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = spectralpeaks_spectrum.txt; sourceTree = "<group>"; };
 		C27C403D1FC2188E005CB8BA /* spectralpeaks_expectedfrequencies.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = spectralpeaks_expectedfrequencies.txt; sourceTree = "<group>"; };
 		C27C403E1FC2188E005CB8BA /* spectralpeaks_expectedmagnitudes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = spectralpeaks_expectedmagnitudes.txt; sourceTree = "<group>"; };
-		C27C40431FC32FA7005CB8BA /* pitchyin_pitch.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyin_pitch.txt; sourceTree = "<group>"; };
-		C27C40441FC32FA7005CB8BA /* pitchyin_conf.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyin_conf.txt; sourceTree = "<group>"; };
 		C27C40491FC335FE005CB8BA /* pitchyin_expectedpitch.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyin_expectedpitch.txt; sourceTree = "<group>"; };
 		C27C404A1FC335FE005CB8BA /* pitchyin_expectedconfidence.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyin_expectedconfidence.txt; sourceTree = "<group>"; };
 		C27C404F1FC338BB005CB8BA /* pitchyin_mozartframes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyin_mozartframes.txt; sourceTree = "<group>"; };
+		C27C40521FC39A0E005CB8BA /* pitchyinfft_expectedpitch.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyinfft_expectedpitch.txt; sourceTree = "<group>"; };
+		C27C40531FC39A0E005CB8BA /* pitchyinfft_expectedconfidence.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyinfft_expectedconfidence.txt; sourceTree = "<group>"; };
+		C27C40581FC39C27005CB8BA /* mozart_c_major_30sec_samples.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mozart_c_major_30sec_samples.txt; sourceTree = "<group>"; };
 		C2B7180D1FC0F86600ECB0A6 /* pool.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pool.json; sourceTree = "<group>"; };
 		C2B718101FC1034E00ECB0A6 /* pitchsalience_sinesweep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchsalience_sinesweep.txt; sourceTree = "<group>"; };
 		C2B718111FC1034E00ECB0A6 /* pitchsalience_puretone.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchsalience_puretone.txt; sourceTree = "<group>"; };
@@ -3787,11 +3790,12 @@
 		C2EC95B41FBF6A1500D384C5 /* data */ = {
 			isa = PBXGroup;
 			children = (
+				C27C40581FC39C27005CB8BA /* mozart_c_major_30sec_samples.txt */,
+				C27C40531FC39A0E005CB8BA /* pitchyinfft_expectedconfidence.txt */,
+				C27C40521FC39A0E005CB8BA /* pitchyinfft_expectedpitch.txt */,
 				C27C404F1FC338BB005CB8BA /* pitchyin_mozartframes.txt */,
 				C27C404A1FC335FE005CB8BA /* pitchyin_expectedconfidence.txt */,
 				C27C40491FC335FE005CB8BA /* pitchyin_expectedpitch.txt */,
-				C27C40431FC32FA7005CB8BA /* pitchyin_pitch.txt */,
-				C27C40441FC32FA7005CB8BA /* pitchyin_conf.txt */,
 				C27C403D1FC2188E005CB8BA /* spectralpeaks_expectedfrequencies.txt */,
 				C27C403E1FC2188E005CB8BA /* spectralpeaks_expectedmagnitudes.txt */,
 				C27C403A1FC2182C005CB8BA /* spectralpeaks_spectrum.txt */,
@@ -4654,6 +4658,7 @@
 				C2BADBE51FBFAAAB009D02C5 /* windowing_triangular.txt in Resources */,
 				C2BADBDC1FBFA89B009D02C5 /* windowing_blackmanharris74.txt in Resources */,
 				C27C404B1FC335FE005CB8BA /* pitchyin_expectedpitch.txt in Resources */,
+				C27C40541FC39A0E005CB8BA /* pitchyinfft_expectedpitch.txt in Resources */,
 				C2EC96C31FBF6A8A00D384C5 /* impulses_1second_48000.flac in Resources */,
 				C2EC96731FBF6A5000D384C5 /* test.ape in Resources */,
 				C2EC96701FBF6A5000D384C5 /* test.mp3 in Resources */,
@@ -4665,6 +4670,7 @@
 				C2EC964A1FBF6A3C00D384C5 /* cat_purrrr.wav in Resources */,
 				C2EC96851FBF6A6500D384C5 /* sin5000.wav in Resources */,
 				C2EC97131FBF6AD800D384C5 /* silence.flac in Resources */,
+				C27C40591FC39C27005CB8BA /* mozart_c_major_30sec_samples.txt in Resources */,
 				C2EC964B1FBF6A3C00D384C5 /* vignesh.wav in Resources */,
 				C2EC96A41FBF6A7800D384C5 /* impulses_1second_44100_st.wav in Resources */,
 				C2EC964F1FBF6A3C00D384C5 /* spaceambient.wav in Resources */,
@@ -4683,7 +4689,6 @@
 				C2EC96D51FBF6A9100D384C5 /* impulses_1second_44100_st_bad_stream_info.flac in Resources */,
 				C27C403F1FC2188E005CB8BA /* spectralpeaks_expectedfrequencies.txt in Resources */,
 				C2EC96971FBF6A7100D384C5 /* impulses_1second_22050.ogg in Resources */,
-				C27C40471FC32FA7005CB8BA /* pitchyin_conf.txt in Resources */,
 				C2EC96741FBF6A5000D384C5 /* test.ogg in Resources */,
 				C2B7180E1FC0F86600ECB0A6 /* pool.json in Resources */,
 				C2EC96801FBF6A5E00D384C5 /* 4channels.wav in Resources */,
@@ -4740,7 +4745,6 @@
 				C2EC96C51FBF6A8A00D384C5 /* impulses_1second_22050.flac in Resources */,
 				C2EC96FA1FBF6ACD00D384C5 /* seq-3341-5-16bit-v02.flac in Resources */,
 				C2EC96B71FBF6A8400D384C5 /* impulses_1second_44100_st.aiff in Resources */,
-				C27C40451FC32FA7005CB8BA /* pitchyin_pitch.txt in Resources */,
 				C2EC96FD1FBF6ACD00D384C5 /* seq-3342-2-16bit.flac in Resources */,
 				C2EC964E1FBF6A3C00D384C5 /* dubstep.ogg in Resources */,
 				C2EC96E01FBF6AA100D384C5 /* impulses_1second_44100.mp3 in Resources */,
@@ -4755,6 +4759,7 @@
 				C27C403B1FC2182D005CB8BA /* spectralpeaks_spectrum.txt in Resources */,
 				C2EC966F1FBF6A5000D384C5 /* test-unicode.flac in Resources */,
 				C2EC96871FBF6A6500D384C5 /* beat_120_240_180.wav in Resources */,
+				C27C40561FC39A0E005CB8BA /* pitchyinfft_expectedconfidence.txt in Resources */,
 				C2EC96A31FBF6A7800D384C5 /* impulses_1second_22050_st.wav in Resources */,
 				C2EC96511FBF6A3C00D384C5 /* dubstep.mp3 in Resources */,
 				C2EC96391FBF6A2A00D384C5 /* frequencyBands.txt in Resources */,
@@ -4805,6 +4810,7 @@
 				C2BADBE61FBFAAAB009D02C5 /* windowing_triangular.txt in Resources */,
 				C2BADBDD1FBFA89B009D02C5 /* windowing_blackmanharris74.txt in Resources */,
 				C27C404C1FC335FE005CB8BA /* pitchyin_expectedpitch.txt in Resources */,
+				C27C40551FC39A0E005CB8BA /* pitchyinfft_expectedpitch.txt in Resources */,
 				C2EC96C91FBF6A8A00D384C5 /* impulses_1second_48000.flac in Resources */,
 				C2EC96791FBF6A5100D384C5 /* test.ape in Resources */,
 				C2EC96761FBF6A5100D384C5 /* test.mp3 in Resources */,
@@ -4816,6 +4822,7 @@
 				C2EC965A1FBF6A3D00D384C5 /* cat_purrrr.wav in Resources */,
 				C2EC968B1FBF6A6500D384C5 /* sin5000.wav in Resources */,
 				C2EC97141FBF6AD900D384C5 /* silence.flac in Resources */,
+				C27C405A1FC39C27005CB8BA /* mozart_c_major_30sec_samples.txt in Resources */,
 				C2EC965B1FBF6A3D00D384C5 /* vignesh.wav in Resources */,
 				C2EC96AA1FBF6A7800D384C5 /* impulses_1second_44100_st.wav in Resources */,
 				C2EC965F1FBF6A3D00D384C5 /* spaceambient.wav in Resources */,
@@ -4834,7 +4841,6 @@
 				C2EC96DC1FBF6A9200D384C5 /* impulses_1second_44100_st_bad_stream_info.flac in Resources */,
 				C27C40401FC2188E005CB8BA /* spectralpeaks_expectedfrequencies.txt in Resources */,
 				C2EC969D1FBF6A7200D384C5 /* impulses_1second_22050.ogg in Resources */,
-				C27C40481FC32FA7005CB8BA /* pitchyin_conf.txt in Resources */,
 				C2EC967A1FBF6A5100D384C5 /* test.ogg in Resources */,
 				C2B7180F1FC0F86600ECB0A6 /* pool.json in Resources */,
 				C2EC96831FBF6A5F00D384C5 /* 4channels.wav in Resources */,
@@ -4891,7 +4897,6 @@
 				C2EC96CB1FBF6A8A00D384C5 /* impulses_1second_22050.flac in Resources */,
 				C2EC97071FBF6ACE00D384C5 /* seq-3341-5-16bit-v02.flac in Resources */,
 				C2EC96BD1FBF6A8500D384C5 /* impulses_1second_44100_st.aiff in Resources */,
-				C27C40461FC32FA7005CB8BA /* pitchyin_pitch.txt in Resources */,
 				C2EC970A1FBF6ACE00D384C5 /* seq-3342-2-16bit.flac in Resources */,
 				C2EC965E1FBF6A3D00D384C5 /* dubstep.ogg in Resources */,
 				C2EC96E61FBF6AA200D384C5 /* impulses_1second_44100.mp3 in Resources */,
@@ -4906,6 +4911,7 @@
 				C27C403C1FC2182D005CB8BA /* spectralpeaks_spectrum.txt in Resources */,
 				C2EC96751FBF6A5100D384C5 /* test-unicode.flac in Resources */,
 				C2EC968D1FBF6A6500D384C5 /* beat_120_240_180.wav in Resources */,
+				C27C40571FC39A0E005CB8BA /* pitchyinfft_expectedconfidence.txt in Resources */,
 				C2EC96A91FBF6A7800D384C5 /* impulses_1second_22050_st.wav in Resources */,
 				C2EC96611FBF6A3D00D384C5 /* dubstep.mp3 in Resources */,
 				C2EC963F1FBF6A2B00D384C5 /* frequencyBands.txt in Resources */,
