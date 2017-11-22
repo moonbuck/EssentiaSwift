@@ -2747,8 +2747,525 @@ class EssentiaTests: XCTestCase {
   /// Tests the functionality of the FrameCutter algorithm in standard mode. Values taken
   /// from `test_framecutter.py`.
   func testStandardFrameCutter() {
-    //TODO: Implement the  function
-    XCTFail("\(#function) not yet implemented.")
+
+    /// Helper that uses the specified options and range to generate an input signal to
+    /// run through the `FrameCutter` algorithm.
+    ///
+    /// - Parameters:
+    ///   - parameters: The parameters with which to configure the frame cutter.
+    ///   - input: The range that will be converted into an input signal to be cut.
+    /// - Returns: The resulting frames.
+    func cutFrames(parameters: [Standard.FrameCutter.Parameter:Parameter],
+                   input: [Float]) -> [[Float]]
+    {
+
+      var parameters = parameters
+      if parameters[.validFrameThresholdRatio] == nil {
+        parameters[.validFrameThresholdRatio] = 0
+      }
+
+      let frameCutter = StandardAlgorithm<Standard.FrameCutter>(parameters)
+      frameCutter[realVecInput: .signal] = input
+
+      var frames: [[Float]] = []
+
+      while true {
+
+        frameCutter.compute()
+
+        let frame = frameCutter[realVecOutput: .frame]
+
+        guard !frame.isEmpty else { break }
+
+        frames.append(frame)
+
+      }
+
+      return frames
+
+    }
+
+    /*
+     Test with an empty input signal.
+     */
+
+    XCTAssert(cutFrames(parameters: [.frameSize: 100,
+                                     .hopSize: 60,
+                                     .startFromZero: false], input: 0..<0).isEmpty)
+
+    XCTAssert(cutFrames(parameters: [.frameSize: 100,
+                                     .hopSize: 60,
+                                     .startFromZero: true], input: 0..<0).isEmpty)
+
+    /*
+     Test with a single sample.
+     */
+
+    let expected1: [[Float]] =  [[23.0] + [0.0] * 99]
+
+    XCTAssertEqual(cutFrames(parameters: [.frameSize: 100,
+                                          .hopSize: 60,
+                                          .startFromZero: true], input: 23..<24),
+                   expected1)
+
+    var expected2: [[Float]] = [[0.0] * 100]
+    expected2[0][50] = 23
+
+    XCTAssertEqual(cutFrames(parameters: [.frameSize: 100,
+                                          .hopSize: 60,
+                                          .startFromZero: false], input: 23..<24),
+                   expected2)
+
+    /*
+     Test last frame.
+     */
+
+    let expected3: [[Float]] = [0..<100]
+
+    XCTAssertEqual(cutFrames(parameters: [.frameSize: 100,
+                                          .hopSize: 60,
+                                          .startFromZero: true], input: 0..<100),
+                   expected3)
+
+    let expected4: [[Float]] = [0..<100 as [Float] + [0.0]]
+
+    XCTAssertEqual(cutFrames(parameters: [.frameSize: 101,
+                                          .hopSize: 60,
+                                          .startFromZero: true], input: 0..<100),
+                   expected4)
+
+    var expected5: [[Float]] = [[0.0] * 50, 10..<100 as [Float], 70..<100 as [Float]]
+    expected5[0] += 0..<50
+    expected5[1] += [0.0] * 10
+    expected5[2] += [0.0] * 70
+
+    XCTAssertEqual(cutFrames(parameters: [.frameSize: 100,
+                                          .hopSize: 60,
+                                          .startFromZero: false], input: 0..<100),
+                   expected5)
+
+    var expected6: [[Float]] = [[0.0] * 51, 9..<100 as [Float], 69..<100 as [Float]]
+    expected6[0] += 0..<51
+    expected6[1] += [0.0] * 11
+    expected6[2] += [0.0] * 71
+
+    XCTAssertEqual(cutFrames(parameters: [.frameSize: 102,
+                                          .hopSize: 60,
+                                          .startFromZero: false], input: 0..<100),
+                   expected6)
+
+    var expected29: [[Float]] = [[0.0] * 51, 9..<100 as [Float], 69..<100 as [Float]]
+    expected29[0] += 0..<50
+    expected29[1] += [0.0] * 10
+    expected29[2] += [0.0] * 70
+
+    XCTAssertEqual(cutFrames(parameters: [.frameSize: 101,
+                                          .hopSize: 60,
+                                          .startFromZero: false], input: 0..<100),
+                   expected29)
+
+    /*
+     Test with a big hop size.
+     */
+
+    let expected7: [[Float]] = [0..<20]
+
+    XCTAssertEqual(cutFrames(parameters: [.frameSize: 20,
+                                          .hopSize: 100,
+                                          .startFromZero: true], input: 0..<100),
+                   expected7)
+
+    var expected8: [[Float]] = [0..<20, 40..<60, 80..<100]
+
+    XCTAssertEqual(cutFrames(parameters: [.frameSize: 20,
+                                          .hopSize: 40,
+                                          .startFromZero: true], input: 0..<100),
+                   expected8)
+
+    var expected9: [[Float]] = [[0.0] * 10, 90..<100 as [Float]]
+    expected9[0] += 0..<10
+    expected9[1] += [0.0] * 10
+
+    XCTAssertEqual(cutFrames(parameters: [.frameSize: 20,
+                                          .hopSize: 100,
+                                          .startFromZero: false], input: 0..<100),
+                   expected9)
+
+    var expected28: [[Float]] = [[0.0] * 10, 30..<50 as [Float], 70..<90 as [Float]]
+    expected28[0] += 0..<10
+
+    XCTAssertEqual(cutFrames(parameters: [.frameSize: 20,
+                                          .hopSize: 40,
+                                          .startFromZero: false], input: 0..<100),
+                   expected28)
+
+    /*
+     Test more complex cases.
+     */
+
+    let expected10: [[Float]] = [[1, 2, 3], [3, 4, 5]]
+
+    XCTAssertEqual(cutFrames(parameters: [ .frameSize: 3,
+                                           .hopSize: 2,
+                                           .startFromZero: true], input: 1..<6),
+                   expected10)
+
+    let expected11: [[Float]] = [[1, 2], [2, 3]]
+
+    XCTAssertEqual(cutFrames(parameters: [ .frameSize: 2,
+                                           .hopSize: 1,
+                                           .startFromZero: true], input: 1..<4),
+                   expected11)
+
+    let expected12: [[Float]] = [[0, 0, 1], [1, 2, 3], [3, 4, 5], [5, 0, 0]]
+
+    XCTAssertEqual(cutFrames(parameters: [ .frameSize: 3,
+                                           .hopSize: 2,
+                                           .startFromZero: false], input: 1..<6),
+                   expected12)
+
+   let expected13: [[Float]] = [[0, 1], [1, 2], [2, 3], [3, 0]]
+
+    XCTAssertEqual(cutFrames(parameters: [ .frameSize: 2,
+                                           .hopSize: 1,
+                                           .startFromZero: false], input: 1..<4),
+                   expected13)
+
+
+    /*
+     Test dropping last frame when starting from zero and provided an even frame size.
+     */
+
+    let expected14: [[Float]] = [1..<11, 11..<21, 21..<31, 31..<41, 41..<51]
+
+    XCTAssertEqual(cutFrames(parameters: [.frameSize: 10,
+                                          .hopSize: 10,
+                                          .startFromZero: true,
+                                          .validFrameThresholdRatio: 1], input: 1..<60),
+                   expected14)
+
+    XCTAssertEqual(cutFrames(parameters: [.frameSize: 10,
+                                          .hopSize: 10,
+                                          .startFromZero: true,
+                                          .validFrameThresholdRatio: 0.9], input: 1..<59),
+                   expected14)
+
+    XCTAssertEqual(cutFrames(parameters: [.frameSize: 10,
+                                          .hopSize: 10,
+                                          .startFromZero: true,
+                                          .validFrameThresholdRatio: 0.2], input: 1..<52),
+                   expected14)
+
+    /*
+     Test not dropping last frame when starting from zero and provided an even frame size.
+     */
+
+    let expected15: [[Float]] = [1..<11, 11..<21, 21..<31, 31..<41, 41..<51, 51..<61]
+
+    XCTAssertEqual(cutFrames(parameters: [.frameSize: 10,
+                                          .hopSize: 10,
+                                          .startFromZero: true,
+                                          .validFrameThresholdRatio: 1], input: 1..<61),
+                   expected15)
+
+    let expected16: [[Float]] = [1..<11, 11..<21, 21..<31, 31..<41,
+                                 41..<51, 51..<60 as [Float] + [0]]
+
+    XCTAssertEqual(cutFrames(parameters: [.frameSize: 10,
+                                          .hopSize: 10,
+                                          .startFromZero: true,
+                                          .validFrameThresholdRatio: 0.9], input: 1..<60),
+                   expected16)
+
+    let expected17: [[Float]] = [1..<11, 11..<21, 21..<31, 31..<41,
+                                 41..<51, [51, 52, 0, 0, 0, 0, 0, 0, 0, 0]]
+
+    XCTAssertEqual(cutFrames(parameters: [.frameSize: 10,
+                                          .hopSize: 10,
+                                          .startFromZero: true,
+                                          .validFrameThresholdRatio: 0.2], input: 1..<53),
+                   expected17)
+
+    /*
+     Test dropping last frame starting from zero and provided an odd frame size.
+     */
+
+    let expected18: [[Float]] = [1..<12, 12..<23, 23..<34, 34..<45, 45..<56]
+
+    XCTAssertEqual(cutFrames(parameters: [.frameSize: 11,
+                                          .hopSize: 11,
+                                          .startFromZero: true,
+                                          .validFrameThresholdRatio: 1], input: 1..<66),
+                   expected18)
+
+    XCTAssertEqual(cutFrames(parameters: [.frameSize: 11,
+                                          .hopSize: 11,
+                                          .startFromZero: true,
+                                          .validFrameThresholdRatio: 0.9], input: 1..<65),
+                   expected18)
+
+    XCTAssertEqual(cutFrames(parameters: [.frameSize: 11,
+                                          .hopSize: 11,
+                                          .startFromZero: true,
+                                          .validFrameThresholdRatio: 0.2], input: 1..<57),
+                   expected18)
+
+    /*
+     Test not dropping last frame starting from zero and provided an odd frame size.
+     */
+
+    let expected19: [[Float]] = [1..<12, 12..<23, 23..<34, 34..<45, 45..<56, 56..<67]
+
+    XCTAssertEqual(cutFrames(parameters: [.frameSize: 11,
+                                          .hopSize: 11,
+                                          .startFromZero: true,
+                                          .validFrameThresholdRatio: 1], input: 1..<67),
+                   expected19)
+
+    let expected20: [[Float]] = [1..<12, 12..<23, 23..<34,
+                                 34..<45, 45..<56, 56..<66 as [Float] + [0]]
+
+    XCTAssertEqual(cutFrames(parameters: [.frameSize: 11,
+                                          .hopSize: 11,
+                                          .startFromZero: true,
+                                          .validFrameThresholdRatio: 0.9], input: 1..<66),
+                   expected20)
+
+    let expected21: [[Float]] = [1..<12, 12..<23, 23..<34,
+                                 34..<45, 45..<56, [56, 57, 58, 0, 0, 0, 0, 0, 0, 0, 0]]
+
+    XCTAssertEqual(cutFrames(parameters: [.frameSize: 11,
+                                          .hopSize: 11,
+                                          .startFromZero: true,
+                                          .validFrameThresholdRatio: 0.2], input: 1..<59),
+                   expected21)
+
+    /*
+     Test dropping last frame when not starting from zero and provided an even frame size.
+     */
+
+    let expected22: [[Float]] = [[0, 0, 0, 0, 0, 1, 2, 3, 4, 5], 6..<16,
+                                 16..<26, 26..<36, 36..<46, 46..<56]
+
+    XCTAssertEqual(cutFrames(parameters: [.frameSize: 10,
+                                          .hopSize: 10,
+                                          .startFromZero: false,
+                                          .validFrameThresholdRatio: 0.5], input: 1..<60),
+                   expected22)
+
+    XCTAssertEqual(cutFrames(parameters: [.frameSize: 10,
+                                          .hopSize: 10,
+                                          .startFromZero: false,
+                                          .validFrameThresholdRatio: 0.2], input: 1..<57),
+                   expected22)
+
+    /*
+     Test not dropping last frame when not starting from zero and provided an even frame size.
+     */
+
+    let expected23: [[Float]] = [[0, 0, 0, 0, 0, 1, 2, 3, 4, 5], 6..<16, 16..<26,
+                                 26..<36, 36..<46, 46..<56, [56, 57, 58, 59, 60, 0, 0, 0, 0, 0]]
+
+    XCTAssertEqual(cutFrames(parameters: [.frameSize: 10,
+                                          .hopSize: 10,
+                                          .startFromZero: false,
+                                          .validFrameThresholdRatio: 0.5], input: 1..<61),
+                   expected23)
+
+    let expected24: [[Float]] = [[0, 0, 0, 0, 0, 1, 2, 3, 4, 5], 6..<16, 16..<26,
+                                 26..<36, 36..<46, 46..<56, [56, 57, 0, 0, 0, 0, 0, 0, 0, 0]]
+
+    XCTAssertEqual(cutFrames(parameters: [.frameSize: 10,
+                                          .hopSize: 10,
+                                          .startFromZero: false,
+                                          .validFrameThresholdRatio: 0.2], input: 1..<58),
+                   expected24)
+
+    /*
+     Test dropping last frame when not starting from zero and provided an odd frame size.
+     */
+
+    let expected25: [[Float]] = [[0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 5], 6..<17,
+                                 17..<28, 28..<39, 39..<50]
+
+    XCTAssertEqual(cutFrames(parameters: [.frameSize: 11,
+                                          .hopSize: 11,
+                                          .startFromZero: false,
+                                          .validFrameThresholdRatio: 0.5], input: 1..<55),
+                   expected25)
+
+    XCTAssertEqual(cutFrames(parameters: [.frameSize: 11,
+                                          .hopSize: 11,
+                                          .startFromZero: false,
+                                          .validFrameThresholdRatio: 0.2], input: 1..<51),
+                   expected25)
+
+    /*
+     Test not dropping last frame when not starting from zero and provided an odd frame size.
+     */
+
+    let expected26: [[Float]] = [[0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 5], 6..<17, 17..<28,
+                                 28..<39, 39..<50, [50, 51, 52, 53, 54, 55, 0, 0, 0, 0, 0]]
+
+    XCTAssertEqual(cutFrames(parameters: [.frameSize: 11,
+                                          .hopSize: 11,
+                                          .startFromZero: false,
+                                          .validFrameThresholdRatio: 0.5], input: 1..<56),
+                   expected26)
+
+    let expected27: [[Float]] = [[0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 5], 6..<17, 17..<28,
+                                 28..<39, 39..<50, [50, 51, 52, 0, 0, 0, 0, 0, 0, 0, 0]]
+
+    XCTAssertEqual(cutFrames(parameters: [.frameSize: 11,
+                                          .hopSize: 11,
+                                          .startFromZero: false,
+                                          .validFrameThresholdRatio: 0.2], input: 1..<53),
+                   expected27)
+
+    /*
+     Test end of file.
+     Note: I believe the tests in `test_framecutter.py` are incorrect here because of a bug
+           introduced by the `FrameGenerator` class used to wrap `FrameCutter` with an
+           iterator interface. An additional frame has been added to each array of expected
+           frames to correctly test the cut frames .When the `FrameCutter` algorithm is used
+           directly it produces the same results as below.
+     */
+
+    let expected30: [[Float]] = [[1, 2, 3], [3, 4, 5], [5, 0, 0]]
+
+    XCTAssertEqual(cutFrames(parameters: [.frameSize: 3,
+                                          .hopSize: 2,
+                                          .startFromZero: true,
+                                          .lastFrameToEndOfFile: true], input: 1..<6),
+                   expected30)
+
+    let expected31: [[Float]] = [[1, 2], [2, 3], [3, 0]]
+
+    XCTAssertEqual(cutFrames(parameters: [.frameSize: 2,
+                                          .hopSize: 1,
+                                          .startFromZero: true,
+                                          .lastFrameToEndOfFile: true], input: 1..<4),
+                   expected31)
+
+    let expected32: [[Float]] = [[1, 2], [4, 5]]
+
+    XCTAssertEqual(cutFrames(parameters: [.frameSize: 2,
+                                          .hopSize: 3,
+                                          .startFromZero: true,
+                                          .lastFrameToEndOfFile: true], input: 1..<6),
+                   expected32)
+
+    let expected33: [[Float]] = [[1, 2], [4, 5], [7, 0]]
+
+    XCTAssertEqual(cutFrames(parameters: [.frameSize: 2,
+                                          .hopSize: 3,
+                                          .startFromZero: true,
+                                          .lastFrameToEndOfFile: true], input: 1..<8),
+                   expected33)
+
+    let expected34: [[Float]] = [[1, 2, 3, 4], [3, 4, 5, 6], [5, 6, 7, 0], [7, 0, 0, 0]]
+
+    XCTAssertEqual(cutFrames(parameters: [.frameSize: 4,
+                                          .hopSize: 2,
+                                          .startFromZero: true,
+                                          .lastFrameToEndOfFile: true], input: 1..<8),
+                   expected34)
+
+    /// Helper that loads an audio file, cuts it using the specified parameters and returns
+    /// the total number of frames cut.
+    ///
+    /// - Parameters:
+    ///   - url: The URL for the audio file to cut.
+    ///   - parameters: The parameters to use when cutting the audio file.
+    /// - Returns: The total number of frames cut.
+    func cutAudioFile(url: URL, parameters: [Standard.FrameCutter.Parameter:Parameter]) -> Int {
+      return cutFrames(parameters: parameters, input: monoBufferData(url: url)).count
+    }
+
+    /*
+     Test short audio files with a normal hop size.
+     */
+
+    XCTAssertEqual(cutAudioFile(url: bundleURL(name: "1024_samples", ext: "wav"),
+                                parameters: [.frameSize: 512,
+                                             .hopSize: 256,
+                                             .startFromZero: true]),
+                   3)
+
+    XCTAssertEqual(cutAudioFile(url: bundleURL(name: "1989_samples", ext: "wav"),
+                                parameters: [.frameSize: 512,
+                                             .hopSize: 256,
+                                             .startFromZero: true]),
+                   7)
+
+    XCTAssertEqual(cutAudioFile(url: bundleURL(name: "1024_samples", ext: "wav"),
+                                parameters: [.frameSize: 512,
+                                             .hopSize: 256,
+                                             .startFromZero: false]),
+                   5)
+
+    XCTAssertEqual(cutAudioFile(url: bundleURL(name: "1989_samples", ext: "wav"),
+                                parameters: [.frameSize: 512,
+                                             .hopSize: 256,
+                                             .startFromZero: false]),
+                   9)
+
+    /*
+     Test short audio files with a hop size larger than the frame size.
+     */
+
+    XCTAssertEqual(cutAudioFile(url: bundleURL(name: "1024_samples", ext: "wav"),
+                                parameters: [.frameSize: 256,
+                                             .hopSize: 512,
+                                             .startFromZero: true]),
+                   2)
+
+    XCTAssertEqual(cutAudioFile(url: bundleURL(name: "1989_samples", ext: "wav"),
+                                parameters: [.frameSize: 256,
+                                             .hopSize: 512,
+                                             .startFromZero: true]),
+                   4)
+
+    XCTAssertEqual(cutAudioFile(url: bundleURL(name: "1024_samples", ext: "wav"),
+                                parameters: [.frameSize: 256,
+                                             .hopSize: 512,
+                                             .startFromZero: false]),
+                   3)
+
+    XCTAssertEqual(cutAudioFile(url: bundleURL(name: "1989_samples", ext: "wav"),
+                                parameters: [.frameSize: 256,
+                                             .hopSize: 512,
+                                             .startFromZero: false]),
+                   5)
+
+    /*
+     Test short audio files with a hop size that passes the end of the stream.
+     */
+
+    XCTAssertEqual(cutAudioFile(url: bundleURL(name: "1024_samples", ext: "wav"),
+                                parameters: [.frameSize: 512,
+                                             .hopSize: 8192,
+                                             .startFromZero: true]),
+                   1)
+
+    XCTAssertEqual(cutAudioFile(url: bundleURL(name: "1989_samples", ext: "wav"),
+                                parameters: [.frameSize: 512,
+                                             .hopSize: 8192,
+                                             .startFromZero: true]),
+                   1)
+
+    XCTAssertEqual(cutAudioFile(url: bundleURL(name: "1024_samples", ext: "wav"),
+                                parameters: [.frameSize: 512,
+                                             .hopSize: 8192,
+                                             .startFromZero: false]),
+                   1)
+
+    XCTAssertEqual(cutAudioFile(url: bundleURL(name: "1989_samples", ext: "wav"),
+                                parameters: [.frameSize: 512,
+                                             .hopSize: 8192,
+                                             .startFromZero: false]),
+                   1)
+
   }
 
   /// Tests the functionality of the FrameCutter algorithm in streaming mode. Values taken
