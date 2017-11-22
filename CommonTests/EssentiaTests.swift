@@ -2592,23 +2592,14 @@ class EssentiaTests: XCTestCase {
     let pool = Pool()
 
     vectorInput[output: .data] >> frameCutter[input: .signal]
-    vectorInput[output: .data] >> pool[input: "inputSignal"]
     frameCutter[output: .frame] >> windowing[input: .frame]
-    frameCutter[output: .frame] >> pool[input:"cutFrames"]
     windowing[output: .frame] >> spectrum[input: .frame]
-    windowing[output: .frame] >> pool[input: "windowedFrames"]
     spectrum[output: .spectrum] >> pitchYinFFT2[input: .spectrum]
-    spectrum[output: .spectrum] >> pool[input: "spectrumFrames"]
     pitchYinFFT2[output: .pitch] >> pool[input: "pitch"]
     pitchYinFFT2[output: .pitchConfidence] >> pool[input: "confidence"]
 
     let network = Network(generator: vectorInput)
     network.run()
-
-    add(XCTAttachment(data: pool.jsonRepresentation.data(using: .utf8)!,
-                      uniformTypeIdentifier: "public.text",
-                      lifetime: .keepAlways))
-
 
     XCTAssertEqual(pool[realVec: "pitch"],
                    loadVector(name: "pitchyinfft_expectedpitch"),
@@ -2738,9 +2729,12 @@ class EssentiaTests: XCTestCase {
     /*
      Test the sample values for an audio file compared with the same audio file loaded
      via `MonoLoader` in python.
-     TODO: Implement the test case
      */
-    XCTFail("Implement comparison of mozart_c_major_30sec.wav samples with python values.")
+    let url5 = bundleURL(name: "mozart_c_major_30sec", ext: "wav")
+    let expectedSamples = loadVector(name: "mozart_c_major_30sec_samples")
+    let actualSamples = loadAudio(url:url5, downMix: .mix, sampleRate: 44100)
+
+    XCTAssertEqual(actualSamples, expectedSamples, accuracy: 1e-6)
 
   }
 
