@@ -34,3 +34,14 @@ extension Array {
 
 }
 
+/// Range creation operator support for creating an array of float values. The two
+/// bounds are first converted into integers and these integers are used to create and
+/// map a countable range.
+///
+/// - Parameters:
+///   - lhs: The lower bound for the half open range.
+///   - rhs: The upper bound for the half open range.
+/// - Returns: The array of floating point values.
+public func ..<<F:BinaryFloatingPoint>(lhs: F, rhs: F) -> [F] {
+  return (Int(lhs)..<Int(rhs)).map(F.init)
+}

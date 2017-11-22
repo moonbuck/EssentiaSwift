@@ -1339,6 +1339,24 @@
 		C2BADC041FC0878E009D02C5 /* Zip.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BADC021FC0878E009D02C5 /* Zip.swift */; };
 		C2BADC061FC0926E009D02C5 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BADC051FC0926E009D02C5 /* Strings.swift */; };
 		C2BADC071FC0926E009D02C5 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BADC051FC0926E009D02C5 /* Strings.swift */; };
+		C2D9669A1FC5CFF9005736A9 /* StandardAlgorithmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D966991FC5CFF9005736A9 /* StandardAlgorithmTests.swift */; };
+		C2D9669B1FC5CFF9005736A9 /* StandardAlgorithmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D966991FC5CFF9005736A9 /* StandardAlgorithmTests.swift */; };
+		C2D9669D1FC5D023005736A9 /* SpectralAlgorithmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D9669C1FC5D023005736A9 /* SpectralAlgorithmTests.swift */; };
+		C2D9669E1FC5D023005736A9 /* SpectralAlgorithmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D9669C1FC5D023005736A9 /* SpectralAlgorithmTests.swift */; };
+		C2D966A01FC5D03D005736A9 /* IOAlgorithmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D9669F1FC5D03D005736A9 /* IOAlgorithmTests.swift */; };
+		C2D966A11FC5D03D005736A9 /* IOAlgorithmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D9669F1FC5D03D005736A9 /* IOAlgorithmTests.swift */; };
+		C2D966A31FC5D066005736A9 /* TonalAlgorithmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D966A21FC5D066005736A9 /* TonalAlgorithmTests.swift */; };
+		C2D966A41FC5D066005736A9 /* TonalAlgorithmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D966A21FC5D066005736A9 /* TonalAlgorithmTests.swift */; };
+		C2D966A61FC5D0B1005736A9 /* FiltersAlgorithmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D966A51FC5D0B1005736A9 /* FiltersAlgorithmTests.swift */; };
+		C2D966A71FC5D0B1005736A9 /* FiltersAlgorithmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D966A51FC5D0B1005736A9 /* FiltersAlgorithmTests.swift */; };
+		C2D966AC1FC5D170005736A9 /* FileHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D966AB1FC5D170005736A9 /* FileHelpers.swift */; };
+		C2D966AD1FC5D170005736A9 /* FileHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D966AB1FC5D170005736A9 /* FileHelpers.swift */; };
+		C2D966AF1FC5D5C0005736A9 /* PitchAlgorithmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D966AE1FC5D5C0005736A9 /* PitchAlgorithmTests.swift */; };
+		C2D966B01FC5D5C0005736A9 /* PitchAlgorithmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D966AE1FC5D5C0005736A9 /* PitchAlgorithmTests.swift */; };
+		C2D966B21FC5D858005736A9 /* StatisticsAlgorithmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D966B11FC5D858005736A9 /* StatisticsAlgorithmTests.swift */; };
+		C2D966B31FC5D858005736A9 /* StatisticsAlgorithmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D966B11FC5D858005736A9 /* StatisticsAlgorithmTests.swift */; };
+		C2D966B51FC5DCC4005736A9 /* ExtractorsAlgorithmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D966B41FC5DCC4005736A9 /* ExtractorsAlgorithmTests.swift */; };
+		C2D966B61FC5DCC4005736A9 /* ExtractorsAlgorithmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D966B41FC5DCC4005736A9 /* ExtractorsAlgorithmTests.swift */; };
 		C2EC95261FBF660500D384C5 /* fileoutputproxy.h in Headers */ = {isa = PBXBuildFile; fileRef = C23A34551FBF5A2A0083F6CE /* fileoutputproxy.h */; };
 		C2EC95271FBF660600D384C5 /* fileoutputproxy.h in Headers */ = {isa = PBXBuildFile; fileRef = C23A34551FBF5A2A0083F6CE /* fileoutputproxy.h */; };
 		C2EC95281FBF660B00D384C5 /* fileoutputproxy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C23A34611FBF5A2A0083F6CE /* fileoutputproxy.cpp */; };
@@ -2308,6 +2326,15 @@
 		C2BADBE01FBFAAAB009D02C5 /* windowing_triangular.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = windowing_triangular.txt; sourceTree = "<group>"; };
 		C2BADC021FC0878E009D02C5 /* Zip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zip.swift; sourceTree = "<group>"; };
 		C2BADC051FC0926E009D02C5 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		C2D966991FC5CFF9005736A9 /* StandardAlgorithmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardAlgorithmTests.swift; sourceTree = "<group>"; };
+		C2D9669C1FC5D023005736A9 /* SpectralAlgorithmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectralAlgorithmTests.swift; sourceTree = "<group>"; };
+		C2D9669F1FC5D03D005736A9 /* IOAlgorithmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOAlgorithmTests.swift; sourceTree = "<group>"; };
+		C2D966A21FC5D066005736A9 /* TonalAlgorithmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TonalAlgorithmTests.swift; sourceTree = "<group>"; };
+		C2D966A51FC5D0B1005736A9 /* FiltersAlgorithmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersAlgorithmTests.swift; sourceTree = "<group>"; };
+		C2D966AB1FC5D170005736A9 /* FileHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHelpers.swift; sourceTree = "<group>"; };
+		C2D966AE1FC5D5C0005736A9 /* PitchAlgorithmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchAlgorithmTests.swift; sourceTree = "<group>"; };
+		C2D966B11FC5D858005736A9 /* StatisticsAlgorithmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsAlgorithmTests.swift; sourceTree = "<group>"; };
+		C2D966B41FC5DCC4005736A9 /* ExtractorsAlgorithmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtractorsAlgorithmTests.swift; sourceTree = "<group>"; };
 		C2EC95311FBF6A1500D384C5 /* silence.flac */ = {isa = PBXFileReference; lastKnownFileType = file; path = silence.flac; sourceTree = "<group>"; };
 		C2EC95331FBF6A1500D384C5 /* empty.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = empty.wav; sourceTree = "<group>"; };
 		C2EC95341FBF6A1500D384C5 /* empty.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = empty.ogg; sourceTree = "<group>"; };
@@ -2498,6 +2525,14 @@
 		C23A335C1FBF57BF0083F6CE /* CommonTests */ = {
 			isa = PBXGroup;
 			children = (
+				C2D966B41FC5DCC4005736A9 /* ExtractorsAlgorithmTests.swift */,
+				C2D966B11FC5D858005736A9 /* StatisticsAlgorithmTests.swift */,
+				C2D966AE1FC5D5C0005736A9 /* PitchAlgorithmTests.swift */,
+				C2D966A51FC5D0B1005736A9 /* FiltersAlgorithmTests.swift */,
+				C2D966A21FC5D066005736A9 /* TonalAlgorithmTests.swift */,
+				C2D9669F1FC5D03D005736A9 /* IOAlgorithmTests.swift */,
+				C2D9669C1FC5D023005736A9 /* SpectralAlgorithmTests.swift */,
+				C2D966991FC5CFF9005736A9 /* StandardAlgorithmTests.swift */,
 				C2EC952E1FBF6A1500D384C5 /* audio */,
 				C2EC95B41FBF6A1500D384C5 /* data */,
 				C2EC95BB1FBF6A1500D384C5 /* EssentiaTests.swift */,
@@ -3783,6 +3818,7 @@
 				C2EC95B11FBF6A1500D384C5 /* RTFHelpers.swift */,
 				C2EC95B21FBF6A1500D384C5 /* Assertions.swift */,
 				C2EC95B31FBF6A1500D384C5 /* Attachments.swift */,
+				C2D966AB1FC5D170005736A9 /* FileHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -5255,10 +5291,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2D9669A1FC5CFF9005736A9 /* StandardAlgorithmTests.swift in Sources */,
+				C2D966AF1FC5D5C0005736A9 /* PitchAlgorithmTests.swift in Sources */,
+				C2D966A31FC5D066005736A9 /* TonalAlgorithmTests.swift in Sources */,
 				C2EC97181FBF6B0E00D384C5 /* Assertions.swift in Sources */,
+				C2D966AC1FC5D170005736A9 /* FileHelpers.swift in Sources */,
+				C2D966A61FC5D0B1005736A9 /* FiltersAlgorithmTests.swift in Sources */,
+				C2D9669D1FC5D023005736A9 /* SpectralAlgorithmTests.swift in Sources */,
+				C2D966A01FC5D03D005736A9 /* IOAlgorithmTests.swift in Sources */,
 				C2EC97151FBF6B0E00D384C5 /* SpecificationHelpers.swift in Sources */,
 				C2EC97171FBF6B0E00D384C5 /* RTFHelpers.swift in Sources */,
 				C2EC97191FBF6B0E00D384C5 /* Attachments.swift in Sources */,
+				C2D966B21FC5D858005736A9 /* StatisticsAlgorithmTests.swift in Sources */,
+				C2D966B51FC5DCC4005736A9 /* ExtractorsAlgorithmTests.swift in Sources */,
 				C2EC96331FBF6A1E00D384C5 /* EssentiaTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5583,10 +5628,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2D9669B1FC5CFF9005736A9 /* StandardAlgorithmTests.swift in Sources */,
+				C2D966B01FC5D5C0005736A9 /* PitchAlgorithmTests.swift in Sources */,
+				C2D966A41FC5D066005736A9 /* TonalAlgorithmTests.swift in Sources */,
 				C2EC971D1FBF6B0F00D384C5 /* Assertions.swift in Sources */,
+				C2D966AD1FC5D170005736A9 /* FileHelpers.swift in Sources */,
+				C2D966A71FC5D0B1005736A9 /* FiltersAlgorithmTests.swift in Sources */,
+				C2D9669E1FC5D023005736A9 /* SpectralAlgorithmTests.swift in Sources */,
+				C2D966A11FC5D03D005736A9 /* IOAlgorithmTests.swift in Sources */,
 				C2EC971A1FBF6B0F00D384C5 /* SpecificationHelpers.swift in Sources */,
 				C2EC971C1FBF6B0F00D384C5 /* RTFHelpers.swift in Sources */,
 				C2EC971E1FBF6B0F00D384C5 /* Attachments.swift in Sources */,
+				C2D966B31FC5D858005736A9 /* StatisticsAlgorithmTests.swift in Sources */,
+				C2D966B61FC5DCC4005736A9 /* ExtractorsAlgorithmTests.swift in Sources */,
 				C2EC96341FBF6A1E00D384C5 /* EssentiaTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
