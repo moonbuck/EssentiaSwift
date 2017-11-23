@@ -18,6 +18,7 @@ postfix operator >>>
 
 class ExtractorsAlgorithmTests: XCTestCase {
 
+  /// Tests the functionality of the Extractor algorithm.
   func testExtractor() {
     //TODO: Implement the  function
     XCTFail("\(#function) not yet implemented.")

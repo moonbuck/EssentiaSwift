@@ -150,6 +150,65 @@ class StandardAlgorithmTests: XCTestCase {
 
   }
 
+  func testFFTC() {
+    //TODO: Implement the  function
+    XCTFail("\(#function) not yet implemented.")
+  }
+
+  /// Tests the functionality ofthe IFFT algorithm. Values taken from `test_ifft.py`.
+  func testIFFT() {
+    //TODO: Implement the  function
+    XCTFail("\(#function) not yet implemented.")
+
+    /*
+    def testDC(self):
+        # input is [1, 0, 0, ...] which corresponds to an IFFT of constant magnitude 1
+        signalSize = 512
+        fftSize = signalSize/2 + 1
+
+        signalDC = zeros(signalSize)
+        signalDC[0] = 1.0
+
+        fftInput = [ 1+0j ] * fftSize
+
+        self.assertAlmostEqualVector(signalDC*signalSize, IFFT()(cvec(fftInput)))
+     */
+
+    /*
+    def testNyquist(self):
+        # input is [1, -1, 1, -1, ...] which corresponds to a sine of frequency Fs/2
+        signalSize = 1024
+        fftSize = signalSize/2 + 1
+
+        signalNyquist = ones(signalSize)
+        for i in range(signalSize):
+            if i % 2 == 1:
+                signalNyquist[i] = -1.0
+
+        fftInput = [ 0+0j ] * fftSize
+        fftInput[-1] = (1+0j) * signalSize
+
+        self.assertAlmostEqualVector(IFFT()(cvec(fftInput)), signalNyquist*signalSize)
+     */
+
+    /*
+    def testZero(self):
+        self.assertAlmostEqualVector(zeros(2048), IFFT()(numpy.zeros(1025, dtype='c8')))
+     */
+
+    /*
+    def testEmpty(self):
+        self.assertComputeFails(IFFT(), cvec([]))
+     */
+
+    /*
+    def testRegression(self):
+        signal = numpy.sin(numpy.arange(1024, dtype='f4')/1024. * 441 * 2*math.pi)
+        self.assertAlmostEqualVector(signal*len(signal), IFFT()(FFT()(signal)), 1e-2)
+     */
+
+  }
+
   /// Tests the DCT algorithm. Values taken from 'test_dct.py'.
   func testDCT() {
 
@@ -1588,9 +1647,364 @@ class StandardAlgorithmTests: XCTestCase {
 
   }
   
+  /// Tests the functionality of the ConstantQ algorithm. Values taken from `test_constantq.py`.
   func testConstantQ() {
     //TODO: Implement the  function
     XCTFail("\(#function) not yet implemented.")
+
+    /*
+    def testRandom(self):
+        # input is [1, 0, 0, ...] which corresponds to an ConstantQ of constant magnitude 1
+        with open(os.path.join(script_dir, 'constantq/CQinput.txt'), 'r') as f:
+            #read_data = f.read()
+            data = np.array([], dtype='complex64')
+            line = f.readline()
+            while line != '':
+                re = float(line.split('\t')[0])
+                im = float(line.split('\t')[1])
+                data = np.append(data, re + im * 1j)
+                line = f.readline()
+
+        with open(os.path.join(script_dir, 'constantq/QMoutput.txt'), 'r') as u:
+            QMdata_out = np.array([], dtype='complex64')
+            for line in u:
+                re = line.split('+')[0]
+                re = float(re[1:])
+                im = line.split('+')[1]
+                im = float(im[:-3])
+                QMdata_out = np.append(QMdata_out, re + im * 1j)
+
+        CQdata = ConstantQ()(cvec(data))
+        QMdata_out = np.array(QMdata_out, dtype='complex64')
+
+        # difference mean
+        DifferMean = QMdata_out-CQdata
+        DifferMean = ((sum(abs(DifferMean.real))/len(DifferMean))+(sum(abs(DifferMean.imag))/len(DifferMean)))/2
+        # divergence mean percentage
+        DiverPerReal = (sum(((QMdata_out.real-CQdata.real)/QMdata_out.real)*100))/len(QMdata_out.real)
+        DiverPerImag = (sum(((QMdata_out.imag-CQdata.imag)/QMdata_out.imag)*100))/len(QMdata_out.imag)
+        DiverPer = (DiverPerReal + DiverPerImag) / 2
+
+        """
+        print 'Divergence mean percentage is : '+str(DiverPer)[:5]+'%'
+        print 'Difference Mean is : '+str(DifferMean)[:9]
+        """
+     */
+    
+  }
+
+  /// Tests the functionality of the PeakDetection algorithm. Values taken from
+  /// `test_peakdetection.py`.
+  func testPeakDetection() {
+    //TODO: Implement the  function
+    XCTFail("\(#function) not yet implemented.")
+
+    /*
+    def testPeakAtBegining(self):
+        input=[1,0,0,0]
+        inputSize = len(input)
+        config = { 'range': inputSize -1,  'maxPosition': inputSize-1,  'minPosition': 0,  'orderBy': 'amplitude' }
+        pdetect = PeakDetection(**config)
+        (posis, vals) = pdetect(input)
+        self.assertEqualVector(posis, [0])
+        self.assertEqualVector(vals, [1])
+     */
+
+    /*
+    def testPeakAtMinPosition(self):
+        peakPos = 3
+        input=[0,0,0,0,0,0,0]
+        input[peakPos] = 1
+        inputSize = len(input)
+        config = { 'range': inputSize -1,  'maxPosition': inputSize-1, 'minPosition': peakPos,  'orderBy': 'amplitude' }
+        pdetect = PeakDetection(**config)
+        (posis, vals) = pdetect(input)
+        self.assertEqualVector(posis, [peakPos])
+        self.assertEqualVector(vals, [1])
+     */
+
+    /*
+    def testPeakZero(self):
+        peakPos = 0
+        input=[0,0,0,0,0]
+        input[peakPos] = 1
+        inputSize = len(input)
+        config = { 'range': inputSize-1,  'maxPosition': inputSize-1, 'orderBy': 'amplitude' }
+        pdetect = PeakDetection(**config)
+        (posis, vals) = pdetect(input)
+        self.assertEqualVector(posis, [peakPos])
+        self.assertEqualVector(vals, [1])
+     */
+
+    /*
+    def testPeakOne(self):
+        peakPos = 1
+        input=[0,0,0,0,0]
+        input[peakPos] = 1
+        inputSize = len(input)
+        config = { 'range': inputSize-1,  'maxPosition': inputSize-1, 'orderBy': 'amplitude' }
+        pdetect = PeakDetection(**config)
+        (posis, vals) = pdetect(input)
+        self.assertEqualVector(posis, [peakPos])
+        self.assertEqualVector(vals, [1])
+     */
+
+    /*
+    def testPeakTwo(self):
+        peakPos = 2
+        input=[0,0,0,0,0]
+        input[peakPos] = 1
+        inputSize = len(input)
+        config = { 'range': inputSize-1,  'maxPosition': inputSize-1, 'orderBy': 'amplitude' }
+        pdetect = PeakDetection(**config)
+        (posis, vals) = pdetect(input)
+        self.assertEqualVector(posis, [peakPos])
+        self.assertEqualVector(vals, [1])
+     */
+
+    /*
+    def testPeakThree(self):
+        peakPos = 3
+        input=[0,0,0,0,0]
+        input[peakPos] = 1
+        inputSize = len(input)
+        config = { 'range': inputSize-1,  'maxPosition': inputSize-1, 'orderBy': 'amplitude' }
+        pdetect = PeakDetection(**config)
+        (posis, vals) = pdetect(input)
+        self.assertEqualVector(posis, [peakPos])
+        self.assertEqualVector(vals, [1])
+     */
+
+    /*
+    def testPeakFour(self):
+        peakPos = 4
+        input=[0,0,0,0,0]
+        input[peakPos] = 1
+        inputSize = len(input)
+        config = { 'range': inputSize-1,  'maxPosition': inputSize-1, 'orderBy': 'amplitude' }
+        pdetect = PeakDetection(**config)
+        (posis, vals) = pdetect(input)
+        self.assertEqualVector(posis, [peakPos])
+        self.assertEqualVector(vals, [1])
+     */
+
+    /*
+    def testPeakBeforeEnd(self):
+        peakPos = 3
+        input=[0,0,0,0,0]
+        input[peakPos] = 1
+        inputSize = len(input)
+        config = { 'range': inputSize-1,  'maxPosition': inputSize-1, 'orderBy': 'amplitude' }
+        pdetect = PeakDetection(**config)
+        (posis, vals) = pdetect(input)
+        self.assertEqualVector(posis, [peakPos])
+        self.assertEqualVector(vals, [1])
+     */
+
+    /*
+    def testPeakAtMaxPosition(self):
+        peakPos = 3
+        input=[0,0,0,0,0,0,0]
+        input[peakPos] = 1
+        inputSize = len(input)
+        config = { 'range': inputSize -1,  'maxPosition': peakPos, 'orderBy': 'amplitude' }
+        pdetect = PeakDetection(**config)
+        (posis, vals) = pdetect(input)
+        self.assertEqualVector(posis, [peakPos])
+        self.assertEqualVector(vals, [1])
+     */
+
+    /*
+    def testPeakEnd(self):
+        input=[0,0,0,0,0,0,0]
+        inputSize = len(input)
+        peakPos = inputSize-1
+        input[peakPos] = 1
+        config = { 'range': inputSize -1,  'maxPosition': peakPos, 'orderBy': 'amplitude' }
+        pdetect = PeakDetection(**config)
+        (posis, vals) = pdetect(input)
+        self.assertEqualVector(posis, [peakPos])
+        self.assertEqualVector(vals, [1])
+     */
+
+    /*
+    def testMaxPositionLargerThanSize(self):
+        peakPos = 3
+        input=[0,0,0,0,0,0,0]
+        input[peakPos] = 1
+        inputSize = len(input)
+        config = { 'range': inputSize -1,  'maxPosition': 10*peakPos, 'orderBy': 'amplitude' }
+        pdetect = PeakDetection(**config)
+        (posis, vals) = pdetect(input)
+        self.assertEqualVector(posis, [peakPos])
+        self.assertEqualVector(vals, [1])
+     */
+
+    /*
+    def testRegression(self):
+        inputSize = 1024
+
+        config = { 'range': inputSize -1,  'maxPosition': inputSize,  'minPosition': 0,  'orderBy': 'amplitude' }
+        pdetect = PeakDetection(**config)
+
+        pos1 = 3
+        val1 = 1.0
+        inputOne = [0] * inputSize
+        inputOne[pos1] = val1
+        (posis, vals) = pdetect(inputOne)
+        self.assertEqualVector(posis, [pos1])
+        self.assertEqualVector(vals, [val1])
+
+        pos1 = 3
+        val1 = 1.0
+        pos2 = 512
+        val2 = 3.0
+        inputTwo = [0] * inputSize
+        inputTwo[pos1] = val1
+        inputTwo[pos2] = val2
+        (posis, vals) = pdetect(inputTwo)
+        self.assertEqualVector(posis, [pos2, pos1])
+        self.assertEqualVector(vals, [val2, val1])
+
+        config['orderBy'] = 'position'
+        pdetect.configure(**config)
+        (posis, vals) = pdetect(inputTwo)
+        self.assertEqualVector(posis, [pos1, pos2])
+        self.assertEqualVector(vals, [val1, val2])
+     */
+
+    /*
+    def testPlateau(self):
+        inputSize = 1024
+        pos = range(3, 7)
+        val = 1.0
+        input = [0] * inputSize
+        for i in range(len(pos)):
+            input[pos[i]] = val
+
+        # with interpolation:
+        config = { 'range': inputSize -1,  'maxPosition': inputSize, 'minPosition': 0,  'orderBy': 'amplitude', 'interpolate' : True }
+        pdetect = PeakDetection(**config)
+        (posis, vals) = pdetect(input)
+        self.assertEqualVector(posis, [0.5*(pos[0]+pos[-1])])
+        self.assertEqualVector(vals, [val])
+
+        # no interpolation:
+        config = { 'range': inputSize -1,  'maxPosition': inputSize, 'minPosition': 0,  'orderBy': 'amplitude', 'interpolate' : False }
+        pdetect = PeakDetection(**config)
+
+        (posis, vals) = pdetect(input)
+        self.assertEqualVector(posis, [pos[0]])
+        self.assertEqualVector(vals, [val])
+     */
+
+    /*
+    def testStairCase(self):
+        # should find the first postition of the last step
+        inputSize = 1024
+        pos = [range(3, 7), range(7,14), range(14,20)]
+        val = [1.0, 2.0, 3.0]
+        input = [0] * inputSize
+        for i in range(len(pos)):
+            for j in range(len(pos[i])):
+                input[pos[i][j]] = val[i]
+
+        # no interpolation:
+        config = { 'range': inputSize -1,  'maxPosition': inputSize, 'minPosition': 0,  'orderBy': 'amplitude', 'interpolate' : False }
+        pdetect = PeakDetection(**config)
+        (posis, vals) = pdetect(input)
+        self.assertEqualVector(posis, [pos[-1][0]])
+        self.assertEqualVector(vals, [val[-1]])
+     */
+
+    /*
+    def testZero(self):
+        inputSize = 1024
+        input = [0] * inputSize
+        pdetect = PeakDetection()
+        (posis, vals) = pdetect(input)
+        self.assert_(len(posis) == 0)
+        self.assert_(len(vals) == 0)
+     */
+
+    /*
+    def testEmpty(self):
+        # Feeding an empty array shouldn't crash and throw an exception
+        self.assertComputeFails(PeakDetection(),  [])
+     */
+
+    /*
+    def testOne(self):
+        # Feeding an array of size 1 shouldn't crash and throw an exception
+        self.assertComputeFails(PeakDetection(), [0])
+     */
+
+    /*
+    def testInvalidParam(self):
+        self.assertConfigureFails(PeakDetection(), {'range': 0})
+        self.assertConfigureFails(PeakDetection(), {'maxPeaks': 0})
+        self.assertConfigureFails(PeakDetection(), {'maxPosition': 0})
+        self.assertConfigureFails(PeakDetection(), {'minPosition': -1})
+        PeakDetection(threshold=0)
+        self.assertConfigureFails(PeakDetection(), {'minPosition': 1.01,  'maxPosition': 1})
+     */
+
+  }
+
+  /// Tests the functionality of the AutoCorrelation algorithm. Values taken from
+  /// `test_autocorrelation.py`.
+  func testAutoCorrelation() {
+    //TODO: Implement the  function
+    XCTFail("\(#function) not yet implemented.")
+
+    /*
+    def testRegression(self):
+        inputv = readVector(join(testdir, 'input_pow2.txt'))
+        expected = readVector(join(testdir, 'output.txt'))
+
+        output = AutoCorrelation()(inputv)
+
+        self.assertAlmostEqualVector(expected, output, 1e-4)
+     */
+
+    /*
+    def testNonPowerOfTwo(self):
+        inputv = readVector(join(testdir, 'octave_input.txt'))
+        inputv = inputv[:234]
+        expected = readVector(join(testdir, 'output_nonpow2.txt'))
+
+        output = AutoCorrelation()(inputv)
+
+        self.assertAlmostEqualVector(expected, output, 1e-4)
+     */
+
+    /*
+    def testOctave(self):
+        inputv = readVector(join(testdir, 'octave_input.txt'))
+        expected = readVector(join(testdir, 'octave_output.txt'))
+
+        output = AutoCorrelation()(inputv)
+
+        self.assertEqual(len(expected)/2, len(output))
+
+        self.assertAlmostEqualVector(expected[:len(expected)/2], output, 1e-4)
+     */
+
+    /*
+    def testZero(self):
+        self.assertEqualVector(AutoCorrelation()(zeros(1024)), zeros(1024))
+     */
+
+    /*
+    def testEmpty(self):
+        self.assertEqualVector(AutoCorrelation()([]), [])
+     */
+
+    /*
+    def testOne(self):
+        self.assertAlmostEqualVector(AutoCorrelation()([0.2]), [0.04])
+     */
+
   }
 
 }

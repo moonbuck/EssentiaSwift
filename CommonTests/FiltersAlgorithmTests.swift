@@ -18,6 +18,102 @@ postfix operator >>>
 
 class FiltersAlgorithmTests: XCTestCase {
 
+  /// Tests the functionality of the IIRFilter algorithm. Values taken from `test_iir.py`.
+  func testIIRFilter() {
+
+    /// Simple helper for creating a trivial `IIRFilter` algorithm instance.
+    ///
+    /// - Returns: A simple IIR filter.
+    func loadSimpleFilter() -> StandardAlgorithm<Standard.IIR> {
+      let b = Parameter(value: .realVec(loadVector(name: "iir_b")))
+      let a = Parameter(value: .realVec(loadVector(name: "iir_a")))
+      return StandardAlgorithm<Standard.IIR>([.numerator: b, .denominator: a])
+    }
+
+    /*
+     Test with an empty input signal.
+     */
+
+    let iir1 = loadSimpleFilter()
+    iir1[realVecInput: .signal] = []
+    iir1.compute()
+
+    XCTAssert(iir1[realVecOutput: .signal].isEmpty)
+
+    /*
+     Test that filtering samples one-by-one yields the same result as by vector.
+     */
+
+    let signal1 = loadVector(name: "iir_x")
+
+    let iir2 = loadSimpleFilter()
+    iir2[realVecInput: .signal] = signal1
+    iir2.compute()
+
+    let iir3 = loadSimpleFilter()
+    var filtered: [Float] = []
+
+    for sample in signal1 {
+
+      iir3[realVecInput: .signal] = [sample]
+      iir3.compute()
+      filtered.append(contentsOf: iir3[realVecOutput: .signal])
+
+    }
+
+    XCTAssertEqual(iir2[realVecOutput: .signal], filtered, accuracy: 1e-6)
+
+    /*
+     Test that filtering all-zero input yields zeros.
+     */
+
+    let iir4 = loadSimpleFilter()
+    iir4[realVecInput: .signal] = [0.0] * 20
+    iir4.compute()
+
+    XCTAssertEqual(iir4[realVecOutput: .signal], [0.0] * 20)
+
+    /*
+     Test for regression when the number of numerator coefficients is equal to the number of
+     denominator coefficients.
+     */
+
+    let x = loadVector(name: "iir_x")
+
+    let b1 = Parameter(value: .realVec(loadVector(name: "iir_ba")))
+    let a1 = Parameter(value: .realVec(loadVector(name: "iir_ab")))
+    let iir5 = StandardAlgorithm<Standard.IIR>([.numerator: b1, .denominator: a1])
+    iir5[realVecInput: .signal] = x
+    iir5.compute()
+
+    XCTAssertEqual(iir5[realVecOutput: .signal], loadVector(name: "iir_y1"), accuracy: 1e-6)
+
+    /*
+     Test for regression when the number of numerator coefficients is greater than the number of
+     denominator coefficients.
+     */
+
+    let b2 = Parameter(value: .realVec(loadVector(name: "iir_b")))
+    let a2 = Parameter(value: .realVec(loadVector(name: "iir_a")))
+    let iir6 = StandardAlgorithm<Standard.IIR>([.numerator: b2, .denominator: a2])
+    iir6[realVecInput: .signal] = x
+    iir6.compute()
+
+    XCTAssertEqual(iir6[realVecOutput: .signal], loadVector(name: "iir_y2"), accuracy: 1e-6)
+
+    /*
+     Test for regression when the number of numerator coefficients is less than the number of
+     denominator coefficients.
+     */
+
+    let iir7 = StandardAlgorithm<Standard.IIR>([.numerator: a2, .denominator: b2])
+    iir7[realVecInput: .signal] = x
+    iir7.compute()
+
+    XCTAssertEqual(iir7[realVecOutput: .signal], loadVector(name: "iir_y3"), accuracy: 1e-6)
+
+  }
+
   /// Tests the functionality of the `DCRemoval` algorithm. Values taken from `test_dcremoval.py`.
   func testDCRemoval() {
 
@@ -138,6 +234,55 @@ class FiltersAlgorithmTests: XCTestCase {
 
     XCTAssertEqual(equalLoudness3[realVecOutput: .signal], Array(expected2[...100000]),
                    accuracy: 1e-4)
+
+  }
+
+  /// Tests the functionality of the MovingAverage algorithm. Values taken from
+  /// `test_movingaverage.py`.
+  func testMovingAverage() {
+    //TODO: Implement the  function
+    XCTFail("\(#function) not yet implemented.")
+
+    /*
+    def testRegression(self):
+        # check moving average for size = 6 and input signal of 10 elements
+
+        input = [1]*10
+        expected = [ 1./6, 2./6, 3./6, 4./6., 5./6., 1., 1., 1., 1., 1. ]
+
+        self.assertAlmostEqualVector(MovingAverage(size=6)(input), expected)
+     */
+
+    /*
+    def testOneByOne(self):
+        # we compare here that filtering an array all at once or the samples
+        # one by one will yield the same result
+
+        input = [1]*10
+        expected = [ 1./4, 2./4, 3./4, 1., 1., 1., 1., 1., 1., 1. ]
+        filt = MovingAverage(size=4)
+
+        self.assertAlmostEqualVector(filt(input), expected)
+
+        # need to reset the filter here!!
+        filt.reset()
+
+        result = []
+        for sample in input:
+            result += list(filt([sample]))
+
+        self.assertAlmostEqualVector(result, expected)
+     */
+
+    /*
+    def testZero(self):
+        self.assertEqualVector(MovingAverage()(zeros(20)), zeros(20))
+     */
+
+    /*
+    def testEmpty(self):
+        self.assertEqualVector(MovingAverage()([]), [])
+     */
 
   }
 

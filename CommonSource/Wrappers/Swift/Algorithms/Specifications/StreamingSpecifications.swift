@@ -13027,6 +13027,81 @@ extension Streaming {
 
     }
 
+    /// The specification for the streaming `Chromagram` algorithm.
+    public struct Chromagram: StreamingSpecification {
+
+      public static func downCast(wrapper: StreamingAlgorithmWrapper) -> StreamingAlgorithm<Chromagram> {
+        guard wrapper.name == name else {
+          fatalError("Invalid cast from \(wrapper.name) to \(name).")
+        }
+        return StreamingAlgorithm<Chromagram>(wrapper: wrapper)
+      }
+
+      /// The algorithm's name. This is equal to `info.algorithmName`.
+      public static var name: String { return "Chromagram" }
+
+      /// The algorithm's operating mode.
+      public static var mode: AlgorithmMode.Type { return Essentia.Streaming.self }
+
+      /// The algorithm's category.
+      public static var category: AlgorithmCategory.Type { return Tonal.self }
+
+      /// The algorithm's description. This is equal to `info.algorithmDescription`.
+      public static var description: String {
+        return AlgorithmFactoryWrapper.streamingInfo(forName: name)?.algorithmDescription ?? ""
+      }
+
+      /// An enumeration of the valid input names for the algorithm.
+      public enum Input: String, KeyEnumeration {
+
+        case frame
+
+        public static var allKeys: Set<Input> {
+          return [
+             .frame
+          ]
+        }
+
+      }
+
+      /// An enumeration of the valid output names for the algorithm.
+      public enum Output: String, KeyEnumeration {
+
+        case chromagram
+
+        public static var allKeys: Set<Output> {
+          return [
+             .chromagram
+          ]
+        }
+
+      }
+
+      /// An enumeration of the valid parameter names for the algorithm.
+      public enum Parameter: String, KeyEnumeration {
+
+        case binsPerOctave
+        case maxFrequency
+        case minFrequency
+        case normalizeType
+        case sampleRate
+        case threshold
+
+        public static var allKeys: Set<Parameter> {
+          return [
+             .binsPerOctave,
+             .maxFrequency,
+             .minFrequency,
+             .normalizeType,
+             .sampleRate,
+             .threshold
+          ]
+        }
+
+      }
+
+    }
+
     /// The specification for the streaming `Dissonance` algorithm.
     public struct Dissonance: StreamingSpecification {
 
@@ -14127,4 +14202,3 @@ extension Streaming {
   }
 
 }
-

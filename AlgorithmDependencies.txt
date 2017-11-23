@@ -1,0 +1,3017 @@
+$ python show_algo_dependencies.py
+
+Found 207 streaming algorithms
+Found 214 standard algorithms
+202 algorithms in with both modes
+219 algorithms in total
+
+Algorithm was not specified. Analyze dependencies for all algorithms
+Mode was not specified. Analyze dependencies for both modes
+---------- standard : AfterMaxToBeforeMaxEnergyRatio ----------
+Dependencies:
+
+---------- standard : AllPass ----------
+Dependencies:
+standard	IIR
+
+---------- standard : AudioLoader ----------
+Dependencies:
+streaming	AudioLoader
+
+---------- standard : AudioOnsetsMarker ----------
+Dependencies:
+
+---------- standard : AudioWriter ----------
+Dependencies:
+streaming	AudioWriter
+
+---------- standard : AutoCorrelation ----------
+Dependencies:
+standard	FFT
+standard	IFFT
+
+---------- standard : BFCC ----------
+Dependencies:
+standard	TriangularBarkBands
+standard	DCT
+
+---------- standard : BPF ----------
+Dependencies:
+
+---------- standard : BandPass ----------
+Dependencies:
+standard	IIR
+
+---------- standard : BandReject ----------
+Dependencies:
+standard	IIR
+
+---------- standard : BarkBands ----------
+Dependencies:
+standard	FrequencyBands
+
+---------- standard : BeatTrackerDegara ----------
+Dependencies:
+standard	AutoCorrelation
+standard	OnsetDetection
+streaming	BeatTrackerDegara
+standard	FFT
+standard	MovingAverage
+standard	NoiseAdder
+streaming	CartesianToPolar
+streaming	TempoTapDegara
+streaming	Windowing
+standard	MelBands
+streaming	FFT
+streaming	OnsetDetection
+standard	TempoTapDegara
+standard	Windowing
+standard	CartesianToPolar
+standard	HFC
+standard	Flux
+standard	IFFT
+streaming	FrameCutter
+standard	FrameCutter
+standard	IIR
+standard	TriangularBands
+
+---------- standard : BeatTrackerMultiFeature ----------
+Dependencies:
+standard	ERBBands
+standard	AutoCorrelation
+standard	OnsetDetection
+standard	Scale
+standard	FFT
+streaming	Scale
+standard	Magnitude
+streaming	BeatTrackerMultiFeature
+standard	MovingAverage
+standard	TempoTapMaxAgreement
+standard	NoiseAdder
+streaming	CartesianToPolar
+streaming	TempoTapDegara
+streaming	OnsetDetectionGlobal
+streaming	Windowing
+standard	MelBands
+streaming	FFT
+streaming	OnsetDetection
+standard	TempoTapDegara
+standard	Windowing
+standard	OnsetDetectionGlobal
+standard	CartesianToPolar
+standard	HFC
+standard	Flux
+standard	Spectrum
+standard	IFFT
+streaming	FrameCutter
+standard	FrameCutter
+standard	IIR
+standard	TriangularBands
+
+---------- standard : Beatogram ----------
+Dependencies:
+
+---------- standard : BeatsLoudness ----------
+Dependencies:
+standard	Spectrum
+streaming	Slicer
+streaming	SingleBeatLoudness
+standard	SingleBeatLoudness
+streaming	BeatsLoudness
+standard	Energy
+standard	FFT
+standard	Windowing
+standard	EnergyBandRatio
+standard	Magnitude
+
+---------- standard : BinaryOperator ----------
+Dependencies:
+
+---------- standard : BinaryOperatorStream ----------
+Dependencies:
+
+---------- standard : BpmHistogram ----------
+Dependencies:
+standard	NoiseAdder
+standard	PeakDetection
+streaming	CartesianToPolar
+streaming	Windowing
+streaming	FFT
+streaming	FrameCutter
+streaming	BpmHistogram
+standard	FFT
+standard	Windowing
+standard	CartesianToPolar
+streaming	PeakDetection
+
+---------- standard : BpmHistogramDescriptors ----------
+Dependencies:
+
+---------- standard : BpmRubato ----------
+Dependencies:
+
+---------- standard : CartesianToPolar ----------
+Dependencies:
+
+---------- standard : CentralMoments ----------
+Dependencies:
+
+---------- standard : Centroid ----------
+Dependencies:
+
+---------- standard : ChordsDescriptors ----------
+Dependencies:
+
+---------- standard : ChordsDetection ----------
+Dependencies:
+standard	Key
+
+---------- standard : ChordsDetectionBeats ----------
+Dependencies:
+standard	Key
+
+---------- standard : Chromagram ----------
+Dependencies:
+standard	ConstantQ
+standard	Magnitude
+standard	FFTC
+
+---------- standard : Clipper ----------
+Dependencies:
+
+---------- standard : ConstantQ ----------
+Dependencies:
+standard	FFTC
+
+---------- standard : Crest ----------
+Dependencies:
+
+---------- standard : CrossCorrelation ----------
+Dependencies:
+
+---------- standard : CubicSpline ----------
+Dependencies:
+
+---------- standard : DCRemoval ----------
+Dependencies:
+standard	IIR
+
+---------- standard : DCT ----------
+Dependencies:
+
+---------- standard : Danceability ----------
+Dependencies:
+
+---------- standard : Decrease ----------
+Dependencies:
+
+---------- standard : Derivative ----------
+Dependencies:
+
+---------- standard : DerivativeSFX ----------
+Dependencies:
+
+---------- standard : Dissonance ----------
+Dependencies:
+
+---------- standard : DistributionShape ----------
+Dependencies:
+
+---------- standard : Duration ----------
+Dependencies:
+
+---------- standard : DynamicComplexity ----------
+Dependencies:
+
+---------- standard : ERBBands ----------
+Dependencies:
+
+---------- standard : EasyLoader ----------
+Dependencies:
+streaming	MonoLoader
+streaming	Resample
+streaming	Trimmer
+standard	Scale
+streaming	Scale
+streaming	AudioLoader
+streaming	MonoMixer
+streaming	EasyLoader
+
+---------- standard : EffectiveDuration ----------
+Dependencies:
+
+---------- standard : Energy ----------
+Dependencies:
+
+---------- standard : EnergyBand ----------
+Dependencies:
+
+---------- standard : EnergyBandRatio ----------
+Dependencies:
+
+---------- standard : Entropy ----------
+Dependencies:
+
+---------- standard : Envelope ----------
+Dependencies:
+
+---------- standard : EqloudLoader ----------
+Dependencies:
+streaming	MonoLoader
+streaming	Resample
+streaming	Trimmer
+standard	Scale
+streaming	Scale
+standard	IIR
+streaming	AudioLoader
+streaming	EqloudLoader
+standard	EqualLoudness
+streaming	MonoMixer
+streaming	EqualLoudness
+
+---------- standard : EqualLoudness ----------
+Dependencies:
+standard	IIR
+
+---------- standard : Extractor ----------
+Dependencies:
+
+---------- standard : FFT ----------
+Dependencies:
+
+---------- standard : FFTC ----------
+Dependencies:
+
+---------- standard : FadeDetection ----------
+Dependencies:
+
+---------- standard : Flatness ----------
+Dependencies:
+standard	GeometricMean
+
+---------- standard : FlatnessDB ----------
+Dependencies:
+standard	GeometricMean
+standard	Flatness
+
+---------- standard : FlatnessSFX ----------
+Dependencies:
+
+---------- standard : Flux ----------
+Dependencies:
+
+---------- standard : FrameCutter ----------
+Dependencies:
+
+---------- standard : FrameToReal ----------
+Dependencies:
+
+---------- standard : FreesoundExtractor ----------
+Dependencies:
+
+---------- standard : FrequencyBands ----------
+Dependencies:
+
+---------- standard : GFCC ----------
+Dependencies:
+standard	ERBBands
+standard	DCT
+
+---------- standard : GeometricMean ----------
+Dependencies:
+
+---------- standard : HFC ----------
+Dependencies:
+
+---------- standard : HPCP ----------
+Dependencies:
+
+---------- standard : HarmonicBpm ----------
+Dependencies:
+
+---------- standard : HarmonicMask ----------
+Dependencies:
+
+---------- standard : HarmonicModelAnal ----------
+Dependencies:
+standard	CartesianToPolar
+standard	SineModelAnal
+standard	PeakDetection
+
+---------- standard : HarmonicPeaks ----------
+Dependencies:
+
+---------- standard : HighPass ----------
+Dependencies:
+standard	IIR
+
+---------- standard : HighResolutionFeatures ----------
+Dependencies:
+
+---------- standard : HprModelAnal ----------
+Dependencies:
+standard	PeakDetection
+standard	SineModelAnal
+standard	IFFT
+standard	SineSubtraction
+standard	FFT
+standard	Windowing
+standard	HarmonicModelAnal
+standard	CartesianToPolar
+standard	OverlapAdd
+
+---------- standard : HpsModelAnal ----------
+Dependencies:
+standard	PeakDetection
+standard	SineModelAnal
+standard	IFFT
+standard	SineSubtraction
+standard	FFT
+standard	Windowing
+standard	StochasticModelAnal
+standard	HarmonicModelAnal
+standard	ResampleFFT
+standard	CartesianToPolar
+standard	OverlapAdd
+
+---------- standard : IDCT ----------
+Dependencies:
+
+---------- standard : IFFT ----------
+Dependencies:
+
+---------- standard : IIR ----------
+Dependencies:
+
+---------- standard : Inharmonicity ----------
+Dependencies:
+
+---------- standard : InstantPower ----------
+Dependencies:
+
+---------- standard : Intensity ----------
+Dependencies:
+standard	PeakDetection
+standard	Spectrum
+standard	DistributionShape
+standard	Dissonance
+standard	RollOff
+standard	FrameCutter
+standard	CentralMoments
+standard	FFT
+standard	Windowing
+standard	SpectralComplexity
+standard	Magnitude
+standard	SpectralPeaks
+
+---------- standard : Key ----------
+Dependencies:
+
+---------- standard : KeyExtractor ----------
+Dependencies:
+standard	NoiseAdder
+standard	PeakDetection
+standard	Key
+standard	SpectralPeaks
+streaming	HPCP
+streaming	Windowing
+streaming	FrameCutter
+streaming	Spectrum
+standard	FFT
+standard	Windowing
+standard	Spectrum
+streaming	Key
+streaming	KeyExtractor
+standard	Magnitude
+standard	HPCP
+streaming	SpectralPeaks
+
+---------- standard : LPC ----------
+Dependencies:
+standard	FFT
+standard	AutoCorrelation
+standard	IFFT
+
+---------- standard : Larm ----------
+Dependencies:
+standard	Envelope
+standard	GeometricMean
+standard	PowerMean
+
+---------- standard : Leq ----------
+Dependencies:
+
+---------- standard : LevelExtractor ----------
+Dependencies:
+standard	NoiseAdder
+streaming	LevelExtractor
+streaming	FrameCutter
+streaming	Loudness
+standard	Loudness
+
+---------- standard : LogAttackTime ----------
+Dependencies:
+
+---------- standard : LoopBpmConfidence ----------
+Dependencies:
+standard	Envelope
+
+---------- standard : LoopBpmEstimator ----------
+Dependencies:
+standard	NoiseAdder
+standard	AutoCorrelation
+standard	FFT
+streaming	AutoCorrelation
+standard	Magnitude
+standard	UnaryOperator
+standard	PercivalEvaluatePulseTrains
+standard	PercivalBpmEstimator
+streaming	PercivalEvaluatePulseTrains
+standard	LoopBpmConfidence
+streaming	PercivalBpmEstimator
+streaming	Flux
+streaming	PercivalEnhanceHarmonics
+standard	Envelope
+streaming	Windowing
+standard	Windowing
+standard	PercivalEnhanceHarmonics
+standard	Flux
+standard	PeakDetection
+standard	Spectrum
+streaming	IIR
+standard	IFFT
+streaming	UnaryOperator
+streaming	FrameCutter
+standard	IIR
+streaming	Spectrum
+streaming	PeakDetection
+
+---------- standard : Loudness ----------
+Dependencies:
+
+---------- standard : LoudnessEBUR128 ----------
+Dependencies:
+standard	NoiseAdder
+streaming	StereoDemuxer
+streaming	LoudnessEBUR128Filter
+streaming	UnaryOperatorStream
+streaming	IIR
+streaming	BinaryOperatorStream
+standard	Mean
+streaming	FrameCutter
+standard	BinaryOperatorStream
+standard	UnaryOperatorStream
+standard	IIR
+streaming	Mean
+streaming	LoudnessEBUR128
+
+---------- standard : LoudnessVickers ----------
+Dependencies:
+standard	IIR
+
+---------- standard : LowLevelSpectralEqloudExtractor ----------
+Dependencies:
+streaming	SpectralPeaks
+standard	UnaryOperator
+standard	DistributionShape
+standard	Dissonance
+streaming	Centroid
+standard	FFT
+streaming	UnaryOperator
+streaming	Dissonance
+streaming	LowLevelSpectralEqloudExtractor
+standard	Magnitude
+standard	SpectralPeaks
+standard	SpectralContrast
+standard	NoiseAdder
+standard	Centroid
+streaming	Windowing
+streaming	DistributionShape
+standard	Windowing
+streaming	SpectralContrast
+standard	PeakDetection
+standard	Spectrum
+streaming	CentralMoments
+streaming	FrameCutter
+standard	CentralMoments
+streaming	Spectrum
+
+---------- standard : LowLevelSpectralExtractor ----------
+Dependencies:
+streaming	Energy
+streaming	EnergyBand
+standard	AutoCorrelation
+streaming	SpectralPeaks
+standard	DistributionShape
+streaming	Tristimulus
+streaming	RMS
+standard	FFT
+streaming	UnaryOperator
+standard	FrequencyBands
+streaming	Decrease
+streaming	PitchSalience
+standard	Magnitude
+standard	HarmonicPeaks
+standard	RMS
+standard	SpectralPeaks
+streaming	Crest
+standard	BarkBands
+standard	OddToEvenHarmonicEnergyRatio
+streaming	OddToEvenHarmonicEnergyRatio
+streaming	Inharmonicity
+standard	Energy
+standard	Inharmonicity
+standard	Crest
+standard	EnergyBand
+standard	ZeroCrossingRate
+streaming	HarmonicPeaks
+streaming	Flux
+standard	DCT
+standard	NoiseAdder
+streaming	StrongPeak
+standard	Flatness
+standard	PitchSalience
+standard	Tristimulus
+streaming	Windowing
+standard	MelBands
+standard	RollOff
+streaming	DistributionShape
+streaming	RollOff
+standard	Spectrum
+streaming	ZeroCrossingRate
+streaming	Spectrum
+standard	CartesianToPolar
+streaming	FlatnessDB
+standard	StrongPeak
+standard	HFC
+standard	Flux
+streaming	SpectralComplexity
+standard	PeakDetection
+standard	PitchYinFFT
+streaming	LowLevelSpectralExtractor
+streaming	CentralMoments
+streaming	MFCC
+standard	Decrease
+standard	IFFT
+streaming	BarkBands
+streaming	FrameCutter
+standard	UnaryOperator
+standard	CentralMoments
+standard	FlatnessDB
+standard	Windowing
+standard	GeometricMean
+standard	MFCC
+standard	SpectralComplexity
+streaming	HFC
+streaming	PitchYinFFT
+streaming	SilenceRate
+standard	TriangularBands
+
+---------- standard : LowPass ----------
+Dependencies:
+standard	IIR
+
+---------- standard : MFCC ----------
+Dependencies:
+standard	MelBands
+standard	TriangularBands
+standard	DCT
+
+---------- standard : Magnitude ----------
+Dependencies:
+
+---------- standard : MaxFilter ----------
+Dependencies:
+
+---------- standard : MaxMagFreq ----------
+Dependencies:
+
+---------- standard : MaxToTotal ----------
+Dependencies:
+
+---------- standard : Mean ----------
+Dependencies:
+
+---------- standard : Median ----------
+Dependencies:
+
+---------- standard : MelBands ----------
+Dependencies:
+standard	TriangularBands
+
+---------- standard : MetadataReader ----------
+Dependencies:
+
+---------- standard : Meter ----------
+Dependencies:
+
+---------- standard : MinToTotal ----------
+Dependencies:
+
+---------- standard : MonoLoader ----------
+Dependencies:
+streaming	MonoMixer
+streaming	MonoLoader
+streaming	Resample
+streaming	AudioLoader
+
+---------- standard : MonoMixer ----------
+Dependencies:
+
+---------- standard : MonoWriter ----------
+Dependencies:
+streaming	MonoWriter
+
+---------- standard : MovingAverage ----------
+Dependencies:
+standard	IIR
+
+---------- standard : MultiPitchKlapuri ----------
+Dependencies:
+standard	PeakDetection
+standard	Spectrum
+standard	SpectralWhitening
+standard	FrameCutter
+standard	FFT
+standard	Windowing
+standard	PitchSalienceFunction
+standard	Magnitude
+standard	SpectralPeaks
+standard	PitchSalienceFunctionPeaks
+
+---------- standard : MultiPitchMelodia ----------
+Dependencies:
+standard	PeakDetection
+standard	Spectrum
+standard	PitchContours
+standard	FrameCutter
+standard	FFT
+standard	PitchContoursMultiMelody
+standard	Windowing
+standard	IIR
+standard	MovingAverage
+standard	PitchSalienceFunction
+standard	Magnitude
+standard	SpectralPeaks
+standard	PitchSalienceFunctionPeaks
+
+---------- standard : Multiplexer ----------
+Dependencies:
+
+---------- standard : MusicExtractor ----------
+Dependencies:
+
+---------- standard : NoiseAdder ----------
+Dependencies:
+
+---------- standard : NoveltyCurve ----------
+Dependencies:
+
+---------- standard : NoveltyCurveFixedBpmEstimator ----------
+Dependencies:
+standard	FFT
+standard	AutoCorrelation
+standard	IFFT
+
+---------- standard : OddToEvenHarmonicEnergyRatio ----------
+Dependencies:
+
+---------- standard : OnsetDetection ----------
+Dependencies:
+standard	MelBands
+standard	TriangularBands
+standard	HFC
+standard	Flux
+
+---------- standard : OnsetDetectionGlobal ----------
+Dependencies:
+standard	ERBBands
+standard	Spectrum
+standard	AutoCorrelation
+standard	IFFT
+standard	FrameCutter
+standard	FFT
+standard	Windowing
+standard	IIR
+standard	MovingAverage
+standard	Magnitude
+standard	CartesianToPolar
+
+---------- standard : OnsetRate ----------
+Dependencies:
+standard	TriangularBands
+standard	OnsetDetection
+standard	MelBands
+standard	Onsets
+standard	FrameCutter
+standard	FFT
+standard	Windowing
+standard	IIR
+standard	MovingAverage
+standard	CartesianToPolar
+standard	HFC
+standard	Flux
+
+---------- standard : Onsets ----------
+Dependencies:
+standard	IIR
+standard	MovingAverage
+
+---------- standard : OverlapAdd ----------
+Dependencies:
+
+---------- standard : PCA ----------
+Dependencies:
+
+---------- standard : Panning ----------
+Dependencies:
+standard	IFFT
+
+---------- standard : PeakDetection ----------
+Dependencies:
+
+---------- standard : PercivalBpmEstimator ----------
+Dependencies:
+standard	AutoCorrelation
+standard	FFT
+streaming	AutoCorrelation
+standard	Magnitude
+standard	UnaryOperator
+streaming	PercivalEvaluatePulseTrains
+standard	PercivalEvaluatePulseTrains
+streaming	PercivalBpmEstimator
+streaming	Flux
+streaming	PercivalEnhanceHarmonics
+standard	NoiseAdder
+streaming	Windowing
+standard	Windowing
+standard	PercivalEnhanceHarmonics
+standard	Flux
+standard	PeakDetection
+standard	Spectrum
+streaming	IIR
+standard	IFFT
+streaming	UnaryOperator
+streaming	FrameCutter
+standard	IIR
+streaming	Spectrum
+streaming	PeakDetection
+
+---------- standard : PercivalEnhanceHarmonics ----------
+Dependencies:
+
+---------- standard : PercivalEvaluatePulseTrains ----------
+Dependencies:
+
+---------- standard : PitchContourSegmentation ----------
+Dependencies:
+
+---------- standard : PitchContours ----------
+Dependencies:
+
+---------- standard : PitchContoursMelody ----------
+Dependencies:
+standard	PeakDetection
+standard	Spectrum
+standard	FrameCutter
+standard	FFT
+standard	Windowing
+standard	IIR
+standard	MovingAverage
+standard	Magnitude
+standard	SpectralPeaks
+
+---------- standard : PitchContoursMonoMelody ----------
+Dependencies:
+standard	IIR
+standard	MovingAverage
+
+---------- standard : PitchContoursMultiMelody ----------
+Dependencies:
+standard	IIR
+standard	MovingAverage
+
+---------- standard : PitchFilter ----------
+Dependencies:
+
+---------- standard : PitchMelodia ----------
+Dependencies:
+standard	PeakDetection
+standard	SpectralPeaks
+standard	PitchContours
+standard	FrameCutter
+standard	FFT
+standard	Windowing
+standard	Spectrum
+standard	IIR
+standard	MovingAverage
+standard	PitchSalienceFunction
+standard	Magnitude
+standard	PitchContoursMonoMelody
+standard	PitchSalienceFunctionPeaks
+
+---------- standard : PitchSalience ----------
+Dependencies:
+standard	FFT
+standard	AutoCorrelation
+standard	IFFT
+
+---------- standard : PitchSalienceFunction ----------
+Dependencies:
+
+---------- standard : PitchSalienceFunctionPeaks ----------
+Dependencies:
+standard	PeakDetection
+
+---------- standard : PitchYin ----------
+Dependencies:
+standard	PeakDetection
+
+---------- standard : PitchYinFFT ----------
+Dependencies:
+standard	CartesianToPolar
+standard	PeakDetection
+standard	FFT
+
+---------- standard : PolarToCartesian ----------
+Dependencies:
+
+---------- standard : PoolAggregator ----------
+Dependencies:
+
+---------- standard : PowerMean ----------
+Dependencies:
+standard	GeometricMean
+
+---------- standard : PowerSpectrum ----------
+Dependencies:
+standard	FFT
+
+---------- standard : PredominantPitchMelodia ----------
+Dependencies:
+standard	PeakDetection
+standard	Spectrum
+standard	PitchContoursMelody
+standard	PitchContours
+standard	FrameCutter
+standard	FFT
+standard	Windowing
+standard	IIR
+standard	MovingAverage
+standard	PitchSalienceFunction
+standard	Magnitude
+standard	SpectralPeaks
+standard	PitchSalienceFunctionPeaks
+
+---------- standard : RMS ----------
+Dependencies:
+
+---------- standard : RawMoments ----------
+Dependencies:
+
+---------- standard : ReplayGain ----------
+Dependencies:
+standard	EqualLoudness
+standard	IIR
+
+---------- standard : Resample ----------
+Dependencies:
+
+---------- standard : ResampleFFT ----------
+Dependencies:
+standard	FFT
+standard	IFFT
+
+---------- standard : RhythmDescriptors ----------
+Dependencies:
+standard	ERBBands
+standard	AutoCorrelation
+standard	OnsetDetection
+standard	Scale
+standard	FFT
+streaming	RhythmDescriptors
+standard	Magnitude
+streaming	BeatTrackerMultiFeature
+standard	MovingAverage
+standard	TempoTapMaxAgreement
+standard	NoiseAdder
+streaming	CartesianToPolar
+streaming	TempoTapDegara
+streaming	OnsetDetectionGlobal
+streaming	Windowing
+standard	MelBands
+streaming	FFT
+streaming	RhythmExtractor2013
+streaming	OnsetDetection
+standard	TempoTapDegara
+standard	Windowing
+standard	OnsetDetectionGlobal
+standard	CartesianToPolar
+streaming	BpmHistogramDescriptors
+standard	HFC
+standard	Flux
+standard	Spectrum
+standard	IFFT
+streaming	FrameCutter
+standard	FrameCutter
+streaming	Scale
+standard	IIR
+standard	BpmHistogramDescriptors
+standard	TriangularBands
+
+---------- standard : RhythmExtractor ----------
+Dependencies:
+standard	AutoCorrelation
+streaming	TempoTap
+standard	OnsetDetection
+streaming	StartStopSilence
+standard	TempoTap
+standard	FFT
+standard	FrequencyBands
+streaming	Derivative
+streaming	RhythmExtractor
+standard	Magnitude
+streaming	TempoTapTicks
+standard	TempoTapTicks
+standard	NoiseAdder
+streaming	FrequencyBands
+streaming	CartesianToPolar
+streaming	Multiplexer
+streaming	Windowing
+standard	MelBands
+streaming	FFT
+streaming	OnsetDetection
+standard	Windowing
+standard	CartesianToPolar
+standard	HFC
+standard	Flux
+standard	PeakDetection
+standard	Spectrum
+standard	TempoScaleBands
+standard	IFFT
+streaming	Clipper
+standard	Clipper
+streaming	FrameCutter
+streaming	TempoScaleBands
+streaming	Spectrum
+standard	TriangularBands
+
+---------- standard : RhythmExtractor2013 ----------
+Dependencies:
+standard	ERBBands
+standard	AutoCorrelation
+standard	OnsetDetection
+standard	Scale
+standard	FFT
+streaming	Scale
+standard	Magnitude
+streaming	BeatTrackerMultiFeature
+standard	MovingAverage
+standard	TempoTapMaxAgreement
+standard	NoiseAdder
+streaming	CartesianToPolar
+streaming	TempoTapDegara
+streaming	OnsetDetectionGlobal
+streaming	Windowing
+standard	MelBands
+streaming	FFT
+streaming	RhythmExtractor2013
+streaming	OnsetDetection
+standard	TempoTapDegara
+standard	Windowing
+standard	OnsetDetectionGlobal
+standard	CartesianToPolar
+standard	HFC
+standard	Flux
+standard	Spectrum
+standard	IFFT
+streaming	FrameCutter
+standard	FrameCutter
+standard	IIR
+standard	TriangularBands
+
+---------- standard : RhythmTransform ----------
+Dependencies:
+standard	FFT
+standard	Windowing
+standard	Spectrum
+standard	Magnitude
+
+---------- standard : RollOff ----------
+Dependencies:
+
+---------- standard : SBic ----------
+Dependencies:
+
+---------- standard : Scale ----------
+Dependencies:
+
+---------- standard : SilenceRate ----------
+Dependencies:
+
+---------- standard : SineModelAnal ----------
+Dependencies:
+standard	CartesianToPolar
+standard	PeakDetection
+
+---------- standard : SineModelSynth ----------
+Dependencies:
+
+---------- standard : SineSubtraction ----------
+Dependencies:
+standard	FFT
+standard	Windowing
+standard	OverlapAdd
+standard	IFFT
+
+---------- standard : SingleBeatLoudness ----------
+Dependencies:
+standard	EnergyBandRatio
+standard	Energy
+standard	FFT
+standard	Windowing
+standard	Magnitude
+standard	Spectrum
+
+---------- standard : SingleGaussian ----------
+Dependencies:
+
+---------- standard : Slicer ----------
+Dependencies:
+streaming	Slicer
+
+---------- standard : SpectralCentroidTime ----------
+Dependencies:
+
+---------- standard : SpectralComplexity ----------
+Dependencies:
+standard	PeakDetection
+standard	SpectralPeaks
+
+---------- standard : SpectralContrast ----------
+Dependencies:
+
+---------- standard : SpectralPeaks ----------
+Dependencies:
+standard	PeakDetection
+
+---------- standard : SpectralWhitening ----------
+Dependencies:
+
+---------- standard : Spectrum ----------
+Dependencies:
+standard	FFT
+standard	Magnitude
+
+---------- standard : SpectrumCQ ----------
+Dependencies:
+standard	ConstantQ
+standard	Magnitude
+standard	FFTC
+
+---------- standard : SpectrumToCent ----------
+Dependencies:
+standard	TriangularBands
+
+---------- standard : Spline ----------
+Dependencies:
+
+---------- standard : SprModelAnal ----------
+Dependencies:
+standard	PeakDetection
+standard	SineModelAnal
+standard	IFFT
+standard	SineSubtraction
+standard	FFT
+standard	Windowing
+standard	CartesianToPolar
+standard	OverlapAdd
+
+---------- standard : SprModelSynth ----------
+Dependencies:
+standard	IFFT
+standard	OverlapAdd
+standard	SineModelSynth
+
+---------- standard : SpsModelAnal ----------
+Dependencies:
+standard	PeakDetection
+standard	SineModelAnal
+standard	IFFT
+standard	SineSubtraction
+standard	FFT
+standard	Windowing
+standard	StochasticModelAnal
+standard	ResampleFFT
+standard	CartesianToPolar
+standard	OverlapAdd
+
+---------- standard : SpsModelSynth ----------
+Dependencies:
+standard	StochasticModelSynth
+standard	IFFT
+standard	FFT
+standard	Windowing
+standard	ResampleFFT
+standard	OverlapAdd
+standard	SineModelSynth
+
+---------- standard : StartStopSilence ----------
+Dependencies:
+
+---------- standard : StereoDemuxer ----------
+Dependencies:
+streaming	StereoDemuxer
+
+---------- standard : StereoMuxer ----------
+Dependencies:
+streaming	StereoMuxer
+
+---------- standard : StereoTrimmer ----------
+Dependencies:
+
+---------- standard : StochasticModelAnal ----------
+Dependencies:
+standard	ResampleFFT
+standard	FFT
+standard	Windowing
+standard	IFFT
+
+---------- standard : StochasticModelSynth ----------
+Dependencies:
+standard	ResampleFFT
+standard	FFT
+standard	Windowing
+standard	OverlapAdd
+standard	IFFT
+
+---------- standard : StrongDecay ----------
+Dependencies:
+standard	Centroid
+standard	UnaryOperator
+
+---------- standard : StrongPeak ----------
+Dependencies:
+
+---------- standard : SuperFluxExtractor ----------
+Dependencies:
+standard	NoiseAdder
+standard	Spectrum
+streaming	SuperFluxExtractor
+standard	SuperFluxNovelty
+streaming	SuperFluxPeaks
+streaming	Windowing
+streaming	SuperFluxNovelty
+streaming	FrameCutter
+standard	SuperFluxPeaks
+standard	FFT
+standard	Windowing
+standard	IIR
+standard	MovingAverage
+streaming	Spectrum
+streaming	TriangularBands
+standard	Magnitude
+standard	TriangularBands
+standard	MaxFilter
+
+---------- standard : SuperFluxNovelty ----------
+Dependencies:
+standard	MaxFilter
+
+---------- standard : SuperFluxPeaks ----------
+Dependencies:
+standard	IIR
+standard	MovingAverage
+standard	MaxFilter
+
+---------- standard : TCToTotal ----------
+Dependencies:
+
+---------- standard : TempoScaleBands ----------
+Dependencies:
+
+---------- standard : TempoTap ----------
+Dependencies:
+standard	FFT
+standard	PeakDetection
+standard	AutoCorrelation
+standard	IFFT
+
+---------- standard : TempoTapDegara ----------
+Dependencies:
+standard	AutoCorrelation
+standard	IFFT
+standard	FrameCutter
+standard	FFT
+standard	IIR
+standard	MovingAverage
+
+---------- standard : TempoTapMaxAgreement ----------
+Dependencies:
+
+---------- standard : TempoTapTicks ----------
+Dependencies:
+
+---------- standard : TonalExtractor ----------
+Dependencies:
+standard	NoiseAdder
+standard	PeakDetection
+standard	Key
+standard	SpectralPeaks
+streaming	TonalExtractor
+streaming	ChordsDetection
+streaming	HPCP
+streaming	Windowing
+streaming	FrameCutter
+streaming	SpectralPeaks
+standard	FFT
+standard	Windowing
+standard	Spectrum
+streaming	Key
+streaming	Spectrum
+standard	Magnitude
+streaming	ChordsDescriptors
+standard	HPCP
+standard	ChordsDescriptors
+
+---------- standard : TonicIndianArtMusic ----------
+Dependencies:
+standard	PeakDetection
+standard	Spectrum
+standard	FrameCutter
+standard	FFT
+standard	Windowing
+standard	PitchSalienceFunction
+standard	Magnitude
+standard	SpectralPeaks
+standard	PitchSalienceFunctionPeaks
+
+---------- standard : TriangularBands ----------
+Dependencies:
+
+---------- standard : TriangularBarkBands ----------
+Dependencies:
+
+---------- standard : Trimmer ----------
+Dependencies:
+
+---------- standard : Tristimulus ----------
+Dependencies:
+
+---------- standard : TuningFrequency ----------
+Dependencies:
+
+---------- standard : TuningFrequencyExtractor ----------
+Dependencies:
+standard	NoiseAdder
+standard	PeakDetection
+standard	Spectrum
+standard	TuningFrequency
+streaming	TuningFrequencyExtractor
+streaming	SpectralPeaks
+streaming	Windowing
+streaming	FrameCutter
+standard	FFT
+streaming	TuningFrequency
+standard	Windowing
+streaming	Spectrum
+standard	Magnitude
+standard	SpectralPeaks
+
+---------- standard : UnaryOperator ----------
+Dependencies:
+
+---------- standard : UnaryOperatorStream ----------
+Dependencies:
+
+---------- standard : Variance ----------
+Dependencies:
+
+---------- standard : Vibrato ----------
+Dependencies:
+standard	PeakDetection
+standard	Spectrum
+standard	FrameCutter
+standard	FFT
+standard	Windowing
+standard	Magnitude
+standard	SpectralPeaks
+
+---------- standard : WarpedAutoCorrelation ----------
+Dependencies:
+
+---------- standard : Windowing ----------
+Dependencies:
+
+---------- standard : YamlInput ----------
+Dependencies:
+
+---------- standard : YamlOutput ----------
+Dependencies:
+
+---------- standard : ZeroCrossingRate ----------
+Dependencies:
+
+---------- streaming : AfterMaxToBeforeMaxEnergyRatio ----------
+Dependencies:
+
+---------- streaming : AllPass ----------
+Dependencies:
+standard	AllPass
+standard	IIR
+
+---------- streaming : AudioLoader ----------
+Dependencies:
+
+---------- streaming : AudioOnsetsMarker ----------
+Dependencies:
+
+---------- streaming : AudioWriter ----------
+Dependencies:
+
+---------- streaming : AutoCorrelation ----------
+Dependencies:
+standard	FFT
+standard	AutoCorrelation
+standard	IFFT
+
+---------- streaming : BFCC ----------
+Dependencies:
+standard	TriangularBarkBands
+standard	BFCC
+standard	DCT
+
+---------- streaming : BPF ----------
+Dependencies:
+standard	BPF
+
+---------- streaming : BandPass ----------
+Dependencies:
+standard	BandPass
+standard	IIR
+
+---------- streaming : BandReject ----------
+Dependencies:
+standard	BandReject
+standard	IIR
+
+---------- streaming : BarkBands ----------
+Dependencies:
+standard	BarkBands
+standard	FrequencyBands
+
+---------- streaming : BarkExtractor ----------
+Dependencies:
+standard	NoiseAdder
+standard	Crest
+standard	Spectrum
+standard	Flatness
+streaming	Crest
+streaming	CentralMoments
+standard	FFT
+standard	DistributionShape
+standard	FlatnessDB
+streaming	BarkBands
+streaming	FrameCutter
+streaming	DistributionShape
+standard	CentralMoments
+standard	BarkBands
+standard	Windowing
+standard	GeometricMean
+standard	FrequencyBands
+streaming	FlatnessDB
+streaming	Windowing
+streaming	Spectrum
+standard	Magnitude
+
+---------- streaming : BeatTrackerDegara ----------
+Dependencies:
+standard	NoiseAdder
+streaming	CartesianToPolar
+standard	AutoCorrelation
+standard	TriangularBands
+streaming	TempoTapDegara
+standard	OnsetDetection
+standard	IFFT
+standard	MelBands
+streaming	FFT
+streaming	FrameCutter
+streaming	OnsetDetection
+standard	FrameCutter
+standard	TempoTapDegara
+standard	FFT
+standard	Windowing
+standard	IIR
+standard	MovingAverage
+streaming	Windowing
+standard	CartesianToPolar
+standard	HFC
+standard	Flux
+
+---------- streaming : BeatTrackerMultiFeature ----------
+Dependencies:
+standard	ERBBands
+standard	AutoCorrelation
+standard	OnsetDetection
+standard	Scale
+standard	FFT
+streaming	Scale
+standard	Magnitude
+standard	MovingAverage
+standard	TempoTapMaxAgreement
+standard	NoiseAdder
+streaming	CartesianToPolar
+streaming	TempoTapDegara
+streaming	OnsetDetectionGlobal
+streaming	Windowing
+standard	MelBands
+streaming	FFT
+streaming	OnsetDetection
+standard	TempoTapDegara
+standard	Windowing
+standard	OnsetDetectionGlobal
+standard	CartesianToPolar
+standard	HFC
+standard	Flux
+standard	Spectrum
+standard	IFFT
+streaming	FrameCutter
+standard	FrameCutter
+standard	IIR
+standard	TriangularBands
+
+---------- streaming : Beatogram ----------
+Dependencies:
+standard	Beatogram
+
+---------- streaming : BeatsLoudness ----------
+Dependencies:
+standard	Spectrum
+streaming	Slicer
+streaming	SingleBeatLoudness
+standard	SingleBeatLoudness
+standard	Energy
+standard	FFT
+standard	Windowing
+standard	EnergyBandRatio
+standard	Magnitude
+
+---------- streaming : BinaryOperator ----------
+Dependencies:
+standard	BinaryOperator
+
+---------- streaming : BinaryOperatorStream ----------
+Dependencies:
+standard	BinaryOperatorStream
+
+---------- streaming : BpmHistogram ----------
+Dependencies:
+standard	NoiseAdder
+standard	PeakDetection
+streaming	CartesianToPolar
+streaming	Windowing
+streaming	FFT
+streaming	FrameCutter
+standard	FFT
+standard	Windowing
+standard	CartesianToPolar
+streaming	PeakDetection
+
+---------- streaming : BpmHistogramDescriptors ----------
+Dependencies:
+standard	BpmHistogramDescriptors
+
+---------- streaming : BpmRubato ----------
+Dependencies:
+standard	BpmRubato
+
+---------- streaming : CartesianToPolar ----------
+Dependencies:
+standard	CartesianToPolar
+
+---------- streaming : CentralMoments ----------
+Dependencies:
+standard	CentralMoments
+
+---------- streaming : Centroid ----------
+Dependencies:
+standard	Centroid
+
+---------- streaming : ChordsDescriptors ----------
+Dependencies:
+standard	ChordsDescriptors
+
+---------- streaming : ChordsDetection ----------
+Dependencies:
+standard	Key
+
+---------- streaming : Chromagram ----------
+Dependencies:
+standard	ConstantQ
+standard	Magnitude
+standard	FFTC
+standard	Chromagram
+
+---------- streaming : Clipper ----------
+Dependencies:
+standard	Clipper
+
+---------- streaming : ConstantQ ----------
+Dependencies:
+standard	ConstantQ
+standard	FFTC
+
+---------- streaming : Crest ----------
+Dependencies:
+standard	Crest
+
+---------- streaming : CrossCorrelation ----------
+Dependencies:
+standard	CrossCorrelation
+
+---------- streaming : CubicSpline ----------
+Dependencies:
+standard	CubicSpline
+
+---------- streaming : DCRemoval ----------
+Dependencies:
+standard	DCRemoval
+standard	IIR
+
+---------- streaming : DCT ----------
+Dependencies:
+standard	DCT
+
+---------- streaming : Danceability ----------
+Dependencies:
+standard	Danceability
+
+---------- streaming : Decrease ----------
+Dependencies:
+standard	Decrease
+
+---------- streaming : Derivative ----------
+Dependencies:
+
+---------- streaming : DerivativeSFX ----------
+Dependencies:
+standard	DerivativeSFX
+
+---------- streaming : Dissonance ----------
+Dependencies:
+standard	Dissonance
+
+---------- streaming : DistributionShape ----------
+Dependencies:
+standard	DistributionShape
+
+---------- streaming : Duration ----------
+Dependencies:
+
+---------- streaming : DynamicComplexity ----------
+Dependencies:
+standard	DynamicComplexity
+
+---------- streaming : ERBBands ----------
+Dependencies:
+standard	ERBBands
+
+---------- streaming : EasyLoader ----------
+Dependencies:
+streaming	MonoLoader
+streaming	Resample
+streaming	Trimmer
+standard	Scale
+streaming	Scale
+streaming	AudioLoader
+streaming	MonoMixer
+
+---------- streaming : EffectiveDuration ----------
+Dependencies:
+standard	EffectiveDuration
+
+---------- streaming : Energy ----------
+Dependencies:
+standard	Energy
+
+---------- streaming : EnergyBand ----------
+Dependencies:
+standard	EnergyBand
+
+---------- streaming : EnergyBandRatio ----------
+Dependencies:
+standard	EnergyBandRatio
+
+---------- streaming : Entropy ----------
+Dependencies:
+standard	Entropy
+
+---------- streaming : Envelope ----------
+Dependencies:
+standard	Envelope
+
+---------- streaming : EqloudLoader ----------
+Dependencies:
+streaming	MonoLoader
+streaming	Resample
+streaming	Trimmer
+standard	Scale
+streaming	Scale
+standard	IIR
+streaming	AudioLoader
+standard	EqualLoudness
+streaming	MonoMixer
+streaming	EqualLoudness
+
+---------- streaming : EqualLoudness ----------
+Dependencies:
+standard	EqualLoudness
+standard	IIR
+
+---------- streaming : FFT ----------
+Dependencies:
+standard	FFT
+
+---------- streaming : FFTC ----------
+Dependencies:
+standard	FFTC
+
+---------- streaming : FadeDetection ----------
+Dependencies:
+standard	FadeDetection
+
+---------- streaming : FileOutput ----------
+Dependencies:
+
+---------- streaming : Flatness ----------
+Dependencies:
+standard	GeometricMean
+standard	Flatness
+
+---------- streaming : FlatnessDB ----------
+Dependencies:
+standard	FlatnessDB
+standard	GeometricMean
+standard	Flatness
+
+---------- streaming : FlatnessSFX ----------
+Dependencies:
+standard	FlatnessSFX
+
+---------- streaming : Flux ----------
+Dependencies:
+standard	Flux
+
+---------- streaming : FrameCutter ----------
+Dependencies:
+standard	NoiseAdder
+
+---------- streaming : FrameToReal ----------
+Dependencies:
+standard	FrameToReal
+
+---------- streaming : FrequencyBands ----------
+Dependencies:
+standard	FrequencyBands
+
+---------- streaming : GFCC ----------
+Dependencies:
+standard	ERBBands
+standard	DCT
+standard	GFCC
+
+---------- streaming : GeometricMean ----------
+Dependencies:
+standard	GeometricMean
+
+---------- streaming : HFC ----------
+Dependencies:
+standard	HFC
+
+---------- streaming : HPCP ----------
+Dependencies:
+standard	HPCP
+
+---------- streaming : HarmonicBpm ----------
+Dependencies:
+standard	HarmonicBpm
+
+---------- streaming : HarmonicMask ----------
+Dependencies:
+standard	HarmonicMask
+
+---------- streaming : HarmonicModelAnal ----------
+Dependencies:
+standard	SineModelAnal
+standard	CartesianToPolar
+standard	PeakDetection
+standard	HarmonicModelAnal
+
+---------- streaming : HarmonicPeaks ----------
+Dependencies:
+standard	HarmonicPeaks
+
+---------- streaming : HighPass ----------
+Dependencies:
+standard	HighPass
+standard	IIR
+
+---------- streaming : HighResolutionFeatures ----------
+Dependencies:
+standard	HighResolutionFeatures
+
+---------- streaming : HprModelAnal ----------
+Dependencies:
+standard	PeakDetection
+standard	SineModelAnal
+standard	HprModelAnal
+standard	SineSubtraction
+standard	FFT
+standard	Windowing
+standard	IFFT
+standard	HarmonicModelAnal
+standard	CartesianToPolar
+standard	OverlapAdd
+
+---------- streaming : HpsModelAnal ----------
+Dependencies:
+standard	PeakDetection
+standard	SineModelAnal
+standard	IFFT
+standard	HpsModelAnal
+standard	SineSubtraction
+standard	FFT
+standard	Windowing
+standard	StochasticModelAnal
+standard	HarmonicModelAnal
+standard	ResampleFFT
+standard	CartesianToPolar
+standard	OverlapAdd
+
+---------- streaming : IDCT ----------
+Dependencies:
+standard	IDCT
+
+---------- streaming : IFFT ----------
+Dependencies:
+standard	IFFT
+
+---------- streaming : IIR ----------
+Dependencies:
+standard	IIR
+
+---------- streaming : Inharmonicity ----------
+Dependencies:
+standard	Inharmonicity
+
+---------- streaming : InstantPower ----------
+Dependencies:
+standard	InstantPower
+
+---------- streaming : Key ----------
+Dependencies:
+standard	Key
+
+---------- streaming : KeyExtractor ----------
+Dependencies:
+standard	NoiseAdder
+standard	PeakDetection
+standard	Key
+standard	SpectralPeaks
+streaming	HPCP
+streaming	Windowing
+streaming	FrameCutter
+standard	FFT
+standard	Windowing
+standard	Spectrum
+streaming	Key
+streaming	Spectrum
+standard	Magnitude
+standard	HPCP
+streaming	SpectralPeaks
+
+---------- streaming : LPC ----------
+Dependencies:
+standard	LPC
+standard	FFT
+standard	AutoCorrelation
+standard	IFFT
+
+---------- streaming : Larm ----------
+Dependencies:
+standard	Envelope
+standard	Larm
+standard	GeometricMean
+standard	PowerMean
+
+---------- streaming : Leq ----------
+Dependencies:
+
+---------- streaming : LevelExtractor ----------
+Dependencies:
+standard	NoiseAdder
+streaming	FrameCutter
+streaming	Loudness
+standard	Loudness
+
+---------- streaming : LogAttackTime ----------
+Dependencies:
+standard	LogAttackTime
+
+---------- streaming : LoopBpmConfidence ----------
+Dependencies:
+standard	Envelope
+standard	LoopBpmConfidence
+
+---------- streaming : LoopBpmEstimator ----------
+Dependencies:
+standard	NoiseAdder
+standard	AutoCorrelation
+standard	FFT
+streaming	AutoCorrelation
+standard	Magnitude
+standard	UnaryOperator
+standard	PercivalEvaluatePulseTrains
+standard	PercivalBpmEstimator
+streaming	PercivalEvaluatePulseTrains
+standard	LoopBpmConfidence
+streaming	PercivalBpmEstimator
+streaming	Flux
+streaming	PercivalEnhanceHarmonics
+standard	LoopBpmEstimator
+standard	Envelope
+streaming	Windowing
+standard	Windowing
+standard	PercivalEnhanceHarmonics
+standard	Flux
+standard	PeakDetection
+standard	Spectrum
+streaming	IIR
+standard	IFFT
+streaming	UnaryOperator
+streaming	FrameCutter
+standard	IIR
+streaming	Spectrum
+streaming	PeakDetection
+
+---------- streaming : Loudness ----------
+Dependencies:
+standard	Loudness
+
+---------- streaming : LoudnessEBUR128 ----------
+Dependencies:
+standard	NoiseAdder
+streaming	StereoDemuxer
+streaming	LoudnessEBUR128Filter
+streaming	UnaryOperatorStream
+streaming	IIR
+streaming	BinaryOperatorStream
+standard	Mean
+streaming	FrameCutter
+standard	BinaryOperatorStream
+standard	UnaryOperatorStream
+standard	IIR
+streaming	Mean
+
+---------- streaming : LoudnessEBUR128Filter ----------
+Dependencies:
+streaming	StereoDemuxer
+streaming	UnaryOperatorStream
+streaming	IIR
+streaming	BinaryOperatorStream
+standard	BinaryOperatorStream
+standard	UnaryOperatorStream
+standard	IIR
+
+---------- streaming : LoudnessVickers ----------
+Dependencies:
+standard	LoudnessVickers
+standard	IIR
+
+---------- streaming : LowLevelSpectralEqloudExtractor ----------
+Dependencies:
+streaming	SpectralPeaks
+standard	UnaryOperator
+standard	DistributionShape
+standard	Dissonance
+streaming	Centroid
+standard	FFT
+streaming	UnaryOperator
+streaming	Dissonance
+standard	Magnitude
+standard	SpectralPeaks
+standard	SpectralContrast
+standard	NoiseAdder
+standard	Centroid
+streaming	Windowing
+streaming	DistributionShape
+standard	Windowing
+streaming	SpectralContrast
+standard	PeakDetection
+standard	Spectrum
+streaming	CentralMoments
+streaming	FrameCutter
+standard	CentralMoments
+streaming	Spectrum
+
+---------- streaming : LowLevelSpectralExtractor ----------
+Dependencies:
+streaming	Energy
+streaming	EnergyBand
+standard	AutoCorrelation
+streaming	SpectralPeaks
+standard	DistributionShape
+streaming	Tristimulus
+streaming	RMS
+standard	FFT
+streaming	UnaryOperator
+standard	FrequencyBands
+streaming	Decrease
+streaming	PitchSalience
+standard	Magnitude
+standard	HarmonicPeaks
+standard	RMS
+standard	SpectralPeaks
+streaming	Crest
+standard	BarkBands
+standard	OddToEvenHarmonicEnergyRatio
+streaming	OddToEvenHarmonicEnergyRatio
+streaming	Inharmonicity
+standard	Energy
+standard	Inharmonicity
+standard	Crest
+standard	EnergyBand
+standard	ZeroCrossingRate
+streaming	HarmonicPeaks
+streaming	Flux
+standard	DCT
+standard	NoiseAdder
+streaming	StrongPeak
+standard	Flatness
+standard	PitchSalience
+standard	Tristimulus
+streaming	Windowing
+standard	MelBands
+standard	RollOff
+streaming	DistributionShape
+streaming	RollOff
+standard	Spectrum
+streaming	ZeroCrossingRate
+streaming	Spectrum
+standard	CartesianToPolar
+streaming	FlatnessDB
+standard	StrongPeak
+standard	HFC
+standard	Flux
+streaming	SpectralComplexity
+standard	PeakDetection
+standard	PitchYinFFT
+streaming	CentralMoments
+streaming	MFCC
+standard	Decrease
+standard	IFFT
+streaming	BarkBands
+streaming	FrameCutter
+standard	UnaryOperator
+standard	CentralMoments
+standard	FlatnessDB
+standard	Windowing
+standard	GeometricMean
+standard	MFCC
+standard	SpectralComplexity
+streaming	HFC
+streaming	PitchYinFFT
+streaming	SilenceRate
+standard	TriangularBands
+
+---------- streaming : LowPass ----------
+Dependencies:
+standard	LowPass
+standard	IIR
+
+---------- streaming : MFCC ----------
+Dependencies:
+standard	MelBands
+standard	TriangularBands
+standard	MFCC
+standard	DCT
+
+---------- streaming : Magnitude ----------
+Dependencies:
+standard	Magnitude
+
+---------- streaming : MaxFilter ----------
+Dependencies:
+standard	MaxFilter
+
+---------- streaming : MaxMagFreq ----------
+Dependencies:
+standard	MaxMagFreq
+
+---------- streaming : MaxToTotal ----------
+Dependencies:
+
+---------- streaming : Mean ----------
+Dependencies:
+standard	Mean
+
+---------- streaming : Median ----------
+Dependencies:
+standard	Median
+
+---------- streaming : MelBands ----------
+Dependencies:
+standard	MelBands
+standard	TriangularBands
+
+---------- streaming : MetadataReader ----------
+Dependencies:
+
+---------- streaming : Meter ----------
+Dependencies:
+standard	Meter
+
+---------- streaming : MinToTotal ----------
+Dependencies:
+
+---------- streaming : MonoLoader ----------
+Dependencies:
+streaming	MonoMixer
+streaming	Resample
+streaming	AudioLoader
+
+---------- streaming : MonoMixer ----------
+Dependencies:
+
+---------- streaming : MonoWriter ----------
+Dependencies:
+
+---------- streaming : MovingAverage ----------
+Dependencies:
+standard	IIR
+standard	MovingAverage
+
+---------- streaming : MultiPitchMelodia ----------
+Dependencies:
+standard	NoiseAdder
+standard	PeakDetection
+standard	Spectrum
+streaming	SpectralPeaks
+streaming	Windowing
+standard	PitchContoursMelody
+streaming	FrameCutter
+standard	PitchContours
+standard	FrameCutter
+standard	FFT
+standard	Windowing
+standard	IIR
+standard	MovingAverage
+standard	PitchSalienceFunction
+streaming	PitchSalienceFunction
+standard	Magnitude
+streaming	PitchSalienceFunctionPeaks
+standard	SpectralPeaks
+standard	PitchSalienceFunctionPeaks
+streaming	Spectrum
+
+---------- streaming : Multiplexer ----------
+Dependencies:
+
+---------- streaming : NoiseAdder ----------
+Dependencies:
+standard	NoiseAdder
+
+---------- streaming : NoveltyCurve ----------
+Dependencies:
+standard	NoveltyCurve
+
+---------- streaming : OddToEvenHarmonicEnergyRatio ----------
+Dependencies:
+standard	OddToEvenHarmonicEnergyRatio
+
+---------- streaming : OnsetDetection ----------
+Dependencies:
+standard	OnsetDetection
+standard	MelBands
+standard	TriangularBands
+standard	HFC
+standard	Flux
+
+---------- streaming : OnsetDetectionGlobal ----------
+Dependencies:
+standard	ERBBands
+standard	Spectrum
+standard	AutoCorrelation
+standard	IFFT
+standard	FrameCutter
+standard	FFT
+standard	Windowing
+standard	IIR
+standard	MovingAverage
+standard	Magnitude
+standard	CartesianToPolar
+standard	OnsetDetectionGlobal
+
+---------- streaming : OnsetRate ----------
+Dependencies:
+standard	NoiseAdder
+streaming	CartesianToPolar
+standard	TriangularBands
+standard	OnsetDetection
+streaming	Windowing
+standard	MelBands
+streaming	FFT
+streaming	OnsetDetection
+streaming	FrameCutter
+standard	Onsets
+standard	FFT
+standard	Windowing
+standard	IIR
+standard	MovingAverage
+standard	CartesianToPolar
+standard	HFC
+standard	Flux
+
+---------- streaming : Onsets ----------
+Dependencies:
+standard	Onsets
+standard	IIR
+standard	MovingAverage
+
+---------- streaming : OverlapAdd ----------
+Dependencies:
+
+---------- streaming : Panning ----------
+Dependencies:
+standard	IFFT
+standard	Panning
+
+---------- streaming : PeakDetection ----------
+Dependencies:
+standard	PeakDetection
+
+---------- streaming : PercivalBpmEstimator ----------
+Dependencies:
+standard	AutoCorrelation
+standard	FFT
+streaming	UnaryOperator
+standard	Magnitude
+standard	UnaryOperator
+streaming	PercivalEvaluatePulseTrains
+standard	PercivalEvaluatePulseTrains
+streaming	Flux
+streaming	PercivalEnhanceHarmonics
+standard	NoiseAdder
+streaming	Windowing
+standard	Windowing
+standard	PercivalEnhanceHarmonics
+standard	Flux
+standard	PeakDetection
+standard	Spectrum
+streaming	IIR
+standard	IFFT
+streaming	FrameCutter
+standard	IIR
+streaming	AutoCorrelation
+streaming	Spectrum
+streaming	PeakDetection
+
+---------- streaming : PercivalEnhanceHarmonics ----------
+Dependencies:
+standard	PercivalEnhanceHarmonics
+
+---------- streaming : PercivalEvaluatePulseTrains ----------
+Dependencies:
+standard	PercivalEvaluatePulseTrains
+
+---------- streaming : PitchContours ----------
+Dependencies:
+standard	PitchContours
+
+---------- streaming : PitchContoursMelody ----------
+Dependencies:
+standard	PeakDetection
+standard	Spectrum
+standard	PitchContoursMelody
+standard	FrameCutter
+standard	FFT
+standard	Windowing
+standard	IIR
+standard	MovingAverage
+standard	Magnitude
+standard	SpectralPeaks
+
+---------- streaming : PitchContoursMonoMelody ----------
+Dependencies:
+standard	IIR
+standard	MovingAverage
+standard	PitchContoursMonoMelody
+
+---------- streaming : PitchContoursMultiMelody ----------
+Dependencies:
+standard	PitchContoursMultiMelody
+standard	IIR
+standard	MovingAverage
+
+---------- streaming : PitchFilter ----------
+Dependencies:
+standard	PitchFilter
+
+---------- streaming : PitchMelodia ----------
+Dependencies:
+standard	NoiseAdder
+standard	PeakDetection
+standard	Spectrum
+streaming	SpectralPeaks
+streaming	Windowing
+streaming	FrameCutter
+standard	PitchContours
+standard	PitchContoursMonoMelody
+standard	FFT
+standard	Windowing
+standard	IIR
+standard	MovingAverage
+standard	PitchSalienceFunction
+streaming	PitchSalienceFunction
+standard	Magnitude
+streaming	PitchSalienceFunctionPeaks
+standard	SpectralPeaks
+standard	PitchSalienceFunctionPeaks
+streaming	Spectrum
+
+---------- streaming : PitchSalience ----------
+Dependencies:
+standard	FFT
+standard	AutoCorrelation
+standard	PitchSalience
+standard	IFFT
+
+---------- streaming : PitchSalienceFunction ----------
+Dependencies:
+standard	PitchSalienceFunction
+
+---------- streaming : PitchSalienceFunctionPeaks ----------
+Dependencies:
+standard	PeakDetection
+standard	PitchSalienceFunctionPeaks
+
+---------- streaming : PitchYin ----------
+Dependencies:
+standard	PeakDetection
+standard	PitchYin
+
+---------- streaming : PitchYinFFT ----------
+Dependencies:
+standard	CartesianToPolar
+standard	PitchYinFFT
+standard	PeakDetection
+standard	FFT
+
+---------- streaming : PolarToCartesian ----------
+Dependencies:
+standard	PolarToCartesian
+
+---------- streaming : PoolAggregator ----------
+Dependencies:
+standard	PoolAggregator
+
+---------- streaming : PowerMean ----------
+Dependencies:
+standard	GeometricMean
+standard	PowerMean
+
+---------- streaming : PowerSpectrum ----------
+Dependencies:
+standard	FFT
+standard	PowerSpectrum
+
+---------- streaming : PredominantPitchMelodia ----------
+Dependencies:
+standard	NoiseAdder
+standard	PeakDetection
+standard	Spectrum
+streaming	SpectralPeaks
+streaming	Windowing
+standard	PitchContoursMelody
+streaming	FrameCutter
+standard	PitchContours
+standard	FrameCutter
+standard	FFT
+standard	Windowing
+standard	IIR
+standard	MovingAverage
+standard	PitchSalienceFunction
+streaming	PitchSalienceFunction
+standard	Magnitude
+streaming	PitchSalienceFunctionPeaks
+standard	SpectralPeaks
+standard	PitchSalienceFunctionPeaks
+streaming	Spectrum
+
+---------- streaming : RMS ----------
+Dependencies:
+standard	RMS
+
+---------- streaming : RawMoments ----------
+Dependencies:
+standard	RawMoments
+
+---------- streaming : RealAccumulator ----------
+Dependencies:
+
+---------- streaming : ReplayGain ----------
+Dependencies:
+standard	NoiseAdder
+standard	InstantPower
+streaming	FrameCutter
+streaming	InstantPower
+standard	IIR
+standard	EqualLoudness
+streaming	EqualLoudness
+
+---------- streaming : Resample ----------
+Dependencies:
+
+---------- streaming : ResampleFFT ----------
+Dependencies:
+standard	ResampleFFT
+standard	FFT
+standard	IFFT
+
+---------- streaming : RhythmDescriptors ----------
+Dependencies:
+standard	ERBBands
+standard	AutoCorrelation
+standard	OnsetDetection
+standard	Scale
+standard	FFT
+streaming	Scale
+standard	Magnitude
+streaming	BeatTrackerMultiFeature
+standard	MovingAverage
+standard	TempoTapMaxAgreement
+standard	NoiseAdder
+streaming	CartesianToPolar
+streaming	TempoTapDegara
+streaming	OnsetDetectionGlobal
+streaming	Windowing
+standard	MelBands
+streaming	FFT
+streaming	RhythmExtractor2013
+streaming	OnsetDetection
+standard	TempoTapDegara
+standard	Windowing
+standard	OnsetDetectionGlobal
+standard	CartesianToPolar
+streaming	BpmHistogramDescriptors
+standard	HFC
+standard	Flux
+standard	Spectrum
+standard	IFFT
+streaming	FrameCutter
+standard	FrameCutter
+standard	IIR
+standard	BpmHistogramDescriptors
+standard	TriangularBands
+
+---------- streaming : RhythmExtractor ----------
+Dependencies:
+standard	AutoCorrelation
+streaming	TempoTap
+standard	OnsetDetection
+streaming	StartStopSilence
+standard	TempoTap
+standard	FFT
+standard	FrequencyBands
+streaming	Derivative
+standard	Magnitude
+streaming	TempoTapTicks
+standard	TempoTapTicks
+standard	NoiseAdder
+streaming	FrequencyBands
+streaming	CartesianToPolar
+streaming	Multiplexer
+streaming	Windowing
+standard	MelBands
+streaming	FFT
+streaming	OnsetDetection
+standard	Windowing
+standard	CartesianToPolar
+standard	HFC
+standard	Flux
+standard	PeakDetection
+standard	Spectrum
+standard	TempoScaleBands
+standard	IFFT
+streaming	Clipper
+standard	Clipper
+streaming	FrameCutter
+streaming	TempoScaleBands
+streaming	Spectrum
+standard	TriangularBands
+
+---------- streaming : RhythmExtractor2013 ----------
+Dependencies:
+standard	ERBBands
+standard	AutoCorrelation
+standard	OnsetDetection
+standard	Scale
+standard	FFT
+streaming	Scale
+standard	Magnitude
+streaming	BeatTrackerMultiFeature
+standard	MovingAverage
+standard	TempoTapMaxAgreement
+standard	NoiseAdder
+streaming	CartesianToPolar
+streaming	TempoTapDegara
+streaming	OnsetDetectionGlobal
+streaming	Windowing
+standard	MelBands
+streaming	FFT
+streaming	OnsetDetection
+standard	TempoTapDegara
+standard	Windowing
+standard	OnsetDetectionGlobal
+standard	CartesianToPolar
+standard	HFC
+standard	Flux
+standard	Spectrum
+standard	IFFT
+streaming	FrameCutter
+standard	FrameCutter
+standard	IIR
+standard	TriangularBands
+
+---------- streaming : RhythmTransform ----------
+Dependencies:
+standard	FFT
+standard	Windowing
+standard	RhythmTransform
+standard	Spectrum
+standard	Magnitude
+
+---------- streaming : RollOff ----------
+Dependencies:
+standard	RollOff
+
+---------- streaming : SBic ----------
+Dependencies:
+standard	SBic
+
+---------- streaming : Scale ----------
+Dependencies:
+standard	Scale
+
+---------- streaming : SilenceRate ----------
+Dependencies:
+
+---------- streaming : SineModelAnal ----------
+Dependencies:
+standard	CartesianToPolar
+standard	SineModelAnal
+standard	PeakDetection
+
+---------- streaming : SineModelSynth ----------
+Dependencies:
+standard	SineModelSynth
+
+---------- streaming : SineSubtraction ----------
+Dependencies:
+standard	SineSubtraction
+standard	FFT
+standard	Windowing
+standard	OverlapAdd
+standard	IFFT
+
+---------- streaming : SingleBeatLoudness ----------
+Dependencies:
+standard	Spectrum
+standard	SingleBeatLoudness
+standard	Energy
+standard	FFT
+standard	Windowing
+standard	EnergyBandRatio
+standard	Magnitude
+
+---------- streaming : SingleGaussian ----------
+Dependencies:
+standard	SingleGaussian
+
+---------- streaming : Slicer ----------
+Dependencies:
+
+---------- streaming : SpectralCentroidTime ----------
+Dependencies:
+standard	SpectralCentroidTime
+
+---------- streaming : SpectralComplexity ----------
+Dependencies:
+standard	PeakDetection
+standard	SpectralPeaks
+standard	SpectralComplexity
+
+---------- streaming : SpectralContrast ----------
+Dependencies:
+standard	SpectralContrast
+
+---------- streaming : SpectralPeaks ----------
+Dependencies:
+standard	PeakDetection
+standard	SpectralPeaks
+
+---------- streaming : SpectralWhitening ----------
+Dependencies:
+standard	SpectralWhitening
+
+---------- streaming : Spectrum ----------
+Dependencies:
+standard	FFT
+standard	Spectrum
+standard	Magnitude
+
+---------- streaming : SpectrumCQ ----------
+Dependencies:
+standard	ConstantQ
+standard	Magnitude
+standard	FFTC
+standard	SpectrumCQ
+
+---------- streaming : SpectrumToCent ----------
+Dependencies:
+standard	SpectrumToCent
+standard	TriangularBands
+
+---------- streaming : Spline ----------
+Dependencies:
+standard	Spline
+
+---------- streaming : SprModelAnal ----------
+Dependencies:
+standard	PeakDetection
+standard	SineModelAnal
+standard	IFFT
+standard	SprModelAnal
+standard	SineSubtraction
+standard	FFT
+standard	Windowing
+standard	CartesianToPolar
+standard	OverlapAdd
+
+---------- streaming : SprModelSynth ----------
+Dependencies:
+standard	IFFT
+standard	OverlapAdd
+standard	SprModelSynth
+standard	SineModelSynth
+
+---------- streaming : SpsModelAnal ----------
+Dependencies:
+standard	PeakDetection
+standard	SineModelAnal
+standard	IFFT
+standard	SineSubtraction
+standard	FFT
+standard	Windowing
+standard	StochasticModelAnal
+standard	ResampleFFT
+standard	CartesianToPolar
+standard	SpsModelAnal
+standard	OverlapAdd
+
+---------- streaming : SpsModelSynth ----------
+Dependencies:
+standard	StochasticModelSynth
+standard	IFFT
+standard	FFT
+standard	Windowing
+standard	ResampleFFT
+standard	SpsModelSynth
+standard	OverlapAdd
+standard	SineModelSynth
+
+---------- streaming : StartStopSilence ----------
+Dependencies:
+
+---------- streaming : StereoDemuxer ----------
+Dependencies:
+
+---------- streaming : StereoMuxer ----------
+Dependencies:
+
+---------- streaming : StereoTrimmer ----------
+Dependencies:
+
+---------- streaming : StochasticModelAnal ----------
+Dependencies:
+standard	ResampleFFT
+standard	FFT
+standard	Windowing
+standard	StochasticModelAnal
+standard	IFFT
+
+---------- streaming : StochasticModelSynth ----------
+Dependencies:
+standard	StochasticModelSynth
+standard	IFFT
+standard	FFT
+standard	Windowing
+standard	ResampleFFT
+standard	OverlapAdd
+
+---------- streaming : StrongDecay ----------
+Dependencies:
+
+---------- streaming : StrongPeak ----------
+Dependencies:
+standard	StrongPeak
+
+---------- streaming : SuperFluxExtractor ----------
+Dependencies:
+standard	NoiseAdder
+standard	Spectrum
+standard	SuperFluxNovelty
+streaming	SuperFluxPeaks
+streaming	Windowing
+streaming	SuperFluxNovelty
+streaming	FrameCutter
+standard	SuperFluxPeaks
+standard	FFT
+standard	Windowing
+standard	IIR
+standard	MovingAverage
+streaming	Spectrum
+streaming	TriangularBands
+standard	Magnitude
+standard	TriangularBands
+standard	MaxFilter
+
+---------- streaming : SuperFluxNovelty ----------
+Dependencies:
+standard	SuperFluxNovelty
+standard	MaxFilter
+
+---------- streaming : SuperFluxPeaks ----------
+Dependencies:
+standard	SuperFluxPeaks
+standard	IIR
+standard	MovingAverage
+standard	MaxFilter
+
+---------- streaming : TCToTotal ----------
+Dependencies:
+
+---------- streaming : TempoScaleBands ----------
+Dependencies:
+standard	TempoScaleBands
+
+---------- streaming : TempoTap ----------
+Dependencies:
+standard	TempoTap
+standard	FFT
+standard	PeakDetection
+standard	AutoCorrelation
+standard	IFFT
+
+---------- streaming : TempoTapDegara ----------
+Dependencies:
+standard	AutoCorrelation
+standard	IFFT
+standard	FrameCutter
+standard	TempoTapDegara
+standard	FFT
+standard	IIR
+standard	MovingAverage
+
+---------- streaming : TempoTapMaxAgreement ----------
+Dependencies:
+standard	TempoTapMaxAgreement
+
+---------- streaming : TempoTapTicks ----------
+Dependencies:
+standard	TempoTapTicks
+
+---------- streaming : TonalExtractor ----------
+Dependencies:
+standard	NoiseAdder
+standard	PeakDetection
+standard	Key
+standard	SpectralPeaks
+streaming	ChordsDetection
+streaming	HPCP
+streaming	Windowing
+streaming	FrameCutter
+streaming	SpectralPeaks
+standard	FFT
+standard	Windowing
+standard	Spectrum
+streaming	Key
+streaming	Spectrum
+standard	Magnitude
+streaming	ChordsDescriptors
+standard	HPCP
+standard	ChordsDescriptors
+
+---------- streaming : TriangularBands ----------
+Dependencies:
+standard	TriangularBands
+
+---------- streaming : TriangularBarkBands ----------
+Dependencies:
+standard	TriangularBarkBands
+
+---------- streaming : Trimmer ----------
+Dependencies:
+
+---------- streaming : Tristimulus ----------
+Dependencies:
+standard	Tristimulus
+
+---------- streaming : TuningFrequency ----------
+Dependencies:
+standard	TuningFrequency
+
+---------- streaming : TuningFrequencyExtractor ----------
+Dependencies:
+standard	NoiseAdder
+standard	PeakDetection
+standard	Spectrum
+standard	TuningFrequency
+streaming	SpectralPeaks
+streaming	Windowing
+streaming	FrameCutter
+standard	FFT
+streaming	TuningFrequency
+standard	Windowing
+streaming	Spectrum
+standard	Magnitude
+standard	SpectralPeaks
+
+---------- streaming : UnaryOperator ----------
+Dependencies:
+standard	UnaryOperator
+
+---------- streaming : UnaryOperatorStream ----------
+Dependencies:
+standard	UnaryOperatorStream
+
+---------- streaming : Variance ----------
+Dependencies:
+standard	Variance
+
+---------- streaming : VectorRealAccumulator ----------
+Dependencies:
+
+---------- streaming : Vibrato ----------
+Dependencies:
+standard	PeakDetection
+standard	Spectrum
+standard	FrameCutter
+standard	FFT
+standard	Windowing
+standard	Vibrato
+standard	Magnitude
+standard	SpectralPeaks
+
+---------- streaming : WarpedAutoCorrelation ----------
+Dependencies:
+standard	WarpedAutoCorrelation
+
+---------- streaming : Windowing ----------
+Dependencies:
+standard	Windowing
+
+---------- streaming : ZeroCrossingRate ----------
+Dependencies:
+standard	ZeroCrossingRate
+
+The following algorithms will be required for building Essentia:
+RhythmExtractor2013
+RhythmDescriptors
+TriangularBarkBands
+StereoDemuxer
+BinaryOperator
+HarmonicPeaks
+BpmRubato
+MaxFilter
+StrongPeak
+HprModelAnal
+Centroid
+SpectrumToCent
+SuperFluxNovelty
+Chromagram
+Larm
+HPCP
+Inharmonicity
+InstantPower
+MonoLoader
+TuningFrequencyExtractor
+NoiseAdder
+MonoWriter
+AutoCorrelation
+DCT
+TempoTap
+GeometricMean
+MelBands
+PolarToCartesian
+SpectralPeaks
+PitchContoursMultiMelody
+Trimmer
+BarkBands
+MonoMixer
+ChordsDescriptors
+OnsetDetection
+Variance
+MaxMagFreq
+LPC
+OddToEvenHarmonicEnergyRatio
+PitchSalienceFunctionPeaks
+Slicer
+FFT
+SpectralContrast
+SBic
+SpectralCentroidTime
+StereoMuxer
+SpectralWhitening
+TriangularBands
+DerivativeSFX
+Scale
+LowLevelSpectralExtractor
+Onsets
+SpsModelSynth
+HighPass
+OverlapAdd
+Tristimulus
+HarmonicMask
+EffectiveDuration
+Panning
+LowLevelSpectralEqloudExtractor
+ConstantQ
+StartStopSilence
+SingleBeatLoudness
+AllPass
+PercivalEvaluatePulseTrains
+AudioWriter
+Key
+EqloudLoader
+BandReject
+SpsModelAnal
+EqualLoudness
+Beatogram
+PitchFilter
+WarpedAutoCorrelation
+Vibrato
+Windowing
+BeatTrackerDegara
+LowPass
+OnsetDetectionGlobal
+PoolAggregator
+DCRemoval
+EnergyBandRatio
+Spline
+LoopBpmEstimator
+FlatnessDB
+KeyExtractor
+Flatness
+TempoTapDegara
+BpmHistogram
+Clipper
+PitchContoursMonoMelody
+LoudnessVickers
+GFCC
+PowerMean
+PitchContours
+BeatsLoudness
+BeatTrackerMultiFeature
+EasyLoader
+SpectralComplexity
+HarmonicBpm
+Danceability
+TuningFrequency
+HFC
+Crest
+RMS
+PercivalEnhanceHarmonics
+LoudnessEBUR128
+BPF
+PercivalBpmEstimator
+PitchSalienceFunction
+LogAttackTime
+RhythmExtractor
+IDCT
+BandPass
+SprModelSynth
+FrequencyBands
+EnergyBand
+TempoTapTicks
+BpmHistogramDescriptors
+MovingAverage
+Magnitude
+DistributionShape
+Loudness
+ERBBands
+CentralMoments
+SpectrumCQ
+LevelExtractor
+SuperFluxExtractor
+SprModelAnal
+HarmonicModelAnal
+Decrease
+PeakDetection
+Energy
+FFTC
+Dissonance
+StochasticModelAnal
+Multiplexer
+BinaryOperatorStream
+AudioLoader
+HighResolutionFeatures
+PitchYinFFT
+LoopBpmConfidence
+CartesianToPolar
+ZeroCrossingRate
+Meter
+Derivative
+RollOff
+PitchContoursMelody
+IFFT
+TonalExtractor
+IIR
+Resample
+SuperFluxPeaks
+LoudnessEBUR128Filter
+Envelope
+SineModelAnal
+SilenceRate
+StochasticModelSynth
+PitchSalience
+UnaryOperator
+Entropy
+RhythmTransform
+SineSubtraction
+FlatnessSFX
+HpsModelAnal
+Median
+BFCC
+Flux
+RawMoments
+CrossCorrelation
+FadeDetection
+TempoScaleBands
+SingleGaussian
+SineModelSynth
+DynamicComplexity
+Mean
+FrameCutter
+ResampleFFT
+UnaryOperatorStream
+ChordsDetection
+PitchYin
+MFCC
+NoveltyCurve
+Spectrum
+TempoTapMaxAgreement
+FrameToReal
+PowerSpectrum
+CubicSpline
+

@@ -206,6 +206,7 @@
 #include "standard/cubicspline.h"
 #include "extractor/barkextractor.h"
 #include "standard/constantq.h"
+#include "standard/chromagram.h"
 
 namespace essentia {
 namespace standard {
@@ -413,6 +414,7 @@ ESSENTIA_API void registerAlgorithm() {
     AlgorithmFactory::Registrar<Duration> regDuration;
     AlgorithmFactory::Registrar<CubicSpline> regCubicSpline;
     AlgorithmFactory::Registrar<ConstantQ> regConstantQ;
+    AlgorithmFactory::Registrar<Chromagram> regChromogram;
 }}}
 
 
@@ -620,5 +622,5 @@ ESSENTIA_API void registerAlgorithm() {
     AlgorithmFactory::Registrar<CubicSpline, essentia::standard::CubicSpline> regCubicSpline;
     AlgorithmFactory::Registrar<BarkExtractor> regBarkExtractor;
     AlgorithmFactory::Registrar<ConstantQ, essentia::standard::ConstantQ> regConstantQ;
-
+    AlgorithmFactory::Registrar<Chromagram, essentia::standard::Chromagram> regChromagram;
 }}}

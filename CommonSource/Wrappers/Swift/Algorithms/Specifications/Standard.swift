@@ -88,10 +88,10 @@ public enum Standard: AlgorithmMode {
          SingleGaussian, Variance
 
     /// Tonal
-    case ChordsDescriptors, ChordsDetection, ChordsDetectionBeats, Dissonance, HPCP, HarmonicPeaks,
-         HighResolutionFeatures, Inharmonicity, Key, KeyExtractor, OddToEvenHarmonicEnergyRatio,
-         PitchSalience, SpectrumCQ, TonalExtractor, TonicIndianArtMusic, Tristimulus,
-         TuningFrequency, TuningFrequencyExtractor
+    case ChordsDescriptors, ChordsDetection, ChordsDetectionBeats, Chromagram, Dissonance, HPCP,
+         HarmonicPeaks, HighResolutionFeatures, Inharmonicity, Key, KeyExtractor,
+         OddToEvenHarmonicEnergyRatio, PitchSalience, SpectrumCQ, TonalExtractor,
+         TonicIndianArtMusic, Tristimulus, TuningFrequency, TuningFrequencyExtractor
 
     /// Segmentation
     case SBic
@@ -132,8 +132,8 @@ public enum Standard: AlgorithmMode {
        .PolarToCartesian, .CentralMoments, .Centroid, .Crest, .Decrease, .DistributionShape,
        .Energy, .Entropy, .Flatness, .GeometricMean, .InstantPower, .Mean, .Median,
        .PoolAggregator, .PowerMean, .RMS, .RawMoments, .SingleGaussian, .Variance,
-       .ChordsDescriptors, .ChordsDetection, .ChordsDetectionBeats, .Dissonance, .HPCP,
-       .HarmonicPeaks, .HighResolutionFeatures, .Inharmonicity, .Key, .KeyExtractor,
+       .ChordsDescriptors, .ChordsDetection, .ChordsDetectionBeats, .Chromagram, .Dissonance,
+       .HPCP, .HarmonicPeaks, .HighResolutionFeatures, .Inharmonicity, .Key, .KeyExtractor,
        .OddToEvenHarmonicEnergyRatio, .PitchSalience, .SpectrumCQ, .TonalExtractor,
        .TonicIndianArtMusic, .Tristimulus, .TuningFrequency, .TuningFrequencyExtractor, .SBic
     ]
@@ -329,6 +329,7 @@ public enum Standard: AlgorithmMode {
         case .ChordsDescriptors: return Tonal.ChordsDescriptors.self as! Spec.Type
         case .ChordsDetection: return Tonal.ChordsDetection.self as! Spec.Type
         case .ChordsDetectionBeats: return Tonal.ChordsDetectionBeats.self as! Spec.Type
+        case .Chromagram: return Tonal.Chromagram.self as! Spec.Type
         case .Dissonance: return Tonal.Dissonance.self as! Spec.Type
         case .HPCP: return Tonal.HPCP.self as! Spec.Type
         case .HarmonicPeaks: return Tonal.HarmonicPeaks.self as! Spec.Type
@@ -908,6 +909,9 @@ public enum Standard: AlgorithmMode {
   /// A typealias for `Tonal.ChordsDetectionBeats` so that it can be used without knowing the category.
   public typealias ChordsDetectionBeats = Tonal.ChordsDetectionBeats
 
+  /// A typealias for `Tonal.Chromagram` so that it can be used without knowing the category.
+  public typealias Chromagram = Tonal.Chromagram
+
   /// A typealias for `Tonal.Dissonance` so that it can be used without knowing the category.
   public typealias Dissonance = Tonal.Dissonance
 
@@ -957,4 +961,3 @@ public enum Standard: AlgorithmMode {
   public typealias SBic = Segmentation.SBic
 
 }
-

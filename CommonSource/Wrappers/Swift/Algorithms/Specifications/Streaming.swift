@@ -93,7 +93,7 @@ public enum Streaming: AlgorithmMode {
          Variance
 
     /// Tonal
-    case ChordsDescriptors, ChordsDetection, Dissonance, HPCP, HarmonicPeaks,
+    case ChordsDescriptors, ChordsDetection, Chromagram, Dissonance, HPCP, HarmonicPeaks,
          HighResolutionFeatures, Inharmonicity, Key, KeyExtractor, OddToEvenHarmonicEnergyRatio,
          PitchSalience, SpectrumCQ, TonalExtractor, Tristimulus, TuningFrequency,
          TuningFrequencyExtractor
@@ -135,7 +135,7 @@ public enum Streaming: AlgorithmMode {
        .CartesianToPolar, .Magnitude, .PolarToCartesian, .CentralMoments, .Centroid, .Crest,
        .Decrease, .DistributionShape, .Energy, .Entropy, .Flatness, .GeometricMean, .InstantPower,
        .Mean, .Median, .PowerMean, .RMS, .RawMoments, .SingleGaussian, .Variance,
-       .ChordsDescriptors, .ChordsDetection, .Dissonance, .HPCP, .HarmonicPeaks,
+       .ChordsDescriptors, .ChordsDetection, .Chromagram, .Dissonance, .HPCP, .HarmonicPeaks,
        .HighResolutionFeatures, .Inharmonicity, .Key, .KeyExtractor, .OddToEvenHarmonicEnergyRatio,
        .PitchSalience, .SpectrumCQ, .TonalExtractor, .Tristimulus, .TuningFrequency,
        .TuningFrequencyExtractor, .SBic
@@ -326,6 +326,7 @@ public enum Streaming: AlgorithmMode {
         case .Variance: return Statistics.Variance.self as! Spec.Type
         case .ChordsDescriptors: return Tonal.ChordsDescriptors.self as! Spec.Type
         case .ChordsDetection: return Tonal.ChordsDetection.self as! Spec.Type
+        case .Chromagram: return Tonal.Chromagram.self as! Spec.Type
         case .Dissonance: return Tonal.Dissonance.self as! Spec.Type
         case .HPCP: return Tonal.HPCP.self as! Spec.Type
         case .HarmonicPeaks: return Tonal.HarmonicPeaks.self as! Spec.Type
@@ -886,6 +887,9 @@ public enum Streaming: AlgorithmMode {
   /// A typealias for `Tonal.ChordsDetection` so that it can be used without knowing the category.
   public typealias ChordsDetection = Tonal.ChordsDetection
 
+  /// A typealias for `Tonal.Chromagram` so that it can be used without knowing the category.
+  public typealias Chromagram = Tonal.Chromagram
+
   /// A typealias for `Tonal.Dissonance` so that it can be used without knowing the category.
   public typealias Dissonance = Tonal.Dissonance
 
@@ -932,4 +936,3 @@ public enum Streaming: AlgorithmMode {
   public typealias SBic = Segmentation.SBic
 
 }
-
