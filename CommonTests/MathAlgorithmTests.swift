@@ -20,29 +20,43 @@ class MathAlgorithmTests: XCTestCase {
 
   /// Tests the functionality of the Magnitude algorithm. Values taken from `test_magnitude.py`.
   func testMagnitude() {
-    //TODO: Implement the  function
-    XCTFail("\(#function) not yet implemented.")
 
     /*
-    def testZero(self):
-        inputc = numpy.array([ complex() ] * 4, dtype='c8')
-
-        self.assertEqualVector(Magnitude()(inputc), zeros(4))
+     Test with all-zero input.
      */
+
+    let magnitude1 = StandardAlgorithm<Standard.Magnitude>()
+    magnitude1[complexRealVecInput: .complex] = [DSPComplex()] * 4
+    magnitude1.compute()
+
+    XCTAssertEqual(magnitude1[realVecOutput: .magnitude], [0.0] * 4)
 
     /*
-    def testEmpty(self):
-        self.assertEqualVector(Magnitude()(numpy.array([],dtype='c8')), [])
+     Test with empty input.
      */
+
+    let magnitude2 = StandardAlgorithm<Standard.Magnitude>()
+    magnitude2[complexRealVecInput: .complex] = []
+    magnitude2.compute()
+
+    XCTAssert(magnitude2[realVecOutput: .magnitude].isEmpty)
+
 
     /*
-    def testRegression(self):
-        inputc = [ (1, -5), (2, -6), (-3, 7), (-4, 8) ]
-        inputc = numpy.array([ complex(*c) for c in inputc ], dtype='c8')
-        expected = array([ abs(c) for c in inputc ])
-
-        self.assertAlmostEqualVector(Magnitude()(inputc), expected)
+     Test for regression.
      */
+
+    let magnitude3 = StandardAlgorithm<Standard.Magnitude>()
+    magnitude3[complexRealVecInput: .complex] = [
+      DSPComplex(real: 1, imag: -5),
+      DSPComplex(real: 2, imag: -6),
+      DSPComplex(real: -3, imag: 7),
+      DSPComplex(real: -4, imag: 8)
+    ]
+    magnitude3.compute()
+
+    XCTAssertEqual(magnitude3[realVecOutput: .magnitude],
+                   [sqrtf(26), sqrtf(40), sqrtf(58), sqrtf(80)])
 
 
   }
@@ -50,62 +64,72 @@ class MathAlgorithmTests: XCTestCase {
   /// Tests the functionality of the CartesianToPolar algorithm. Values taken from
   /// `test_cartesiantopolar.py`.
   func testCartesionToPolar() {
-    //TODO: Implement the  function
-    XCTFail("\(#function) not yet implemented.")
 
     /*
-    def testZero(self):
-        inputc = numpy.array([ complex() ] * 4, dtype='c8')
-
-        mag, phase = CartesianToPolar()(inputc)
-        self.assertEqualVector(mag, zeros(4))
-        self.assertEqualVector(phase, zeros(4))
+     Test with all-zero input.
      */
-    
-    /*
-    def testRegression(self):
-        inputc = [ (1, -5), (2, -6), (-3, 7), (-4, 8) ]
-        inputc = numpy.array([ complex(*c) for c in inputc ], dtype='c8')
 
-        expectedMag = [ 5.0990, 6.3246, 7.6158, 8.9443 ]
-        expectedPhase = [ -1.3734, -1.2490, 1.9757, 2.0344 ]
+    let cartesianToPolar1 = StandardAlgorithm<Standard.CartesianToPolar>()
+    cartesianToPolar1[complexRealVecInput: .complex] = [DSPComplex()] * 4
+    cartesianToPolar1.compute()
 
-        c2p = CartesianToPolar()
-        self.assertAlmostEqualVector(c2p(inputc)[0], expectedMag, 1e-4)
-        self.assertAlmostEqualVector(c2p(inputc)[1], expectedPhase, 1e-4)
-     */
+    XCTAssertEqual(cartesianToPolar1[realVecOutput: .magnitude], [0.0] * 4)
+    XCTAssertEqual(cartesianToPolar1[realVecOutput: .phase], [0.0] * 4)
 
     /*
-    def testCircle(self):
-        # Tests a few points, including one at phase=pi, separately and then all together at the same time
-        c2p = CartesianToPolar()
-
-        circle = { (1, 0): (1, 0),
-                   (sqrt(2)/2, sqrt(2)/2): (1, pi/4),
-                   (1, 1): (sqrt(2), pi/4),
-                   (0, 1): (1, pi/2),
-                   (-1, 0): (1, pi),
-                   (0, -1): (1, -pi/2)
-                   }
-
-        for c, p in circle.items():
-            mag, phase = c2p(numpy.array([complex(*c)], dtype='c8'))
-
-            self.assertAlmostEqualVector(mag, [ p[0] ])
-            self.assertAlmostEqualVector(phase, [ p[1] ])
-
-        circleCart = circle.keys()
-        circlePolar = [ circle[key] for key in circleCart ]
-
-        circleCart = numpy.array([ complex(*c) for c in circleCart ], dtype='c8')
-        circleMag = [ c[0] for c in circlePolar ]
-        circlePhase = [ c[1] for c in circlePolar ]
-
-        cmag, cphase = c2p(circleCart)
-
-        self.assertAlmostEqualVector(cmag, circleMag, 1e-6)
-        self.assertAlmostEqualVector(cphase, circlePhase, 1e-6)
+     Test for regression.
      */
+
+    let cartesianToPolar2 = StandardAlgorithm<Standard.CartesianToPolar>()
+    cartesianToPolar2[complexRealVecInput: .complex] = [
+      DSPComplex(real: 1, imag: -5),
+      DSPComplex(real: 2, imag: -6),
+      DSPComplex(real: -3, imag: 7),
+      DSPComplex(real: -4, imag: 8)
+    ]
+    cartesianToPolar2.compute()
+
+    XCTAssertEqual(cartesianToPolar2[realVecOutput: .magnitude],
+                   [5.0990, 6.3246, 7.6158, 8.9443],
+                   accuracy: 1e-4)
+    XCTAssertEqual(cartesianToPolar2[realVecOutput: .phase],
+                   [-1.3734, -1.2490, 1.9757, 2.0344],
+                   accuracy: 1e-4)
+
+    let circle: [(DSPComplex, magnitude: Float, phase: Float)] = [
+      (DSPComplex(real: 1, imag: 0), magnitude: 1, phase: 0),
+      (DSPComplex(real: sqrtf(2) / 2, imag: sqrtf(2) / 2), magnitude: 1, phase: Float.pi / 4),
+      (DSPComplex(real: 1, imag: 1), magnitude: sqrtf(2), phase: Float.pi / 4),
+      (DSPComplex(real: 0, imag: 1), magnitude: 1, phase: Float.pi / 2),
+      (DSPComplex(real: -1, imag: 0), magnitude: 1, phase: Float.pi),
+      (DSPComplex(real: 0, imag: -1), magnitude: 1, phase: -Float.pi / 2)
+    ]
+
+    /*
+     Test with some points on a circle.
+     */
+
+    for (input, magnitude, phase) in circle {
+
+      let cartesianToPolar = StandardAlgorithm<Standard.CartesianToPolar>()
+      cartesianToPolar[complexRealVecInput: .complex] = [input]
+      cartesianToPolar.compute()
+
+      XCTAssertEqual(cartesianToPolar[realVecOutput: .magnitude], [magnitude], accuracy: 1e-7)
+      XCTAssertEqual(cartesianToPolar[realVecOutput: .phase], [phase], accuracy: 1e-6)
+
+    }
+
+    let cartesianToPolar3 = StandardAlgorithm<Standard.CartesianToPolar>()
+    cartesianToPolar3[complexRealVecInput: .complex] = circle.map({$0.0})
+    cartesianToPolar3.compute()
+
+    XCTAssertEqual(cartesianToPolar3[realVecOutput: .magnitude],
+                   circle.map({$0.magnitude}),
+                   accuracy: 1e-7)
+    XCTAssertEqual(cartesianToPolar3[realVecOutput: .phase],
+                   circle.map({$0.phase}),
+                   accuracy: 1e-6)
 
   }
 

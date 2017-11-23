@@ -1954,56 +1954,74 @@ class StandardAlgorithmTests: XCTestCase {
   /// Tests the functionality of the AutoCorrelation algorithm. Values taken from
   /// `test_autocorrelation.py`.
   func testAutoCorrelation() {
-    //TODO: Implement the  function
-    XCTFail("\(#function) not yet implemented.")
 
     /*
-    def testRegression(self):
-        inputv = readVector(join(testdir, 'input_pow2.txt'))
-        expected = readVector(join(testdir, 'output.txt'))
-
-        output = AutoCorrelation()(inputv)
-
-        self.assertAlmostEqualVector(expected, output, 1e-4)
+     Test for regression.
      */
+
+    let autoCorrelation1 = StandardAlgorithm<Standard.AutoCorrelation>()
+    autoCorrelation1[realVecInput: .array] = loadVector(name: "autocorrelation_input_pow2")
+    autoCorrelation1.compute()
+
+    XCTAssertEqual(autoCorrelation1[realVecOutput: .autoCorrelation],
+                   loadVector(name: "autocorrelation_output"),
+                   accuracy: 1e-4)
 
     /*
-    def testNonPowerOfTwo(self):
-        inputv = readVector(join(testdir, 'octave_input.txt'))
-        inputv = inputv[:234]
-        expected = readVector(join(testdir, 'output_nonpow2.txt'))
-
-        output = AutoCorrelation()(inputv)
-
-        self.assertAlmostEqualVector(expected, output, 1e-4)
+    Test with non power of 2.
      */
+
+    let autoCorrelation2 = StandardAlgorithm<Standard.AutoCorrelation>()
+    autoCorrelation2[realVecInput: .array] =
+      Array(loadVector(name: "autocorrelation_octave_input")[..<234])
+    autoCorrelation2.compute()
+
+    XCTAssertEqual(autoCorrelation2[realVecOutput: .autoCorrelation],
+                   loadVector(name: "autocorrelation_output_nonpow2"),
+                   accuracy: 1e-4)
+
 
     /*
-    def testOctave(self):
-        inputv = readVector(join(testdir, 'octave_input.txt'))
-        expected = readVector(join(testdir, 'octave_output.txt'))
-
-        output = AutoCorrelation()(inputv)
-
-        self.assertEqual(len(expected)/2, len(output))
-
-        self.assertAlmostEqualVector(expected[:len(expected)/2], output, 1e-4)
+     Test with octave.
      */
+
+    let autoCorrelation3 = StandardAlgorithm<Standard.AutoCorrelation>()
+    autoCorrelation3[realVecInput: .array] = loadVector(name: "autocorrelation_octave_input")
+    autoCorrelation3.compute()
+
+    XCTAssertEqual(autoCorrelation3[realVecOutput: .autoCorrelation],
+                   loadVector(name: "autocorrelation_octave_output"),
+                   accuracy: 1e-4)
 
     /*
-    def testZero(self):
-        self.assertEqualVector(AutoCorrelation()(zeros(1024)), zeros(1024))
+     Test with all-zero input.
      */
 
-    /*
-    def testEmpty(self):
-        self.assertEqualVector(AutoCorrelation()([]), [])
-     */
+    let autoCorrelation4 = StandardAlgorithm<Standard.AutoCorrelation>()
+    autoCorrelation4[realVecInput: .array] = [0.0] * 1024
+    autoCorrelation4.compute()
+
+    XCTAssertEqual(autoCorrelation4[realVecOutput: .autoCorrelation], [0.0] * 1024)
 
     /*
-    def testOne(self):
-        self.assertAlmostEqualVector(AutoCorrelation()([0.2]), [0.04])
+     Test with empty input.
      */
+
+    let autoCorrelation5 = StandardAlgorithm<Standard.AutoCorrelation>()
+    autoCorrelation5[realVecInput: .array] = []
+    autoCorrelation5.compute()
+
+    XCTAssert(autoCorrelation5[realVecOutput: .autoCorrelation].isEmpty)
+
+    /*
+     Test with a single value.
+     */
+
+    let autoCorrelation6 = StandardAlgorithm<Standard.AutoCorrelation>()
+    autoCorrelation6[realVecInput: .array] = [0.2]
+    autoCorrelation6.compute()
+
+    XCTAssertEqual(autoCorrelation6[realVecOutput: .autoCorrelation], [0.04], accuracy: 1e-7)
 
   }
 

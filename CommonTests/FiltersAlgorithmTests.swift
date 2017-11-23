@@ -240,49 +240,65 @@ class FiltersAlgorithmTests: XCTestCase {
   /// Tests the functionality of the MovingAverage algorithm. Values taken from
   /// `test_movingaverage.py`.
   func testMovingAverage() {
-    //TODO: Implement the  function
-    XCTFail("\(#function) not yet implemented.")
 
     /*
-    def testRegression(self):
-        # check moving average for size = 6 and input signal of 10 elements
-
-        input = [1]*10
-        expected = [ 1./6, 2./6, 3./6, 4./6., 5./6., 1., 1., 1., 1., 1. ]
-
-        self.assertAlmostEqualVector(MovingAverage(size=6)(input), expected)
+     Test for regression.
      */
+
+    let movingAverage1 = StandardAlgorithm<Standard.MovingAverage>([.size: 6])
+    movingAverage1[realVecInput: .signal] = [1.0] * 10
+    movingAverage1.compute()
+
+    XCTAssertEqual(movingAverage1[realVecOutput: .signal],
+                   [Float(1)/6, Float(2)/6, Float(3)/6, Float(4)/6, Float(5)/6, 1, 1, 1, 1, 1],
+                   accuracy: 1e-7)
+
 
     /*
-    def testOneByOne(self):
-        # we compare here that filtering an array all at once or the samples
-        # one by one will yield the same result
-
-        input = [1]*10
-        expected = [ 1./4, 2./4, 3./4, 1., 1., 1., 1., 1., 1., 1. ]
-        filt = MovingAverage(size=4)
-
-        self.assertAlmostEqualVector(filt(input), expected)
-
-        # need to reset the filter here!!
-        filt.reset()
-
-        result = []
-        for sample in input:
-            result += list(filt([sample]))
-
-        self.assertAlmostEqualVector(result, expected)
+     Test that filtering one by one is the same as all at once.
      */
+
+    let movingAverage2 = StandardAlgorithm<Standard.MovingAverage>([.size: 4])
+    movingAverage2[realVecInput: .signal] = [1.0] * 10
+    movingAverage2.compute()
+
+    XCTAssertEqual(movingAverage2[realVecOutput: .signal],
+                   [Float(1)/4, Float(2)/4, Float(3)/4, 1, 1, 1, 1, 1, 1, 1])
+
+
+    let movingAverage3 = StandardAlgorithm<Standard.MovingAverage>([.size: 4])
+    var filtered: [Float] = []
+
+    for _ in 0..<10 {
+
+      movingAverage3[realVecInput: .signal] = [1]
+      movingAverage3.compute()
+      filtered.append(contentsOf: movingAverage3[realVecOutput: .signal])
+
+    }
+
+    XCTAssertEqual(filtered, [Float(1)/4, Float(2)/4, Float(3)/4, 1, 1, 1, 1, 1, 1, 1])
 
     /*
-    def testZero(self):
-        self.assertEqualVector(MovingAverage()(zeros(20)), zeros(20))
+     Test with all-zero input.
      */
 
+    let movingAverage4 = StandardAlgorithm<Standard.MovingAverage>()
+    movingAverage4[realVecInput: .signal] = [0.0] * 20
+    movingAverage4.compute()
+
+    XCTAssertEqual(movingAverage4[realVecOutput: .signal], [0.0] * 20)
+
+
     /*
-    def testEmpty(self):
-        self.assertEqualVector(MovingAverage()([]), [])
+     Test with an empty signal.
      */
+
+    let movingAverage5 = StandardAlgorithm<Standard.MovingAverage>()
+    movingAverage5[realVecInput: .signal] = []
+    movingAverage5.compute()
+
+    XCTAssert(movingAverage5[realVecOutput: .signal].isEmpty)
 
   }
 
