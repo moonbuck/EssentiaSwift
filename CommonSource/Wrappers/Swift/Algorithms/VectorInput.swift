@@ -46,6 +46,8 @@ public class VectorInput<VectorElement>: StreamingAlgorithm<Streaming.IO.VectorI
       wrapper = VectorInputWrapper(realVecVec: vector as [[NSNumber]])
     } else if let vector = vector as? [DSPComplex] {
       wrapper = VectorInputWrapper(complexRealVec: vector.map(NSValue.init(complex:)))
+    } else if let vector = vector as? [[DSPComplex]] {
+      wrapper = VectorInputWrapper(complexRealVecVec: vector.map({$0.map(NSValue.init(complex:))}))
     } else {
       fatalError("Unsupported type vector type: \(type(of: vector)).")
     }
@@ -68,6 +70,11 @@ public class VectorInput<VectorElement>: StreamingAlgorithm<Streaming.IO.VectorI
       {
         return vector.map(\.complexValue) as! [VectorElement]
       }
+      else if VectorElement.self == Array<DSPComplex>.self,
+        let vector = wrapper.vector as? [[NSValue]]
+      {
+        return vector.map({$0.map(\.complexValue)}) as! [VectorElement]
+      }
       else if let vector = wrapper.vector as? [VectorElement] {
         return vector
       }
@@ -89,6 +96,8 @@ public class VectorInput<VectorElement>: StreamingAlgorithm<Streaming.IO.VectorI
         wrapper.vector = vector as [[NSNumber]]
       } else if let vector = newValue as? [DSPComplex] {
         wrapper.vector = vector.map(NSValue.init(complex:))
+      } else if let vector = newValue as? [[DSPComplex]] {
+        wrapper.vector = vector.map({$0.map(NSValue.init(complex:))})
       }
     }
   }

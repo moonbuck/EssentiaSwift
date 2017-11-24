@@ -133,4 +133,52 @@ class MathAlgorithmTests: XCTestCase {
 
   }
 
+  /// Tests the functionality of the PolarToCartesian algorithm. Values taken from
+  /// `test_polartocartesian.py`.
+  func testPolarToCartesian() {
+
+    /*
+     Test with empty input.
+     */
+
+    let polarToCartesian1 = StandardAlgorithm<Standard.PolarToCartesian>()
+    polarToCartesian1[realVecInput: .magnitude] = []
+    polarToCartesian1[realVecInput: .phase] = []
+    polarToCartesian1.compute()
+
+    XCTAssert(polarToCartesian1[complexRealVecOutput: .complex].isEmpty)
+
+    /*
+     Test for regression.
+     */
+
+    let magnitudes: [Float] = [1, 4, 1.345, 0.321, -4]
+    let phases: [Float] = [0.45, 3.14, 2.543, 6.42, 1]
+
+    let polarToCartesian2 = StandardAlgorithm<Standard.PolarToCartesian>()
+    polarToCartesian2[realVecInput: .magnitude] = magnitudes
+    polarToCartesian2[realVecInput: .phase] = phases
+    polarToCartesian2.compute()
+
+    let expected = (0..<5).map {
+      DSPComplex(real: magnitudes[$0] * cosf(phases[$0]), imag: magnitudes[$0] * sinf(phases[$0]))
+    }
+
+    XCTAssertEqual(polarToCartesian2[complexRealVecOutput: .complex], expected, accuracy: 1e-6)
+
+    /*
+     Test with complex representations of real values.
+     */
+
+    let polarToCartesian3 = StandardAlgorithm<Standard.PolarToCartesian>()
+    polarToCartesian3[realVecInput: .magnitude] = [1, 2, 3, 4]
+    polarToCartesian3[realVecInput: .phase] = [0, 0, 0, 0]
+    polarToCartesian3.compute()
+
+    XCTAssertEqual(polarToCartesian3[complexRealVecOutput: .complex],
+                   [1+0⍳, 2+0⍳, 3+0⍳, 4+0⍳],
+                   accuracy: 0)
+
+  }
+  
 }

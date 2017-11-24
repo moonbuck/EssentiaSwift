@@ -559,39 +559,68 @@ class SpectralAlgorithmTests: XCTestCase {
   /// Tests the functionality of the TriangularBands algorithm. Values taken from
   /// `test_triangularbands.py`.
   func testTriangularBands() {
-    //TODO: Implement the  function
-    XCTFail("\(#function) not yet implemented.")
 
     /*
-    def testRegression(self):
-        # Simple regression test, comparing normal behaviour
-        audio = MonoLoader(filename = join(testdata.audio_dir, 'generated/synthesised/sin440_sweep_0db.wav'),
-                           sampleRate = 44100)()
-
-        fft = Spectrum()
-        window = Windowing(type = 'hamming')
-        fbands = TriangularBands(sampleRate = 44100)
-
-        for frame in FrameGenerator(audio, frameSize = 2048, hopSize = 512):
-            bands = fbands(fft(window(frame)))
-
-            self.assert_(not any(numpy.isnan(bands)))
-            self.assert_(not any(numpy.isinf(bands)))
-            self.assert_(all(bands >= 0.0))
-
-        # input is a flat spectrum:
-        input = [1]*1024
-        sr = 44100.
-        binfreq = 0.5*sr/(len(input)-1)
-        fbands = [8*x*binfreq for x in range(6)]
-        # expected energies in each band are 1 due to normalization
-        expected = [1, 1, 1, 1]
-        output = TriangularBands(frequencyBands=fbands, log=False)(input)
-        self.assertEqualVector(output, expected)
-        # expected output using unit spectrum is that power bands matches magnitude bands.
-        output = TriangularBands(frequencyBands=fbands, log=False, type = 'power')(input)
-        self.assertEqualVector(output, expected)
+     Test for regression using a real signal.
      */
+
+    let signal = monoBufferData(url: bundleURL(name: "sin440_sweep_0db", ext: "wav"))
+
+    let vectorInput = VectorInput<Float>(signal)
+    let frameCutter = StreamingAlgorithm<Streaming.FrameCutter>([.frameSize: 2048, .hopSize: 512])
+    let windowing = StreamingAlgorithm<Streaming.Windowing>([.type: "hamming"])
+    let spectrum = StreamingAlgorithm<Streaming.Spectrum>()
+    let triangularBands1 = StreamingAlgorithm<Streaming.TriangularBands>([.sampleRate: 44100])
+    let vectorOutput = VectorOutput<[Float]>()
+
+    vectorInput[output: .data] >> frameCutter[input: .signal]
+    frameCutter[output: .frame] >> windowing[input: .frame]
+    windowing[output: .frame] >> spectrum[input: .frame]
+    spectrum[output: .spectrum] >> triangularBands1[input: .spectrum]
+    triangularBands1[output: .bands] >> vectorOutput[input: .data]
+
+    let network = Network(generator: vectorInput)
+    network.run()
+
+    let bands = vectorOutput.vector
+
+    XCTAssertNotNaNOrInf(bands)
+    XCTAssertGreaterThanOrEqual(bands, 0)
+
+    /*
+     Test for regression with a flat spectrum.
+     */
+
+    let frequencyBands: [Float] = (0.0..<6.0).map { [binFrequency = Float(0.5 * 44100 / 1023)] in
+      $0 * 8 * binFrequency
+    }
+
+    let triangularBands2 = StandardAlgorithm<Standard.TriangularBands>([
+      .frequencyBands: Parameter(value: .realVec(frequencyBands)),
+      .log: false,
+      .inputSize: 1024
+      ])
+
+    triangularBands2[realVecInput: .spectrum] = [1.0] * 1024
+    triangularBands2.compute()
+
+    XCTAssertEqual(triangularBands2[realVecOutput: .bands], [1.0] * 4)
+
+    /*
+     Test that power bands match magnitude bands when the input is the unit spectrum.
+     */
+
+    let triangularBands3 = StandardAlgorithm<Standard.TriangularBands>([
+      .frequencyBands: Parameter(value: .realVec(frequencyBands)),
+      .log: false,
+      .type: "power",
+      .inputSize: 1024
+      ])
+
+    triangularBands3[realVecInput: .spectrum] = [1.0] * 1024
+    triangularBands3.compute()
+
+    XCTAssertEqual(triangularBands3[realVecOutput: .bands], [1.0] * 4)
 
   }
 

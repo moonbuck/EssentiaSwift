@@ -81,3 +81,22 @@ public func loadVectorVector(name: String) -> [[Float]] {
   return (text as NSString).components(separatedBy: "\n\n")
           .map({($0.split(separator: "\n") as [NSString]).map(\.floatValue)})
 }
+
+/// Simple helper that loads space-delimited real and imaginary parts for newline-delimited
+/// complex values from a text file into an array of complex values.
+///
+/// - Parameter name: The name of the bundled file.
+/// - Returns: An array with the complex values parsed from the file.
+public func loadComplexVector(name: String) -> [DSPComplex] {
+  let url = bundleURL(name: name, ext: "txt")
+  guard let text = try? String(contentsOf: url) else {
+    fatalError("Failed to load text from file: '\(name).txt'.")
+  }
+  return text.split(separator: "\n").map {
+    let parts = $0.split(separator: " ") as [NSString]
+    guard parts.count == 2 else {
+      fatalError("Unexpected number of spaces: \(max(0, parts.count - 1))")
+    }
+    return DSPComplex(real: parts[0].floatValue, imag: parts[1].floatValue)
+  }
+}

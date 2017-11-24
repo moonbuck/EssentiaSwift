@@ -15,197 +15,367 @@ infix operator >>
 infix operator >!
 postfix operator >>|
 postfix operator >>>
+postfix operator ⍳
 
 class StandardAlgorithmTests: XCTestCase {
 
   /// Tests the STFT/FFT functionality.
   func testFFT() {
 
-    let frameCutter = StandardAlgorithm<Standard.FrameCutter>()
-    frameCutter[integerParameter: .frameSize] = 1024
-    frameCutter[integerParameter: .hopSize] = 256
-    frameCutter[booleanParameter: .startFromZero] = false
+    /*
+     Test with DC signal input.
+     */
 
-    let windowing = StandardAlgorithm<Standard.Windowing>([.type: "hann"])
+    let fft1 = StandardAlgorithm<Standard.FFT>()
+    fft1[realVecInput: .frame] = [1.0] + [0.0] * 511
+    fft1.compute()
 
-    let fft = StandardAlgorithm<Standard.FFT>([.size: 1024])
+    XCTAssertEqual(fft1[complexRealVecOutput: .fft],
+                   [DSPComplex(real: 1, imag: 0)] * 257,
+                   accuracy: 1e-7)
+
+    /*
+     Test with a Fs/2 sine wave to check the nyquist value.
+     */
+
+    let fft2 = StandardAlgorithm<Standard.FFT>()
+    fft2[realVecInput: .frame] = [1.0, -1.0] * 512
+    fft2.compute()
+
+    XCTAssertEqual(fft2[complexRealVecOutput: .fft],
+                   [DSPComplex()] * 512 + [DSPComplex(real: 1024, imag: 0)],
+                   accuracy: 1e-7)
+
+    /*
+     Test for regression.
+     Note: Instead of porting the expected result for this case from `test_fft.py`,
+           'fft_output.txt' has been filled with the algorithm's result when run with
+           'fft_input.txt' in python.
+     */
+
+    let fft3 = StandardAlgorithm<Standard.FFT>()
+    fft3[realVecInput: .frame] = loadVector(name: "fft_input")
+    fft3.compute()
+
+    XCTAssertEqual(fft3[complexRealVecOutput: .fft],
+                   loadComplexVector(name: "fft_output"),
+                   accuracy: 1e-3)
+
+    /*
+     Test with all-zero input.
+     */
+
+    let fft4 = StandardAlgorithm<Standard.FFT>()
+    fft4[realVecInput: .frame] = [0.0] * 2048
+    fft4.compute()
+
+    XCTAssertEqual(fft4[complexRealVecOutput: .fft], [DSPComplex()] * 1025, accuracy: 0)
+
+    /*
+     Test with a real signal, comparing that standard and streaming return the same result and
+     generating an attachment with the FFT frames as a CSV document.
+     */
 
     let url = bundleURL(name: "C4-E♭4-G4_Boesendorfer_Grand_Piano-Trimmed", ext: "aif")
-    let chordSignal = monoBufferData(url: url)
+    let signal = monoBufferData(url: url)
 
-    frameCutter[realVecInput: .signal] = chordSignal
+    // Compute using the standard algorithm.
 
-    frameCutter[output: .frame] >> windowing[input: .frame]
-    windowing[output: .frame] >> fft[input: .frame]
+    let frameCutter1 = StandardAlgorithm<Standard.FrameCutter>([
+      .frameSize: 1024,
+      .hopSize: 256,
+      .startFromZero: false
+      ])
+
+    let windowing1 = StandardAlgorithm<Standard.Windowing>([.type: "hann"])
+
+    let fft5 = StandardAlgorithm<Standard.FFT>([.size: 1024])
+
+    frameCutter1[realVecInput: .signal] = signal
+
+    frameCutter1[output: .frame] >> windowing1[input: .frame]
+    windowing1[output: .frame] >> fft5[input: .frame]
 
 
-    var fftOutputFrames: [[Float]] = []
+    var complexFrames1: [[DSPComplex]] = []
 
     repeat {
-
-      frameCutter.compute()
-
-      let frame = frameCutter[realVecOutput: .frame]
-
+      frameCutter1.compute()
+      let frame = frameCutter1[realVecOutput: .frame]
       if frame.isEmpty { break }
-
-      windowing.compute()
-
-      fft.compute()
-
-      let complexFrame = fft[complexRealVecOutput: .fft]
-
-      var accelBuffer = DSPSplitComplex(realp: UnsafeMutablePointer<Float>.allocate(capacity: 512),
-                                        imagp: UnsafeMutablePointer<Float>.allocate(capacity: 512))
-
-      vDSP_ctoz(complexFrame, 2, &accelBuffer, 1, 512)
-
-      var frameMagnitudes = Array<Float>(repeating: 0, count: 512)
-
-      vDSP_zvmags(&accelBuffer, 1, &frameMagnitudes, 1, 512)
-
-      fftOutputFrames.append(frameMagnitudes)
-
+      windowing1.compute()
+      fft5.compute()
+      complexFrames1.append(fft5[complexRealVecOutput: .fft])
     } while true
 
-    var text = ""
+    // Compute using the streaming algorithm.
 
-    for bin in 0 ..< 512 {
+    let vectorInput = VectorInput<Float>(signal)
 
-      print(fftOutputFrames.map({"\($0[bin])"}).joined(separator: ","), to: &text)
+    let frameCutter2 = StreamingAlgorithm<Streaming.FrameCutter>([
+      .frameSize: 1024,
+      .hopSize: 256,
+      .startFromZero: false
+      ])
 
-    }
+    let windowing2 = StreamingAlgorithm<Streaming.Windowing>([.type: "hann"])
 
-    guard let textData = text.data(using: .utf8) else {
-      XCTFail("Failed to get the text as raw data.")
-      return
-    }
+    let fft6 = StreamingAlgorithm<Streaming.FFT>([.size: 1024])
 
-    add(XCTAttachment(data: textData, uniformTypeIdentifier: "public.csv", lifetime: .keepAlways))
+    let vectorOutput = VectorOutput<[DSPComplex]>()
 
-  }
+    vectorInput[output: .data] >> frameCutter2[input: .signal]
+    frameCutter2[output: .frame] >> windowing2[input: .frame]
+    windowing2[output: .frame] >> fft6[input: .frame]
+    fft6[output: .fft] >> vectorOutput[input: .data]
 
-  /// Tests the STFT/FFT functionality in streaming mode.
-  func testStreamingFFT() {
-
-    let url = bundleURL(name: "C4-E♭4-G4_Boesendorfer_Grand_Piano-Trimmed", ext: "aif")
-    let chordSignal = monoBufferData(url: url)
-    
-    let signalInput = VectorInput<Float>(chordSignal)
-
-    let frameCutter = StreamingAlgorithm<Streaming.FrameCutter>()
-    frameCutter[integerParameter: .frameSize] = 1024
-    frameCutter[integerParameter: .hopSize] = 256
-    frameCutter[booleanParameter: .startFromZero] = false
-
-    let windowing = StreamingAlgorithm<Streaming.Windowing>([.type: "hann"])
-
-    let fft = StreamingAlgorithm<Streaming.FFT>([.size: 1024])
-
-    let fftOutput = VectorOutput<[DSPComplex]>()
-
-    signalInput[output: .data] >> frameCutter[input: .signal]
-    frameCutter[output: .frame] >> windowing[input: .frame]
-    windowing[output: .frame] >> fft[input: .frame]
-    fft[output: .fft] >> fftOutput[input: .data]
-
-    let network = Network(generator: signalInput)
+    let network = Network(generator: vectorInput)
     network.run()
 
-    let complexFrames = fftOutput.vector
+    let complexFrames2 = vectorOutput.vector
 
-    XCTAssert(!complexFrames.isEmpty)
+    XCTAssertEqual(complexFrames1, complexFrames2, accuracy: 0)
+
+    // Convert the complex output into real output by calculating energies.
+
+    guard !complexFrames2.isEmpty else {
+      XCTFail("No complex FFT frames were produced.")
+      return
+    }
 
     var accelBuffer = DSPSplitComplex(realp: UnsafeMutablePointer<Float>.allocate(capacity: 512),
                                       imagp: UnsafeMutablePointer<Float>.allocate(capacity: 512))
 
     var realFrames:[[Float]] = []
 
-    for complexFrame in complexFrames {
-
+    for complexFrame in complexFrames2 {
       vDSP_ctoz(complexFrame, 2, &accelBuffer, 1, 512)
-
       var realFrame = Array<Float>(repeating: 0, count: 512)
-
       vDSP_zvmags(&accelBuffer, 1, &realFrame, 1, 512)
-
       realFrames.append(realFrame)
-
     }
+
+    // Create and attach the CSV document.
 
     var text = ""
-
     for bin in 0 ..< 512 {
-
       print(realFrames.map({"\($0[bin])"}).joined(separator: ","), to: &text)
-
     }
 
-    guard let textData = text.data(using: .utf8) else {
-      XCTFail("Failed to get the text as raw data.")
-      return
-    }
-
-    add(XCTAttachment(data: textData, uniformTypeIdentifier: "public.csv", lifetime: .keepAlways))
+    add(XCTAttachment(data: text.data(using: .utf8)!,
+                      uniformTypeIdentifier: "public.csv",
+                      lifetime: .keepAlways))
 
   }
 
+  /// Tests the functionality of the FFTC algorithm. This is basically `testFFT()` with
+  /// input converted to a complex representation.
+  /// TODO: There seems to be some kind of undefined behavior in `FFTC`. Diagnosis it.
   func testFFTC() {
-    //TODO: Implement the  function
-    XCTFail("\(#function) not yet implemented.")
+
+    XCTFail("Undefined behavior in `FFTC` yet to be diagnosed.")
+
+    /*
+     Test with DC signal input.
+     */
+
+/*    let fft1 = StandardAlgorithm<Standard.FFTC>()
+    fft1[complexRealVecInput: .frame] = [1+0⍳] + [0+0⍳] * 511
+    fft1.compute()
+
+    XCTAssertEqual(fft1[complexRealVecOutput: .fft], [1+0⍳] * 257, accuracy: 1e-7)
+*/
+
+    /*
+     Test with a Fs/2 sine wave to check the nyquist value.
+     */
+
+    let fft2 = StandardAlgorithm<Standard.FFTC>()
+    fft2[complexRealVecInput: .frame] = [1+0⍳, -1+0⍳] * 512
+    fft2.compute()
+
+    XCTAssertEqual(fft2[complexRealVecOutput: .fft], [0+0⍳] * 512 + [1024+0⍳], accuracy: 1e-7)
+
+    /*
+     Test for regression.
+     Note: Instead of porting the expected result for this case from `test_fft.py`,
+           'fft_output.txt' has been filled with the algorithm's result when run with
+           'fft_input.txt' in python.
+     */
+
+    let fft3 = StandardAlgorithm<Standard.FFTC>()
+    let complexSignal = loadComplexVector(name: "fftc_input")
+    fft3[complexRealVecInput: .frame] = complexSignal
+    fft3.compute()
+
+    XCTAssertEqual(fft3[complexRealVecOutput: .fft],
+                   loadComplexVector(name: "fft_output"),
+                   accuracy: 1e-3)
+
+    /*
+     Test with all-zero input.
+     */
+
+    let fft4 = StandardAlgorithm<Standard.FFTC>()
+    fft4[complexRealVecInput: .frame] = [0+0⍳] * 2048
+    fft4.compute()
+
+    XCTAssertEqual(fft4[complexRealVecOutput: .fft], [DSPComplex()] * 1025, accuracy: 0)
+
+    /*
+     Test with a real signal, comparing that standard and streaming return the same result and
+     generating an attachment with the FFT frames as a CSV document.
+     */
+
+    let url = bundleURL(name: "C4-E♭4-G4_Boesendorfer_Grand_Piano-Trimmed", ext: "aif")
+    let signal = monoBufferData(url: url)
+
+    // Compute using the standard algorithm.
+
+    let frameCutter1 = StandardAlgorithm<Standard.FrameCutter>([
+      .frameSize: 1024,
+      .hopSize: 256,
+      .startFromZero: false
+      ])
+
+    let windowing1 = StandardAlgorithm<Standard.Windowing>([.type: "hann"])
+    
+
+    let fft5 = StandardAlgorithm<Standard.FFTC>([.size: 1024])
+
+    frameCutter1[realVecInput: .signal] = signal
+
+    frameCutter1[output: .frame] >> windowing1[input: .frame]
+
+
+    var complexFrames1: [[DSPComplex]] = []
+
+    repeat {
+      frameCutter1.compute()
+      let frame = frameCutter1[realVecOutput: .frame]
+      if frame.isEmpty { break }
+      windowing1.compute()
+      fft5[complexRealVecInput: .frame] = windowing1[realVecOutput: .frame].map {
+        DSPComplex(real: $0, imag: 0)
+      }
+      fft5.compute()
+      complexFrames1.append(fft5[complexRealVecOutput: .fft])
+    } while true
+
+    // Compute using the streaming algorithm.
+
+    let vectorInput1 = VectorInput<Float>(signal)
+
+    let frameCutter2 = StreamingAlgorithm<Streaming.FrameCutter>([
+      .frameSize: 1024,
+      .hopSize: 256,
+      .startFromZero: false
+      ])
+
+    let windowing2 = StreamingAlgorithm<Streaming.Windowing>([.type: "hann"])
+
+    let windowedSignal = VectorOutput<[Float]>()
+
+    let fft6 = StreamingAlgorithm<Streaming.FFTC>([.size: 1024])
+
+    let vectorOutput = VectorOutput<[DSPComplex]>()
+
+    vectorInput1[output: .data] >> frameCutter2[input: .signal]
+    frameCutter2[output: .frame] >> windowing2[input: .frame]
+    windowing2[output: .frame] >> windowedSignal[input: .data]
+
+    let network1 = Network(generator: vectorInput1)
+    network1.run()
+
+    let vectorInput2 = VectorInput<[DSPComplex]>(windowedSignal.vector.map {
+      $0.map { DSPComplex(real: $0, imag: 0) }
+    })
+
+    vectorInput2[output: .data] >> fft6[input: .frame]
+    fft6[output: .fft] >> vectorOutput[input: .data]
+
+    let network2 = Network(generator: vectorInput2)
+    network2.run()
+
+    let complexFrames2 = vectorOutput.vector
+
+    XCTAssertEqual(complexFrames1, complexFrames2, accuracy: 0)
+
+    // Convert the complex output into real output by calculating energies.
+
+    guard !complexFrames2.isEmpty else {
+      XCTFail("No complex FFT frames were produced.")
+      return
+    }
+
+    var accelBuffer = DSPSplitComplex(realp: UnsafeMutablePointer<Float>.allocate(capacity: 512),
+                                      imagp: UnsafeMutablePointer<Float>.allocate(capacity: 512))
+
+    var realFrames:[[Float]] = []
+
+    for complexFrame in complexFrames2 {
+      vDSP_ctoz(complexFrame, 2, &accelBuffer, 1, 512)
+      var realFrame = Array<Float>(repeating: 0, count: 512)
+      vDSP_zvmags(&accelBuffer, 1, &realFrame, 1, 512)
+      realFrames.append(realFrame)
+    }
+
+    // Create and attach the CSV document.
+
+    var text = ""
+    for bin in 0 ..< 512 {
+      print(realFrames.map({"\($0[bin])"}).joined(separator: ","), to: &text)
+    }
+
+    add(XCTAttachment(data: text.data(using: .utf8)!,
+                      uniformTypeIdentifier: "public.csv",
+                      lifetime: .keepAlways))
+
   }
 
   /// Tests the functionality ofthe IFFT algorithm. Values taken from `test_ifft.py`.
   func testIFFT() {
-    //TODO: Implement the  function
-    XCTFail("\(#function) not yet implemented.")
 
     /*
-    def testDC(self):
-        # input is [1, 0, 0, ...] which corresponds to an IFFT of constant magnitude 1
-        signalSize = 512
-        fftSize = signalSize/2 + 1
-
-        signalDC = zeros(signalSize)
-        signalDC[0] = 1.0
-
-        fftInput = [ 1+0j ] * fftSize
-
-        self.assertAlmostEqualVector(signalDC*signalSize, IFFT()(cvec(fftInput)))
+     Test with DC.
      */
+
+    let ifft1 = StandardAlgorithm<Standard.IFFT>()
+    ifft1[complexRealVecInput: .fft] = [1+0⍳] * 257
+    ifft1.compute()
+
+    XCTAssertEqual(ifft1[realVecOutput: .frame], [512.0] + [0.0] * 511)
 
     /*
-    def testNyquist(self):
-        # input is [1, -1, 1, -1, ...] which corresponds to a sine of frequency Fs/2
-        signalSize = 1024
-        fftSize = signalSize/2 + 1
-
-        signalNyquist = ones(signalSize)
-        for i in range(signalSize):
-            if i % 2 == 1:
-                signalNyquist[i] = -1.0
-
-        fftInput = [ 0+0j ] * fftSize
-        fftInput[-1] = (1+0j) * signalSize
-
-        self.assertAlmostEqualVector(IFFT()(cvec(fftInput)), signalNyquist*signalSize)
+     Test with nyquist.
      */
+
+    let ifft2 = StandardAlgorithm<Standard.IFFT>()
+    ifft2[complexRealVecInput: .fft] = [0+0⍳] * 512 + [1024+0⍳]
+    ifft2.compute()
+
+    XCTAssertEqual(ifft2[realVecOutput: .frame], [1024.0, -1024.0] * 512)
 
     /*
-    def testZero(self):
-        self.assertAlmostEqualVector(zeros(2048), IFFT()(numpy.zeros(1025, dtype='c8')))
+     Test with all-zero input.
      */
 
-    /*
-    def testEmpty(self):
-        self.assertComputeFails(IFFT(), cvec([]))
-     */
+    let ifft3 = StandardAlgorithm<Standard.IFFT>()
+    ifft3[complexRealVecInput: .fft] = [0+0⍳] * 1025
+    ifft3.compute()
+
+    XCTAssertEqual(ifft3[realVecOutput: .frame], [0.0] * 2048)
+
 
     /*
-    def testRegression(self):
-        signal = numpy.sin(numpy.arange(1024, dtype='f4')/1024. * 441 * 2*math.pi)
-        self.assertAlmostEqualVector(signal*len(signal), IFFT()(FFT()(signal)), 1e-2)
+     Test for regression.
      */
+
+    let ifft4 = StandardAlgorithm<Standard.IFFT>()
+    ifft4[complexRealVecInput: .fft] = loadComplexVector(name: "ifft_input")
+    ifft4.compute()
+
+    XCTAssertEqual(ifft4[realVecOutput: .frame], loadVector(name: "ifft_output"), accuracy: 1e-2)
 
   }
 
@@ -1649,47 +1819,20 @@ class StandardAlgorithmTests: XCTestCase {
   
   /// Tests the functionality of the ConstantQ algorithm. Values taken from `test_constantq.py`.
   func testConstantQ() {
-    //TODO: Implement the  function
-    XCTFail("\(#function) not yet implemented.")
 
     /*
-    def testRandom(self):
-        # input is [1, 0, 0, ...] which corresponds to an ConstantQ of constant magnitude 1
-        with open(os.path.join(script_dir, 'constantq/CQinput.txt'), 'r') as f:
-            #read_data = f.read()
-            data = np.array([], dtype='complex64')
-            line = f.readline()
-            while line != '':
-                re = float(line.split('\t')[0])
-                im = float(line.split('\t')[1])
-                data = np.append(data, re + im * 1j)
-                line = f.readline()
-
-        with open(os.path.join(script_dir, 'constantq/QMoutput.txt'), 'r') as u:
-            QMdata_out = np.array([], dtype='complex64')
-            for line in u:
-                re = line.split('+')[0]
-                re = float(re[1:])
-                im = line.split('+')[1]
-                im = float(im[:-3])
-                QMdata_out = np.append(QMdata_out, re + im * 1j)
-
-        CQdata = ConstantQ()(cvec(data))
-        QMdata_out = np.array(QMdata_out, dtype='complex64')
-
-        # difference mean
-        DifferMean = QMdata_out-CQdata
-        DifferMean = ((sum(abs(DifferMean.real))/len(DifferMean))+(sum(abs(DifferMean.imag))/len(DifferMean)))/2
-        # divergence mean percentage
-        DiverPerReal = (sum(((QMdata_out.real-CQdata.real)/QMdata_out.real)*100))/len(QMdata_out.real)
-        DiverPerImag = (sum(((QMdata_out.imag-CQdata.imag)/QMdata_out.imag)*100))/len(QMdata_out.imag)
-        DiverPer = (DiverPerReal + DiverPerImag) / 2
-
-        """
-        print 'Divergence mean percentage is : '+str(DiverPer)[:5]+'%'
-        print 'Difference Mean is : '+str(DifferMean)[:9]
-        """
+     Test for regression.
      */
+
+    let constantQ = StandardAlgorithm<Standard.ConstantQ>()
+    constantQ[complexRealVecInput: .frame] = loadComplexVector(name: "constantq_input")
+    constantQ.compute()
+
+    let actual = constantQ[complexRealVecOutput: .constantq]
+    let expected = loadComplexVector(name: "constantq_expected")
+
+    XCTAssertDifferenceMeanLessThanOrEqual(actual, expected, 1.130e-4, accuracy: 1e-7)
+    XCTAssertPercentDeviationLessThanOrEqual(actual, expected, 2e-3, accuracy: 1e-3)
     
   }
 

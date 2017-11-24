@@ -62,6 +62,14 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)vectorInputWrapperWithComplexRealVec:(OBJCComplexRealVec)value;
 
 /**
+ Creates a new vector input wrapper for the specified complex real vector.
+
+ @param value The vector.
+ @return The newly created wrapper for a vector input with the specified data.
+ */
++ (instancetype)vectorInputWrapperWithComplexRealVecVec:(OBJCComplexRealVecVec)value;
+
+/**
  The vector used as input data. The vector's data type must match the type used to
  initialize the vector input instance.
  */
