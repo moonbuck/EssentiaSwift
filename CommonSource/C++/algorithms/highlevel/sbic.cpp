@@ -246,7 +246,7 @@ void SBic::compute() {
 
   //////////////////////////////////
   // second pass - fine segmentation
-  currSeg = currIdx = prevSeg = nextSeg = 0;
+//  currSeg = currIdx = prevSeg = nextSeg = 0;
   int halfSize = _size2 / 2;
 
   for (currIdx=0; currIdx < int(segmentation.size()); ++currIdx) {

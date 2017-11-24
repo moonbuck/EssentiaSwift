@@ -62,8 +62,8 @@ const vector< vector<Real> >& bands = _bands.get();
     _maxFilter->output("signal").set(maxsBuffer);
     _maxFilter->compute();
                 
-    cur_diff = 0;
-                
+//    cur_diff = 0;
+
     for (int j = 0;j<nBands;j++) {
       cur_diff= bands[i][j]-maxsBuffer[j];
       if (cur_diff > 0.0) {

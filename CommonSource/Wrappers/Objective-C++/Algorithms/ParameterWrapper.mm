@@ -14,6 +14,7 @@
 #import "NSValue+BridgingExtensions.h"
 #import "NSString+BridgingExtensions.hpp"
 #import "tnt_array2d.h"
+#import "Exceptions.h"
 
 using namespace essentia;
 
@@ -44,6 +45,7 @@ using namespace essentia;
 + (instancetype)parameterWrapperForParameter:(Parameter &)parameter {
   ParameterWrapper *wrapper = [ParameterWrapper new];
   if (wrapper) { wrapper->_parameter = new Parameter(parameter); }
+  else { @throw inconsistencyException(@"ParameterWrapper initializer returned `nil`."); }
   return wrapper;
 }
 
@@ -92,14 +94,14 @@ using namespace essentia;
   Parameter::ParamType paramType;
 
   switch (type) {
-    case ParameterWrapperTypeUndefined:             paramType = Parameter::UNDEFINED;
-    case ParameterWrapperTypeReal:                  paramType = Parameter::REAL;
-    case ParameterWrapperTypeString:                paramType = Parameter::STRING;
-    case ParameterWrapperTypeBoolean:               paramType = Parameter::BOOL;
-    case ParameterWrapperTypeInteger:               paramType = Parameter::INT;
-    case ParameterWrapperTypeRealVec:               paramType = Parameter::VECTOR_REAL;
-    case ParameterWrapperTypeStringVec:             paramType = Parameter::VECTOR_STRING;
-    case ParameterWrapperTypeStringVecMap:          paramType = Parameter::MAP_VECTOR_STRING;
+    case ParameterWrapperTypeUndefined:     paramType = Parameter::UNDEFINED;         break;
+    case ParameterWrapperTypeReal:          paramType = Parameter::REAL;              break;
+    case ParameterWrapperTypeString:        paramType = Parameter::STRING;            break;
+    case ParameterWrapperTypeBoolean:       paramType = Parameter::BOOL;              break;
+    case ParameterWrapperTypeInteger:       paramType = Parameter::INT;               break;
+    case ParameterWrapperTypeRealVec:       paramType = Parameter::VECTOR_REAL;       break;
+    case ParameterWrapperTypeStringVec:     paramType = Parameter::VECTOR_STRING;     break;
+    case ParameterWrapperTypeStringVecMap:  paramType = Parameter::MAP_VECTOR_STRING; break;
   }
 
   return [self parameterWrapperForRValueParameter: Parameter(paramType)];

@@ -1839,258 +1839,263 @@ class StandardAlgorithmTests: XCTestCase {
   /// Tests the functionality of the PeakDetection algorithm. Values taken from
   /// `test_peakdetection.py`.
   func testPeakDetection() {
-    //TODO: Implement the  function
-    XCTFail("\(#function) not yet implemented.")
 
     /*
-    def testPeakAtBegining(self):
-        input=[1,0,0,0]
-        inputSize = len(input)
-        config = { 'range': inputSize -1,  'maxPosition': inputSize-1,  'minPosition': 0,  'orderBy': 'amplitude' }
-        pdetect = PeakDetection(**config)
-        (posis, vals) = pdetect(input)
-        self.assertEqualVector(posis, [0])
-        self.assertEqualVector(vals, [1])
+     Test with a peak at the beginning of the input.
      */
+
+    let peakDetection1 = StandardAlgorithm<Standard.PeakDetection>([
+      .range: 3, .maxPosition: 3, .minPosition: 0, .orderBy: "amplitude"
+      ])
+
+    peakDetection1[realVecInput: .array] = [1, 0, 0, 0]
+    peakDetection1.compute()
+
+    XCTAssertEqual(peakDetection1[realVecOutput: .positions], [0])
+    XCTAssertEqual(peakDetection1[realVecOutput: .amplitudes], [1])
+
 
     /*
-    def testPeakAtMinPosition(self):
-        peakPos = 3
-        input=[0,0,0,0,0,0,0]
-        input[peakPos] = 1
-        inputSize = len(input)
-        config = { 'range': inputSize -1,  'maxPosition': inputSize-1, 'minPosition': peakPos,  'orderBy': 'amplitude' }
-        pdetect = PeakDetection(**config)
-        (posis, vals) = pdetect(input)
-        self.assertEqualVector(posis, [peakPos])
-        self.assertEqualVector(vals, [1])
+     Test with a peak at the min position.
      */
+
+    let peakDetection2 = StandardAlgorithm<Standard.PeakDetection>([
+      .range: 6, .maxPosition: 6, .minPosition: 3, .orderBy: "amplitude"
+      ])
+
+    peakDetection2[realVecInput: .array] = [0, 0, 0, 1, 0, 0, 0]
+    peakDetection2.compute()
+
+    XCTAssertEqual(peakDetection2[realVecOutput: .positions], [3])
+    XCTAssertEqual(peakDetection2[realVecOutput: .amplitudes], [1])
 
     /*
-    def testPeakZero(self):
-        peakPos = 0
-        input=[0,0,0,0,0]
-        input[peakPos] = 1
-        inputSize = len(input)
-        config = { 'range': inputSize-1,  'maxPosition': inputSize-1, 'orderBy': 'amplitude' }
-        pdetect = PeakDetection(**config)
-        (posis, vals) = pdetect(input)
-        self.assertEqualVector(posis, [peakPos])
-        self.assertEqualVector(vals, [1])
+     Test with a peak at zero.
      */
+
+    let peakDetection3 = StandardAlgorithm<Standard.PeakDetection>([
+      .range: 4, .maxPosition: 4, .orderBy: "amplitude"
+      ])
+
+    peakDetection3[realVecInput: .array] = [1, 0, 0, 0, 0]
+    peakDetection3.compute()
+
+    XCTAssertEqual(peakDetection3[realVecOutput: .positions], [0])
+    XCTAssertEqual(peakDetection3[realVecOutput: .amplitudes], [1])
 
     /*
-    def testPeakOne(self):
-        peakPos = 1
-        input=[0,0,0,0,0]
-        input[peakPos] = 1
-        inputSize = len(input)
-        config = { 'range': inputSize-1,  'maxPosition': inputSize-1, 'orderBy': 'amplitude' }
-        pdetect = PeakDetection(**config)
-        (posis, vals) = pdetect(input)
-        self.assertEqualVector(posis, [peakPos])
-        self.assertEqualVector(vals, [1])
+     Test with a peak at one.
      */
+
+    let peakDetection4 = StandardAlgorithm<Standard.PeakDetection>([
+      .range: 4, .maxPosition: 4, .orderBy: "amplitude"
+      ])
+
+    peakDetection4[realVecInput: .array] = [0, 1, 0, 0, 0]
+    peakDetection4.compute()
+
+    XCTAssertEqual(peakDetection4[realVecOutput: .positions], [1])
+    XCTAssertEqual(peakDetection4[realVecOutput: .amplitudes], [1])
 
     /*
-    def testPeakTwo(self):
-        peakPos = 2
-        input=[0,0,0,0,0]
-        input[peakPos] = 1
-        inputSize = len(input)
-        config = { 'range': inputSize-1,  'maxPosition': inputSize-1, 'orderBy': 'amplitude' }
-        pdetect = PeakDetection(**config)
-        (posis, vals) = pdetect(input)
-        self.assertEqualVector(posis, [peakPos])
-        self.assertEqualVector(vals, [1])
+     Test with a peak at two.
      */
+
+    let peakDetection5 = StandardAlgorithm<Standard.PeakDetection>([
+      .range: 4, .maxPosition: 4, .orderBy: "amplitude"
+      ])
+
+    peakDetection5[realVecInput: .array] = [0, 0, 1, 0, 0]
+    peakDetection5.compute()
+
+    XCTAssertEqual(peakDetection5[realVecOutput: .positions], [2])
+    XCTAssertEqual(peakDetection5[realVecOutput: .amplitudes], [1])
 
     /*
-    def testPeakThree(self):
-        peakPos = 3
-        input=[0,0,0,0,0]
-        input[peakPos] = 1
-        inputSize = len(input)
-        config = { 'range': inputSize-1,  'maxPosition': inputSize-1, 'orderBy': 'amplitude' }
-        pdetect = PeakDetection(**config)
-        (posis, vals) = pdetect(input)
-        self.assertEqualVector(posis, [peakPos])
-        self.assertEqualVector(vals, [1])
+     Test with a peak at three.
      */
+
+    let peakDetection6 = StandardAlgorithm<Standard.PeakDetection>([
+      .range: 4, .maxPosition: 4, .orderBy: "amplitude"
+      ])
+
+    peakDetection6[realVecInput: .array] = [0, 0, 0, 1, 0]
+    peakDetection6.compute()
+
+    XCTAssertEqual(peakDetection6[realVecOutput: .positions], [3])
+    XCTAssertEqual(peakDetection6[realVecOutput: .amplitudes], [1])
 
     /*
-    def testPeakFour(self):
-        peakPos = 4
-        input=[0,0,0,0,0]
-        input[peakPos] = 1
-        inputSize = len(input)
-        config = { 'range': inputSize-1,  'maxPosition': inputSize-1, 'orderBy': 'amplitude' }
-        pdetect = PeakDetection(**config)
-        (posis, vals) = pdetect(input)
-        self.assertEqualVector(posis, [peakPos])
-        self.assertEqualVector(vals, [1])
+     Test with a peak at four.
      */
+
+    let peakDetection7 = StandardAlgorithm<Standard.PeakDetection>([
+      .range: 4, .maxPosition: 4, .orderBy: "amplitude"
+      ])
+
+    peakDetection7[realVecInput: .array] = [0, 0, 0, 0, 1]
+    peakDetection7.compute()
+
+    XCTAssertEqual(peakDetection7[realVecOutput: .positions], [4])
+    XCTAssertEqual(peakDetection7[realVecOutput: .amplitudes], [1])
 
     /*
-    def testPeakBeforeEnd(self):
-        peakPos = 3
-        input=[0,0,0,0,0]
-        input[peakPos] = 1
-        inputSize = len(input)
-        config = { 'range': inputSize-1,  'maxPosition': inputSize-1, 'orderBy': 'amplitude' }
-        pdetect = PeakDetection(**config)
-        (posis, vals) = pdetect(input)
-        self.assertEqualVector(posis, [peakPos])
-        self.assertEqualVector(vals, [1])
+     Test with a peak just before the end.
      */
+
+    let peakDetection8 = StandardAlgorithm<Standard.PeakDetection>([
+      .range: 4, .maxPosition: 4, .orderBy: "amplitude"
+      ])
+
+    peakDetection8[realVecInput: .array] = [0, 0, 0, 1, 0]
+    peakDetection8.compute()
+
+    XCTAssertEqual(peakDetection8[realVecOutput: .positions], [3])
+    XCTAssertEqual(peakDetection8[realVecOutput: .amplitudes], [1])
 
     /*
-    def testPeakAtMaxPosition(self):
-        peakPos = 3
-        input=[0,0,0,0,0,0,0]
-        input[peakPos] = 1
-        inputSize = len(input)
-        config = { 'range': inputSize -1,  'maxPosition': peakPos, 'orderBy': 'amplitude' }
-        pdetect = PeakDetection(**config)
-        (posis, vals) = pdetect(input)
-        self.assertEqualVector(posis, [peakPos])
-        self.assertEqualVector(vals, [1])
+     Test with a peak at max position.
      */
+
+    let peakDetection9 = StandardAlgorithm<Standard.PeakDetection>([
+      .range: 6, .maxPosition: 3, .orderBy: "amplitude"
+      ])
+
+    peakDetection9[realVecInput: .array] = [0, 0, 0, 1, 0, 0, 0]
+    peakDetection9.compute()
+
+    XCTAssertEqual(peakDetection9[realVecOutput: .positions], [3])
+    XCTAssertEqual(peakDetection9[realVecOutput: .amplitudes], [1])
 
     /*
-    def testPeakEnd(self):
-        input=[0,0,0,0,0,0,0]
-        inputSize = len(input)
-        peakPos = inputSize-1
-        input[peakPos] = 1
-        config = { 'range': inputSize -1,  'maxPosition': peakPos, 'orderBy': 'amplitude' }
-        pdetect = PeakDetection(**config)
-        (posis, vals) = pdetect(input)
-        self.assertEqualVector(posis, [peakPos])
-        self.assertEqualVector(vals, [1])
+     Test with a peak at the very end.
      */
+
+    let peakDetection10 = StandardAlgorithm<Standard.PeakDetection>([
+      .range: 6, .maxPosition: 6, .orderBy: "amplitude"
+      ])
+
+    peakDetection10[realVecInput: .array] = [0, 0, 0, 0, 0, 0, 1]
+    peakDetection10.compute()
+
+    XCTAssertEqual(peakDetection10[realVecOutput: .positions], [6])
+    XCTAssertEqual(peakDetection10[realVecOutput: .amplitudes], [1])
 
     /*
-    def testMaxPositionLargerThanSize(self):
-        peakPos = 3
-        input=[0,0,0,0,0,0,0]
-        input[peakPos] = 1
-        inputSize = len(input)
-        config = { 'range': inputSize -1,  'maxPosition': 10*peakPos, 'orderBy': 'amplitude' }
-        pdetect = PeakDetection(**config)
-        (posis, vals) = pdetect(input)
-        self.assertEqualVector(posis, [peakPos])
-        self.assertEqualVector(vals, [1])
+     Test with a max position larger than the size of the input.
      */
+
+    let peakDetection11 = StandardAlgorithm<Standard.PeakDetection>([
+      .range: 6, .maxPosition: 30, .orderBy: "amplitude"
+      ])
+
+    peakDetection11[realVecInput: .array] = [0, 0, 0, 1, 0, 0, 0]
+    peakDetection11.compute()
+
+    XCTAssertEqual(peakDetection11[realVecOutput: .positions], [3])
+    XCTAssertEqual(peakDetection11[realVecOutput: .amplitudes], [1])
 
     /*
-    def testRegression(self):
-        inputSize = 1024
-
-        config = { 'range': inputSize -1,  'maxPosition': inputSize,  'minPosition': 0,  'orderBy': 'amplitude' }
-        pdetect = PeakDetection(**config)
-
-        pos1 = 3
-        val1 = 1.0
-        inputOne = [0] * inputSize
-        inputOne[pos1] = val1
-        (posis, vals) = pdetect(inputOne)
-        self.assertEqualVector(posis, [pos1])
-        self.assertEqualVector(vals, [val1])
-
-        pos1 = 3
-        val1 = 1.0
-        pos2 = 512
-        val2 = 3.0
-        inputTwo = [0] * inputSize
-        inputTwo[pos1] = val1
-        inputTwo[pos2] = val2
-        (posis, vals) = pdetect(inputTwo)
-        self.assertEqualVector(posis, [pos2, pos1])
-        self.assertEqualVector(vals, [val2, val1])
-
-        config['orderBy'] = 'position'
-        pdetect.configure(**config)
-        (posis, vals) = pdetect(inputTwo)
-        self.assertEqualVector(posis, [pos1, pos2])
-        self.assertEqualVector(vals, [val1, val2])
+     Test for regression with a single peak..
      */
+
+    let peakDetection12 = StandardAlgorithm<Standard.PeakDetection>([
+      .range: 1023, .maxPosition: 1024, .minPosition: 0, .orderBy: "amplitude"
+      ])
+
+    peakDetection12[realVecInput: .array] = [0, 0, 0, 1] + [0.0] * 1020 as [Float]
+    peakDetection12.compute()
+
+    XCTAssertEqual(peakDetection12[realVecOutput: .positions], [3])
+    XCTAssertEqual(peakDetection12[realVecOutput: .amplitudes], [1])
 
     /*
-    def testPlateau(self):
-        inputSize = 1024
-        pos = range(3, 7)
-        val = 1.0
-        input = [0] * inputSize
-        for i in range(len(pos)):
-            input[pos[i]] = val
-
-        # with interpolation:
-        config = { 'range': inputSize -1,  'maxPosition': inputSize, 'minPosition': 0,  'orderBy': 'amplitude', 'interpolate' : True }
-        pdetect = PeakDetection(**config)
-        (posis, vals) = pdetect(input)
-        self.assertEqualVector(posis, [0.5*(pos[0]+pos[-1])])
-        self.assertEqualVector(vals, [val])
-
-        # no interpolation:
-        config = { 'range': inputSize -1,  'maxPosition': inputSize, 'minPosition': 0,  'orderBy': 'amplitude', 'interpolate' : False }
-        pdetect = PeakDetection(**config)
-
-        (posis, vals) = pdetect(input)
-        self.assertEqualVector(posis, [pos[0]])
-        self.assertEqualVector(vals, [val])
+     Test for regression with two peaks ordered by amplitude.
      */
+
+    let peakDetection13 = StandardAlgorithm<Standard.PeakDetection>([
+      .range: 1023, .maxPosition: 1024, .minPosition: 0, .orderBy: "amplitude"
+      ])
+
+    peakDetection13[realVecInput: .array] = [0, 0, 0, 1] + [0.0] * 508 as [Float]
+                                          + [3] + [0.0] * 511 as [Float]
+    peakDetection13.compute()
+
+    XCTAssertEqual(peakDetection13[realVecOutput: .positions], [512, 3])
+    XCTAssertEqual(peakDetection13[realVecOutput: .amplitudes], [3, 1])
 
     /*
-    def testStairCase(self):
-        # should find the first postition of the last step
-        inputSize = 1024
-        pos = [range(3, 7), range(7,14), range(14,20)]
-        val = [1.0, 2.0, 3.0]
-        input = [0] * inputSize
-        for i in range(len(pos)):
-            for j in range(len(pos[i])):
-                input[pos[i][j]] = val[i]
-
-        # no interpolation:
-        config = { 'range': inputSize -1,  'maxPosition': inputSize, 'minPosition': 0,  'orderBy': 'amplitude', 'interpolate' : False }
-        pdetect = PeakDetection(**config)
-        (posis, vals) = pdetect(input)
-        self.assertEqualVector(posis, [pos[-1][0]])
-        self.assertEqualVector(vals, [val[-1]])
+     Test for regression with two peaks ordered by position.
      */
+
+    let peakDetection14 = StandardAlgorithm<Standard.PeakDetection>([
+      .range: 1023, .maxPosition: 1024, .minPosition: 0, .orderBy: "position"
+      ])
+
+    peakDetection14[realVecInput: .array] = [0, 0, 0, 1] + [0.0] * 508 as [Float]
+                                          + [3] + [0.0] * 511 as [Float]
+    peakDetection14.compute()
+
+    XCTAssertEqual(peakDetection14[realVecOutput: .positions], [3, 512])
+    XCTAssertEqual(peakDetection14[realVecOutput: .amplitudes], [1, 3])
 
     /*
-    def testZero(self):
-        inputSize = 1024
-        input = [0] * inputSize
-        pdetect = PeakDetection()
-        (posis, vals) = pdetect(input)
-        self.assert_(len(posis) == 0)
-        self.assert_(len(vals) == 0)
+     Test a plateau with interpolation.
      */
 
-    /*
-    def testEmpty(self):
-        # Feeding an empty array shouldn't crash and throw an exception
-        self.assertComputeFails(PeakDetection(),  [])
-     */
+    let peakDetection15 = StandardAlgorithm<Standard.PeakDetection>([
+      .range: 1023, .maxPosition: 1024, .minPosition: 0, .orderBy: "amplitude", .interpolate: true
+      ])
+
+    peakDetection15[realVecInput: .array] = [0, 0, 0, 1, 1, 1, 1] + [0.0] * 1017 as [Float]
+    peakDetection15.compute()
+
+    XCTAssertEqual(peakDetection15[realVecOutput: .positions], [4.5])
+    XCTAssertEqual(peakDetection15[realVecOutput: .amplitudes], [1])
 
     /*
-    def testOne(self):
-        # Feeding an array of size 1 shouldn't crash and throw an exception
-        self.assertComputeFails(PeakDetection(), [0])
+     Test a plateau without interpolation.
      */
 
+    let peakDetection16 = StandardAlgorithm<Standard.PeakDetection>([
+      .range: 1023, .maxPosition: 1024, .minPosition: 0, .orderBy: "amplitude", .interpolate: false
+      ])
+
+    peakDetection16[realVecInput: .array] = [0, 0, 0, 1, 1, 1, 1] + [0.0] * 1017 as [Float]
+    peakDetection16.compute()
+
+    XCTAssertEqual(peakDetection16[realVecOutput: .positions], [3])
+    XCTAssertEqual(peakDetection16[realVecOutput: .amplitudes], [1])
+
     /*
-    def testInvalidParam(self):
-        self.assertConfigureFails(PeakDetection(), {'range': 0})
-        self.assertConfigureFails(PeakDetection(), {'maxPeaks': 0})
-        self.assertConfigureFails(PeakDetection(), {'maxPosition': 0})
-        self.assertConfigureFails(PeakDetection(), {'minPosition': -1})
-        PeakDetection(threshold=0)
-        self.assertConfigureFails(PeakDetection(), {'minPosition': 1.01,  'maxPosition': 1})
+     Test with staircase-shaped input.
      */
+
+    let peakDetection17 = StandardAlgorithm<Standard.PeakDetection>([
+      .range: 1023, .maxPosition: 1024, .minPosition: 0, .orderBy: "amplitude", .interpolate: false
+      ])
+
+    peakDetection17[realVecInput: .array] = [0, 0, 0]
+                                          + [1.0] * 4 as [Float]
+                                          + [2.0] * 7 as [Float]
+                                          + [3.0] * 6 as [Float]
+                                          + [0.0] * 1004 as [Float]
+    peakDetection17.compute()
+
+    XCTAssertEqual(peakDetection17[realVecOutput: .positions], [14])
+    XCTAssertEqual(peakDetection17[realVecOutput: .amplitudes], [3])
+
+    /*
+     Test without a peak in the input.
+     */
+
+    let peakDetection18 = StandardAlgorithm<Standard.PeakDetection>()
+
+    peakDetection18[realVecInput: .array] = [0.0] * 1024
+    peakDetection18.compute()
+
+    XCTAssert(peakDetection18[realVecOutput: .positions].isEmpty)
+    XCTAssert(peakDetection18[realVecOutput: .amplitudes].isEmpty)
 
   }
 

@@ -46,8 +46,8 @@ vector<Real> HarmonicBpm::findHarmonicBpms(const vector<Real>& bpms) {
   harmonicBpms.reserve(bpms.size());
   harmonicRatios.reserve(bpms.size());
   for (int i=0; i<int(bpms.size()); i++) {
-    Real ratio = _bpm/bpms[i];
-    if (ratio < 1) ratio = 1.0/ratio;
+//    Real ratio = _bpm/bpms[i];
+//    if (ratio < 1) ratio = 1.0/ratio;
     Real gcd = greatestCommonDivisor(_bpm, bpms[i], _tolerance);
     if (gcd > _threshold) {
       harmonicBpms.push_back(bpms[i]);

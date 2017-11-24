@@ -245,7 +245,7 @@ void BpmHistogram::createTicks(Real bpm) { //const vector<Real>& bpms) {
   for (int iFrame=0; iFrame<nFrames; iFrame+=1) {
     Real bin = -1;
     if (peaks[iFrame].empty()){ // framecutter is set to not drop silent frames!
-      bin = 0;
+//      bin = 0;
       _pool.add("frameBpms", 0);
       continue;
     }

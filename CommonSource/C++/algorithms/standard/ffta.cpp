@@ -118,10 +118,12 @@ void FFTA::createFFTObject(int size) {
     logSize = log2(size);
     
     //With vDSP you only need to create a new fft if you've increased the size
-    if(size > _fftPlanSize) {
-        vDSP_destroy_fftsetup(fftSetup);
-        fftSetup = vDSP_create_fftsetup( logSize, 0 );
-    }
+  if (fftSetup == nullptr) {
+      fftSetup = vDSP_create_fftsetup( logSize, 0 );
+  } else if(size > _fftPlanSize) {
+      vDSP_destroy_fftsetup(fftSetup);
+      fftSetup = vDSP_create_fftsetup( logSize, 0 );
+  }
     
     _fftPlanSize = size;
 }

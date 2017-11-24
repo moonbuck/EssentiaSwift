@@ -212,7 +212,7 @@ void LowLevelSpectralExtractor::createInnerNetwork() {
 
   Real thresholds_dB[] = { -20, -30, -60 };
   vector<Real> thresholds(ARRAY_SIZE(thresholds_dB));
-  for (int i=0; i<(int)thresholds.size(); i++) {
+  for (int i=0; i<(int)thresholds.size() && i<ARRAY_SIZE(thresholds_dB); i++) {
     thresholds[i] = db2lin(thresholds_dB[i]/2.0);
   }
   _silenceRate->configure("thresholds", thresholds);

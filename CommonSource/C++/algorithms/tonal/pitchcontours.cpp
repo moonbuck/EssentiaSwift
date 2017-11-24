@@ -151,7 +151,7 @@ void PitchContours::compute() {
 
   // peak streaming
   while(true) {
-    size_t index;
+    size_t index = 0;
     vector<Real> contourBins;
     vector<Real> contourSaliences;
 

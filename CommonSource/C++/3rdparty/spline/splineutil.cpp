@@ -1605,7 +1605,7 @@ int chfev ( double x1, double x2, double f1, double f2, double d1, double d2,
 //
 //  Initialize.
 //
-  ierr = 0;
+//  ierr = 0;
   next[0] = 0;
   next[1] = 0;
   xmi = r8_min ( 0.0, h );
@@ -1934,7 +1934,7 @@ void d3_print_some ( int n, double a[], int ilo, int jlo, int ihi, int jhi )
     cout << "  Col: ";
     for ( j = j2lo; j <= j2hi; j++ )
     {
-      j2 = j + 1 - j2lo;
+//      j2 = j + 1 - j2lo;
       cout << setw(7) << j << "       ";
     }
 
@@ -2434,6 +2434,9 @@ void least_set ( int point_num, double x[], double f[], double w[],
     if ( j == nterms )
     {
       c[j-1] = 0.0;
+      delete [] s;
+      delete [] pj;
+      delete [] pjm1;
       return;
     }
 
@@ -2456,6 +2459,7 @@ void least_set ( int point_num, double x[], double f[], double w[],
     }
   }
 
+  delete [] s;
   delete [] pj;
   delete [] pjm1;
 
@@ -6221,7 +6225,7 @@ void spline_pchip_val ( int n, double x[], double f[], double d[],
 
   if ( ne < 1 )
   {
-    ierr = -4;
+//    ierr = -4;
     cout << "\n";
     cout << "SPLINE_PCHIP_VAL - Fatal error!\n";
     cout << "  Number of evaluation points less than 1.\n";
