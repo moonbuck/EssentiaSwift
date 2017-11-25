@@ -30,7 +30,8 @@ FOUNDATION_EXPORT const unsigned char Essentia_MacVersionString[];
 #import <Essentia/ParameterWrapper.h>
 #import <Essentia/PoolWrapper.h>
 #import <Essentia/StandardIOWrappers.h>
-#import <Essentia/StreamingIOWrappers.h>
+#import <Essentia/SinkWrapper.h>
+#import <Essentia/SourceWrapper.h>
 #import <Essentia/IODataType.h>
 #import <Essentia/TypeProxyWrapper.h>
 #import <Essentia/NSValue+BridgingExtensions.h>

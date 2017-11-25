@@ -26,15 +26,14 @@
 		C23A36331FBF5A2B0083F6CE /* LoggerWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = C23A33731FBF5A2A0083F6CE /* LoggerWrapper.mm */; };
 		C23A36341FBF5A2B0083F6CE /* NetworkWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = C23A33751FBF5A2A0083F6CE /* NetworkWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C23A36351FBF5A2B0083F6CE /* IODataType.mm in Sources */ = {isa = PBXBuildFile; fileRef = C23A33761FBF5A2A0083F6CE /* IODataType.mm */; };
-		C23A36361FBF5A2B0083F6CE /* StreamingIOWrappers.mm in Sources */ = {isa = PBXBuildFile; fileRef = C23A33771FBF5A2A0083F6CE /* StreamingIOWrappers.mm */; };
+		C23A36361FBF5A2B0083F6CE /* SourceWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = C23A33771FBF5A2A0083F6CE /* SourceWrapper.mm */; };
 		C23A36371FBF5A2B0083F6CE /* IODataType.h in Headers */ = {isa = PBXBuildFile; fileRef = C23A33781FBF5A2A0083F6CE /* IODataType.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C23A36381FBF5A2B0083F6CE /* StreamingIOWrappers.h in Headers */ = {isa = PBXBuildFile; fileRef = C23A33791FBF5A2A0083F6CE /* StreamingIOWrappers.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C23A36391FBF5A2B0083F6CE /* StandardIOWrappers+BridgingExtensions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = C23A337A1FBF5A2A0083F6CE /* StandardIOWrappers+BridgingExtensions.hpp */; };
+		C23A36381FBF5A2B0083F6CE /* SourceWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = C23A33791FBF5A2A0083F6CE /* SourceWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C23A363A1FBF5A2B0083F6CE /* StandardIOWrappers.mm in Sources */ = {isa = PBXBuildFile; fileRef = C23A337B1FBF5A2A0083F6CE /* StandardIOWrappers.mm */; };
 		C23A363B1FBF5A2B0083F6CE /* StandardIOWrappers.h in Headers */ = {isa = PBXBuildFile; fileRef = C23A337C1FBF5A2A0083F6CE /* StandardIOWrappers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C23A363C1FBF5A2B0083F6CE /* NetworkWrapper+BridgingExtensions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = C23A337D1FBF5A2A0083F6CE /* NetworkWrapper+BridgingExtensions.hpp */; };
 		C23A363D1FBF5A2B0083F6CE /* IODataType+BridgingExtensions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = C23A337E1FBF5A2A0083F6CE /* IODataType+BridgingExtensions.hpp */; };
-		C23A363E1FBF5A2B0083F6CE /* StreamingIOWrappers+BridgingExtensions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = C23A337F1FBF5A2A0083F6CE /* StreamingIOWrappers+BridgingExtensions.hpp */; };
+		C23A363E1FBF5A2B0083F6CE /* SourceWrapper+BridgingExtensions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = C23A337F1FBF5A2A0083F6CE /* SourceWrapper+BridgingExtensions.hpp */; };
 		C23A363F1FBF5A2B0083F6CE /* NetworkWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = C23A33801FBF5A2A0083F6CE /* NetworkWrapper.mm */; };
 		C23A36401FBF5A2B0083F6CE /* VectorOutputWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = C23A33831FBF5A2A0083F6CE /* VectorOutputWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C23A36411FBF5A2B0083F6CE /* VectorInputWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = C23A33841FBF5A2A0083F6CE /* VectorInputWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1212,15 +1211,14 @@
 		C23A3B161FBF61B10083F6CE /* PoolWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = C23A33701FBF5A2A0083F6CE /* PoolWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C23A3B171FBF61DF0083F6CE /* NetworkWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = C23A33751FBF5A2A0083F6CE /* NetworkWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C23A3B181FBF61E50083F6CE /* IODataType.mm in Sources */ = {isa = PBXBuildFile; fileRef = C23A33761FBF5A2A0083F6CE /* IODataType.mm */; };
-		C23A3B191FBF61E80083F6CE /* StreamingIOWrappers.mm in Sources */ = {isa = PBXBuildFile; fileRef = C23A33771FBF5A2A0083F6CE /* StreamingIOWrappers.mm */; };
+		C23A3B191FBF61E80083F6CE /* SourceWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = C23A33771FBF5A2A0083F6CE /* SourceWrapper.mm */; };
 		C23A3B1A1FBF61EB0083F6CE /* IODataType.h in Headers */ = {isa = PBXBuildFile; fileRef = C23A33781FBF5A2A0083F6CE /* IODataType.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C23A3B1B1FBF61FB0083F6CE /* StreamingIOWrappers.h in Headers */ = {isa = PBXBuildFile; fileRef = C23A33791FBF5A2A0083F6CE /* StreamingIOWrappers.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C23A3B1C1FBF62020083F6CE /* StandardIOWrappers+BridgingExtensions.hpp in Sources */ = {isa = PBXBuildFile; fileRef = C23A337A1FBF5A2A0083F6CE /* StandardIOWrappers+BridgingExtensions.hpp */; };
+		C23A3B1B1FBF61FB0083F6CE /* SourceWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = C23A33791FBF5A2A0083F6CE /* SourceWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C23A3B1D1FBF62050083F6CE /* StandardIOWrappers.mm in Sources */ = {isa = PBXBuildFile; fileRef = C23A337B1FBF5A2A0083F6CE /* StandardIOWrappers.mm */; };
 		C23A3B1E1FBF62080083F6CE /* StandardIOWrappers.h in Headers */ = {isa = PBXBuildFile; fileRef = C23A337C1FBF5A2A0083F6CE /* StandardIOWrappers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C23A3B1F1FBF62110083F6CE /* NetworkWrapper+BridgingExtensions.hpp in Sources */ = {isa = PBXBuildFile; fileRef = C23A337D1FBF5A2A0083F6CE /* NetworkWrapper+BridgingExtensions.hpp */; };
 		C23A3B201FBF62190083F6CE /* IODataType+BridgingExtensions.hpp in Sources */ = {isa = PBXBuildFile; fileRef = C23A337E1FBF5A2A0083F6CE /* IODataType+BridgingExtensions.hpp */; };
-		C23A3B211FBF62260083F6CE /* StreamingIOWrappers+BridgingExtensions.hpp in Sources */ = {isa = PBXBuildFile; fileRef = C23A337F1FBF5A2A0083F6CE /* StreamingIOWrappers+BridgingExtensions.hpp */; };
+		C23A3B211FBF62260083F6CE /* SourceWrapper+BridgingExtensions.hpp in Sources */ = {isa = PBXBuildFile; fileRef = C23A337F1FBF5A2A0083F6CE /* SourceWrapper+BridgingExtensions.hpp */; };
 		C23A3B221FBF62280083F6CE /* NetworkWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = C23A33801FBF5A2A0083F6CE /* NetworkWrapper.mm */; };
 		C23A3B231FBF62640083F6CE /* VectorOutputWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = C23A33831FBF5A2A0083F6CE /* VectorOutputWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C23A3B241FBF626A0083F6CE /* VectorInputWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = C23A33841FBF5A2A0083F6CE /* VectorInputWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1281,6 +1279,14 @@
 		C2700C2B1FC873A60028D3F7 /* constantq_pythonoutput.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2700C261FC873A50028D3F7 /* constantq_pythonoutput.txt */; };
 		C2700C2C1FC873A60028D3F7 /* constantq_input.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2700C271FC873A50028D3F7 /* constantq_input.txt */; };
 		C2700C2D1FC873A60028D3F7 /* constantq_input.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2700C271FC873A50028D3F7 /* constantq_input.txt */; };
+		C2700C301FC9EE4A0028D3F7 /* SinkWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = C2700C2E1FC9EE4A0028D3F7 /* SinkWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C2700C311FC9EE4B0028D3F7 /* SinkWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = C2700C2E1FC9EE4A0028D3F7 /* SinkWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C2700C321FC9EE4B0028D3F7 /* SinkWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = C2700C2F1FC9EE4A0028D3F7 /* SinkWrapper.mm */; };
+		C2700C331FC9EE4B0028D3F7 /* SinkWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = C2700C2F1FC9EE4A0028D3F7 /* SinkWrapper.mm */; };
+		C2700C361FC9EF080028D3F7 /* StandardIOWrappers+BridgingExtensions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = C2700C341FC9EF080028D3F7 /* StandardIOWrappers+BridgingExtensions.hpp */; };
+		C2700C371FC9EF080028D3F7 /* StandardIOWrappers+BridgingExtensions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = C2700C341FC9EF080028D3F7 /* StandardIOWrappers+BridgingExtensions.hpp */; };
+		C2700C3B1FC9EF960028D3F7 /* SinkWrapper+BridgingExtensions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = C2700C3A1FC9EF960028D3F7 /* SinkWrapper+BridgingExtensions.hpp */; };
+		C2700C3C1FC9EF960028D3F7 /* SinkWrapper+BridgingExtensions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = C2700C3A1FC9EF960028D3F7 /* SinkWrapper+BridgingExtensions.hpp */; };
 		C27C40311FC1FFFB005CB8BA /* spectralpeaks_sinusoidfrequencies.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C402E1FC1FFFB005CB8BA /* spectralpeaks_sinusoidfrequencies.txt */; };
 		C27C40321FC1FFFB005CB8BA /* spectralpeaks_sinusoidfrequencies.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C402E1FC1FFFB005CB8BA /* spectralpeaks_sinusoidfrequencies.txt */; };
 		C27C403B1FC2182D005CB8BA /* spectralpeaks_spectrum.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C403A1FC2182C005CB8BA /* spectralpeaks_spectrum.txt */; };
@@ -1683,15 +1689,14 @@
 		C23A33731FBF5A2A0083F6CE /* LoggerWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LoggerWrapper.mm; sourceTree = "<group>"; };
 		C23A33751FBF5A2A0083F6CE /* NetworkWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkWrapper.h; sourceTree = "<group>"; };
 		C23A33761FBF5A2A0083F6CE /* IODataType.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IODataType.mm; sourceTree = "<group>"; };
-		C23A33771FBF5A2A0083F6CE /* StreamingIOWrappers.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StreamingIOWrappers.mm; sourceTree = "<group>"; };
+		C23A33771FBF5A2A0083F6CE /* SourceWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SourceWrapper.mm; sourceTree = "<group>"; };
 		C23A33781FBF5A2A0083F6CE /* IODataType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IODataType.h; sourceTree = "<group>"; };
-		C23A33791FBF5A2A0083F6CE /* StreamingIOWrappers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamingIOWrappers.h; sourceTree = "<group>"; };
-		C23A337A1FBF5A2A0083F6CE /* StandardIOWrappers+BridgingExtensions.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = "StandardIOWrappers+BridgingExtensions.hpp"; sourceTree = "<group>"; };
+		C23A33791FBF5A2A0083F6CE /* SourceWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceWrapper.h; sourceTree = "<group>"; };
 		C23A337B1FBF5A2A0083F6CE /* StandardIOWrappers.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StandardIOWrappers.mm; sourceTree = "<group>"; };
 		C23A337C1FBF5A2A0083F6CE /* StandardIOWrappers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StandardIOWrappers.h; sourceTree = "<group>"; };
 		C23A337D1FBF5A2A0083F6CE /* NetworkWrapper+BridgingExtensions.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = "NetworkWrapper+BridgingExtensions.hpp"; sourceTree = "<group>"; };
 		C23A337E1FBF5A2A0083F6CE /* IODataType+BridgingExtensions.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = "IODataType+BridgingExtensions.hpp"; sourceTree = "<group>"; };
-		C23A337F1FBF5A2A0083F6CE /* StreamingIOWrappers+BridgingExtensions.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = "StreamingIOWrappers+BridgingExtensions.hpp"; sourceTree = "<group>"; };
+		C23A337F1FBF5A2A0083F6CE /* SourceWrapper+BridgingExtensions.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = "SourceWrapper+BridgingExtensions.hpp"; sourceTree = "<group>"; };
 		C23A33801FBF5A2A0083F6CE /* NetworkWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NetworkWrapper.mm; sourceTree = "<group>"; };
 		C23A33831FBF5A2A0083F6CE /* VectorOutputWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VectorOutputWrapper.h; sourceTree = "<group>"; };
 		C23A33841FBF5A2A0083F6CE /* VectorInputWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VectorInputWrapper.h; sourceTree = "<group>"; };
@@ -2346,6 +2351,10 @@
 		C2700C251FC873A50028D3F7 /* constantq_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = constantq_expected.txt; sourceTree = "<group>"; };
 		C2700C261FC873A50028D3F7 /* constantq_pythonoutput.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = constantq_pythonoutput.txt; sourceTree = "<group>"; };
 		C2700C271FC873A50028D3F7 /* constantq_input.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = constantq_input.txt; sourceTree = "<group>"; };
+		C2700C2E1FC9EE4A0028D3F7 /* SinkWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SinkWrapper.h; sourceTree = "<group>"; };
+		C2700C2F1FC9EE4A0028D3F7 /* SinkWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SinkWrapper.mm; sourceTree = "<group>"; };
+		C2700C341FC9EF080028D3F7 /* StandardIOWrappers+BridgingExtensions.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "StandardIOWrappers+BridgingExtensions.hpp"; sourceTree = "<group>"; };
+		C2700C3A1FC9EF960028D3F7 /* SinkWrapper+BridgingExtensions.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = "SinkWrapper+BridgingExtensions.hpp"; sourceTree = "<group>"; };
 		C27C402E1FC1FFFB005CB8BA /* spectralpeaks_sinusoidfrequencies.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = spectralpeaks_sinusoidfrequencies.txt; sourceTree = "<group>"; };
 		C27C403A1FC2182C005CB8BA /* spectralpeaks_spectrum.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = spectralpeaks_spectrum.txt; sourceTree = "<group>"; };
 		C27C403D1FC2188E005CB8BA /* spectralpeaks_expectedfrequencies.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = spectralpeaks_expectedfrequencies.txt; sourceTree = "<group>"; };
@@ -2658,18 +2667,21 @@
 		C23A33741FBF5A2A0083F6CE /* IO */ = {
 			isa = PBXGroup;
 			children = (
+				C2700C341FC9EF080028D3F7 /* StandardIOWrappers+BridgingExtensions.hpp */,
 				C23A33751FBF5A2A0083F6CE /* NetworkWrapper.h */,
 				C23A33761FBF5A2A0083F6CE /* IODataType.mm */,
-				C23A33771FBF5A2A0083F6CE /* StreamingIOWrappers.mm */,
 				C23A33781FBF5A2A0083F6CE /* IODataType.h */,
-				C23A33791FBF5A2A0083F6CE /* StreamingIOWrappers.h */,
-				C23A337A1FBF5A2A0083F6CE /* StandardIOWrappers+BridgingExtensions.hpp */,
 				C23A337B1FBF5A2A0083F6CE /* StandardIOWrappers.mm */,
 				C23A337C1FBF5A2A0083F6CE /* StandardIOWrappers.h */,
 				C23A337D1FBF5A2A0083F6CE /* NetworkWrapper+BridgingExtensions.hpp */,
 				C23A337E1FBF5A2A0083F6CE /* IODataType+BridgingExtensions.hpp */,
-				C23A337F1FBF5A2A0083F6CE /* StreamingIOWrappers+BridgingExtensions.hpp */,
+				C23A33791FBF5A2A0083F6CE /* SourceWrapper.h */,
+				C23A337F1FBF5A2A0083F6CE /* SourceWrapper+BridgingExtensions.hpp */,
+				C23A33771FBF5A2A0083F6CE /* SourceWrapper.mm */,
 				C23A33801FBF5A2A0083F6CE /* NetworkWrapper.mm */,
+				C2700C2E1FC9EE4A0028D3F7 /* SinkWrapper.h */,
+				C2700C3A1FC9EF960028D3F7 /* SinkWrapper+BridgingExtensions.hpp */,
+				C2700C2F1FC9EE4A0028D3F7 /* SinkWrapper.mm */,
 			);
 			path = IO;
 			sourceTree = "<group>";
@@ -4111,7 +4123,6 @@
 				C23A37761FBF5A2B0083F6CE /* constantq.h in Headers */,
 				C23A38151FBF5A2B0083F6CE /* bpmhistogram.h in Headers */,
 				C23A362C1FBF5A2B0083F6CE /* TypeProxyWrapper.h in Headers */,
-				C23A36391FBF5A2B0083F6CE /* StandardIOWrappers+BridgingExtensions.hpp in Headers */,
 				C23A38501FBF5A2B0083F6CE /* essentiautil.h in Headers */,
 				C23A36411FBF5A2B0083F6CE /* VectorInputWrapper.h in Headers */,
 				C23A38761FBF5A2C0083F6CE /* tnt_fortran_array1d.h in Headers */,
@@ -4168,6 +4179,7 @@
 				C23A36491FBF5A2B0083F6CE /* ParameterWrapper.h in Headers */,
 				C23A37E51FBF5A2B0083F6CE /* noveltycurvefixedbpmestimator.h in Headers */,
 				C23A37351FBF5A2B0083F6CE /* erbbands.h in Headers */,
+				C2700C361FC9EF080028D3F7 /* StandardIOWrappers+BridgingExtensions.hpp in Headers */,
 				C23A38601FBF5A2C0083F6CE /* bpmutil.h in Headers */,
 				C23A37B81FBF5A2B0083F6CE /* ffta.h in Headers */,
 				C23A36981FBF5A2B0083F6CE /* highpass.h in Headers */,
@@ -4229,6 +4241,7 @@
 				C23A36751FBF5A2B0083F6CE /* duration.h in Headers */,
 				C23A36D31FBF5A2B0083F6CE /* magnitude.h in Headers */,
 				C23A379A1FBF5A2B0083F6CE /* bpf.h in Headers */,
+				C2700C301FC9EE4A0028D3F7 /* SinkWrapper.h in Headers */,
 				C23A38B51FBF5A2C0083F6CE /* phantombuffer_impl.h in Headers */,
 				C23A37DC1FBF5A2B0083F6CE /* bpmhistogramdescriptors.h in Headers */,
 				C23A38021FBF5A2B0083F6CE /* tempotapticks.h in Headers */,
@@ -4293,6 +4306,7 @@
 				C23A381C1FBF5A2B0083F6CE /* distributionshape.h in Headers */,
 				C23A37681FBF5A2B0083F6CE /* hpsmodelanal.h in Headers */,
 				C23A37421FBF5A2B0083F6CE /* panning.h in Headers */,
+				C2700C3B1FC9EF960028D3F7 /* SinkWrapper+BridgingExtensions.hpp in Headers */,
 				C23A36A41FBF5A2B0083F6CE /* pitchcontoursmultimelody.h in Headers */,
 				C23A37AB1FBF5A2B0083F6CE /* unaryoperatorstream.h in Headers */,
 				C23A38831FBF5A2C0083F6CE /* MersenneTwister.h in Headers */,
@@ -4342,7 +4356,7 @@
 				C23A36401FBF5A2B0083F6CE /* VectorOutputWrapper.h in Headers */,
 				C23A37F91FBF5A2B0083F6CE /* beatsloudness.h in Headers */,
 				C23A36821FBF5A2B0083F6CE /* loudnessebur128.h in Headers */,
-				C23A363E1FBF5A2B0083F6CE /* StreamingIOWrappers+BridgingExtensions.hpp in Headers */,
+				C23A363E1FBF5A2B0083F6CE /* SourceWrapper+BridgingExtensions.hpp in Headers */,
 				C23A38B81FBF5A2C0083F6CE /* streamingalgorithm.h in Headers */,
 				C23A386B1FBF5A2C0083F6CE /* tnt2essentiautils.h in Headers */,
 				C23A36811FBF5A2B0083F6CE /* zerocrossingrate.h in Headers */,
@@ -4393,7 +4407,7 @@
 				C23A38271FBF5A2B0083F6CE /* median.h in Headers */,
 				C23A38631FBF5A2C0083F6CE /* tnt2vector.h in Headers */,
 				C23A38691FBF5A2C0083F6CE /* tnt_array2d_utils.h in Headers */,
-				C23A36381FBF5A2B0083F6CE /* StreamingIOWrappers.h in Headers */,
+				C23A36381FBF5A2B0083F6CE /* SourceWrapper.h in Headers */,
 				C23A3A7D1FBF5E390083F6CE /* version.h in Headers */,
 				C23A36E11FBF5A2B0083F6CE /* danceability.h in Headers */,
 				C23A36C81FBF5A2B0083F6CE /* chordsdetectionbeats.h in Headers */,
@@ -4415,7 +4429,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C23A39451FBF5C1D0083F6CE /* barkextractor.h in Headers */,
-				C23A3B1B1FBF61FB0083F6CE /* StreamingIOWrappers.h in Headers */,
+				C23A3B1B1FBF61FB0083F6CE /* SourceWrapper.h in Headers */,
 				C23A39EF1FBF5CCF0083F6CE /* peakdetection.h in Headers */,
 				C23A394B1FBF5C1D0083F6CE /* tuningfrequencyextractor.h in Headers */,
 				C23A391D1FBF5B7B0083F6CE /* tristimulus.h in Headers */,
@@ -4478,6 +4492,7 @@
 				C23A392A1FBF5B7B0083F6CE /* pitchcontoursmelody.h in Headers */,
 				C23A3A741FBF5DCD0083F6CE /* maxtototal.h in Headers */,
 				C23A3AB31FBF5EEF0083F6CE /* tnt_cmat.h in Headers */,
+				C2700C311FC9EE4B0028D3F7 /* SinkWrapper.h in Headers */,
 				C23A3AEB1FBF5F160083F6CE /* vectorinput.h in Headers */,
 				C23A38F51FBF5B490083F6CE /* meter.h in Headers */,
 				C23A3AFE1FBF5F1C0083F6CE /* sinkbase.h in Headers */,
@@ -4514,6 +4529,7 @@
 				C23A39241FBF5B7B0083F6CE /* multipitchmelodia.h in Headers */,
 				C23A39FA1FBF5CCF0083F6CE /* trimmer.h in Headers */,
 				C23A38EE1FBF5B2A0083F6CE /* lowpass.h in Headers */,
+				C2700C371FC9EF080028D3F7 /* StandardIOWrappers+BridgingExtensions.hpp in Headers */,
 				C23A3AB81FBF5EEF0083F6CE /* tnt_stopwatch.h in Headers */,
 				C23A3AAE1FBF5EEF0083F6CE /* tnt_array2d_utils.h in Headers */,
 				C23A3A0B1FBF5D880083F6CE /* percivalenhanceharmonics.h in Headers */,
@@ -4608,6 +4624,7 @@
 				C23A39DF1FBF5CCF0083F6CE /* spectrumCQ.h in Headers */,
 				C23A3AB41FBF5EEF0083F6CE /* tnt_vec.h in Headers */,
 				C23A3AC21FBF5EEF0083F6CE /* tnt_array2d.h in Headers */,
+				C2700C3C1FC9EF960028D3F7 /* SinkWrapper+BridgingExtensions.hpp in Headers */,
 				C23A3A951FBF5E970083F6CE /* essentiautil.h in Headers */,
 				C23A3B051FBF5F230083F6CE /* algorithmfactory_impl.h in Headers */,
 				C23A3B0A1FBF61510083F6CE /* Exceptions.h in Headers */,
@@ -5328,6 +5345,7 @@
 				C2EB6FA61FC731C20068D657 /* DSPComplex.swift in Sources */,
 				C23A375E1FBF5A2B0083F6CE /* resamplefft.cpp in Sources */,
 				C23A37A81FBF5A2B0083F6CE /* overlapadd.cpp in Sources */,
+				C2700C321FC9EE4B0028D3F7 /* SinkWrapper.mm in Sources */,
 				C23A384C1FBF5A2B0083F6CE /* networkparser.cpp in Sources */,
 				C23A37D51FBF5A2B0083F6CE /* realaccumulator.cpp in Sources */,
 				C23A37D91FBF5A2B0083F6CE /* iffta.cpp in Sources */,
@@ -5487,7 +5505,7 @@
 				C23A38B41FBF5A2C0083F6CE /* streamingalgorithm.cpp in Sources */,
 				C23A36721FBF5A2B0083F6CE /* Debugging.swift in Sources */,
 				C23A365B1FBF5A2B0083F6CE /* StereoSample.swift in Sources */,
-				C23A36361FBF5A2B0083F6CE /* StreamingIOWrappers.mm in Sources */,
+				C23A36361FBF5A2B0083F6CE /* SourceWrapper.mm in Sources */,
 				C23A38C21FBF5A2C0083F6CE /* essentia.cpp in Sources */,
 				C23A37201FBF5A2B0083F6CE /* lowlevelspectralextractor.cpp in Sources */,
 				C23A37371FBF5A2B0083F6CE /* spectralcentroidtime.cpp in Sources */,
@@ -5611,7 +5629,7 @@
 				C23A3AFF1FBF5F230083F6CE /* debugging.cpp in Sources */,
 				C23A3AF11FBF5F1C0083F6CE /* sourcebase.cpp in Sources */,
 				C23A3AE81FBF5F160083F6CE /* poolstorage.cpp in Sources */,
-				C23A3B191FBF61E80083F6CE /* StreamingIOWrappers.mm in Sources */,
+				C23A3B191FBF61E80083F6CE /* SourceWrapper.mm in Sources */,
 				C23A39131FBF5B7B0083F6CE /* pitchyinfft.cpp in Sources */,
 				C23A38FD1FBF5B7B0083F6CE /* pitchcontoursegmentation.cpp in Sources */,
 				C23A3A071FBF5CCF0083F6CE /* windowing.cpp in Sources */,
@@ -5719,6 +5737,7 @@
 				C23A39121FBF5B7B0083F6CE /* chordsdescriptors.cpp in Sources */,
 				C23A3B5A1FBF636B0083F6CE /* Debugging.swift in Sources */,
 				C23A3B441FBF634A0083F6CE /* IOValue.swift in Sources */,
+				C2700C331FC9EE4B0028D3F7 /* SinkWrapper.mm in Sources */,
 				C23A3A311FBF5D880083F6CE /* noveltycurvefixedbpmestimator.cpp in Sources */,
 				C23A3A641FBF5DB20083F6CE /* flatness.cpp in Sources */,
 				C23A39C51FBF5CCF0083F6CE /* constantq.cpp in Sources */,
@@ -5843,7 +5862,6 @@
 				C23A39CC1FBF5CCF0083F6CE /* spectrum.cpp in Sources */,
 				C23A3A441FBF5D880083F6CE /* rhythmextractor2013.cpp in Sources */,
 				C23A3ACF1FBF5EFD0083F6CE /* FreesoundLowlevelDescriptors.cpp in Sources */,
-				C23A3B1C1FBF62020083F6CE /* StandardIOWrappers+BridgingExtensions.hpp in Sources */,
 				C23A3B131FBF61A50083F6CE /* TypeProxyWrapper.mm in Sources */,
 				C23A3A811FBF5E8D0083F6CE /* range.cpp in Sources */,
 				C23A3A1D1FBF5D880083F6CE /* rhythmextractor.cpp in Sources */,
@@ -5853,7 +5871,7 @@
 				C2EC95291FBF660C00D384C5 /* fileoutputproxy.cpp in Sources */,
 				C23A3A541FBF5DB20083F6CE /* geometricmean.cpp in Sources */,
 				C23A39DE1FBF5CCF0083F6CE /* powerspectrum.cpp in Sources */,
-				C23A3B211FBF62260083F6CE /* StreamingIOWrappers+BridgingExtensions.hpp in Sources */,
+				C23A3B211FBF62260083F6CE /* SourceWrapper+BridgingExtensions.hpp in Sources */,
 				C23A3A3E1FBF5D880083F6CE /* onsetdetection.cpp in Sources */,
 				C23A399F1FBF5C6E0083F6CE /* sinemodelanal.cpp in Sources */,
 				C23A3A0D1FBF5D880083F6CE /* beatsloudness.cpp in Sources */,

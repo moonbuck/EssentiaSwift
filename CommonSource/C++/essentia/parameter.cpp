@@ -63,7 +63,7 @@ Parameter& Parameter::operator=(const Parameter& p) {
   _ssamp = p._ssamp;
   _str = p._str;
   _real = p._real;
-  _boolean = p._boolean;
+  _boolean = _type == BOOL ? p._boolean : false;
 
   clear();
 

@@ -11,7 +11,8 @@
 #import "NSDictionary+BridgingExtensions.hpp"
 #import "NSString+BridgingExtensions.hpp"
 #import "ParameterWrapper+BridgingExtensions.hpp"
-#import "StreamingIOWrappers+BridgingExtensions.hpp"
+#import "SinkWrapper+BridgingExtensions.hpp"
+#import "SourceWrapper+BridgingExtensions.hpp"
 #import "Exceptions.h"
 
 using namespace std;

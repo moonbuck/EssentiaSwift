@@ -179,12 +179,12 @@ class StandardAlgorithmTests: XCTestCase {
      Test with DC signal input.
      */
 
-/*    let fft1 = StandardAlgorithm<Standard.FFTC>()
+    let fft1 = StandardAlgorithm<Standard.FFTC>()
     fft1[complexRealVecInput: .frame] = [1+0⍳] + [0+0⍳] * 511
     fft1.compute()
 
     XCTAssertEqual(fft1[complexRealVecOutput: .fft], [1+0⍳] * 257, accuracy: 1e-7)
-*/
+
 
     /*
      Test with a Fs/2 sine wave to check the nyquist value.
