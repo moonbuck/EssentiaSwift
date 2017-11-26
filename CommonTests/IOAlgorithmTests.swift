@@ -101,10 +101,10 @@ class IOAlgorithmTests: XCTestCase {
 
     let outputPool = aggregator[poolOutput: .output]
 
-    XCTAssertEqual(outputPool[singleReal: "testData1.mean"], 217.156586, accuracy: 0.1)
-    XCTAssertEqual(outputPool[singleReal: "testData1.var"], 151201.016, accuracy: 0.1)
-    XCTAssertEqual(outputPool[singleReal: "testData1.max"], 994.35, accuracy: 0.1)
-    XCTAssertEqual(outputPool[singleReal: "testData1.min"], 0.233, accuracy: 0.1)
+    XCTAssertEqual(outputPool[real: "testData1.mean"], 217.156586, accuracy: 0.1)
+    XCTAssertEqual(outputPool[real: "testData1.var"], 151201.016, accuracy: 0.1)
+    XCTAssertEqual(outputPool[real: "testData1.max"], 994.35, accuracy: 0.1)
+    XCTAssertEqual(outputPool[real: "testData1.min"], 0.233, accuracy: 0.1)
 
   }
 

@@ -300,92 +300,54 @@ public final class Pool: WrappingType {
 
   }
 
-  /// Subscript of convenience for getting/adding a real value in the regular pool.
+  /// Accessor of convenience for getting an unwrapped real value.
   ///
   /// - Parameter name: The descriptor name for the value.
   public subscript(real name: String) -> Float {
-    get {
-      guard case .real(let result) = self[name],
-            !isSingleValueDescriptor(name: name)
-        else
-      {
-        fatalError("Failed to retrieve real value for '\(name)'.")
-      }
-      return result
+    guard case .real(let result) = self[name] else {
+      fatalError("Failed to retrieve real value for '\(name)'.")
     }
-    set {
-      add(.real(newValue), for: name)
-    }
+    return result
   }
 
-  /// Subscript of convenience for getting/adding a real vector value in the regular pool.
+  /// Accessor of convenience for getting an unwrapped real vector value.
   ///
   /// - Parameter name: The descriptor name for the value.
   public subscript(realVec name: String) -> [Float] {
-    get {
-      guard case .realVec(let result) = self[name],
-        !isSingleValueDescriptor(name: name)
-        else
-      {
-        fatalError("Failed to retrieve real vector value for '\(name)'.")
-      }
-      return result
+    guard case .realVec(let result) = self[name] else {
+      fatalError("Failed to retrieve real vector value for '\(name)'.")
     }
-    set {
-      add(.realVec(newValue), for: name)
-    }
+    return result
   }
 
-  /// Subscript of convenience for getting the real vectors added to the regular pool or
-  /// adding a real matrix to the regular pool.
+  /// Accessor of convenience for getting an unwrapped real vector vector value.
   ///
   /// - Parameter name: The descriptor name for the value.
   public subscript(realVecVec name: String) -> [[Float]] {
-    get {
-      guard case .realVecVec(let result) = self[name] else {
-        fatalError("Failed to retrieve real vector vector value for '\(name)'.")
-      }
-      return result
+    guard case .realVecVec(let result) = self[name] else {
+      fatalError("Failed to retrieve real vector vector value for '\(name)'.")
     }
-    set {
-      add(.realVecVec(newValue), for: name)
-    }
+    return result
   }
 
-  /// Subscript of convenience for getting/setting a string value in the regular pool.
+  /// Accessor of convenience for getting an unwrapped string value.
   ///
   /// - Parameter name: The descriptor name for the value.
   public subscript(string name: String) -> String {
-    get{
-      guard case .string(let result) = self[name],
-            !isSingleValueDescriptor(name: name)
-        else
-      {
-        fatalError("Failed to retrieve string value for '\(name)'.")
-      }
-      return result
+    guard case .string(let result) = self[name] else {
+      fatalError("Failed to retrieve string value for '\(name)'.")
     }
-    set {
-      add(.string(newValue), for: name)
-    }
+    return result
   }
 
-  /// Subscript of convenience for getting/settings a string vector value in the regular pool.
+  /// Accessor of convenience for an unwrapped string vector value.
   ///
   /// - Parameter name: The descriptor name for the value.
   public subscript(stringVec name: String) -> [String] {
-    get {
-      guard case .stringVec(let result) = self[name],
-            !isSingleValueDescriptor(name: name)
-        else
-      {
-        fatalError("Failed to retrieve string vector value for '\(name)'.")
-      }
-      return result
+    guard case .stringVec(let result) = self[name] else {
+      fatalError("Failed to retrieve string vector value for '\(name)'.")
     }
-    set {
-      add(.stringVec(newValue), for: name)
-    }
+    return result
   }
 
   /// Accessor of convenience for an unwrapped string vector vector value.
@@ -397,22 +359,6 @@ public final class Pool: WrappingType {
       fatalError("Failed to retrieve string vector vector value for '\(name)'.")
     }
     return result
-  }
-
-  /// Mutator of convenience for adding a stereo sample to the regular pool.
-  ///
-  /// - Warning: Invoking the getter results in a fatal error. Only the setter is available.
-  /// - Parameter name: The descriptor name for the value.
-  public subscript(stereoSample name: String) -> StereoSample {
-    get {
-      fatalError("""
-        Stereo sample values may only be set. Use `subscript(stereoSampleVec:)` to retrieve the\
-        stereo sample values that have been added to the regular pool for '\(name)'.
-        """)
-    }
-    set {
-      add(.stereoSample(newValue), for: name)
-    }
   }
 
   /// Accessor of convenience for an unwrapped real matrix vector value.
@@ -440,74 +386,74 @@ public final class Pool: WrappingType {
   /// Subscript of convenience for getting/setting real value in the single pool.
   ///
   /// - Parameter name: The descriptor name for the value.
-  public subscript (singleReal name: String) -> Float {
-    get {
-      guard isSingleValueDescriptor(name: name),
-            case .real(let result) = self[name]
-        else
-      {
-        fatalError("Failed to retrieve real value for '\(name)'.")
-      }
-      return result
-    }
-    set {
-      set(.real(newValue), for: name)
-    }
-  }
+//  public subscript (singleReal name: String) -> Float {
+//    get {
+//      guard isSingleValueDescriptor(name: name),
+//            case .real(let result) = self[name]
+//        else
+//      {
+//        fatalError("Failed to retrieve real value for '\(name)'.")
+//      }
+//      return result
+//    }
+//    set {
+//      set(.real(newValue), for: name)
+//    }
+//  }
 
   /// Subscript of convenience for getting/setting real vector value in the single pool.
   ///
   /// - Parameter name: The descriptor name for the value.
-  public subscript (singleRealVec name: String) -> [Float] {
-    get {
-      guard isSingleValueDescriptor(name: name),
-        case .realVec(let result) = self[name]
-        else
-      {
-        fatalError("Failed to retrieve real vector value for '\(name)'.")
-      }
-      return result
-    }
-    set {
-      set(.realVec(newValue), for: name)
-    }
-  }
+//  public subscript (singleRealVec name: String) -> [Float] {
+//    get {
+//      guard isSingleValueDescriptor(name: name),
+//        case .realVec(let result) = self[name]
+//        else
+//      {
+//        fatalError("Failed to retrieve real vector value for '\(name)'.")
+//      }
+//      return result
+//    }
+//    set {
+//      set(.realVec(newValue), for: name)
+//    }
+//  }
 
   /// Subscript of convenience for getting/setting string value in the single pool.
   ///
   /// - Parameter name: The descriptor name for the value.
-  public subscript (singleString name: String) -> String {
-    get {
-      guard isSingleValueDescriptor(name: name),
-        case .string(let result) = self[name]
-        else
-      {
-        fatalError("Failed to retrieve real value for '\(name)'.")
-      }
-      return result
-    }
-    set {
-      set(.string(newValue), for: name)
-    }
-  }
+//  public subscript (singleString name: String) -> String {
+//    get {
+//      guard isSingleValueDescriptor(name: name),
+//        case .string(let result) = self[name]
+//        else
+//      {
+//        fatalError("Failed to retrieve real value for '\(name)'.")
+//      }
+//      return result
+//    }
+//    set {
+//      set(.string(newValue), for: name)
+//    }
+//  }
 
   /// Subscript of convenience for getting/setting string vector value in the single pool.
   ///
   /// - Parameter name: The descriptor name for the value.
-  public subscript (singleStringVec name: String) -> [String] {
-    get {
-      guard isSingleValueDescriptor(name: name),
-        case .stringVec(let result) = self[name]
-        else
-      {
-        fatalError("Failed to retrieve real vector value for '\(name)'.")
-      }
-      return result
-    }
-    set {
-      set(.stringVec(newValue), for: name)
-    }
-  }
+//  public subscript (singleStringVec name: String) -> [String] {
+//    get {
+//      guard isSingleValueDescriptor(name: name),
+//        case .stringVec(let result) = self[name]
+//        else
+//      {
+//        fatalError("Failed to retrieve real vector value for '\(name)'.")
+//      }
+//      return result
+//    }
+//    set {
+//      set(.stringVec(newValue), for: name)
+//    }
+//  }
 
   /// Queries for the existence of the specified descriptor for any data type.
   ///
@@ -1072,6 +1018,23 @@ extension Pool.StoredValue: ExpressibleByStringLiteral {
 
 }
 
+extension Pool: Collection {
+
+  public var startIndex: Int {
+    return 0
+  }
+
+  public var endIndex: Int {
+    return descriptorNames.count
+  }
+
+  public func index(after i: Int) -> Int {
+    return i &+ 1
+  }
+
+
+}
+
 extension Pool: ExpressibleByDictionaryLiteral {
 
   /// Initializing with a dictionary literal of descriptor-value tuples.
@@ -1085,63 +1048,85 @@ extension Pool: ExpressibleByDictionaryLiteral {
 
       switch value {
 
-      case let realValue as Float:
-        self[singleReal: descriptor] = realValue
+      case let value as Float:
+        set(.real(value), for: descriptor)
 
-      case let intValue as Int:
-        self[singleReal: descriptor] = Float(intValue)
+      case let value as Int:
+        set(.real(Float(value)), for: descriptor)
 
-      case let doubleValue as Double:
-        self[singleReal: descriptor] = Float(doubleValue)
+      case let value as Double:
+        set(.real(Float(value)), for: descriptor)
 
-      case let stringValue as String:
-        self[singleString: descriptor] = stringValue
+      case let value as String:
+        set(.string(value), for: descriptor)
 
-      case let realVecValue as [Float]:
-        for value in realVecValue { self[real: descriptor] = value }
-
-      case let intVecValue as [Int]:
-        for value in intVecValue { self[real: descriptor] = Float(value) }
-
-      case let doubleVecValue as [Double]:
-        for value in doubleVecValue { self[real: descriptor] = Float(value) }
-
-      case let stringVecValue as [String]:
-        for value in stringVecValue { self[string: descriptor] = value }
-
-      case let stereoSampleVecValue as [StereoSample]:
-        for value in stereoSampleVecValue { self[stereoSample: descriptor] = value }
-
-      case let realVecVecValue as [[Float]]:
-        for value in realVecVecValue { self[realVec: descriptor] = value }
-
-      case let intVecVecValue as [[Int]]:
-        for value in intVecVecValue { self[realVec: descriptor] = value.map(Float.init) }
-
-      case let doubleVecVecValue as [[Double]]:
-        for value in doubleVecVecValue { self[realVec: descriptor] = value.map(Float.init) }
-
-      case let stringVecVecValue as [[String]]:
-        for value in stringVecVecValue { self[stringVec: descriptor] = value }
-
-      case let realVecVecVecValue as [[[Float]]]:
-        for value in realVecVecVecValue { self[realVecVec: descriptor] = value }
-
-      case let intVecVecVecValue as [[[Int]]]:
-        for value in intVecVecVecValue {
-          self[realVecVec: descriptor] = value.map({$0.map(Float.init)})
+      case let valueArray as [Float]:
+        for value in valueArray {
+          add(.real(value), for: descriptor)
         }
 
-      case let doubleVecVecVecValue as [[[Double]]]:
-        for value in doubleVecVecVecValue {
-          self[realVecVec: descriptor] = value .map({$0.map(Float.init)})
+      case let valueArray as [Int]:
+        for value in valueArray {
+          add(.real(Float(value)), for: descriptor)
         }
 
-      case let storedValue as StoredValue:
-        set(storedValue, for: descriptor)
+      case let valueArray as [Double]:
+        for value in valueArray {
+          add(.real(Float(value)), for: descriptor)
+        }
 
-      case let storedValueArray as [StoredValue]:
-        for storedValue in storedValueArray { add(storedValue, for: descriptor) }
+      case let valueArray as [String]:
+        for value in valueArray {
+          add(.string(value), for: descriptor)
+        }
+
+      case let valueArray as [StereoSample]:
+        for value in valueArray {
+          add(.stereoSample(value), for: descriptor)
+        }
+
+      case let valueArray as [[Float]]:
+        for value in valueArray {
+         add(.realVec(value), for: descriptor)
+        }
+
+      case let valueArray as [[Int]]:
+        for value in valueArray {
+          add(.realVec(value.map(Float.init)), for: descriptor)
+        }
+
+      case let valueArray as [[Double]]:
+        for value in valueArray {
+          add(.realVec(value.map(Float.init)), for: descriptor)
+        }
+
+      case let valueArray as [[String]]:
+        for value in valueArray {
+          add(.stringVec(value), for: descriptor)
+        }
+
+      case let valueArray as [[[Float]]]:
+        for value in valueArray {
+          add(.realVecVec(value), for: descriptor)
+        }
+
+      case let valueArray as [[[Int]]]:
+        for value in valueArray {
+          add(.realVecVec(value.map({$0.map(Float.init)})), for: descriptor)
+        }
+
+      case let valueArray as [[[Double]]]:
+        for value in valueArray {
+          add(.realVecVec(value.map({$0.map(Float.init)})), for: descriptor)
+        }
+
+      case let value as StoredValue:
+        set(value, for: descriptor)
+
+      case let valueArray as [StoredValue]:
+        for value in valueArray {
+          add(value, for: descriptor)
+        }
 
       default:
         break

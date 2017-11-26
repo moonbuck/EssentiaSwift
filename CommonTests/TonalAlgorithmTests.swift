@@ -405,9 +405,9 @@ class TonalAlgorithmTests: XCTestCase {
     let network = Network(generator: vectorInput)
     network.run()
 
-    XCTAssertEqual(pool[singleReal: "deviation"], 0.25)
-    XCTAssertEqual(pool[singleReal: "energyRatio"], 0.5)
-    XCTAssertEqual(pool[singleReal: "peaksRatio"], 0.5)
+    XCTAssertEqual(pool[real: "deviation"], 0.25)
+    XCTAssertEqual(pool[real: "energyRatio"], 0.5)
+    XCTAssertEqual(pool[real: "peaksRatio"], 0.5)
 
   }
 

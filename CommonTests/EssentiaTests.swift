@@ -407,7 +407,7 @@ class EssentiaTests: XCTestCase {
     let reals: [Float] = [1.0, 2.0, 3.0]
 
     for real in reals {
-      pool1[real: "real"] = real
+      pool1.add(.real(real), for: "real")
     }
 
     XCTAssertEqual(pool1[realVec: "real"], reals)
@@ -415,7 +415,7 @@ class EssentiaTests: XCTestCase {
     let realVecs: [[Float]] = [[1.1, 1.2, 1.3], [2.1, 2.2, 2.3], [3.1, 3.2, 3.3]]
 
     for realVec in realVecs {
-      pool1[realVec: "realVector"] = realVec
+      pool1.add(.realVec(realVec), for: "realVector")
     }
 
     XCTAssertEqual(pool1[realVecVec: "realVector"], realVecs, accuracy: Float(0.1))
@@ -423,7 +423,7 @@ class EssentiaTests: XCTestCase {
     let strings = ["1", "2", "3"]
 
     for string in strings {
-      pool1[string: "string"] = string
+      pool1.add(.string(string), for: "string")
     }
 
     XCTAssertEqual(pool1[stringVec: "string"], strings)
@@ -431,7 +431,7 @@ class EssentiaTests: XCTestCase {
     let stringVecs = [["11", "12", "13"], ["21", "22", "23"], ["31", "32", "33"]]
 
     for stringVec in stringVecs {
-      pool1[stringVec: "stringVector"] = stringVec
+      pool1.add(.stringVec(stringVec), for: "stringVector")
     }
 
     XCTAssertEqual(pool1[stringVecVec: "stringVector"], stringVecs)
@@ -439,7 +439,7 @@ class EssentiaTests: XCTestCase {
     let stereoSamples = [StereoSample(left: 1.1, right: 1.2), StereoSample(left: 2.1, right: 2.2)]
 
     for stereoSample in stereoSamples {
-      pool1[stereoSample: "stereoSample"] = stereoSample
+      pool1.add(.stereoSample(stereoSample), for: "stereoSample")
     }
 
     XCTAssertEqual(pool1[stereoSampleVec: "stereoSample"], stereoSamples)
@@ -451,41 +451,41 @@ class EssentiaTests: XCTestCase {
     ]
 
     for realMatrix in realMatrices {
-      pool1[realVecVec: "realMatrix"] = realMatrix
+      pool1.add(.realVecVec(realMatrix), for: "realMatrix")
     }
 
     XCTAssertEqual(pool1[realMatrixVec: "realMatrix"], realMatrices, accuracy: Float(0.1))
 
     for (index, real) in reals.enumerated() {
-      pool1[singleReal: "singleReal\(index)"] = real
+      pool1.set(.real(real), for: "singleReal\(index)")
     }
 
     for (index, real) in reals.enumerated() {
-      XCTAssertEqual(pool1[singleReal: "singleReal\(index)"], real)
+      XCTAssertEqual(pool1[real: "singleReal\(index)"], real)
     }
 
     for (index, realVec) in realVecs.enumerated() {
-      pool1[singleRealVec: "singleRealVector\(index)"] = realVec
+      pool1.set(.realVec(realVec), for: "singleRealVector\(index)")
     }
 
     for (index, realVec) in realVecs.enumerated() {
-      XCTAssertEqual(pool1[singleRealVec: "singleRealVector\(index)"], realVec)
+      XCTAssertEqual(pool1[realVec: "singleRealVector\(index)"], realVec)
     }
 
     for (index, string) in strings.enumerated() {
-      pool1[singleString: "singleString\(index)"] = string
+      pool1.set(.string(string), for: "singleString\(index)")
     }
 
     for (index, string) in strings.enumerated() {
-      XCTAssertEqual(pool1[singleString: "singleString\(index)"], string)
+      XCTAssertEqual(pool1[string: "singleString\(index)"], string)
     }
 
     for (index, stringVec) in stringVecs.enumerated() {
-      pool1[singleStringVec: "singleStringVector\(index)"] = stringVec
+      pool1.set(.stringVec(stringVec), for: "singleStringVector\(index)")
     }
 
     for (index, stringVec) in stringVecs.enumerated() {
-      XCTAssertEqual(pool1[singleStringVec: "singleStringVector\(index)"], stringVec)
+      XCTAssertEqual(pool1[stringVec: "singleStringVector\(index)"], stringVec)
     }
 
     XCTAssertEqual(pool1.jsonRepresentation,

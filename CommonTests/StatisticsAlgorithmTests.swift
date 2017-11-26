@@ -35,16 +35,16 @@ class StatisticsAlgorithmTests: XCTestCase {
     aggregator1.compute()
     let result1 = aggregator1[poolOutput: .output]
 
-    XCTAssertEqual(result1[singleReal: "foo.mean"], 9.77777777778)
-    XCTAssertEqual(result1[singleReal: "foo.median"], 5)
-    XCTAssertEqual(result1[singleReal: "foo.min"], 1)
-    XCTAssertEqual(result1[singleReal: "foo.max"], 34)
-    XCTAssertEqual(result1[singleReal: "foo.var"], 112.172839506, deviation: 1e-7)
-    XCTAssertEqual(result1[singleReal: "foo.stdev"], 10.591167995362929, deviation: 1e-7)
-    XCTAssertEqual(result1[singleReal: "foo.dmean"], 4.125)
-    XCTAssertEqual(result1[singleReal: "foo.dvar"], 17.109375)
-    XCTAssertEqual(result1[singleReal: "foo.dmean2"], 1.85714285714)
-    XCTAssertEqual(result1[singleReal: "foo.dvar2"], 2.40816326531, accuracy: 1e-6)
+    XCTAssertEqual(result1[real: "foo.mean"], 9.77777777778)
+    XCTAssertEqual(result1[real: "foo.median"], 5)
+    XCTAssertEqual(result1[real: "foo.min"], 1)
+    XCTAssertEqual(result1[real: "foo.max"], 34)
+    XCTAssertEqual(result1[real: "foo.var"], 112.172839506, deviation: 1e-7)
+    XCTAssertEqual(result1[real: "foo.stdev"], 10.591167995362929, deviation: 1e-7)
+    XCTAssertEqual(result1[real: "foo.dmean"], 4.125)
+    XCTAssertEqual(result1[real: "foo.dvar"], 17.109375)
+    XCTAssertEqual(result1[real: "foo.dmean2"], 1.85714285714)
+    XCTAssertEqual(result1[real: "foo.dvar2"], 2.40816326531, accuracy: 1e-6)
 
     /*
      Test that registered exceptions are skipped.
@@ -62,11 +62,11 @@ class StatisticsAlgorithmTests: XCTestCase {
     XCTAssertEqual(result2.descriptorNames.sorted(),
                    ["bar.foo.max", "bar.foo.mean", "bar.foo.min", "bar.foo.var", "foo.bar.min"])
 
-    XCTAssertEqual(result2[singleReal: "foo.bar.min"], 1.1)
-    XCTAssertEqual(result2[singleReal: "bar.foo.min"], -6.9)
-    XCTAssertEqual(result2[singleReal: "bar.foo.max"], 6.9)
-    XCTAssertEqual(result2[singleReal: "bar.foo.mean"], 0)
-    XCTAssertEqual(result2[singleReal: "bar.foo.var"], 47.61)
+    XCTAssertEqual(result2[real: "foo.bar.min"], 1.1)
+    XCTAssertEqual(result2[real: "bar.foo.min"], -6.9)
+    XCTAssertEqual(result2[real: "bar.foo.max"], 6.9)
+    XCTAssertEqual(result2[real: "bar.foo.mean"], 0)
+    XCTAssertEqual(result2[real: "bar.foo.var"], 47.61)
 
     /*
      Test string aggregation.
@@ -109,7 +109,7 @@ class StatisticsAlgorithmTests: XCTestCase {
      Test median for an even number frames.
      */
 
-    pool4[realVec: "foo"] = [10, 10, 10]
+    pool4.add(.realVec([10, 10, 10]), for: "foo")
     let aggregator5 = PoolAggregatorAlgorithm([
       .defaultStats: ["mean", "min", "max", "median", "var", "stdev",
                       "dmean", "dvar", "dmean2", "dvar2"]
@@ -218,7 +218,7 @@ class StatisticsAlgorithmTests: XCTestCase {
 
     XCTAssert(result11.contains(name: "foo.max"))
     XCTAssert(result11.contains(name: "foo.value"))
-    XCTAssertEqual(result11[singleReal: "foo.max"], 5)
+    XCTAssertEqual(result11[real: "foo.max"], 5)
     XCTAssertEqual(result11[realVec: "foo.value"], [1, 2, 3, 4, 5])
 
     /*
@@ -235,8 +235,8 @@ class StatisticsAlgorithmTests: XCTestCase {
     XCTAssert(result12.contains(name: "foo"))
     XCTAssert(result12.contains(name: "foo_vector"))
 
-    XCTAssertEqual(result12[singleReal: "foo"], 5)
-    XCTAssertEqual(result12[singleRealVec: "foo_vector"], [7, 8, 9])
+    XCTAssertEqual(result12[real: "foo"], 5)
+    XCTAssertEqual(result12[realVec: "foo_vector"], [7, 8, 9])
 
     /*
      Test real matrix calculations.
