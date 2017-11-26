@@ -92,7 +92,7 @@ class IOAlgorithmTests: XCTestCase {
       inputPool.add(.realVec($0), for: "testData2")
     }
 
-    let aggregator = StandardAlgorithm<Standard.PoolAggregator>()
+    let aggregator = PoolAggregatorAlgorithm()
     aggregator[stringVecParameter: .defaultStats] = ["mean", "var", "min", "max"]
 
     aggregator[poolInput: .input] = inputPool

@@ -25,7 +25,7 @@ class MathAlgorithmTests: XCTestCase {
      Test with all-zero input.
      */
 
-    let magnitude1 = StandardAlgorithm<Standard.Magnitude>()
+    let magnitude1 = MagnitudeAlgorithm()
     magnitude1[complexRealVecInput: .complex] = [DSPComplex()] * 4
     magnitude1.compute()
 
@@ -35,7 +35,7 @@ class MathAlgorithmTests: XCTestCase {
      Test with empty input.
      */
 
-    let magnitude2 = StandardAlgorithm<Standard.Magnitude>()
+    let magnitude2 = MagnitudeAlgorithm()
     magnitude2[complexRealVecInput: .complex] = []
     magnitude2.compute()
 
@@ -46,7 +46,7 @@ class MathAlgorithmTests: XCTestCase {
      Test for regression.
      */
 
-    let magnitude3 = StandardAlgorithm<Standard.Magnitude>()
+    let magnitude3 = MagnitudeAlgorithm()
     magnitude3[complexRealVecInput: .complex] = [
       DSPComplex(real: 1, imag: -5),
       DSPComplex(real: 2, imag: -6),
@@ -69,7 +69,7 @@ class MathAlgorithmTests: XCTestCase {
      Test with all-zero input.
      */
 
-    let cartesianToPolar1 = StandardAlgorithm<Standard.CartesianToPolar>()
+    let cartesianToPolar1 = CartesianToPolarAlgorithm()
     cartesianToPolar1[complexRealVecInput: .complex] = [DSPComplex()] * 4
     cartesianToPolar1.compute()
 
@@ -80,7 +80,7 @@ class MathAlgorithmTests: XCTestCase {
      Test for regression.
      */
 
-    let cartesianToPolar2 = StandardAlgorithm<Standard.CartesianToPolar>()
+    let cartesianToPolar2 = CartesianToPolarAlgorithm()
     cartesianToPolar2[complexRealVecInput: .complex] = [
       DSPComplex(real: 1, imag: -5),
       DSPComplex(real: 2, imag: -6),
@@ -111,7 +111,7 @@ class MathAlgorithmTests: XCTestCase {
 
     for (input, magnitude, phase) in circle {
 
-      let cartesianToPolar = StandardAlgorithm<Standard.CartesianToPolar>()
+      let cartesianToPolar = CartesianToPolarAlgorithm()
       cartesianToPolar[complexRealVecInput: .complex] = [input]
       cartesianToPolar.compute()
 
@@ -120,7 +120,7 @@ class MathAlgorithmTests: XCTestCase {
 
     }
 
-    let cartesianToPolar3 = StandardAlgorithm<Standard.CartesianToPolar>()
+    let cartesianToPolar3 = CartesianToPolarAlgorithm()
     cartesianToPolar3[complexRealVecInput: .complex] = circle.map({$0.0})
     cartesianToPolar3.compute()
 
@@ -141,7 +141,7 @@ class MathAlgorithmTests: XCTestCase {
      Test with empty input.
      */
 
-    let polarToCartesian1 = StandardAlgorithm<Standard.PolarToCartesian>()
+    let polarToCartesian1 = PolarToCartesianAlgorithm()
     polarToCartesian1[realVecInput: .magnitude] = []
     polarToCartesian1[realVecInput: .phase] = []
     polarToCartesian1.compute()
@@ -155,7 +155,7 @@ class MathAlgorithmTests: XCTestCase {
     let magnitudes: [Float] = [1, 4, 1.345, 0.321, -4]
     let phases: [Float] = [0.45, 3.14, 2.543, 6.42, 1]
 
-    let polarToCartesian2 = StandardAlgorithm<Standard.PolarToCartesian>()
+    let polarToCartesian2 = PolarToCartesianAlgorithm()
     polarToCartesian2[realVecInput: .magnitude] = magnitudes
     polarToCartesian2[realVecInput: .phase] = phases
     polarToCartesian2.compute()
@@ -170,7 +170,7 @@ class MathAlgorithmTests: XCTestCase {
      Test with complex representations of real values.
      */
 
-    let polarToCartesian3 = StandardAlgorithm<Standard.PolarToCartesian>()
+    let polarToCartesian3 = PolarToCartesianAlgorithm()
     polarToCartesian3[realVecInput: .magnitude] = [1, 2, 3, 4]
     polarToCartesian3[realVecInput: .phase] = [0, 0, 0, 0]
     polarToCartesian3.compute()

@@ -47,10 +47,64 @@ public func endAlgorithmMode<Target>(target: inout Target)
 
 }
 
+/// Inserts algorithm typealiases for the specified names and mode.
+///
+/// - Parameters:
+///   - names: The algorithm specifications for which typealiases will be inserted grouped
+///            by category name.
+///   - mode: The algorithm mode. Must be 'Standard' or 'Streaming'.
+///   - target: The stream to which the text will be written.
+public func appendAlgorithmAliases<Target>(namesByCategory: [String:[String]],
+                                           mode: String,
+                                           target: inout Target)
+  where Target:TextOutputStream
+{
+
+  print("", to: &target)
+
+  switch mode {
+
+    case "Standard":
+
+      for (category, names) in namesByCategory {
+
+        print("// \(category)", to: &target)
+
+        for name in names {
+          print("public typealias \(name)Algorithm = \(name)Algorithm",
+            to: &target)
+        }
+
+        print("", to: &target)
+
+      }
+
+    case "Streaming":
+
+      for (category, names) in namesByCategory {
+
+        print("// \(category)", to: &target)
+
+        for name in names {
+          print("public typealias \(name)SAlgorithm = \(name)SAlgorithm",
+            to: &target)
+        }
+
+        print("", to: &target)
+
+      }
+
+    default:
+      fatalError("Unsupported algorithm mode: '\(mode)'.")
+
+  }
+
+}
+
 /// Inserts an enumeration declaration for `AlgorithmID` into the specified stream of text.
 ///
 /// - Parameters:
-///   - caseNamesByCategory: A collection of case names for the enumeration grouped by category.
+///   - namesByCategory: A collection of case names for the enumeration grouped by category.
 ///   - mode: The algorithm mode with which the enumeration is to be associated.
 ///   - target: The stream to which the text will be written.
 public func appendAlgorithmID<Target>(namesByCategory: [String:[String]],

@@ -36,7 +36,7 @@ import Foundation
 /// listed above are treated as separate types. In addition, a descriptor name that maps to a
 /// single datum is considered mapping to a different type than a descriptor name that maps to a
 /// vector of the same type.
-public class Pool: WrappingType {
+public final class Pool: WrappingType {
 
   internal typealias Wrapped = PoolWrapper
 
@@ -73,7 +73,7 @@ public class Pool: WrappingType {
   /// - Parameters:
   ///   - value: The value to add to the collection of data for `name`.
   ///   - name: A descriptor name identifying the collection to which to add `realValue`.
-  public func add(_ value: Value, for name: String) {
+  public func add(_ value: StoredValue, for name: String) {
 
     switch value {
       case .real(let value):
@@ -110,7 +110,7 @@ public class Pool: WrappingType {
   /// - Parameters:
   ///   - value: The datum to associate with `name`.
   ///   - name: The descriptor name of the datum to set.
-  public func set(_ value: Value, for name: String) {
+  public func set(_ value: StoredValue, for name: String) {
 
     switch value {
       case .real(let value):
@@ -171,7 +171,7 @@ public class Pool: WrappingType {
   ///   - value: The value to merge into the pool.
   ///   - name: The descriptor name underwhich to merge `realVecValue`.
   ///   - type: The type of merge to perform.
-  public func merge(_ value: Value, for name: String, type: MergeType = .none) {
+  public func merge(_ value: StoredValue, for name: String, type: MergeType = .none) {
 
     switch value {
 
@@ -216,7 +216,7 @@ public class Pool: WrappingType {
   ///   - value: The value to merge into the pool.
   ///   - name: The descriptor name under which to merge `realValue`.
   ///   - type: The type of merge to perform.
-  public func mergeSingle(_ value: Value, for name: String, type: MergeType = .none) {
+  public func mergeSingle(_ value: StoredValue, for name: String, type: MergeType = .none) {
 
     switch value {
 
@@ -270,7 +270,7 @@ public class Pool: WrappingType {
   ///
   /// - Parameter name: The descriptor for which to retrieve associated data.
   /// - Returns: The data associated with `name` or `.none` if no such data could be found.
-  public subscript(name: String) -> Value {
+  public subscript(name: String) -> StoredValue {
 
     let result: Any
 
@@ -294,7 +294,7 @@ public class Pool: WrappingType {
       return .none
     }
 
-    guard let wrappedResult = Value(value: result) else { return .none }
+    guard let wrappedResult = StoredValue(value: result) else { return .none }
 
     return wrappedResult
 
@@ -725,7 +725,7 @@ extension Pool {
     internal let name: String
 
     /// The value associated with the node or `nil` if the node has only children.
-    internal var value: Value?
+    internal var value: StoredValue?
 
     /// The child nodes belonging to the node. This should be empty when `value != nil`.
     internal var children: [Node] = []
@@ -760,7 +760,7 @@ extension Pool {
       func insert<T>(keyPath: String, value: T) {
 
         // Wrap `value` as a `Pool.Value`.
-        guard let poolValue = Value(value: value) else { return }
+        guard let poolValue = StoredValue(value: value) else { return }
 
         // Get the individual keys out of `keyPath`.
         let pathParts = keyPath.split(separator: ".")
@@ -891,7 +891,7 @@ extension Pool {
 extension Pool {
 
   /// An enumeration for wrapping values from an pool property of `Pool`.
-  public enum Value: Encodable, ExpressibleByNilLiteral {
+  public enum StoredValue: Encodable {
 
     /// A `nil` value.
     case none
@@ -926,15 +926,15 @@ extension Pool {
     /// The wrapped value or `nil` if `case .none = self`.
     public var value: Any? {
       switch self {
-        case .none:                          return nil
-        case .real(let value):               return value
+        case .none:                       return nil
+        case .real(let value):            return value
         case .realVec(let value):         return value
-        case .realVecVec(let value):   return value
-        case .string(let value):             return value
+        case .realVecVec(let value):      return value
+        case .string(let value):          return value
         case .stringVec(let value):       return value
-        case .stringVecVec(let value): return value
+        case .stringVecVec(let value):    return value
         case .realMatrixVec(let value):   return value
-        case .stereoSample(let value):       return value
+        case .stereoSample(let value):    return value
         case .stereoSampleVec(let value): return value
       }
     }
@@ -978,11 +978,6 @@ extension Pool {
       }
     }
 
-    /// Initializing to `nil`
-    ///
-    /// - Parameter nilLiteral: An empty parameter list.
-    public init(nilLiteral: ()) { self = .none }
-
     /// Encodes the wrapped value using the unkeyed container of `encoder`.
     ///
     /// - Parameter encoder: The encoder to which the wrapped value is to be encoded.
@@ -1001,6 +996,158 @@ extension Pool {
         case .stereoSample(let value):    try container.encode(value)
         case .stereoSampleVec(let value): try container.encode(value)
       }
+    }
+
+  }
+
+}
+
+extension Pool.StoredValue: ExpressibleByNilLiteral {
+
+  /// Initializing to `nil`
+  ///
+  /// - Parameter nilLiteral: An empty parameter list.
+  public init(nilLiteral: ()) { self = .none }
+
+}
+
+extension Pool.StoredValue: ExpressibleByArrayLiteral {
+
+  /// Initializing with an array of strings, floats or stereo samples.
+  ///
+  /// - Parameter elements: The values.
+  public init(arrayLiteral elements: Any...) {
+
+    if let elements = elements as? [String] {
+      self = .stringVec(elements)
+    } else if let elements = elements as? [Float] {
+      self = .realVec(elements)
+    } else if let elements = elements as? [Double] {
+      self = .realVec(elements.map(Float.init))
+    } else if let elements = elements as? [Int] {
+      self = .realVec(elements.map(Float.init))
+    } else if let elements = elements as? [StereoSample] {
+      self = .stereoSampleVec(elements)
+    } else if let elements = elements as? [[String]] {
+      self = .stringVecVec(elements)
+    } else if let elements = elements as? [[Float]] {
+      self = .realVecVec(elements)
+    } else if let elements = elements as? [[Double]] {
+      self = .realVecVec(elements.map({$0.map(Float.init)}))
+    } else if let elements = elements as? [[Int]] {
+      self = .realVecVec(elements.map({$0.map(Float.init)}))
+    } else if let elements = elements as? [[[Float]]] {
+      self = .realMatrixVec(elements)
+    } else if let elements = elements as? [[[Double]]] {
+      self = .realMatrixVec(elements.map({$0.map({$0.map(Float.init)})}))
+    } else if let elements = elements as? [[[Int]]] {
+      self = .realMatrixVec(elements.map({$0.map({$0.map(Float.init)})}))
+    } else {
+      fatalError("Array elements are of an unsupported type.")
+    }
+
+  }
+
+}
+
+extension Pool.StoredValue: ExpressibleByFloatLiteral {
+
+  /// Initializing with a literal float.
+  ///
+  /// - Parameter value: The float value.
+  public init(floatLiteral value: Float) {
+    self = .real(value)
+  }
+
+}
+
+extension Pool.StoredValue: ExpressibleByStringLiteral {
+
+  /// Initializing with a literal string.
+  ///
+  /// - Parameter value: The string.
+  public init(stringLiteral value: String) {
+    self = .string(value)
+  }
+
+}
+
+extension Pool: ExpressibleByDictionaryLiteral {
+
+  /// Initializing with a dictionary literal of descriptor-value tuples.
+  ///
+  /// - Parameter elements: The descriptor-value tuples.
+  public convenience init(dictionaryLiteral elements: (String, Any)...) {
+
+    self.init()
+
+    for (descriptor, value) in elements {
+
+      switch value {
+
+      case let realValue as Float:
+        self[singleReal: descriptor] = realValue
+
+      case let intValue as Int:
+        self[singleReal: descriptor] = Float(intValue)
+
+      case let doubleValue as Double:
+        self[singleReal: descriptor] = Float(doubleValue)
+
+      case let stringValue as String:
+        self[singleString: descriptor] = stringValue
+
+      case let realVecValue as [Float]:
+        for value in realVecValue { self[real: descriptor] = value }
+
+      case let intVecValue as [Int]:
+        for value in intVecValue { self[real: descriptor] = Float(value) }
+
+      case let doubleVecValue as [Double]:
+        for value in doubleVecValue { self[real: descriptor] = Float(value) }
+
+      case let stringVecValue as [String]:
+        for value in stringVecValue { self[string: descriptor] = value }
+
+      case let stereoSampleVecValue as [StereoSample]:
+        for value in stereoSampleVecValue { self[stereoSample: descriptor] = value }
+
+      case let realVecVecValue as [[Float]]:
+        for value in realVecVecValue { self[realVec: descriptor] = value }
+
+      case let intVecVecValue as [[Int]]:
+        for value in intVecVecValue { self[realVec: descriptor] = value.map(Float.init) }
+
+      case let doubleVecVecValue as [[Double]]:
+        for value in doubleVecVecValue { self[realVec: descriptor] = value.map(Float.init) }
+
+      case let stringVecVecValue as [[String]]:
+        for value in stringVecVecValue { self[stringVec: descriptor] = value }
+
+      case let realVecVecVecValue as [[[Float]]]:
+        for value in realVecVecVecValue { self[realVecVec: descriptor] = value }
+
+      case let intVecVecVecValue as [[[Int]]]:
+        for value in intVecVecVecValue {
+          self[realVecVec: descriptor] = value.map({$0.map(Float.init)})
+        }
+
+      case let doubleVecVecVecValue as [[[Double]]]:
+        for value in doubleVecVecVecValue {
+          self[realVecVec: descriptor] = value .map({$0.map(Float.init)})
+        }
+
+      case let storedValue as StoredValue:
+        set(storedValue, for: descriptor)
+
+      case let storedValueArray as [StoredValue]:
+        for storedValue in storedValueArray { add(storedValue, for: descriptor) }
+
+      default:
+        break
+
+      }
+
     }
 
   }

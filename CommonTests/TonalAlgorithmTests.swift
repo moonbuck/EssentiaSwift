@@ -29,8 +29,8 @@ class TonalAlgorithmTests: XCTestCase {
     let whiteNoise = loadVector(name: "pitchsalience_whitenoise1")
 
     let vectorInput1 = VectorInput<[Float]>([whiteNoise])
-    let spectrum1 = StreamingAlgorithm<Streaming.Spectrum>()
-    let pitchSalience1 = StreamingAlgorithm<Streaming.PitchSalience>()
+    let spectrum1 = SpectrumSAlgorithm()
+    let pitchSalience1 = PitchSalienceSAlgorithm()
     let vectorOutput1 = VectorOutput<Float>()
 
     vectorInput1[output: .data] >> spectrum1[input: .frame]
@@ -47,10 +47,10 @@ class TonalAlgorithmTests: XCTestCase {
      */
 
     let vectorInput2 = VectorInput<Float>(loadVector(name: "pitchsalience_puretone"))
-    let frameCutter2 = StreamingAlgorithm<Streaming.FrameCutter>()
-    let windowing2 = StreamingAlgorithm<Streaming.Windowing>()
-    let spectrum2 = StreamingAlgorithm<Streaming.Spectrum>()
-    let pitchSalience2 = StreamingAlgorithm<Streaming.PitchSalience>([
+    let frameCutter2 = FrameCutterSAlgorithm()
+    let windowing2 = WindowingSAlgorithm()
+    let spectrum2 = SpectrumSAlgorithm()
+    let pitchSalience2 = PitchSalienceSAlgorithm([
       .sampleRate: 8000,
       .lowBoundary: 100,
       .highBoundary: 3999
@@ -72,10 +72,10 @@ class TonalAlgorithmTests: XCTestCase {
     XCTAssertEqual(pureToneValues, loadVector(name: "puretone_saliencevalues"), accuracy: 1e-5)
 
     let vectorInput3 = VectorInput<Float>(loadVector(name: "pitchsalience_sinesweep"))
-    let frameCutter3 = StreamingAlgorithm<Streaming.FrameCutter>()
-    let windowing3 = StreamingAlgorithm<Streaming.Windowing>()
-    let spectrum3 = StreamingAlgorithm<Streaming.Spectrum>()
-    let pitchSalience3 = StreamingAlgorithm<Streaming.PitchSalience>([
+    let frameCutter3 = FrameCutterSAlgorithm()
+    let windowing3 = WindowingSAlgorithm()
+    let spectrum3 = SpectrumSAlgorithm()
+    let pitchSalience3 = PitchSalienceSAlgorithm([
       .sampleRate: 8000,
       .lowBoundary: 100,
       .highBoundary: 3999
@@ -95,10 +95,10 @@ class TonalAlgorithmTests: XCTestCase {
     XCTAssertEqual(sineSweepValues, loadVector(name: "sinesweep_saliencevalues"), accuracy: 1e-5)
 
     let vectorInput4 = VectorInput<Float>(loadVector(name: "pitchsalience_whitenoise2"))
-    let frameCutter4 = StreamingAlgorithm<Streaming.FrameCutter>()
-    let windowing4 = StreamingAlgorithm<Streaming.Windowing>()
-    let spectrum4 = StreamingAlgorithm<Streaming.Spectrum>()
-    let pitchSalience4 = StreamingAlgorithm<Streaming.PitchSalience>([
+    let frameCutter4 = FrameCutterSAlgorithm()
+    let windowing4 = WindowingSAlgorithm()
+    let spectrum4 = SpectrumSAlgorithm()
+    let pitchSalience4 = PitchSalienceSAlgorithm([
       .sampleRate: 8000,
       .lowBoundary: 100,
       .highBoundary: 3999
@@ -118,10 +118,10 @@ class TonalAlgorithmTests: XCTestCase {
     XCTAssertEqual(whiteNoiseValues, loadVector(name: "whitenoise_saliencevalues"), accuracy: 1e-5)
 
     let vectorInput5 = VectorInput<Float>(loadVector(name: "pitchsalience_squarewave"))
-    let frameCutter5 = StreamingAlgorithm<Streaming.FrameCutter>()
-    let windowing5 = StreamingAlgorithm<Streaming.Windowing>()
-    let spectrum5 = StreamingAlgorithm<Streaming.Spectrum>()
-    let pitchSalience5 = StreamingAlgorithm<Streaming.PitchSalience>([
+    let frameCutter5 = FrameCutterSAlgorithm()
+    let windowing5 = WindowingSAlgorithm()
+    let spectrum5 = SpectrumSAlgorithm()
+    let pitchSalience5 = PitchSalienceSAlgorithm([
       .sampleRate: 8000,
       .lowBoundary: 100,
       .highBoundary: 3999
@@ -142,10 +142,10 @@ class TonalAlgorithmTests: XCTestCase {
     XCTAssertEqual(squareWaveValues, loadVector(name: "squarewave_saliencevalues"), accuracy: 1e-5)
 
     let vectorInput6 = VectorInput<Float>(loadVector(name: "pitchsalience_varyingsquarewave"))
-    let frameCutter6 = StreamingAlgorithm<Streaming.FrameCutter>()
-    let windowing6 = StreamingAlgorithm<Streaming.Windowing>()
-    let spectrum6 = StreamingAlgorithm<Streaming.Spectrum>()
-    let pitchSalience6 = StreamingAlgorithm<Streaming.PitchSalience>([
+    let frameCutter6 = FrameCutterSAlgorithm()
+    let windowing6 = WindowingSAlgorithm()
+    let spectrum6 = SpectrumSAlgorithm()
+    let pitchSalience6 = PitchSalienceSAlgorithm([
       .sampleRate: 8000,
       .lowBoundary: 100,
       .highBoundary: 3999
@@ -201,7 +201,7 @@ class TonalAlgorithmTests: XCTestCase {
      Test with harmonic input.
      */
 
-    let pitchSalience7 = StandardAlgorithm<Standard.PitchSalience>([
+    let pitchSalience7 = PitchSalienceAlgorithm([
       .sampleRate: 38,
       .lowBoundary: 1.9,
       .highBoundary: 17.1
@@ -216,7 +216,7 @@ class TonalAlgorithmTests: XCTestCase {
      Test with a full spectrum.
      */
 
-    let pitchSalience8 = StandardAlgorithm<Standard.PitchSalience>([
+    let pitchSalience8 = PitchSalienceAlgorithm([
       .sampleRate: 18,
       .lowBoundary: 1,
       .highBoundary: 8
@@ -231,7 +231,7 @@ class TonalAlgorithmTests: XCTestCase {
      Test on-peak boundries.
      */
 
-    let pitchSalience9 = StandardAlgorithm<Standard.PitchSalience>([
+    let pitchSalience9 = PitchSalienceAlgorithm([
       .lowBoundary: 40,
       .highBoundary: 40
       ])
@@ -245,7 +245,7 @@ class TonalAlgorithmTests: XCTestCase {
      Test off-peak boundaries.
      */
 
-    let pitchSalience10 = StandardAlgorithm<Standard.PitchSalience>([
+    let pitchSalience10 = PitchSalienceAlgorithm([
       .lowBoundary: 41,
       .highBoundary: 41
       ])
@@ -259,7 +259,7 @@ class TonalAlgorithmTests: XCTestCase {
      Test with silence.
      */
 
-    let pitchSalience11 = StandardAlgorithm<Standard.PitchSalience>()
+    let pitchSalience11 = PitchSalienceAlgorithm()
 
     pitchSalience11[realVecInput: .spectrum] = [0.0] * 1024
     pitchSalience11.compute()
@@ -275,7 +275,7 @@ class TonalAlgorithmTests: XCTestCase {
      Simple regression test.
      */
 
-    let harmonicPeaks1 = StandardAlgorithm<Standard.HarmonicPeaks>([.maxHarmonics: 10])
+    let harmonicPeaks1 = HarmonicPeaksAlgorithm([.maxHarmonics: 10])
     harmonicPeaks1[realVecInput: .frequencies] =
       [0.5, 0.75, 1, 2, 3.5, 4, 4.09, 4.9, 6.25].map(110, *)
     harmonicPeaks1[realVecInput: .magnitudes] = [1.0] * 9
@@ -294,7 +294,7 @@ class TonalAlgorithmTests: XCTestCase {
      amplitude is selected.
      */
 
-    let harmonicPeaks2 = StandardAlgorithm<Standard.HarmonicPeaks>([.maxHarmonics: 3])
+    let harmonicPeaks2 = HarmonicPeaksAlgorithm([.maxHarmonics: 3])
     harmonicPeaks2[realVecInput: .frequencies] = [1, 2.9, 3.1].map(110, *)
     harmonicPeaks2[realVecInput: .magnitudes] = [1, 1, 0.5]
     harmonicPeaks2[realInput: .pitch] = 110
@@ -310,7 +310,7 @@ class TonalAlgorithmTests: XCTestCase {
      Test with F0 missing.
      */
 
-    let harmonicPeaks3 = StandardAlgorithm<Standard.HarmonicPeaks>([.maxHarmonics: 3])
+    let harmonicPeaks3 = HarmonicPeaksAlgorithm([.maxHarmonics: 3])
     harmonicPeaks3[realVecInput: .frequencies] = [2.9, 3.1].map(110, *)
     harmonicPeaks3[realVecInput: .magnitudes] = [1, 0.5]
     harmonicPeaks3[realInput: .pitch] = 110
@@ -325,7 +325,7 @@ class TonalAlgorithmTests: XCTestCase {
      Test with only one peak.
      */
 
-    let harmonicPeaks4 = StandardAlgorithm<Standard.HarmonicPeaks>([.maxHarmonics: 1])
+    let harmonicPeaks4 = HarmonicPeaksAlgorithm([.maxHarmonics: 1])
     harmonicPeaks4[realVecInput: .frequencies] = [110]
     harmonicPeaks4[realVecInput: .magnitudes] = [1]
     harmonicPeaks4[realInput: .pitch] = 110
@@ -340,7 +340,7 @@ class TonalAlgorithmTests: XCTestCase {
      Test with DC.
      */
 
-    let harmonicPeaks5 = StandardAlgorithm<Standard.HarmonicPeaks>()
+    let harmonicPeaks5 = HarmonicPeaksAlgorithm()
     harmonicPeaks5[realVecInput: .frequencies] = [0, 110, 220]
     harmonicPeaks5[realVecInput: .magnitudes] = [1, 0, 0]
     harmonicPeaks5[realInput: .pitch] = 0
@@ -359,7 +359,7 @@ class TonalAlgorithmTests: XCTestCase {
      Test with all-zero input.
      */
 
-    let highResolutionFeatures1 = StandardAlgorithm<Standard.HighResolutionFeatures>()
+    let highResolutionFeatures1 = HighResolutionFeaturesAlgorithm()
     highResolutionFeatures1[realVecInput: .hpcp] = [0.0] * 120
     highResolutionFeatures1.compute()
 
@@ -394,7 +394,7 @@ class TonalAlgorithmTests: XCTestCase {
      */
 
     let vectorInput = VectorInput<[Float]>([[1, 0, 0, 0, 0] as [Float] * 24])
-    let highResolutionFeatures2 = StreamingAlgorithm<Streaming.HighResolutionFeatures>()
+    let highResolutionFeatures2 = HighResolutionFeaturesSAlgorithm()
     let pool = Pool()
 
     vectorInput[output: .data] >> highResolutionFeatures2[input: .hpcp]
@@ -432,11 +432,11 @@ class TonalAlgorithmTests: XCTestCase {
 
       let vectorInput = VectorInput<Float>(signal)
 
-      let frameCutter = StreamingAlgorithm<Streaming.FrameCutter>([
+      let frameCutter = FrameCutterSAlgorithm([
         .frameSize: 1024, .hopSize: 1024
         ])
 
-      let pitchYin = StreamingAlgorithm<Streaming.PitchYin>([
+      let pitchYin = PitchYinSAlgorithm([
         .frameSize: 1024, .sampleRate: 44100
         ])
 
@@ -461,7 +461,7 @@ class TonalAlgorithmTests: XCTestCase {
      Test with all-zero input.
      */
 
-    let pitchYin1 = StandardAlgorithm<Standard.PitchYin>()
+    let pitchYin1 = PitchYinAlgorithm()
     pitchYin1[realVecInput: .signal] = [0.0] * 2048
     pitchYin1.compute()
 
@@ -522,7 +522,7 @@ class TonalAlgorithmTests: XCTestCase {
       (1..<10).forEach({signal4[i] += 1 / Float($0) * sinf(Float(i) * Float($0) * w / 44100)})
     }
 
-    let lowPass = StandardAlgorithm<Standard.LowPass>()
+    let lowPass = LowPassAlgorithm()
     lowPass[realVecInput: .signal] = signal4
     lowPass.compute()
     signal4 = lowPass[realVecOutput: .signal]
@@ -547,7 +547,7 @@ class TonalAlgorithmTests: XCTestCase {
      */
 
     let vectorInput = VectorInput<[Float]>(loadVectorVector(name: "pitchyin_mozartframes"))
-    let pitchYin2 = StreamingAlgorithm<Streaming.PitchYin>([.frameSize: 1024, .sampleRate: 44100])
+    let pitchYin2 = PitchYinSAlgorithm([.frameSize: 1024, .sampleRate: 44100])
     let pool = Pool()
 
     vectorInput[output: .data] >> pitchYin2[input: .signal]
@@ -586,15 +586,15 @@ class TonalAlgorithmTests: XCTestCase {
 
       let vectorInput = VectorInput<Float>(signal)
 
-      let frameCutter = StreamingAlgorithm<Streaming.FrameCutter>([
+      let frameCutter = FrameCutterSAlgorithm([
         .frameSize: 1024, .hopSize: 1024
         ])
 
-      let windowing = StreamingAlgorithm<Streaming.Windowing>([.type: "hann"])
+      let windowing = WindowingSAlgorithm([.type: "hann"])
 
-      let spectrum = StreamingAlgorithm<Streaming.Spectrum>()
+      let spectrum = SpectrumSAlgorithm()
 
-      let pitchYinFFT = StreamingAlgorithm<Streaming.PitchYinFFT>([
+      let pitchYinFFT = PitchYinFFTSAlgorithm([
         .frameSize: 1024, .sampleRate: 44100
         ])
 
@@ -621,7 +621,7 @@ class TonalAlgorithmTests: XCTestCase {
      Test with all-zero input.
      */
 
-    let pitchYinFFT1 = StandardAlgorithm<Standard.PitchYinFFT>()
+    let pitchYinFFT1 = PitchYinFFTAlgorithm()
     pitchYinFFT1[realVecInput: .spectrum] = [0.0] * 1024
     pitchYinFFT1.compute()
 
@@ -681,7 +681,7 @@ class TonalAlgorithmTests: XCTestCase {
       (1..<10).forEach({signal4[i] += 1 / Float($0) * sinf(Float(i) * Float($0) * w / 44100)})
     }
 
-    let lowPass = StandardAlgorithm<Standard.LowPass>()
+    let lowPass = LowPassAlgorithm()
     lowPass[realVecInput: .signal] = signal4
     lowPass.compute()
     signal4 = lowPass[realVecOutput: .signal]
@@ -710,15 +710,15 @@ class TonalAlgorithmTests: XCTestCase {
 
     let vectorInput = VectorInput<Float>(loadVector(name: "mozart_c_major_30sec_samples"))
 
-    let frameCutter = StreamingAlgorithm<Streaming.FrameCutter>([
+    let frameCutter = FrameCutterSAlgorithm([
       .frameSize: 1024, .hopSize: 512
       ])
 
-    let windowing = StreamingAlgorithm<Streaming.Windowing>([.type: "hann"])
+    let windowing = WindowingSAlgorithm([.type: "hann"])
 
-    let spectrum = StreamingAlgorithm<Streaming.Spectrum>()
+    let spectrum = SpectrumSAlgorithm()
 
-    let pitchYinFFT2 = StreamingAlgorithm<Streaming.PitchYinFFT>([
+    let pitchYinFFT2 = PitchYinFFTSAlgorithm([
       .frameSize: 1024, .sampleRate: 44100
       ])
 
@@ -1077,7 +1077,7 @@ class TonalAlgorithmTests: XCTestCase {
      Test with all-zero magnitudes.
      */
 
-    let tristimulus1 = StandardAlgorithm<Standard.Tristimulus>()
+    let tristimulus1 = TristimulusAlgorithm()
     tristimulus1[realVecInput: .magnitudes] = [0, 0, 0, 0, 0]
     tristimulus1[realVecInput: .frequencies] = [23, 500, 3200, 9000, 10000]
     tristimulus1.compute()
@@ -1088,7 +1088,7 @@ class TonalAlgorithmTests: XCTestCase {
      Test with 3 frequencies.
      */
 
-    let tristimulus2 = StandardAlgorithm<Standard.Tristimulus>()
+    let tristimulus2 = TristimulusAlgorithm()
     tristimulus2[realVecInput: .magnitudes] = [1, 2, 3]
     tristimulus2[realVecInput: .frequencies] = [100, 200, 300]
     tristimulus2.compute()
@@ -1099,7 +1099,7 @@ class TonalAlgorithmTests: XCTestCase {
      Test with 4 frequencies.
      */
 
-    let tristimulus3 = StandardAlgorithm<Standard.Tristimulus>()
+    let tristimulus3 = TristimulusAlgorithm()
     tristimulus3[realVecInput: .magnitudes] = [1, 2, 3, 4]
     tristimulus3[realVecInput: .frequencies] = [100, 435, 6547, 24324]
     tristimulus3.compute()
@@ -1110,7 +1110,7 @@ class TonalAlgorithmTests: XCTestCase {
      Test with 5 frequencies.
      */
 
-    let tristimulus4 = StandardAlgorithm<Standard.Tristimulus>()
+    let tristimulus4 = TristimulusAlgorithm()
     tristimulus4[realVecInput: .magnitudes] = [1, 2, 3, 4, 5]
     tristimulus4[realVecInput: .frequencies] = [100, 324, 5678, 5899, 60000]
     tristimulus4.compute()
@@ -1121,7 +1121,7 @@ class TonalAlgorithmTests: XCTestCase {
      Test with empty input.
      */
 
-    let tristimulus5 = StandardAlgorithm<Standard.Tristimulus>()
+    let tristimulus5 = TristimulusAlgorithm()
     tristimulus5[realVecInput: .magnitudes] = []
     tristimulus5[realVecInput: .frequencies] = []
     tristimulus5.compute()

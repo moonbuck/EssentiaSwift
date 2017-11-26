@@ -26,7 +26,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test with DC signal input.
      */
 
-    let fft1 = StandardAlgorithm<Standard.FFT>()
+    let fft1 = FFTAlgorithm()
     fft1[realVecInput: .frame] = [1.0] + [0.0] * 511
     fft1.compute()
 
@@ -38,7 +38,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test with a Fs/2 sine wave to check the nyquist value.
      */
 
-    let fft2 = StandardAlgorithm<Standard.FFT>()
+    let fft2 = FFTAlgorithm()
     fft2[realVecInput: .frame] = [1.0, -1.0] * 512
     fft2.compute()
 
@@ -53,7 +53,7 @@ class StandardAlgorithmTests: XCTestCase {
            'fft_input.txt' in python.
      */
 
-    let fft3 = StandardAlgorithm<Standard.FFT>()
+    let fft3 = FFTAlgorithm()
     fft3[realVecInput: .frame] = loadVector(name: "fft_input")
     fft3.compute()
 
@@ -65,7 +65,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test with all-zero input.
      */
 
-    let fft4 = StandardAlgorithm<Standard.FFT>()
+    let fft4 = FFTAlgorithm()
     fft4[realVecInput: .frame] = [0.0] * 2048
     fft4.compute()
 
@@ -81,15 +81,15 @@ class StandardAlgorithmTests: XCTestCase {
 
     // Compute using the standard algorithm.
 
-    let frameCutter1 = StandardAlgorithm<Standard.FrameCutter>([
+    let frameCutter1 = FrameCutterAlgorithm([
       .frameSize: 1024,
       .hopSize: 256,
       .startFromZero: false
       ])
 
-    let windowing1 = StandardAlgorithm<Standard.Windowing>([.type: "hann"])
+    let windowing1 = WindowingAlgorithm([.type: "hann"])
 
-    let fft5 = StandardAlgorithm<Standard.FFT>([.size: 1024])
+    let fft5 = FFTAlgorithm([.size: 1024])
 
     frameCutter1[realVecInput: .signal] = signal
 
@@ -112,15 +112,15 @@ class StandardAlgorithmTests: XCTestCase {
 
     let vectorInput = VectorInput<Float>(signal)
 
-    let frameCutter2 = StreamingAlgorithm<Streaming.FrameCutter>([
+    let frameCutter2 = FrameCutterSAlgorithm([
       .frameSize: 1024,
       .hopSize: 256,
       .startFromZero: false
       ])
 
-    let windowing2 = StreamingAlgorithm<Streaming.Windowing>([.type: "hann"])
+    let windowing2 = WindowingSAlgorithm([.type: "hann"])
 
-    let fft6 = StreamingAlgorithm<Streaming.FFT>([.size: 1024])
+    let fft6 = FFTSAlgorithm([.size: 1024])
 
     let vectorOutput = VectorOutput<[DSPComplex]>()
 
@@ -179,7 +179,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test with DC signal input.
      */
 
-    let fft1 = StandardAlgorithm<Standard.FFTC>()
+    let fft1 = FFTCAlgorithm()
     fft1[complexRealVecInput: .frame] = [1+0⍳] + [0+0⍳] * 511
     fft1.compute()
 
@@ -190,7 +190,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test with a Fs/2 sine wave to check the nyquist value.
      */
 
-    let fft2 = StandardAlgorithm<Standard.FFTC>()
+    let fft2 = FFTCAlgorithm()
     fft2[complexRealVecInput: .frame] = [1+0⍳, -1+0⍳] * 512
     fft2.compute()
 
@@ -203,7 +203,7 @@ class StandardAlgorithmTests: XCTestCase {
            'fft_input.txt' in python.
      */
 
-    let fft3 = StandardAlgorithm<Standard.FFTC>()
+    let fft3 = FFTCAlgorithm()
     let complexSignal = loadComplexVector(name: "fftc_input")
     fft3[complexRealVecInput: .frame] = complexSignal
     fft3.compute()
@@ -216,7 +216,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test with all-zero input.
      */
 
-    let fft4 = StandardAlgorithm<Standard.FFTC>()
+    let fft4 = FFTCAlgorithm()
     fft4[complexRealVecInput: .frame] = [0+0⍳] * 2048
     fft4.compute()
 
@@ -232,16 +232,16 @@ class StandardAlgorithmTests: XCTestCase {
 
     // Compute using the standard algorithm.
 
-    let frameCutter1 = StandardAlgorithm<Standard.FrameCutter>([
+    let frameCutter1 = FrameCutterAlgorithm([
       .frameSize: 1024,
       .hopSize: 256,
       .startFromZero: false
       ])
 
-    let windowing1 = StandardAlgorithm<Standard.Windowing>([.type: "hann"])
+    let windowing1 = WindowingAlgorithm([.type: "hann"])
     
 
-    let fft5 = StandardAlgorithm<Standard.FFTC>([.size: 1024])
+    let fft5 = FFTCAlgorithm([.size: 1024])
 
     frameCutter1[realVecInput: .signal] = signal
 
@@ -266,17 +266,17 @@ class StandardAlgorithmTests: XCTestCase {
 
     let vectorInput1 = VectorInput<Float>(signal)
 
-    let frameCutter2 = StreamingAlgorithm<Streaming.FrameCutter>([
+    let frameCutter2 = FrameCutterSAlgorithm([
       .frameSize: 1024,
       .hopSize: 256,
       .startFromZero: false
       ])
 
-    let windowing2 = StreamingAlgorithm<Streaming.Windowing>([.type: "hann"])
+    let windowing2 = WindowingSAlgorithm([.type: "hann"])
 
     let windowedSignal = VectorOutput<[Float]>()
 
-    let fft6 = StreamingAlgorithm<Streaming.FFTC>([.size: 1024])
+    let fft6 = FFTCSAlgorithm([.size: 1024])
 
     let vectorOutput = VectorOutput<[DSPComplex]>()
 
@@ -340,7 +340,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test with DC.
      */
 
-    let ifft1 = StandardAlgorithm<Standard.IFFT>()
+    let ifft1 = IFFTAlgorithm()
     ifft1[complexRealVecInput: .fft] = [1+0⍳] * 257
     ifft1.compute()
 
@@ -350,7 +350,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test with nyquist.
      */
 
-    let ifft2 = StandardAlgorithm<Standard.IFFT>()
+    let ifft2 = IFFTAlgorithm()
     ifft2[complexRealVecInput: .fft] = [0+0⍳] * 512 + [1024+0⍳]
     ifft2.compute()
 
@@ -360,7 +360,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test with all-zero input.
      */
 
-    let ifft3 = StandardAlgorithm<Standard.IFFT>()
+    let ifft3 = IFFTAlgorithm()
     ifft3[complexRealVecInput: .fft] = [0+0⍳] * 1025
     ifft3.compute()
 
@@ -371,7 +371,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test for regression.
      */
 
-    let ifft4 = StandardAlgorithm<Standard.IFFT>()
+    let ifft4 = IFFTAlgorithm()
     ifft4[complexRealVecInput: .fft] = loadComplexVector(name: "ifft_input")
     ifft4.compute()
 
@@ -384,7 +384,7 @@ class StandardAlgorithmTests: XCTestCase {
 
     let input = VectorInput<[Float]>([[0.0, 0.0, 1.0, 0.0, 1.0]])
 
-    let dct = StreamingAlgorithm<Streaming.DCT>([.inputSize: 5,
+    let dct = DCTSAlgorithm([.inputSize: 5,
                                                  .outputSize: 5,
                                                  .dctType: 2,
                                                  .liftering: 0])
@@ -425,7 +425,7 @@ class StandardAlgorithmTests: XCTestCase {
 
     let audioSignal = monoBufferData(url: bundleURL(name: "sin_pattern_decreasing", ext: "wav"))
 
-    let envelope1 = StandardAlgorithm<Standard.Envelope>([
+    let envelope1 = EnvelopeAlgorithm([
       .sampleRate: 44100,
       .attackTime: 5,
       .releaseTime: 100
@@ -440,7 +440,7 @@ class StandardAlgorithmTests: XCTestCase {
       Test with all-zero input.
      */
 
-    let envelope2 = StandardAlgorithm<Standard.Envelope>([
+    let envelope2 = EnvelopeAlgorithm([
       .sampleRate: 44100,
       .attackTime: 5,
       .releaseTime: 100
@@ -456,7 +456,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test rectification.
      */
 
-    let envelope3 = StandardAlgorithm<Standard.Envelope>([
+    let envelope3 = EnvelopeAlgorithm([
       .sampleRate: 44100,
       .attackTime: 0,
       .releaseTime: 100,
@@ -477,7 +477,7 @@ class StandardAlgorithmTests: XCTestCase {
      Regression test with known input and output values.
      */
 
-    let spectrum1 = StandardAlgorithm<Standard.Spectrum>()
+    let spectrum1 = SpectrumAlgorithm()
     spectrum1[realVecInput: .frame] = loadVector(name: "spectrumInput")
     spectrum1.compute()
 
@@ -489,7 +489,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test with a DC signal.
      */
 
-    let spectrum2 = StandardAlgorithm<Standard.Spectrum>()
+    let spectrum2 = SpectrumAlgorithm()
     spectrum2[realVecInput: .frame] = [1.0] * 512
     spectrum2.compute()
 
@@ -499,7 +499,7 @@ class StandardAlgorithmTests: XCTestCase {
       Test nyquist values.
      */
 
-    let spectrum3 = StandardAlgorithm<Standard.Spectrum>()
+    let spectrum3 = SpectrumAlgorithm()
     spectrum3[realVecInput: .frame] = [-1.0, 1.0] * 256
     spectrum3.compute()
 
@@ -509,7 +509,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test with all-zero input.
      */
 
-    let spectrum4 = StandardAlgorithm<Standard.Spectrum>()
+    let spectrum4 = SpectrumAlgorithm()
     spectrum4[realVecInput: .frame] = [0.0] * 512
     spectrum4.compute()
 
@@ -519,7 +519,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test that the size parameter does not cause improperly-sized output.
      */
 
-    let spectrum5 = StandardAlgorithm<Standard.Spectrum>([.size: 514])
+    let spectrum5 = SpectrumAlgorithm([.size: 514])
     spectrum5[realVecInput: .frame] = [1.0] * 512
     spectrum5.compute()
 
@@ -534,7 +534,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test that the output frame has the expected size.
      */
 
-    let windowing1 = StandardAlgorithm<Standard.Windowing>([
+    let windowing1 = WindowingAlgorithm([
       .size: 4095,
       .zeroPadding: 12288,
       .type: "hann"
@@ -549,7 +549,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test zero padding.
      */
 
-    let windowing2 = StandardAlgorithm<Standard.Windowing>([
+    let windowing2 = WindowingAlgorithm([
       .size: 9,
       .zeroPadding: 9,
       .type: "square"
@@ -564,7 +564,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test with all-zero input.
      */
 
-    let windowing3 = StandardAlgorithm<Standard.Windowing>([
+    let windowing3 = WindowingAlgorithm([
       .size: 10,
       .zeroPadding: 10,
       .type: "square"
@@ -595,7 +595,7 @@ class StandardAlgorithmTests: XCTestCase {
 
     let input: [Float] = [1.0] * 1024
 
-    let windowing4 = StandardAlgorithm<Standard.Windowing>([
+    let windowing4 = WindowingAlgorithm([
       .size: 1024,
       .zeroPadding: 0,
       .type: "hamming",
@@ -610,7 +610,7 @@ class StandardAlgorithmTests: XCTestCase {
 
     XCTAssertEqual(windowing4[realVecOutput: .frame], expected, accuracy: 1e-6)
 
-    let windowing5 = StandardAlgorithm<Standard.Windowing>([
+    let windowing5 = WindowingAlgorithm([
       .size: 1024,
       .zeroPadding: 0,
       .type: "hann",
@@ -625,7 +625,7 @@ class StandardAlgorithmTests: XCTestCase {
 
     XCTAssertEqual(windowing5[realVecOutput: .frame], expected, accuracy: 1e-6)
 
-    let windowing6 = StandardAlgorithm<Standard.Windowing>([
+    let windowing6 = WindowingAlgorithm([
       .size: 1024,
       .zeroPadding: 0,
       .type: "triangular",
@@ -640,7 +640,7 @@ class StandardAlgorithmTests: XCTestCase {
 
     XCTAssertEqual(windowing6[realVecOutput: .frame], expected, accuracy: 1e-6)
 
-    let windowing7 = StandardAlgorithm<Standard.Windowing>([
+    let windowing7 = WindowingAlgorithm([
       .size: 1024,
       .zeroPadding: 0,
       .type: "square",
@@ -655,7 +655,7 @@ class StandardAlgorithmTests: XCTestCase {
 
     XCTAssertEqual(windowing7[realVecOutput: .frame], expected, accuracy: 1e-7)
 
-    let windowing8 = StandardAlgorithm<Standard.Windowing>([
+    let windowing8 = WindowingAlgorithm([
       .size: 1024,
       .zeroPadding: 0,
       .type: "blackmanharris62",
@@ -670,7 +670,7 @@ class StandardAlgorithmTests: XCTestCase {
 
     XCTAssertEqual(windowing8[realVecOutput: .frame], expected, accuracy: 1e-5)
 
-    let windowing9 = StandardAlgorithm<Standard.Windowing>([
+    let windowing9 = WindowingAlgorithm([
       .size: 1024,
       .zeroPadding: 0,
       .type: "blackmanharris70",
@@ -685,7 +685,7 @@ class StandardAlgorithmTests: XCTestCase {
 
     XCTAssertEqual(windowing9[realVecOutput: .frame], expected, accuracy: 1e-5)
 
-    let windowing10 = StandardAlgorithm<Standard.Windowing>([
+    let windowing10 = WindowingAlgorithm([
       .size: 1024,
       .zeroPadding: 0,
       .type: "blackmanharris74",
@@ -700,7 +700,7 @@ class StandardAlgorithmTests: XCTestCase {
 
     XCTAssertEqual(windowing10[realVecOutput: .frame], expected, accuracy: 1e-5)
 
-    let windowing11 = StandardAlgorithm<Standard.Windowing>([
+    let windowing11 = WindowingAlgorithm([
       .size: 1024,
       .zeroPadding: 0,
       .type: "blackmanharris92",
@@ -737,7 +737,7 @@ class StandardAlgorithmTests: XCTestCase {
         parameters[.validFrameThresholdRatio] = 0
       }
 
-      let frameCutter = StandardAlgorithm<Standard.FrameCutter>(parameters)
+      let frameCutter = FrameCutterAlgorithm(parameters)
       frameCutter[realVecInput: .signal] = input
 
       var frames: [[Float]] = []
@@ -1260,7 +1260,7 @@ class StandardAlgorithmTests: XCTestCase {
 
       var parameters = parameters
       if parameters[.validFrameThresholdRatio] == nil { parameters[.validFrameThresholdRatio] = 0 }
-      let frameCutter = StreamingAlgorithm<Streaming.FrameCutter>(parameters)
+      let frameCutter = FrameCutterSAlgorithm(parameters)
 
       let vectorOutput = VectorOutput<[Float]>()
 
@@ -1603,7 +1603,7 @@ class StandardAlgorithmTests: XCTestCase {
     func cutAudioFile(url: URL, parameters: [Streaming.FrameCutter.Parameter:Parameter]) -> Int {
 
       let vectorInput = VectorInput<Float>(monoBufferData(url: url))
-      let frameCutter = StreamingAlgorithm<Streaming.FrameCutter>(parameters)
+      let frameCutter = FrameCutterSAlgorithm(parameters)
       let vectorOutput = VectorOutput<[Float]>()
 
       vectorInput[output: .data] >> frameCutter[input: .signal]
@@ -1738,7 +1738,7 @@ class StandardAlgorithmTests: XCTestCase {
 
     let vectorInput1 = VectorInput<Float>([0.0] * 3072)
 
-    let frameCutter1 = StreamingAlgorithm<Streaming.FrameCutter>([
+    let frameCutter1 = FrameCutterSAlgorithm([
       .frameSize: 1024,
       .hopSize: 512,
       .startFromZero: true,
@@ -1768,7 +1768,7 @@ class StandardAlgorithmTests: XCTestCase {
 
     let vectorInput2 = VectorInput<Float>([0.0] * 3072)
 
-    let frameCutter2 = StreamingAlgorithm<Streaming.FrameCutter>([
+    let frameCutter2 = FrameCutterSAlgorithm([
       .frameSize: 1024,
       .hopSize: 512,
       .startFromZero: true,
@@ -1798,7 +1798,7 @@ class StandardAlgorithmTests: XCTestCase {
 
     let vectorInput3 = VectorInput<Float>([0.0] * 3072)
 
-    let frameCutter3 = StreamingAlgorithm<Streaming.FrameCutter>([
+    let frameCutter3 = FrameCutterSAlgorithm([
       .frameSize: 1024,
       .hopSize: 512,
       .startFromZero: true,
@@ -1824,7 +1824,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test for regression.
      */
 
-    let constantQ = StandardAlgorithm<Standard.ConstantQ>()
+    let constantQ = ConstantQAlgorithm()
     constantQ[complexRealVecInput: .frame] = loadComplexVector(name: "constantq_input")
     constantQ.compute()
 
@@ -1844,7 +1844,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test with a peak at the beginning of the input.
      */
 
-    let peakDetection1 = StandardAlgorithm<Standard.PeakDetection>([
+    let peakDetection1 = PeakDetectionAlgorithm([
       .range: 3, .maxPosition: 3, .minPosition: 0, .orderBy: "amplitude"
       ])
 
@@ -1859,7 +1859,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test with a peak at the min position.
      */
 
-    let peakDetection2 = StandardAlgorithm<Standard.PeakDetection>([
+    let peakDetection2 = PeakDetectionAlgorithm([
       .range: 6, .maxPosition: 6, .minPosition: 3, .orderBy: "amplitude"
       ])
 
@@ -1873,7 +1873,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test with a peak at zero.
      */
 
-    let peakDetection3 = StandardAlgorithm<Standard.PeakDetection>([
+    let peakDetection3 = PeakDetectionAlgorithm([
       .range: 4, .maxPosition: 4, .orderBy: "amplitude"
       ])
 
@@ -1887,7 +1887,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test with a peak at one.
      */
 
-    let peakDetection4 = StandardAlgorithm<Standard.PeakDetection>([
+    let peakDetection4 = PeakDetectionAlgorithm([
       .range: 4, .maxPosition: 4, .orderBy: "amplitude"
       ])
 
@@ -1901,7 +1901,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test with a peak at two.
      */
 
-    let peakDetection5 = StandardAlgorithm<Standard.PeakDetection>([
+    let peakDetection5 = PeakDetectionAlgorithm([
       .range: 4, .maxPosition: 4, .orderBy: "amplitude"
       ])
 
@@ -1915,7 +1915,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test with a peak at three.
      */
 
-    let peakDetection6 = StandardAlgorithm<Standard.PeakDetection>([
+    let peakDetection6 = PeakDetectionAlgorithm([
       .range: 4, .maxPosition: 4, .orderBy: "amplitude"
       ])
 
@@ -1929,7 +1929,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test with a peak at four.
      */
 
-    let peakDetection7 = StandardAlgorithm<Standard.PeakDetection>([
+    let peakDetection7 = PeakDetectionAlgorithm([
       .range: 4, .maxPosition: 4, .orderBy: "amplitude"
       ])
 
@@ -1943,7 +1943,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test with a peak just before the end.
      */
 
-    let peakDetection8 = StandardAlgorithm<Standard.PeakDetection>([
+    let peakDetection8 = PeakDetectionAlgorithm([
       .range: 4, .maxPosition: 4, .orderBy: "amplitude"
       ])
 
@@ -1957,7 +1957,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test with a peak at max position.
      */
 
-    let peakDetection9 = StandardAlgorithm<Standard.PeakDetection>([
+    let peakDetection9 = PeakDetectionAlgorithm([
       .range: 6, .maxPosition: 3, .orderBy: "amplitude"
       ])
 
@@ -1971,7 +1971,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test with a peak at the very end.
      */
 
-    let peakDetection10 = StandardAlgorithm<Standard.PeakDetection>([
+    let peakDetection10 = PeakDetectionAlgorithm([
       .range: 6, .maxPosition: 6, .orderBy: "amplitude"
       ])
 
@@ -1985,7 +1985,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test with a max position larger than the size of the input.
      */
 
-    let peakDetection11 = StandardAlgorithm<Standard.PeakDetection>([
+    let peakDetection11 = PeakDetectionAlgorithm([
       .range: 6, .maxPosition: 30, .orderBy: "amplitude"
       ])
 
@@ -1999,7 +1999,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test for regression with a single peak..
      */
 
-    let peakDetection12 = StandardAlgorithm<Standard.PeakDetection>([
+    let peakDetection12 = PeakDetectionAlgorithm([
       .range: 1023, .maxPosition: 1024, .minPosition: 0, .orderBy: "amplitude"
       ])
 
@@ -2013,7 +2013,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test for regression with two peaks ordered by amplitude.
      */
 
-    let peakDetection13 = StandardAlgorithm<Standard.PeakDetection>([
+    let peakDetection13 = PeakDetectionAlgorithm([
       .range: 1023, .maxPosition: 1024, .minPosition: 0, .orderBy: "amplitude"
       ])
 
@@ -2028,7 +2028,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test for regression with two peaks ordered by position.
      */
 
-    let peakDetection14 = StandardAlgorithm<Standard.PeakDetection>([
+    let peakDetection14 = PeakDetectionAlgorithm([
       .range: 1023, .maxPosition: 1024, .minPosition: 0, .orderBy: "position"
       ])
 
@@ -2043,7 +2043,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test a plateau with interpolation.
      */
 
-    let peakDetection15 = StandardAlgorithm<Standard.PeakDetection>([
+    let peakDetection15 = PeakDetectionAlgorithm([
       .range: 1023, .maxPosition: 1024, .minPosition: 0, .orderBy: "amplitude", .interpolate: true
       ])
 
@@ -2057,7 +2057,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test a plateau without interpolation.
      */
 
-    let peakDetection16 = StandardAlgorithm<Standard.PeakDetection>([
+    let peakDetection16 = PeakDetectionAlgorithm([
       .range: 1023, .maxPosition: 1024, .minPosition: 0, .orderBy: "amplitude", .interpolate: false
       ])
 
@@ -2071,7 +2071,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test with staircase-shaped input.
      */
 
-    let peakDetection17 = StandardAlgorithm<Standard.PeakDetection>([
+    let peakDetection17 = PeakDetectionAlgorithm([
       .range: 1023, .maxPosition: 1024, .minPosition: 0, .orderBy: "amplitude", .interpolate: false
       ])
 
@@ -2089,7 +2089,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test without a peak in the input.
      */
 
-    let peakDetection18 = StandardAlgorithm<Standard.PeakDetection>()
+    let peakDetection18 = PeakDetectionAlgorithm()
 
     peakDetection18[realVecInput: .array] = [0.0] * 1024
     peakDetection18.compute()
@@ -2107,7 +2107,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test for regression.
      */
 
-    let autoCorrelation1 = StandardAlgorithm<Standard.AutoCorrelation>()
+    let autoCorrelation1 = AutoCorrelationAlgorithm()
     autoCorrelation1[realVecInput: .array] = loadVector(name: "autocorrelation_input_pow2")
     autoCorrelation1.compute()
 
@@ -2119,7 +2119,7 @@ class StandardAlgorithmTests: XCTestCase {
     Test with non power of 2.
      */
 
-    let autoCorrelation2 = StandardAlgorithm<Standard.AutoCorrelation>()
+    let autoCorrelation2 = AutoCorrelationAlgorithm()
     autoCorrelation2[realVecInput: .array] =
       Array(loadVector(name: "autocorrelation_octave_input")[..<234])
     autoCorrelation2.compute()
@@ -2133,7 +2133,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test with octave.
      */
 
-    let autoCorrelation3 = StandardAlgorithm<Standard.AutoCorrelation>()
+    let autoCorrelation3 = AutoCorrelationAlgorithm()
     autoCorrelation3[realVecInput: .array] = loadVector(name: "autocorrelation_octave_input")
     autoCorrelation3.compute()
 
@@ -2145,7 +2145,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test with all-zero input.
      */
 
-    let autoCorrelation4 = StandardAlgorithm<Standard.AutoCorrelation>()
+    let autoCorrelation4 = AutoCorrelationAlgorithm()
     autoCorrelation4[realVecInput: .array] = [0.0] * 1024
     autoCorrelation4.compute()
 
@@ -2155,7 +2155,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test with empty input.
      */
 
-    let autoCorrelation5 = StandardAlgorithm<Standard.AutoCorrelation>()
+    let autoCorrelation5 = AutoCorrelationAlgorithm()
     autoCorrelation5[realVecInput: .array] = []
     autoCorrelation5.compute()
 
@@ -2165,7 +2165,7 @@ class StandardAlgorithmTests: XCTestCase {
      Test with a single value.
      */
 
-    let autoCorrelation6 = StandardAlgorithm<Standard.AutoCorrelation>()
+    let autoCorrelation6 = AutoCorrelationAlgorithm()
     autoCorrelation6[realVecInput: .array] = [0.2]
     autoCorrelation6.compute()
 

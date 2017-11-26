@@ -432,6 +432,41 @@ private func test<T>(array array1: [[[T]]],
 }
 
 
+/// Asserts that two floating point values are equal with a specified allowable deviation.
+///
+/// - Parameters:
+///   - actual: The actual floating point value.
+///   - expected: The expected floating point value.
+///   - deviation: Describes the maximum allowable deviation between `actual` and `expected`.
+///   - message: An optional description of the failure.
+///   - file: The file in which failure occurred. Defaults to the file name of the test case in
+///           which this function was called.
+///   - line: The line number on which failure occurred. Defaults to the line number on which this
+///           function was called.
+public func XCTAssertEqual<T:FloatingPoint>(_ actual: T,
+                                            _ expected: T,
+                                            deviation: T = 0,
+                                            _ message: @autoclosure () -> String = "",
+                                            file: StaticString = #file,
+                                            line: UInt = #line)
+{
+
+  guard !equal(actual, expected, deviation: deviation) else { return }
+
+  let failureDescription = """
+    XCTAssertEqual failed: ("\(actual)") is not equal to \
+    ("\(expected)") with deviation ("\(deviation)")
+    """
+
+  _XCTPreformattedFailureHandler(_XCTCurrentTestCase(),
+                                 true,
+                                 file.description,
+                                 Int(line),
+                                 failureDescription, message())
+
+}
+
+
 /// Asserts that two two dimensional arrays are equal.
 ///
 /// - Parameters:
@@ -769,7 +804,7 @@ public func XCTAssertEqual<T:FloatingPoint>(_ array1: [[T]],
 
   let failureDescription = """
     XCTAssertEqual failed: ("\(description(of: array1))") is not equal to \
-    ("\(description(of: array2))") with deviation  ("\(deviation)")
+    ("\(description(of: array2))") with deviation ("\(deviation)")
     """
 
   _XCTPreformattedFailureHandler(_XCTCurrentTestCase(),
@@ -806,7 +841,7 @@ public func XCTAssertEqual<T:FloatingPoint>(_ array1: [[[T]]],
 
   let failureDescription = """
     XCTAssertEqual failed: ("\(description(of: array1))") is not equal to \
-    ("\(description(of: array2))") with deviation  ("\(deviation)")
+    ("\(description(of: array2))") with deviation ("\(deviation)")
     """
 
   _XCTPreformattedFailureHandler(_XCTCurrentTestCase(),
@@ -842,7 +877,7 @@ public func XCTAssertEqual(_ array1: [DSPComplex],
 
   let failureDescription = """
     XCTAssertEqual failed: ("\(description(of: array1))") is not equal to \
-    ("\(description(of: array2))") with deviation  ("\(deviation)")
+    ("\(description(of: array2))") with deviation ("\(deviation)")
     """
 
   _XCTPreformattedFailureHandler(_XCTCurrentTestCase(),
@@ -878,7 +913,7 @@ public func XCTAssertEqual(_ array1: [[DSPComplex]],
 
   let failureDescription = """
     XCTAssertEqual failed: ("\(description(of: array1))") is not equal to \
-    ("\(description(of: array2))") with deviation  ("\(deviation)")
+    ("\(description(of: array2))") with deviation ("\(deviation)")
     """
 
   _XCTPreformattedFailureHandler(_XCTCurrentTestCase(),
@@ -914,7 +949,7 @@ public func XCTAssertEqual(_ array1: [[[DSPComplex]]],
 
   let failureDescription = """
     XCTAssertEqual failed: ("\(description(of: array1))") is not equal to \
-    ("\(description(of: array2))") with deviation  ("\(deviation)")
+    ("\(description(of: array2))") with deviation ("\(deviation)")
     """
 
   _XCTPreformattedFailureHandler(_XCTCurrentTestCase(),

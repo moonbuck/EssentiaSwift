@@ -24,7 +24,7 @@ using namespace std;
 
 namespace essentia {
 
-bool infoLevelActive = true;
+bool infoLevelActive = false;
 bool warningLevelActive = true;
 bool errorLevelActive = true;
 

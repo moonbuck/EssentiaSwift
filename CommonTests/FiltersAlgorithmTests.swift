@@ -24,10 +24,10 @@ class FiltersAlgorithmTests: XCTestCase {
     /// Simple helper for creating a trivial `IIRFilter` algorithm instance.
     ///
     /// - Returns: A simple IIR filter.
-    func loadSimpleFilter() -> StandardAlgorithm<Standard.IIR> {
+    func loadSimpleFilter() -> IIRAlgorithm {
       let b = Parameter(value: .realVec(loadVector(name: "iir_b")))
       let a = Parameter(value: .realVec(loadVector(name: "iir_a")))
-      return StandardAlgorithm<Standard.IIR>([.numerator: b, .denominator: a])
+      return IIRAlgorithm([.numerator: b, .denominator: a])
     }
 
     /*
@@ -82,7 +82,7 @@ class FiltersAlgorithmTests: XCTestCase {
 
     let b1 = Parameter(value: .realVec(loadVector(name: "iir_ba")))
     let a1 = Parameter(value: .realVec(loadVector(name: "iir_ab")))
-    let iir5 = StandardAlgorithm<Standard.IIR>([.numerator: b1, .denominator: a1])
+    let iir5 = IIRAlgorithm([.numerator: b1, .denominator: a1])
     iir5[realVecInput: .signal] = x
     iir5.compute()
 
@@ -95,7 +95,7 @@ class FiltersAlgorithmTests: XCTestCase {
 
     let b2 = Parameter(value: .realVec(loadVector(name: "iir_b")))
     let a2 = Parameter(value: .realVec(loadVector(name: "iir_a")))
-    let iir6 = StandardAlgorithm<Standard.IIR>([.numerator: b2, .denominator: a2])
+    let iir6 = IIRAlgorithm([.numerator: b2, .denominator: a2])
     iir6[realVecInput: .signal] = x
     iir6.compute()
 
@@ -106,7 +106,7 @@ class FiltersAlgorithmTests: XCTestCase {
      denominator coefficients.
      */
 
-    let iir7 = StandardAlgorithm<Standard.IIR>([.numerator: a2, .denominator: b2])
+    let iir7 = IIRAlgorithm([.numerator: a2, .denominator: b2])
     iir7[realVecInput: .signal] = x
     iir7.compute()
 
@@ -123,7 +123,7 @@ class FiltersAlgorithmTests: XCTestCase {
 
     let signal1: [Float] = [1, 2, 3, 4, 5, 6, 7]
 
-    let dcRemoval1 = StandardAlgorithm<Standard.DCRemoval>()
+    let dcRemoval1 = DCRemovalAlgorithm()
     dcRemoval1[realVecInput: .signal] = signal1
     dcRemoval1.compute()
 
@@ -148,7 +148,7 @@ class FiltersAlgorithmTests: XCTestCase {
      Test with all-zero input.
      */
 
-    let dcRemoval2 = StandardAlgorithm<Standard.DCRemoval>()
+    let dcRemoval2 = DCRemovalAlgorithm()
     dcRemoval2[realVecInput: .signal] = [0.0] * 20
     dcRemoval2.compute()
 
@@ -158,7 +158,7 @@ class FiltersAlgorithmTests: XCTestCase {
      Test with constant input.
      */
 
-    let dcRemoval3 = StandardAlgorithm<Standard.DCRemoval>()
+    let dcRemoval3 = DCRemovalAlgorithm()
     dcRemoval3[realVecInput: .signal] = [1.0] * 20000
     dcRemoval3.compute()
 
@@ -171,7 +171,7 @@ class FiltersAlgorithmTests: XCTestCase {
 
     let signal2 = monoBufferData(url: bundleURL(name: "sin_30_seconds", ext: "wav"))
 
-    let dcRemoval4 = StandardAlgorithm<Standard.DCRemoval>()
+    let dcRemoval4 = DCRemovalAlgorithm()
     dcRemoval4[realVecInput: .signal] = signal2.map({$0 + 0.2})
     dcRemoval4.compute()
 
@@ -190,7 +190,7 @@ class FiltersAlgorithmTests: XCTestCase {
 
     let signal1: [Float] = [1, 2, 3, 4, 5, 6, 7]
 
-    let equalLoudness1 = StandardAlgorithm<Standard.EqualLoudness>()
+    let equalLoudness1 = EqualLoudnessAlgorithm()
     equalLoudness1[realVecInput: .signal] = signal1
     equalLoudness1.compute()
 
@@ -215,7 +215,7 @@ class FiltersAlgorithmTests: XCTestCase {
      Test with all-zero input.
      */
 
-    let equalLoudness2 = StandardAlgorithm<Standard.EqualLoudness>()
+    let equalLoudness2 = EqualLoudnessAlgorithm()
     equalLoudness2[realVecInput: .signal] = [0.0] * 20
     equalLoudness2.compute()
 
@@ -228,7 +228,7 @@ class FiltersAlgorithmTests: XCTestCase {
     let signal2 = monoBufferData(url: bundleURL(name: "sin_30_seconds", ext: "wav"))
     let expected2 = monoBufferData(url: bundleURL(name: "sin_30_seconds_eqloud", ext: "wav"))
 
-    let equalLoudness3 = StandardAlgorithm<Standard.EqualLoudness>()
+    let equalLoudness3 = EqualLoudnessAlgorithm()
     equalLoudness3[realVecInput: .signal] = Array(signal2[...100000])
     equalLoudness3.compute()
 
@@ -245,7 +245,7 @@ class FiltersAlgorithmTests: XCTestCase {
      Test for regression.
      */
 
-    let movingAverage1 = StandardAlgorithm<Standard.MovingAverage>([.size: 6])
+    let movingAverage1 = MovingAverageAlgorithm([.size: 6])
     movingAverage1[realVecInput: .signal] = [1.0] * 10
     movingAverage1.compute()
 
@@ -258,7 +258,7 @@ class FiltersAlgorithmTests: XCTestCase {
      Test that filtering one by one is the same as all at once.
      */
 
-    let movingAverage2 = StandardAlgorithm<Standard.MovingAverage>([.size: 4])
+    let movingAverage2 = MovingAverageAlgorithm([.size: 4])
     movingAverage2[realVecInput: .signal] = [1.0] * 10
     movingAverage2.compute()
 
@@ -266,7 +266,7 @@ class FiltersAlgorithmTests: XCTestCase {
                    [Float(1)/4, Float(2)/4, Float(3)/4, 1, 1, 1, 1, 1, 1, 1])
 
 
-    let movingAverage3 = StandardAlgorithm<Standard.MovingAverage>([.size: 4])
+    let movingAverage3 = MovingAverageAlgorithm([.size: 4])
     var filtered: [Float] = []
 
     for _ in 0..<10 {
@@ -283,7 +283,7 @@ class FiltersAlgorithmTests: XCTestCase {
      Test with all-zero input.
      */
 
-    let movingAverage4 = StandardAlgorithm<Standard.MovingAverage>()
+    let movingAverage4 = MovingAverageAlgorithm()
     movingAverage4[realVecInput: .signal] = [0.0] * 20
     movingAverage4.compute()
 
@@ -294,7 +294,7 @@ class FiltersAlgorithmTests: XCTestCase {
      Test with an empty signal.
      */
 
-    let movingAverage5 = StandardAlgorithm<Standard.MovingAverage>()
+    let movingAverage5 = MovingAverageAlgorithm()
     movingAverage5[realVecInput: .signal] = []
     movingAverage5.compute()
 

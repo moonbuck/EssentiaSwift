@@ -124,6 +124,10 @@ class EssentiaTests: XCTestCase {
     appendSpecificationTypealiases(namesByCategory: namesByCategory, target: &declarationOutput)
     endAlgorithmMode(target: &declarationOutput)
 
+    appendAlgorithmAliases(namesByCategory: namesByCategory,
+                           mode: mode,
+                           target: &declarationOutput)
+
     guard let declarationData = declarationOutput.data(using: .utf8) else {
       XCTFail("Failed to get the declaration output string as raw data.")
       return
@@ -187,6 +191,10 @@ class EssentiaTests: XCTestCase {
     appendAlgorithmID(namesByCategory: namesByCategory, mode: mode, target: &declarationOutput)
     appendSpecificationTypealiases(namesByCategory: namesByCategory, target: &declarationOutput)
     endAlgorithmMode(target: &declarationOutput)
+
+    appendAlgorithmAliases(namesByCategory: namesByCategory,
+                           mode: mode,
+                           target: &declarationOutput)
 
     guard let declarationData = declarationOutput.data(using: .utf8) else {
       XCTFail("Failed to get the declaration output string as raw data.")
@@ -280,7 +288,7 @@ class EssentiaTests: XCTestCase {
   /// ````
   func testAlgorithmIO() {
 
-    let clipper = StandardAlgorithm<Standard.Clipper>()
+    let clipper = ClipperAlgorithm()
 
     clipper[realParameter: .min] = 0
     clipper[realParameter: .max] = 2
@@ -313,7 +321,7 @@ class EssentiaTests: XCTestCase {
   ///  PoolAggregator: defaultStats(StringVec), exceptions(StringVecMap)
   func testAlgorithmParameters() {
 
-    let frequencyBands = StandardAlgorithm<Standard.FrequencyBands>()
+    let frequencyBands = FrequencyBandsAlgorithm()
 
     XCTAssertEqual(frequencyBands[realParameter: .sampleRate], 44100)
     frequencyBands[realParameter: .sampleRate] = 22050
@@ -323,7 +331,7 @@ class EssentiaTests: XCTestCase {
     frequencyBands[realVecParameter: .frequencyBands] = [200, 300, 400]
     XCTAssertEqual(frequencyBands[realVecParameter: .frequencyBands], [200, 300, 400])
 
-    let peakDetection = StandardAlgorithm<Standard.PeakDetection>()
+    let peakDetection = PeakDetectionAlgorithm()
 
     XCTAssertEqual(peakDetection[booleanParameter: .interpolate], true)
     peakDetection[booleanParameter: .interpolate] = false
@@ -339,7 +347,7 @@ class EssentiaTests: XCTestCase {
 
 
 
-    let poolAggregator = StandardAlgorithm<Standard.PoolAggregator>()
+    let poolAggregator = PoolAggregatorAlgorithm()
 
     XCTAssertEqual(poolAggregator[stringVecParameter: .defaultStats],
                    ["mean", "stdev", "min", "max", "median"])
@@ -357,7 +365,7 @@ class EssentiaTests: XCTestCase {
   /// Tests that algorithms created with calls that include parameter values are properly configured.
   func testAlgorithmCreationWithParameterValues() {
 
-    let clipper = StandardAlgorithm<Standard.Clipper>([.min: 0.0, .max: 2.0])
+    let clipper = ClipperAlgorithm([.min: 0.0, .max: 2.0])
 
     XCTAssertEqual(clipper[realParameter: .min],  0)
     XCTAssertEqual(clipper[realParameter: .max], 2)
@@ -367,7 +375,7 @@ class EssentiaTests: XCTestCase {
   /// Tests the `Pool` type via the standard algorithm `Extractor`.
   func testPool() {
 
-    let extractor = StandardAlgorithm<Standard.Extractor>()
+    let extractor = ExtractorAlgorithm()
 
     let url = bundleURL(name: "C4-E♭4-G4_Boesendorfer_Grand_Piano-Trimmed", ext: "aif")
     let chordSignal = monoBufferData(url: url)
@@ -389,7 +397,7 @@ class EssentiaTests: XCTestCase {
     XCTAssertEqual(extractorPool.realVecSinglePool.count, 6)
     XCTAssertEqual(extractorPool.stringVecSinglePool.count, 0)
 
-    let pool = Pool()
+    let pool1 = Pool()
 
     /*
      add: Float, [Float], String, [String], StereoSample, [[Float]]
@@ -399,42 +407,42 @@ class EssentiaTests: XCTestCase {
     let reals: [Float] = [1.0, 2.0, 3.0]
 
     for real in reals {
-      pool[real: "real"] = real
+      pool1[real: "real"] = real
     }
 
-    XCTAssertEqual(pool[realVec: "real"], reals)
+    XCTAssertEqual(pool1[realVec: "real"], reals)
 
     let realVecs: [[Float]] = [[1.1, 1.2, 1.3], [2.1, 2.2, 2.3], [3.1, 3.2, 3.3]]
 
     for realVec in realVecs {
-      pool[realVec: "realVector"] = realVec
+      pool1[realVec: "realVector"] = realVec
     }
 
-    XCTAssertEqual(pool[realVecVec: "realVector"], realVecs, accuracy: Float(0.1))
+    XCTAssertEqual(pool1[realVecVec: "realVector"], realVecs, accuracy: Float(0.1))
 
     let strings = ["1", "2", "3"]
 
     for string in strings {
-      pool[string: "string"] = string
+      pool1[string: "string"] = string
     }
 
-    XCTAssertEqual(pool[stringVec: "string"], strings)
+    XCTAssertEqual(pool1[stringVec: "string"], strings)
 
     let stringVecs = [["11", "12", "13"], ["21", "22", "23"], ["31", "32", "33"]]
 
     for stringVec in stringVecs {
-      pool[stringVec: "stringVector"] = stringVec
+      pool1[stringVec: "stringVector"] = stringVec
     }
 
-    XCTAssertEqual(pool[stringVecVec: "stringVector"], stringVecs)
+    XCTAssertEqual(pool1[stringVecVec: "stringVector"], stringVecs)
 
     let stereoSamples = [StereoSample(left: 1.1, right: 1.2), StereoSample(left: 2.1, right: 2.2)]
 
     for stereoSample in stereoSamples {
-      pool[stereoSample: "stereoSample"] = stereoSample
+      pool1[stereoSample: "stereoSample"] = stereoSample
     }
 
-    XCTAssertEqual(pool[stereoSampleVec: "stereoSample"], stereoSamples)
+    XCTAssertEqual(pool1[stereoSampleVec: "stereoSample"], stereoSamples)
 
     let realMatrices: [[[Float]]] = [
       [[11.1, 11.2, 11.3], [12.1, 12.2, 12.3]],
@@ -443,45 +451,77 @@ class EssentiaTests: XCTestCase {
     ]
 
     for realMatrix in realMatrices {
-      pool[realVecVec: "realMatrix"] = realMatrix
+      pool1[realVecVec: "realMatrix"] = realMatrix
     }
 
-    XCTAssertEqual(pool[realMatrixVec: "realMatrix"], realMatrices, accuracy: Float(0.1))
+    XCTAssertEqual(pool1[realMatrixVec: "realMatrix"], realMatrices, accuracy: Float(0.1))
 
     for (index, real) in reals.enumerated() {
-      pool[singleReal: "singleReal\(index)"] = real
+      pool1[singleReal: "singleReal\(index)"] = real
     }
 
     for (index, real) in reals.enumerated() {
-      XCTAssertEqual(pool[singleReal: "singleReal\(index)"], real)
+      XCTAssertEqual(pool1[singleReal: "singleReal\(index)"], real)
     }
 
     for (index, realVec) in realVecs.enumerated() {
-      pool[singleRealVec: "singleRealVector\(index)"] = realVec
+      pool1[singleRealVec: "singleRealVector\(index)"] = realVec
     }
 
     for (index, realVec) in realVecs.enumerated() {
-      XCTAssertEqual(pool[singleRealVec: "singleRealVector\(index)"], realVec)
+      XCTAssertEqual(pool1[singleRealVec: "singleRealVector\(index)"], realVec)
     }
 
     for (index, string) in strings.enumerated() {
-      pool[singleString: "singleString\(index)"] = string
+      pool1[singleString: "singleString\(index)"] = string
     }
 
     for (index, string) in strings.enumerated() {
-      XCTAssertEqual(pool[singleString: "singleString\(index)"], string)
+      XCTAssertEqual(pool1[singleString: "singleString\(index)"], string)
     }
 
     for (index, stringVec) in stringVecs.enumerated() {
-      pool[singleStringVec: "singleStringVector\(index)"] = stringVec
+      pool1[singleStringVec: "singleStringVector\(index)"] = stringVec
     }
 
     for (index, stringVec) in stringVecs.enumerated() {
-      XCTAssertEqual(pool[singleStringVec: "singleStringVector\(index)"], stringVec)
+      XCTAssertEqual(pool1[singleStringVec: "singleStringVector\(index)"], stringVec)
     }
 
-    XCTAssertEqual(pool.jsonRepresentation,
+    XCTAssertEqual(pool1.jsonRepresentation,
                    try! String(contentsOf: bundleURL(name: "pool", ext: "json")))
+
+    let pool2: Pool = [
+      "real": [1, 2, 3],
+      "realVector": [[1.1, 1.2, 1.3], [2.1, 2.2, 2.3], [3.1, 3.2, 3.3]],
+      "string": ["1", "2", "3"],
+      "stringVector": [["11", "12", "13"], ["21", "22", "23"], ["31", "32", "33"]],
+      "stereoSample": [StereoSample(left: 1.1, right: 1.2), StereoSample(left: 2.1, right: 2.2)],
+      "realMatrix": [
+        [[11.1, 11.2, 11.3], [12.1, 12.2, 12.3]],
+        [[21.1, 21.2, 21.3], [22.1, 22.2, 22.3]],
+        [[31.1, 31.2, 31.3], [32.1, 32.2, 32.3]]
+      ]
+    ]
+
+    XCTAssertEqual(pool2[realVec: "real"], [1, 2, 3])
+
+    XCTAssertEqual(pool2[realVecVec: "realVector"], [[1.1, 1.2, 1.3],
+                                                     [2.1, 2.2, 2.3],
+                                                     [3.1, 3.2, 3.3]])
+
+    XCTAssertEqual(pool2[stringVec: "string"], ["1", "2", "3"])
+
+    XCTAssertEqual(pool2[stringVecVec: "stringVector"], [["11", "12", "13"],
+                                                         ["21", "22", "23"],
+                                                         ["31", "32", "33"]])
+
+    XCTAssertEqual(pool2[stereoSampleVec: "stereoSample"], [StereoSample(left: 1.1, right: 1.2),
+                                                            StereoSample(left: 2.1, right: 2.2)])
+    
+    XCTAssertEqual(pool2[realMatrixVec: "realMatrix"], [[[11.1, 11.2, 11.3], [12.1, 12.2, 12.3]],
+                                                        [[21.1, 21.2, 21.3], [22.1, 22.2, 22.3]],
+                                                        [[31.1, 31.2, 31.3], [32.1, 32.2, 32.3]]])
 
   }
 
@@ -494,14 +534,14 @@ class EssentiaTests: XCTestCase {
     let signalInput = VectorInput<Float>(chordSignal)
 
 
-    let frameCutter = StreamingAlgorithm<Streaming.FrameCutter>()
+    let frameCutter = FrameCutterSAlgorithm()
     frameCutter[integerParameter: .frameSize] = 1024
     frameCutter[integerParameter: .hopSize] = 256
     frameCutter[booleanParameter: .startFromZero] = false
 
-    let windowing = StreamingAlgorithm<Streaming.Windowing>([.type: "hann"])
+    let windowing = WindowingSAlgorithm([.type: "hann"])
 
-    let fft = StreamingAlgorithm<Streaming.FFT>([.size: 1024])
+    let fft = FFTSAlgorithm([.size: 1024])
 
     let output = VectorOutput<[DSPComplex]>()
 

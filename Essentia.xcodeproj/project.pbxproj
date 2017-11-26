@@ -1307,6 +1307,8 @@
 		C27C40571FC39A0E005CB8BA /* pitchyinfft_expectedconfidence.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C40531FC39A0E005CB8BA /* pitchyinfft_expectedconfidence.txt */; };
 		C27C40591FC39C27005CB8BA /* mozart_c_major_30sec_samples.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C40581FC39C27005CB8BA /* mozart_c_major_30sec_samples.txt */; };
 		C27C405A1FC39C27005CB8BA /* mozart_c_major_30sec_samples.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C40581FC39C27005CB8BA /* mozart_c_major_30sec_samples.txt */; };
+		C29C3C291FCA344100F6FF4D /* pool_literal.json in Resources */ = {isa = PBXBuildFile; fileRef = C29C3C281FCA344100F6FF4D /* pool_literal.json */; };
+		C29C3C2A1FCA344100F6FF4D /* pool_literal.json in Resources */ = {isa = PBXBuildFile; fileRef = C29C3C281FCA344100F6FF4D /* pool_literal.json */; };
 		C2B7180E1FC0F86600ECB0A6 /* pool.json in Resources */ = {isa = PBXBuildFile; fileRef = C2B7180D1FC0F86600ECB0A6 /* pool.json */; };
 		C2B7180F1FC0F86600ECB0A6 /* pool.json in Resources */ = {isa = PBXBuildFile; fileRef = C2B7180D1FC0F86600ECB0A6 /* pool.json */; };
 		C2B718161FC1034F00ECB0A6 /* pitchsalience_sinesweep.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2B718101FC1034E00ECB0A6 /* pitchsalience_sinesweep.txt */; };
@@ -2365,6 +2367,7 @@
 		C27C40521FC39A0E005CB8BA /* pitchyinfft_expectedpitch.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyinfft_expectedpitch.txt; sourceTree = "<group>"; };
 		C27C40531FC39A0E005CB8BA /* pitchyinfft_expectedconfidence.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyinfft_expectedconfidence.txt; sourceTree = "<group>"; };
 		C27C40581FC39C27005CB8BA /* mozart_c_major_30sec_samples.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mozart_c_major_30sec_samples.txt; sourceTree = "<group>"; };
+		C29C3C281FCA344100F6FF4D /* pool_literal.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pool_literal.json; sourceTree = "<group>"; };
 		C2B7180D1FC0F86600ECB0A6 /* pool.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pool.json; sourceTree = "<group>"; };
 		C2B718101FC1034E00ECB0A6 /* pitchsalience_sinesweep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchsalience_sinesweep.txt; sourceTree = "<group>"; };
 		C2B718111FC1034E00ECB0A6 /* pitchsalience_puretone.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchsalience_puretone.txt; sourceTree = "<group>"; };
@@ -3943,6 +3946,7 @@
 				C2F136331FC66DD2006FF2E2 /* SpectralPeaks */,
 				C2F136341FC66DE5006FF2E2 /* PitchSalience */,
 				C2B7180D1FC0F86600ECB0A6 /* pool.json */,
+				C29C3C281FCA344100F6FF4D /* pool_literal.json */,
 				C2F136351FC66DF1006FF2E2 /* Windowing */,
 				C2F136361FC66DFB006FF2E2 /* Spectrum */,
 				C2EC95B91FBF6A1500D384C5 /* frequencyBands.txt */,
@@ -5004,6 +5008,7 @@
 				C2700C2A1FC873A50028D3F7 /* constantq_pythonoutput.txt in Resources */,
 				C2EC96B71FBF6A8400D384C5 /* impulses_1second_44100_st.aiff in Resources */,
 				C2EC96FD1FBF6ACD00D384C5 /* seq-3342-2-16bit.flac in Resources */,
+				C29C3C291FCA344100F6FF4D /* pool_literal.json in Resources */,
 				C2EC964E1FBF6A3C00D384C5 /* dubstep.ogg in Resources */,
 				C2EC96E01FBF6AA100D384C5 /* impulses_1second_44100.mp3 in Resources */,
 				C2F136171FC64A28006FF2E2 /* iir_x.txt in Resources */,
@@ -5178,6 +5183,7 @@
 				C2700C2B1FC873A60028D3F7 /* constantq_pythonoutput.txt in Resources */,
 				C2EC96BD1FBF6A8500D384C5 /* impulses_1second_44100_st.aiff in Resources */,
 				C2EC970A1FBF6ACE00D384C5 /* seq-3342-2-16bit.flac in Resources */,
+				C29C3C2A1FCA344100F6FF4D /* pool_literal.json in Resources */,
 				C2EC965E1FBF6A3D00D384C5 /* dubstep.ogg in Resources */,
 				C2EC96E61FBF6AA200D384C5 /* impulses_1second_44100.mp3 in Resources */,
 				C2F136181FC64A28006FF2E2 /* iir_x.txt in Resources */,

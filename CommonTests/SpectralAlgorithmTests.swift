@@ -24,10 +24,10 @@ class SpectralAlgorithmTests: XCTestCase {
     let audioSignal = monoBufferData(url: bundleURL(name: "sin440_sweep_0db", ext: "wav"))
 
     let vectorInput1 = VectorInput<Float>(audioSignal)
-    let frameCutter = StreamingAlgorithm<Streaming.FrameCutter>([.frameSize: 2048, .hopSize: 512])
-    let windowing = StreamingAlgorithm<Streaming.Windowing>([.type: "hamming"])
-    let spectrum = StreamingAlgorithm<Streaming.Spectrum>()
-    let frequencyBands = StreamingAlgorithm<Streaming.FrequencyBands>([.sampleRate: 44100])
+    let frameCutter = FrameCutterSAlgorithm([.frameSize: 2048, .hopSize: 512])
+    let windowing = WindowingSAlgorithm([.type: "hamming"])
+    let spectrum = SpectrumSAlgorithm()
+    let frequencyBands = FrequencyBandsSAlgorithm([.sampleRate: 44100])
     let vectorOutput = VectorOutput<[Float]>()
 
     vectorInput1[output: .data] >> frameCutter[input: .signal]
@@ -75,9 +75,9 @@ class SpectralAlgorithmTests: XCTestCase {
 
     let vectorInput1 = VectorInput<[Float]>([audioSignal1])
 
-    let spectrum1 = StreamingAlgorithm<Streaming.Spectrum>()
+    let spectrum1 = SpectrumSAlgorithm()
 
-    let spectralPeaks1 = StreamingAlgorithm<Streaming.SpectralPeaks>([
+    let spectralPeaks1 = SpectralPeaksSAlgorithm([
       .sampleRate: 44100,
       .maxPeaks: 1,
       .maxFrequency: 22050,
@@ -86,7 +86,7 @@ class SpectralAlgorithmTests: XCTestCase {
       .orderBy: "magnitude"
       ])
 
-    let hpcp1 = StreamingAlgorithm<Streaming.HPCP>()
+    let hpcp1 = HPCPSAlgorithm()
 
     let vectorOutput1 = VectorOutput<[Float]>()
 
@@ -111,7 +111,7 @@ class SpectralAlgorithmTests: XCTestCase {
 
       let tonic: Float = 55 * pow(2, Float(octave - 1))
 
-      let hpcp = StandardAlgorithm<Standard.HPCP>([.maxFrequency: 14000])
+      let hpcp = HPCPAlgorithm([.maxFrequency: 14000])
       hpcp[realVecInput: .frequencies] = (0..<12).map { tonic * exp2(Float($0)/12) }
       hpcp[realVecInput: .magnitudes] = [1.0] * 12
       hpcp.compute()
@@ -124,7 +124,7 @@ class SpectralAlgorithmTests: XCTestCase {
       Test low and high frequency cutoff parameters.
      */
 
-    let hpcp2 = StandardAlgorithm<Standard.HPCP>([.minFrequency: 100, .maxFrequency: 1000])
+    let hpcp2 = HPCPAlgorithm([.minFrequency: 100, .maxFrequency: 1000])
     hpcp2[realVecInput: .frequencies] = [99, 1001]
     hpcp2[realVecInput: .magnitudes] = [1, 1]
     hpcp2.compute()
@@ -134,7 +134,7 @@ class SpectralAlgorithmTests: XCTestCase {
       Test regression for the 'harmonics' parameter.
      */
 
-    let hpcp3 = StandardAlgorithm<Standard.HPCP>([
+    let hpcp3 = HPCPAlgorithm([
       .minFrequency: 50, .maxFrequency: 500, .bandPreset: false, .harmonics: 3
       ])
 
@@ -152,7 +152,7 @@ class SpectralAlgorithmTests: XCTestCase {
     let spectrumSize = 262144
     let binResolution: Float = 20050 / Float(spectrumSize)
 
-    let hpcp4 = StandardAlgorithm<Standard.HPCP>([
+    let hpcp4 = HPCPAlgorithm([
       .minFrequency: 440,
       .maxFrequency: 880,
       .bandPreset: false,
@@ -184,20 +184,20 @@ class SpectralAlgorithmTests: XCTestCase {
 
     let vectorInput2 = VectorInput<Float>(audioSignal2)
 
-    let frameCutter = StreamingAlgorithm<Streaming.FrameCutter>([.frameSize: 512, .hopSize: 512])
+    let frameCutter = FrameCutterSAlgorithm([.frameSize: 512, .hopSize: 512])
 
-    let windowing = StreamingAlgorithm<Streaming.Windowing>([.type: "blackmanharris62"])
+    let windowing = WindowingSAlgorithm([.type: "blackmanharris62"])
 
-    let spectrum2 = StreamingAlgorithm<Streaming.Spectrum>([.size: 512])
+    let spectrum2 = SpectrumSAlgorithm([.size: 512])
 
-    let spectralPeaks2 = StreamingAlgorithm<Streaming.SpectralPeaks>([
+    let spectralPeaks2 = SpectralPeaksSAlgorithm([
       .sampleRate: 44100,
       .maxFrequency: 22050,
       .minFrequency: 0,
       .orderBy: "magnitude"
       ])
 
-    let hpcp5 = StreamingAlgorithm<Streaming.HPCP>([
+    let hpcp5 = HPCPSAlgorithm([
       .minFrequency: 50,
       .maxFrequency: 500,
       .bandPreset: false,
@@ -235,13 +235,13 @@ class SpectralAlgorithmTests: XCTestCase {
 
     let vectorInput = VectorInput<Float>(audioSignal)
 
-    let frameCutter = StreamingAlgorithm<Streaming.FrameCutter>([.frameSize: 2048, .hopSize: 2048])
+    let frameCutter = FrameCutterSAlgorithm([.frameSize: 2048, .hopSize: 2048])
 
-    let windowing = StreamingAlgorithm<Streaming.Windowing>([.type: "hann"])
+    let windowing = WindowingSAlgorithm([.type: "hann"])
 
-    let spectrum = StreamingAlgorithm<Streaming.Spectrum>()
+    let spectrum = SpectrumSAlgorithm()
 
-    let spectralPeaks = StreamingAlgorithm<Streaming.SpectralPeaks>([
+    let spectralPeaks = SpectralPeaksSAlgorithm([
       .sampleRate: 44100,
       .maxPeaks: 1,
       .maxFrequency: 10000,
@@ -250,7 +250,7 @@ class SpectralAlgorithmTests: XCTestCase {
       .orderBy: "magnitude"
       ])
 
-    let tuningFrequency1 = StreamingAlgorithm<Streaming.TuningFrequency>([.resolution: 1])
+    let tuningFrequency1 = TuningFrequencySAlgorithm([.resolution: 1])
 
     let pool = Pool()
 
@@ -273,7 +273,7 @@ class SpectralAlgorithmTests: XCTestCase {
       Test that empty input produces the expected values.
      */
 
-    let tuningFrequency2 = StandardAlgorithm<Standard.TuningFrequency>()
+    let tuningFrequency2 = TuningFrequencyAlgorithm()
     tuningFrequency2[realVecInput: .frequencies] = []
     tuningFrequency2[realVecInput: .magnitudes] = []
     tuningFrequency2.compute()
@@ -285,7 +285,7 @@ class SpectralAlgorithmTests: XCTestCase {
      Test that an input of zero produces the expected values.
      */
 
-    let tuningFrequency3 = StandardAlgorithm<Standard.TuningFrequency>()
+    let tuningFrequency3 = TuningFrequencyAlgorithm()
     tuningFrequency3[realVecInput: .frequencies] = [0]
     tuningFrequency3[realVecInput: .magnitudes] = [0]
     tuningFrequency3.compute()
@@ -303,7 +303,7 @@ class SpectralAlgorithmTests: XCTestCase {
      Regression test for various peak shapes.
      */
 
-    let spectralPeaks1 = StandardAlgorithm<Standard.SpectralPeaks>([
+    let spectralPeaks1 = SpectralPeaksAlgorithm([
       .sampleRate: 198,
       .maxPeaks: 100,
       .maxFrequency: 99,
@@ -329,11 +329,11 @@ class SpectralAlgorithmTests: XCTestCase {
 
     let audioSignal = monoBufferData(url: bundleURL(name: "sin5000", ext: "wav"))
     let vectorInput = VectorInput<Float>(audioSignal)
-    let frameCutter = StreamingAlgorithm<Streaming.FrameCutter>([.frameSize: 2048, .hopSize: 2048])
-    let windowing = StreamingAlgorithm<Streaming.Windowing>([.type: "blackmanharris62"])
-    let spectrum2 = StreamingAlgorithm<Streaming.Spectrum>()
+    let frameCutter = FrameCutterSAlgorithm([.frameSize: 2048, .hopSize: 2048])
+    let windowing = WindowingSAlgorithm([.type: "blackmanharris62"])
+    let spectrum2 = SpectrumSAlgorithm()
 
-    let spectralPeaks2 = StreamingAlgorithm<Streaming.SpectralPeaks>([
+    let spectralPeaks2 = SpectralPeaksSAlgorithm([
       .sampleRate: 44100,
       .maxPeaks: 1,
       .maxFrequency: 10000,
@@ -362,7 +362,7 @@ class SpectralAlgorithmTests: XCTestCase {
      Test that all-zero input leads to empty output arrays.
      */
 
-    let spectralPeaks3 = StandardAlgorithm<Standard.SpectralPeaks>()
+    let spectralPeaks3 = SpectralPeaksAlgorithm()
     spectralPeaks3[realVecInput: .spectrum] = [0.0] * 1024
     spectralPeaks3.compute()
 
@@ -389,30 +389,30 @@ class SpectralAlgorithmTests: XCTestCase {
 
     let vectorInput = VectorInput<Float>(signalSlice)
 
-    let frameCutter = StreamingAlgorithm<Streaming.FrameCutter>([
+    let frameCutter = FrameCutterSAlgorithm([
       .frameSize: Parameter(value: .integer(Int32(frameSize))),
       .hopSize: Parameter(value: .integer(Int32(hopSize)))
       ])
 
-    let spectrum = StreamingAlgorithm<Streaming.Spectrum>()
+    let spectrum = SpectrumSAlgorithm()
 
     let fftSize = Int(exp2(Float(16)))
     let zeroPadding = Int32(fftSize - frameSize)
     let spectrumSize = Int32(fftSize / 2 + 1)
 
-    let windowing = StreamingAlgorithm<Streaming.Windowing>([
+    let windowing = WindowingSAlgorithm([
       .type: "hamming",
       .zeroPadding: Parameter(value: .integer(zeroPadding))
       ])
 
-    let triangularBands = StreamingAlgorithm<Streaming.TriangularBands>([
+    let triangularBands = TriangularBandsSAlgorithm([
       .inputSize: Parameter(value: .integer(spectrumSize)),
       .frequencyBands: Parameter(value: .realVec(loadVector(name: "frequencyBands"))),
       .log: false,
       .sampleRate: 44100
       ])
 
-    let spectrumToCent = StreamingAlgorithm<Streaming.SpectrumToCent>([
+    let spectrumToCent = SpectrumToCentSAlgorithm([
       .inputSize: Parameter(value: .integer(spectrumSize)),
       .minimumFrequency: 164.814,
       .bands: 720,
@@ -455,11 +455,11 @@ class SpectralAlgorithmTests: XCTestCase {
     let audioSignal = monoBufferData(url: bundleURL(name: "sin5000", ext: "wav"))
 
     let vectorInput = VectorInput<Float>(audioSignal)
-    let frameCutter = StreamingAlgorithm<Streaming.FrameCutter>([.frameSize: 512, .hopSize: 512])
-    let windowing = StreamingAlgorithm<Streaming.Windowing>([.type: "blackmanharris62"])
-    let spectrum = StreamingAlgorithm<Streaming.Spectrum>([.size: 512])
+    let frameCutter = FrameCutterSAlgorithm([.frameSize: 512, .hopSize: 512])
+    let windowing = WindowingSAlgorithm([.type: "blackmanharris62"])
+    let spectrum = SpectrumSAlgorithm([.size: 512])
 
-    let spectralPeaks = StreamingAlgorithm<Streaming.SpectralPeaks>([
+    let spectralPeaks = SpectralPeaksSAlgorithm([
       .sampleRate: 44100,
       .maxPeaks: 3,
       .maxFrequency: 22050,
@@ -468,7 +468,7 @@ class SpectralAlgorithmTests: XCTestCase {
       .orderBy: "magnitude"
       ])
 
-    let spectralWhitening1 = StreamingAlgorithm<Streaming.SpectralWhitening>([
+    let spectralWhitening1 = SpectralWhiteningSAlgorithm([
       .maxFrequency: 22050,
       .sampleRate: 44100
       ])
@@ -508,7 +508,7 @@ class SpectralAlgorithmTests: XCTestCase {
      Test with input consisting of all zeros.
      */
 
-    let spectralWhitening2 = StandardAlgorithm<Standard.SpectralWhitening>()
+    let spectralWhitening2 = SpectralWhiteningAlgorithm()
     spectralWhitening2[realVecInput: .frequencies] = [0.0] * 3
     spectralWhitening2[realVecInput: .magnitudes] = [0.0] * 3
     spectralWhitening2[realVecInput: .spectrum] = [0.0] * 100
@@ -520,7 +520,7 @@ class SpectralAlgorithmTests: XCTestCase {
      Test with a single value.
      */
 
-    let spectralWhitening3 = StandardAlgorithm<Standard.SpectralWhitening>()
+    let spectralWhitening3 = SpectralWhiteningAlgorithm()
     spectralWhitening3[realVecInput: .frequencies] = [30]
     spectralWhitening3[realVecInput: .magnitudes] = [10]
     spectralWhitening3[realVecInput: .spectrum] = [10]
@@ -532,7 +532,7 @@ class SpectralAlgorithmTests: XCTestCase {
     /*
       Test that frequencies above 'maxFrequency' are ignored.
      */
-    let spectralWhitening4 = StandardAlgorithm<Standard.SpectralWhitening>([.maxFrequency: 100])
+    let spectralWhitening4 = SpectralWhiteningAlgorithm([.maxFrequency: 100])
     spectralWhitening4[realVecInput: .frequencies] = [101, 102]
     spectralWhitening4[realVecInput: .magnitudes] = [1, 1]
     spectralWhitening4[realVecInput: .spectrum] = [1.0] * 100
@@ -546,7 +546,7 @@ class SpectralAlgorithmTests: XCTestCase {
 
     let bound: Float = 100.0 * 1.2 - 100.00001
 
-    let spectralWhitening5 = StandardAlgorithm<Standard.SpectralWhitening>([.maxFrequency: 100])
+    let spectralWhitening5 = SpectralWhiteningAlgorithm([.maxFrequency: 100])
     spectralWhitening5[realVecInput: .frequencies] = [bound, bound + 1]
     spectralWhitening5[realVecInput: .magnitudes] = [1, 1]
     spectralWhitening5[realVecInput: .spectrum] = (0..<100).map(Float.init)
@@ -567,10 +567,10 @@ class SpectralAlgorithmTests: XCTestCase {
     let signal = monoBufferData(url: bundleURL(name: "sin440_sweep_0db", ext: "wav"))
 
     let vectorInput = VectorInput<Float>(signal)
-    let frameCutter = StreamingAlgorithm<Streaming.FrameCutter>([.frameSize: 2048, .hopSize: 512])
-    let windowing = StreamingAlgorithm<Streaming.Windowing>([.type: "hamming"])
-    let spectrum = StreamingAlgorithm<Streaming.Spectrum>()
-    let triangularBands1 = StreamingAlgorithm<Streaming.TriangularBands>([.sampleRate: 44100])
+    let frameCutter = FrameCutterSAlgorithm([.frameSize: 2048, .hopSize: 512])
+    let windowing = WindowingSAlgorithm([.type: "hamming"])
+    let spectrum = SpectrumSAlgorithm()
+    let triangularBands1 = TriangularBandsSAlgorithm([.sampleRate: 44100])
     let vectorOutput = VectorOutput<[Float]>()
 
     vectorInput[output: .data] >> frameCutter[input: .signal]
@@ -595,7 +595,7 @@ class SpectralAlgorithmTests: XCTestCase {
       $0 * 8 * binFrequency
     }
 
-    let triangularBands2 = StandardAlgorithm<Standard.TriangularBands>([
+    let triangularBands2 = TriangularBandsAlgorithm([
       .frequencyBands: Parameter(value: .realVec(frequencyBands)),
       .log: false,
       .inputSize: 1024
@@ -610,7 +610,7 @@ class SpectralAlgorithmTests: XCTestCase {
      Test that power bands match magnitude bands when the input is the unit spectrum.
      */
 
-    let triangularBands3 = StandardAlgorithm<Standard.TriangularBands>([
+    let triangularBands3 = TriangularBandsAlgorithm([
       .frequencyBands: Parameter(value: .realVec(frequencyBands)),
       .log: false,
       .type: "power",
