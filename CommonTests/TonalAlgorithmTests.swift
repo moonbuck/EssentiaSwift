@@ -747,325 +747,378 @@ class TonalAlgorithmTests: XCTestCase {
   /// Tests the functionality of the ChordsDetection algorithm. Values taken from
   /// `test_chordsdetection_streaming.py`.
   func testChordsDetection() {
-    //TODO: Implement the  function
-    XCTFail("\(#function) not yet implemented.")
 
-    /*
-      chord_dict = {
-          'A':  [1, 0, 0, 0, 0.5, 0, 0, 0.3, 0, 0, 0, 0],
-          'A#': [0, 1, 0, 0, 0, 0.5, 0, 0, 0.3, 0, 0, 0],
-          'B':  [0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0.3, 0, 0],
-          'C':  [0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0.3, 0],
-          'C#': [0, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0.3],
-          'D':  [0.3, 0, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0],
-          'D#': [0, 0.3, 0, 0, 0, 0, 1, 0, 0, 0, 0.5, 0],
-          'E':  [0, 0, 0.3, 0, 0, 0, 0, 1, 0, 0, 0, 0.5],
-          'F':  [0.5, 0, 0, 0.3, 0, 0, 0, 0, 1, 0, 0, 0],
-          'F#': [0, 0.5, 0, 0, 0.3, 0, 0, 0, 0, 1, 0, 0],
-          'G':  [0, 0, 0.5, 0, 0, 0.3, 0, 0, 0, 0, 1, 0],
-          'G#': [0, 0, 0, 0.5, 0, 0, 0.3, 0, 0, 0, 0, 1],
+    let chordDictionary: [String: [Float]] = [
+      "A":  [1, 0, 0, 0, 0.5, 0, 0, 0.3, 0, 0, 0, 0],
+      "A#": [0, 1, 0, 0, 0, 0.5, 0, 0, 0.3, 0, 0, 0],
+      "B":  [0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0.3, 0, 0],
+      "C":  [0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0.3, 0],
+      "C#": [0, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0.3],
+      "D":  [0.3, 0, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0],
+      "D#": [0, 0.3, 0, 0, 0, 0, 1, 0, 0, 0, 0.5, 0],
+      "E":  [0, 0, 0.3, 0, 0, 0, 0, 1, 0, 0, 0, 0.5],
+      "F":  [0.5, 0, 0, 0.3, 0, 0, 0, 0, 1, 0, 0, 0],
+      "F#": [0, 0.5, 0, 0, 0.3, 0, 0, 0, 0, 1, 0, 0],
+      "G":  [0, 0, 0.5, 0, 0, 0.3, 0, 0, 0, 0, 1, 0],
+      "G#": [0, 0, 0, 0.5, 0, 0, 0.3, 0, 0, 0, 0, 1],
 
-          'Am':  [1, 0, 0, 0.5, 0, 0, 0, 0.3, 0, 0, 0, 0],
-          'A#m': [0, 1, 0, 0, 0.5, 0, 0, 0, 0.3, 0, 0, 0],
-          'Bm':  [0, 0, 1, 0, 0, 0.5, 0, 0, 0, 0.3, 0, 0],
-          'Cm':  [0, 0, 0, 1, 0, 0, 0.5, 0, 0, 0, 0.3, 0],
-          'C#m': [0, 0, 0, 0, 1, 0, 0, 0.5, 0, 0, 0, 0.3],
-          'Dm':  [0.3, 0, 0, 0, 0, 1, 0, 0, 0.5, 0, 0, 0],
-          'D#m': [0, 0.3, 0, 0, 0, 0, 1, 0, 0, 0.5, 0, 0],
-          'Em':  [0, 0, 0.3, 0, 0, 0, 0, 1, 0, 0, 0.5, 0],
-          'Fm':  [0, 0, 0, 0.3, 0, 0, 0, 0, 1, 0, 0, 0.5],
-          'F#m': [0.5, 0, 0, 0, 0.3, 0, 0, 0, 0, 1, 0, 0],
-          'Gm':  [0, 0.5, 0, 0, 0, 0.3, 0, 0, 0, 0, 1, 0],
-          'G#m': [0, 0, 0.5, 0, 0, 0, 0.3, 0, 0, 0, 0, 1]
+      "Am":  [1, 0, 0, 0.5, 0, 0, 0, 0.3, 0, 0, 0, 0],
+      "A#m": [0, 1, 0, 0, 0.5, 0, 0, 0, 0.3, 0, 0, 0],
+      "Bm":  [0, 0, 1, 0, 0, 0.5, 0, 0, 0, 0.3, 0, 0],
+      "Cm":  [0, 0, 0, 1, 0, 0, 0.5, 0, 0, 0, 0.3, 0],
+      "C#m": [0, 0, 0, 0, 1, 0, 0, 0.5, 0, 0, 0, 0.3],
+      "Dm":  [0.3, 0, 0, 0, 0, 1, 0, 0, 0.5, 0, 0, 0],
+      "D#m": [0, 0.3, 0, 0, 0, 0, 1, 0, 0, 0.5, 0, 0],
+      "Em":  [0, 0, 0.3, 0, 0, 0, 0, 1, 0, 0, 0.5, 0],
+      "Fm":  [0, 0, 0, 0.3, 0, 0, 0, 0, 1, 0, 0, 0.5],
+      "F#m": [0.5, 0, 0, 0, 0.3, 0, 0, 0, 0, 1, 0, 0],
+      "Gm":  [0, 0.5, 0, 0, 0, 0.3, 0, 0, 0, 0, 1, 0],
+      "G#m": [0, 0, 0.5, 0, 0, 0, 0.3, 0, 0, 0, 0, 1]
+    ]
+
+    /// Helper for mapping a list of chord labels to chroma vector representations.
+    ///
+    /// - Parameter labels: The chord labels.
+    /// - Returns: `labels` mapped to the vectors in `chordDictionary`.
+    func progressionVectors(for labels: [String]) -> [[Float]] {
+      return labels.flatMap({chordDictionary[$0]})
+    }
+
+    /// Helper for running the algorithm and performing assertions on the result.
+    ///
+    /// - Parameters:
+    ///   - progression: The chord labels describing the progression.
+    ///   - streaming: Whether to use streaming mode.
+    ///   - file: The file in which failure occurred. Defaults to the file name of the test
+    ///           case in which this function was called.
+    ///   - line: The line number on which failure occurred. Defaults to the line number on
+    ///           which this function was called.
+    func test(progression: [String],
+              streaming: Bool = true,
+              file: StaticString = #file,
+              line: UInt = #line)
+    {
+      let nChords = progression.count
+      let chordsProgressionReal = progressionVectors(for: progression)
+      let dur = Float(nChords)
+      let sampleRate: Float = 44100
+      let hopSize: Float = 2048
+      let frameRate = sampleRate / hopSize
+      let nFrames = Int(dur * frameRate - 1)
+      var nextChange = frameRate
+
+      var pcp: [[Float]] = [[0.0] * 12] * nFrames
+      var expectedChords: [String] = []
+      var j = 0
+      for i in 0..<nFrames {
+        if i == Int(nextChange) {
+          j += 1
+          nextChange += frameRate
+        }
+        expectedChords.append(progression[j % nChords])
+        pcp[i] = chordsProgressionReal[j % nChords]
       }
-     */
+
+      let pool = Pool()
+
+      switch streaming {
+
+      case true:
+
+        let vectorInput = VectorInput<[Float]>(pcp)
+        let chordsDetection = ChordsDetectionSAlgorithm([.windowSize: 2, .hopSize: 2048])
+
+        vectorInput[output: .data] >> chordsDetection[input: .pcp]
+        chordsDetection[output: .chords] >> pool[input: "chords.progression"]
+        chordsDetection[output: .strength] >> pool[input: "chords.strength"]
+
+        let network = Network(generator: vectorInput)
+        network.run()
+
+      case false:
+
+        let chordsDetection = ChordsDetectionAlgorithm([.windowSize: 2, .hopSize: 2048])
+        chordsDetection[realVecVecInput: .pcp] = pcp
+        chordsDetection.compute()
+
+        let chords = chordsDetection[stringVecOutput: .chords]
+        let strengths = chordsDetection[realVecOutput: .strength]
+
+        guard chords.count == strengths.count else {
+          XCTFail("Lengths of algorithm outputs are not equal.", file: file, line: line)
+          return
+        }
+
+        for index in 0..<chords.count {
+          pool.add(.string(chords[index]), for: "chords.progression")
+          pool.add(.real(strengths[index]), for: "chords.strength")
+        }
+
+      }
+
+      var failureCount = 0
+
+      for (index, (chordLabel, strength)) in zip(pool[stringVec: "chords.progression"],
+                                                 pool[realVec: "chords.strength"]).enumerated()
+      {
+
+        if chordLabel != expectedChords[index] { failureCount += 1 }
+
+        XCTAssertNotNaNOrInf(strength, file: file, line: line)
+        XCTAssertGreaterThan(strength, 0, file: file, line: line)
+
+      }
+
+      XCTAssertLessThanOrEqual(failureCount, nChords)
+
+    }
 
     /*
-    def stringToRealProgression(self, chordsProgressionString):
-        return [chord_dict[chord] for chord in chordsProgressionString]
+     Test with a major progression in streaming mode.
      */
+
+    test(progression: ["A", "A#", "B", "C", "C#", "D",
+                       "D#", "E", "F", "F#", "G", "G#"])
 
     /*
-    def runProgression(self, progression, streaming=True):
-        nChords = len(progression)
-        chordsProgressionReal = self.stringToRealProgression(progression)
-        changeChordTime = 1.0
-        dur = nChords*changeChordTime
-        sampleRate = 44100
-        hopSize = 2048
-        nFrames = int(dur*sampleRate/hopSize) - 1
-        frameRate = float(sampleRate)/float(hopSize)
-        nextChange = frameRate*changeChordTime
-        # compute expected Chords and the input pcp for the chordsdetection
-        # algorithm:
-        pcp = zeros([nFrames,12])
-        expectedChords =[]
-        j = 0
-        for i in range(nFrames):
-            if i == int(nextChange):
-                j+=1
-                nextChange += frameRate*changeChordTime
-            expectedChords.append(progression[j%nChords])
-            pcp[i] = chordsProgressionReal[j%nChords]
-
-        pool = Pool()
-
-        if streaming:
-            gen = VectorInput(pcp)
-            chordsDetection = ChordsDetection(windowSize=2.0, hopSize = hopSize)
-
-            gen.data >> chordsDetection.pcp
-            chordsDetection.chords >> (pool, 'chords.progression')
-            chordsDetection.strength >> (pool, 'chords.strength')
-            run(gen)
-
-        else:
-            from essentia.standard import ChordsDetection as stdChordsDetection
-            chordsDetection = stdChordsDetection(windowSize=2.0, hopSize = hopSize)
-            chords, strength = chordsDetection(pcp)
-            for i in xrange(len(chords)):
-                pool.add('chords.progression', chords[i])
-                pool.add('chords.strength', float(strength[i]))
-
-
-        # as sometimes the algorithm gets confused at the transition from one chord to the other,
-        # the test will be restricted to not having more errors than transitions
-
-        failure = 0
-        for i in range(nFrames):
-            if pool['chords.progression'][i] != expectedChords[i]: failure+=1
-            self.assertValidNumber(pool['chords.strength'][i])
-            self.assertTrue(pool['chords.strength'][i] > 0)
-
-        self.assertTrue(failure <= nChords)
+     Test with a minor progression in streaming mode.
      */
+
+    test(progression: ["Am", "A#m", "Bm", "Cm", "C#m", "Dm",
+                       "D#m", "Em", "Fm", "F#m", "Gm", "G#m"])
 
     /*
-    def testMajor(self):
-        progression = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#' ]
-        self.runProgression(progression)
+     Test with a major progression in standard mode.
      */
+
+    test(progression: ["A", "A#", "B", "C", "C#", "D",
+                       "D#", "E", "F", "F#", "G", "G#"], streaming: false)
 
     /*
-    def testMinor(self):
-        progression = ['Am', 'A#m', 'Bm', 'Cm', 'C#m', 'Dm', 'D#m', 'Em', 'Fm', 'F#m', 'Gm', 'G#m' ]
-        self.runProgression(progression)
+     Test with a minor progression in standard mode.
      */
+
+    test(progression: ["Am", "A#m", "Bm", "Cm", "C#m", "Dm",
+                       "D#m", "Em", "Fm", "F#m", "Gm", "G#m"], streaming: false)
 
     /*
-    def testMajorStd(self):
-        progression = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#' ]
-        self.runProgression(progression, False)
+     Test with a pitch class profile of all zeros.
      */
+
+    let vectorInput1 = VectorInput<[Float]>([[0.0] * 12] * 10)
+    let chordsDetection1 = ChordsDetectionSAlgorithm([.windowSize: 2, .hopSize: 2048])
+    let pool1 = Pool()
+
+    vectorInput1[output: .data] >> chordsDetection1[input: .pcp]
+    chordsDetection1[output: .chords] >> pool1[input: "chords.progression"]
+    chordsDetection1[output: .strength] >> pool1[input: "chords.strength"]
+
+    let network1 = Network(generator: vectorInput1)
+    network1.run()
+
+    XCTAssertEqual(pool1[stringVec: "chords.progression"], ["A"] * 10)
+    XCTAssertEqual(pool1[realVec: "chords.strength"], [-1.0] * 10)
 
     /*
-    def testMinorStd(self):
-        progression = ['Am', 'A#m', 'Bm', 'Cm', 'C#m', 'Dm', 'D#m', 'Em', 'Fm', 'F#m', 'Gm', 'G#m' ]
-        self.runProgression(progression, False)
+     Test that the correct number of chords are returned.
      */
 
-    /*
-    def testEmpty(self):
-        gen = VectorInput(array([[]]))
-        chordsDetection = ChordsDetection(windowSize=2.0, hopSize = 2048)
-        pool = Pool()
+    let vectorInput2 = VectorInput<Float>(monoBufferData(url: bundleURL(name: "musicbox",
+                                                                        ext: "wav")))
+    let dcRemoval = DCRemovalSAlgorithm()
+    let equalLoudness = EqualLoudnessSAlgorithm()
+    let frameCutter = FrameCutterSAlgorithm([
+      .frameSize: 2048, .hopSize: 1024, .silentFrames: "noise"
+      ])
+    let windowing = WindowingSAlgorithm([.size: 2048])
+    let spectrum = SpectrumSAlgorithm()
+    let spectralPeaks = SpectralPeaksSAlgorithm()
+    let spectralWhitening = SpectralWhiteningSAlgorithm()
+    let hpcp = HPCPSAlgorithm()
+    let chordsDetection2 = ChordsDetectionSAlgorithm([.hopSize: 1024])
+    let pool2 = Pool()
 
-        gen.data >> chordsDetection.pcp
-        chordsDetection.chords >> (pool, 'chords.progression')
-        chordsDetection.strength >> (pool, 'chords.strength')
-        self.assertRaises(EssentiaException, lambda:run(gen))
+    vectorInput2[output: .data] >> dcRemoval[input: .signal]
+    dcRemoval[output: .signal] >> equalLoudness[input: .signal]
+    equalLoudness[output: .signal] >> frameCutter[input: .signal]
+    frameCutter[output: .frame] >> windowing[input: .frame]
+    windowing[output: .frame] >> spectrum[input: .frame]
+    spectrum[output: .spectrum] >> spectralPeaks[input: .spectrum]
+    spectrum[output: .spectrum] >> spectralWhitening[input: .spectrum]
+    spectralPeaks[output: .frequencies] >> spectralWhitening[input: .frequencies]
+    spectralPeaks[output: .magnitudes] >> spectralWhitening[input: .magnitudes]
+    spectralWhitening[output: .magnitudes] >> hpcp[input: .magnitudes]
+    spectralPeaks[output: .frequencies] >> hpcp[input: .frequencies]
+    hpcp[output: .hpcp] >> chordsDetection2[input: .pcp]
+    chordsDetection2[output: .chords] >> pool2[input: "chords"]
+    chordsDetection2[output: .strength]>>|
+    hpcp[output: .hpcp] >> pool2[input: "hpcp"]
 
-        self.assertEqualVector(pool.descriptorNames(), [])
-     */
+    let network2 = Network(generator: vectorInput2)
+    network2.run()
 
-    /*
-    def testZero(self):
-        pcp = zeros([10, 12])
-        gen = VectorInput(pcp)
-        chordsDetection = ChordsDetection(windowSize=2.0, hopSize = 2048)
-        pool = Pool()
-
-        gen.data >> chordsDetection.pcp
-        chordsDetection.chords >> (pool, 'chords.progression')
-        chordsDetection.strength >> (pool, 'chords.strength')
-        run(gen)
-
-        self.assertEqualVector(pool['chords.progression'], ['A']*len(pcp))
-        self.assertEqualVector(pool['chords.strength'], [-1]*len(pcp))
-     */
-
-    /*
-    def testNumChordsEqualsHpcpSize(self):
-        # this test has been introduced since it was reported that
-        # chordsdetection may reveal errors on the scheduling yielding more
-        # chords than hpcps are computed
-        from essentia.streaming import MonoLoader, DCRemoval, FrameCutter,\
-        EqualLoudness, Windowing, Spectrum, SpectralPeaks, SpectralWhitening,\
-        HPCP
-
-        audiofile = 'musicbox.wav'
-        filename = filename=join(testdata.audio_dir,'recorded', audiofile)
-
-        p = Pool()
-        loader = MonoLoader(filename=filename)
-        dc = DCRemoval()
-        eqloud = EqualLoudness()
-        fc = FrameCutter(frameSize=2048, hopSize=1024, silentFrames="noise")
-        win = Windowing(size=2048)
-        spec = Spectrum()
-        specPeaks = SpectralPeaks()
-        specWhite = SpectralWhitening()
-        hpcp = HPCP()
-        chords = ChordsDetection(hopSize=1024)
-
-        loader.audio >> dc.signal
-        dc.signal >> eqloud.signal
-        eqloud.signal >> fc.signal
-        fc.frame >> win.frame
-        win.frame>> spec.frame
-        spec.spectrum >> specPeaks.spectrum
-        spec.spectrum >> specWhite.spectrum
-        specPeaks.frequencies >> specWhite.frequencies
-        specPeaks.magnitudes >> specWhite.magnitudes
-        specWhite.magnitudes >> hpcp.magnitudes
-        specPeaks.frequencies >> hpcp.frequencies
-        hpcp.hpcp >> chords.pcp
-        chords.chords >> (p, 'chords')
-        chords.strength >> None
-        hpcp.hpcp >> (p, 'hpcp')
-
-        run(loader)
-        self.assertEqual(len(p['chords']), len(p['hpcp']))
-     */
+    XCTAssertEqual(pool2[stringVec: "chords"].count, pool2[realVecVec: "hpcp"].count)
 
   }
 
-  /// Tests the functionality of the Key algorithm.
+  /// Tests the functionality of the Key algorithm. Values taken from `test_key.py`.
   func testKey() {
-    //TODO: Implement the  function
-    XCTFail("\(#function) not yet implemented.")
+
+    /// A typealias to make the declarations of the helper functions that follow slightly less
+    /// obnoxious.
+    typealias AlgorithmResult = (key: String,
+                                 scale: String,
+                                 strength: Float,
+                                 firstToSecondRelativeStrength: Float)
+
+    /// Helper that runs the `Key` algorithm with the specified parameters.
+    ///
+    /// - Parameters:
+    ///   - usePolyphony: The value for `Key.Parameter.usePolophony`.
+    ///   - useThreeChords: The value for `Key.Parameter.useThreeChords`.
+    ///   - numHarmonics: The value for `Key.Parameter.numHarmonics`.
+    ///   - slope: The value for `Key.Parameter.slope`.
+    ///   - profileType: The value for `Key.Parameter.profileType`.
+    ///   - pcpSize: The value for `Key.Parameter.pcpSize`.
+    /// - Returns: The key, scale, strength, and firstToSecondRelativeStrength values computed
+    ///            by the key algorithm for 'mozart_c_major_30sec.wav' using the specified
+    ///            parameter values.
+    func runAlgorithm(usePolyphony: Bool = true,
+                      useThreeChords: Bool = true,
+                      numHarmonics: Int = 4,
+                      slope: Float = 0.6,
+                      profileType: String = "temperley",
+                      pcpSize: Int = 36) -> AlgorithmResult
+    {
+
+      let signal = monoBufferData(url: bundleURL(name: "mozart_c_major_30sec", ext: "wav"))
+
+      let frameCutter = FrameCutterAlgorithm([.frameSize: 4096, .hopSize: 512])
+      frameCutter[realVecInput: .signal] = signal
+      let windowing = WindowingAlgorithm([.type: "blackmanharris62"])
+      let spectrum = SpectrumAlgorithm([.size: 4096])
+      let spectralPeaks = SpectralPeaksAlgorithm([
+        .sampleRate: 44100, .maxFrequency: 22050, .minFrequency: 0, .orderBy: "magnitude"
+        ])
+      let hpcp = HPCPAlgorithm([
+        .size: Parameter(value: .integer(Int32(pcpSize))),
+        .harmonics: Parameter(value: .integer(Int32(numHarmonics - 1))),
+        .windowSize: 0.5
+        ])
+
+
+      frameCutter.compute()
+      var frame = frameCutter[realVecOutput: .frame]
+      var sums: [Float] = [0.0] * pcpSize
+      var count: Float = 0
+
+      while frame.count > 0 {
+
+        windowing[realVecInput: .frame] = frame
+        windowing.compute()
+
+        spectrum[realVecInput: .frame] = windowing[realVecOutput: .frame]
+        spectrum.compute()
+
+        spectralPeaks[realVecInput: .spectrum] = spectrum[realVecOutput: .spectrum]
+        spectralPeaks.compute()
+
+        hpcp[realVecInput: .frequencies] = spectralPeaks[realVecOutput: .frequencies]
+        hpcp[realVecInput: .magnitudes] = spectralPeaks[realVecOutput: .magnitudes]
+        hpcp.compute()
+
+        for (index, value) in hpcp[realVecOutput: .hpcp].enumerated() {
+          sums[index] += value
+        }
+
+        count += 1
+
+        frameCutter.compute()
+        frame = frameCutter[realVecOutput: .frame]
+
+      }
+
+      var avgs: [Float] = [0.0] * sums.count
+      vDSP_vsdiv(sums, 1, &count, &avgs, 1, vDSP_Length(sums.count))
+
+      let key = KeyAlgorithm([
+        .usePolyphony: Parameter(value: .boolean(usePolyphony)),
+        .useThreeChords: Parameter(value: .boolean(useThreeChords)),
+        .numHarmonics: Parameter(value: .integer(Int32(numHarmonics))),
+        .slope: Parameter(value: .real(slope)),
+        .profileType: Parameter(value: .string(profileType)),
+        .pcpSize: Parameter(value: .integer(Int32(pcpSize)))
+        ])
+
+      key[realVecInput: .pcp] = avgs
+      key.compute()
+
+      return (key: key[stringOutput: .key],
+              scale: key[stringOutput: .scale],
+              strength: key[realOutput: .strength],
+              firstToSecondRelativeStrength: key[realOutput: .firstToSecondRelativeStrength])
+
+    }
+
+    /// Performs various assertions on output from the key algorithm.
+    ///
+    /// - Parameters:
+    ///   - result: The key algorithm output values to validate.
+    ///   - file: The file in which failure occurred. Defaults to the file name of the test case
+    ///           in which this function was called.
+    ///   - line: The line number on which failure occurred. Defaults to the line number on which
+    ///           this function was called.
+    func validateResult(_ result: AlgorithmResult, file: StaticString = #file, line: UInt = #line) {
+
+      let keys: Set<String> = ["A","A#","B","C","C#","D","D#","E","F","F#","G","G#"]
+      let scales: Set<String> = ["major", "minor"]
+
+      XCTAssert(keys.contains(result.key), file: file, line: line)
+      XCTAssert(scales.contains(result.scale), file: file, line: line)
+      XCTAssertNotNaNOrInf(result.strength)
+      XCTAssertNotNaNOrInf(result.firstToSecondRelativeStrength)
+
+    }
 
     /*
-    # This is a helper method that just runs the algorithm on a recorded wav.
-    # One is able to specify the arguments passed to the Key algorithm.
-    def runAlg(self, usePolyphony=True,
-                     useThreeChords=True,
-                     numHarmonics=4,
-                     slope=0.6,
-                     profileType='temperley',
-                     pcpSize=36,
-                     windowSize=0.5):
-
-        sampleRate = 44100
-        audio = MonoLoader(filename = join(testdata.audio_dir,
-                                           join('recorded',
-                                                'mozart_c_major_30sec.wav')),
-                           sampleRate = sampleRate)()
-
-        fc = FrameCutter(frameSize=4096, hopSize=512)
-
-        windower = Windowing(type='blackmanharris62')
-
-        specAlg = Spectrum(size=4096)
-        sPeaksAlg = SpectralPeaks(sampleRate = sampleRate,
-                                  maxFrequency = sampleRate/2,
-                                  minFrequency = 0,
-                                  orderBy = 'magnitude')
-
-        hpcpAlg = HPCP(size=pcpSize, harmonics=numHarmonics-1, windowSize=0.5)
-
-        # Calculate the average hpcp over all frames of audio
-        frame = fc(audio)
-        sums = [0]*pcpSize
-        count = 0
-        while len(frame) != 0:
-            sPeaks = sPeaksAlg(specAlg(windower(frame)))
-            hpcp = hpcpAlg(*sPeaks)
-
-            for p in range(len(hpcp)):
-                sums[p] += hpcp[p]
-
-            count += 1
-            frame = fc(audio)
-
-        avgs = [x/count for x in sums]
-
-        keyAlg = Key(usePolyphony=usePolyphony,
-                     useThreeChords=useThreeChords,
-                     numHarmonics=numHarmonics,
-                     slope=slope,
-                     profileType=profileType,
-                     pcpSize=pcpSize)
-
-        return keyAlg(avgs)
+     Test for regression.
      */
 
+    let (key, scale, strength, firstToSecondRelativeStrength) = runAlgorithm()
+
+    XCTAssertEqual(key, "C")
+    XCTAssertEqual(scale, "major")
+    XCTAssertEqual(strength, 0.760322451591, accuracy: 1e-6)
+    XCTAssertEqual(firstToSecondRelativeStrength, 0.607807099819, accuracy: 1e-6)
 
     /*
-    def assertValidSequence(self, s):
-        keys = ['A','A#','B','C','C#','D','D#','E','F','F#','G','G#']
-        scales = ['major', 'minor']
-
-        self.assertTrue(s[0] in keys)
-        self.assertTrue(s[1] in scales)
-        self.assertTrue(not numpy.isnan(s[2]))
-        self.assertTrue(not numpy.isnan(s[3]))
-        self.assertTrue(not numpy.isinf(s[2]))
-        self.assertTrue(not numpy.isinf(s[3]))
+     Test with `usePolophony` set to `false`.
      */
 
+    validateResult(runAlgorithm(usePolyphony: false))
 
     /*
-    # The following tests just run the runAlg function. With the exception of
-    # testRegression, these tests are not looking for accurate output, they are
-    # just testing whether the program doesn't crash when different parameters
-    # are given.
-    def testRegression(self):
-        (key, scale, strength, firstToSecondRelativeStrength) = self.runAlg()
-        self.assertEqual(key, 'C')
-        self.assertEqual(scale, 'major')
-        self.assertAlmostEqual(strength, 0.760322451591, 1e-6)
-        self.assertAlmostEqual(firstToSecondRelativeStrength, 0.607807099819, 1e-6)
+     Test with `useThreeChords` set to `false`.
      */
 
+    validateResult(runAlgorithm(useThreeChords: false))
 
     /*
-    def testUsePolyphonyFalse(self):
-        self.assertValidSequence(self.runAlg(usePolyphony=False))
+     Test using various profile types.
      */
 
-    /*
-    def testThreeChordsFalse(self):
-        self.assertValidSequence(self.runAlg(useThreeChords=False))
-     */
-
-    /*
-    def testVariousProfileTypes(self):
-        import sys
-        sys.stdout.write('Testing diatonic')
-        sys.stdout.flush()
-        self.assertValidSequence(self.runAlg(profileType='diatonic'))
-        sys.stdout.write(', krumhansl')
-        sys.stdout.flush()
-        self.assertValidSequence(self.runAlg(profileType='krumhansl'))
-        sys.stdout.write(', weichai')
-        sys.stdout.flush()
-        self.assertValidSequence(self.runAlg(profileType='weichai'))
-        sys.stdout.write(', tonictriad')
-        sys.stdout.flush()
-        self.assertValidSequence(self.runAlg(profileType='tonictriad'))
-        sys.stdout.write(', temperley2005')
-        sys.stdout.flush()
-        self.assertValidSequence(self.runAlg(profileType='temperley2005'))
-        sys.stdout.write(', thpcp ... ')
-        sys.stdout.flush()
-        self.assertValidSequence(self.runAlg(profileType='thpcp'))
-     */
+    validateResult(runAlgorithm(profileType: "diatonic"))
+    validateResult(runAlgorithm(profileType: "krumhansl"))
+    validateResult(runAlgorithm(profileType: "weichai"))
+    validateResult(runAlgorithm(profileType: "tonictriad"))
+    validateResult(runAlgorithm(profileType: "temperley2005"))
+    validateResult(runAlgorithm(profileType: "thpcp"))
     
     /*
-    def testNumHarmonics(self):
-        self.assertValidSequence(self.runAlg(numHarmonics=1))
+     Test with `numHarmonics` set to `1`.
      */
+
+    validateResult(runAlgorithm(numHarmonics: 1))
 
   }
 

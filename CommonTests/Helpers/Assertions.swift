@@ -960,6 +960,35 @@ public func XCTAssertEqual(_ array1: [[[DSPComplex]]],
 
 }
 
+/// Asserts that a floating point value is not `nan` or `inf`.
+///
+/// - Parameters:
+///   - value: The floating point number to check.
+///   - message: An optional description of the failure.
+///   - file: The file in which failure occurred. Defaults to the file name of the test case in
+///           which this function was called.
+///   - line: The line number on which failure occurred. Defaults to the line number on which this
+///           function was called.
+public func XCTAssertNotNaNOrInf<T:FloatingPoint>(_ value: T,
+                                                  _ message: @autoclosure () -> String = "",
+                                                  file: StaticString = #file,
+                                                  line: UInt = #line)
+{
+
+  guard value.isNaN || value.isInfinite else  { return }
+
+  let failureDescription = """
+  XCTAssertNotNaNOrInf failed: ("\(value)") is either 'nan' or 'inf'.
+  """
+
+  _XCTPreformattedFailureHandler(_XCTCurrentTestCase(),
+                                 true,
+                                 file.description,
+                                 Int(line),
+                                 failureDescription, message())
+
+}
+
 /// Asserts that an array of floating point numbers contains no `nan` or `inf`
 /// values.
 ///
@@ -990,6 +1019,7 @@ public func XCTAssertNotNaNOrInf<T:FloatingPoint>(_ array: [T],
                                  failureDescription, message())
 
 }
+
 /// Asserts that a two dimensional array of floating point numbers contains no `nan` or `inf`
 /// values.
 ///
