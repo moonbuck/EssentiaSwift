@@ -375,6 +375,10 @@ class EssentiaTests: XCTestCase {
   /// Tests the `Pool` type via the standard algorithm `Extractor`.
   func testPool() {
 
+    /*
+     Test output from an actual algorithm.
+     */
+
     let extractor = ExtractorAlgorithm()
 
     let url = bundleURL(name: "C4-E♭4-G4_Boesendorfer_Grand_Piano-Trimmed", ext: "aif")
@@ -397,12 +401,12 @@ class EssentiaTests: XCTestCase {
     XCTAssertEqual(extractorPool.realVecSinglePool.count, 6)
     XCTAssertEqual(extractorPool.stringVecSinglePool.count, 0)
 
-    let pool1 = Pool()
 
     /*
-     add: Float, [Float], String, [String], StereoSample, [[Float]]
-     set: Float, [Float], String, [String]
+     Test `Pool.add(:for:)` and `Pool.set(:for:)` with all the supported types.
      */
+
+    let pool1 = Pool()
 
     let reals: [Float] = [1.0, 2.0, 3.0]
 
@@ -491,6 +495,10 @@ class EssentiaTests: XCTestCase {
     XCTAssertEqual(pool1.jsonRepresentation,
                    try! String(contentsOf: bundleURL(name: "pool", ext: "json")))
 
+    /*
+     Test initializing via a dictionary literal.
+     */
+
     let pool2: Pool = [
       "real": [1, 2, 3],
       "realVector": [[1.1, 1.2, 1.3], [2.1, 2.2, 2.3], [3.1, 3.2, 3.3]],
@@ -522,6 +530,18 @@ class EssentiaTests: XCTestCase {
     XCTAssertEqual(pool2[realMatrixVec: "realMatrix"], [[[11.1, 11.2, 11.3], [12.1, 12.2, 12.3]],
                                                         [[21.1, 21.2, 21.3], [22.1, 22.2, 22.3]],
                                                         [[31.1, 31.2, 31.3], [32.1, 32.2, 32.3]]])
+
+    /*
+     Test the collection interface for the pool.
+     */
+
+    let expected = pool2.descriptorNames.map({pool2[descriptor: $0]})
+
+    XCTAssertEqual(pool2.count, expected.count)
+
+    for (index, value) in pool2.enumerated() {
+      XCTAssertEqual(value, expected[index])
+    }
 
   }
 

@@ -270,7 +270,7 @@ public final class Pool: WrappingType {
   ///
   /// - Parameter name: The descriptor for which to retrieve associated data.
   /// - Returns: The data associated with `name` or `.none` if no such data could be found.
-  public subscript(name: String) -> StoredValue {
+  public subscript(descriptor name: String) -> StoredValue {
 
     let result: Any
 
@@ -304,7 +304,7 @@ public final class Pool: WrappingType {
   ///
   /// - Parameter name: The descriptor name for the value.
   public subscript(real name: String) -> Float {
-    guard case .real(let result) = self[name] else {
+    guard case .real(let result) = self[descriptor: name] else {
       fatalError("Failed to retrieve real value for '\(name)'.")
     }
     return result
@@ -314,7 +314,7 @@ public final class Pool: WrappingType {
   ///
   /// - Parameter name: The descriptor name for the value.
   public subscript(realVec name: String) -> [Float] {
-    guard case .realVec(let result) = self[name] else {
+    guard case .realVec(let result) = self[descriptor: name] else {
       fatalError("Failed to retrieve real vector value for '\(name)'.")
     }
     return result
@@ -324,7 +324,7 @@ public final class Pool: WrappingType {
   ///
   /// - Parameter name: The descriptor name for the value.
   public subscript(realVecVec name: String) -> [[Float]] {
-    guard case .realVecVec(let result) = self[name] else {
+    guard case .realVecVec(let result) = self[descriptor: name] else {
       fatalError("Failed to retrieve real vector vector value for '\(name)'.")
     }
     return result
@@ -334,7 +334,7 @@ public final class Pool: WrappingType {
   ///
   /// - Parameter name: The descriptor name for the value.
   public subscript(string name: String) -> String {
-    guard case .string(let result) = self[name] else {
+    guard case .string(let result) = self[descriptor: name] else {
       fatalError("Failed to retrieve string value for '\(name)'.")
     }
     return result
@@ -344,7 +344,7 @@ public final class Pool: WrappingType {
   ///
   /// - Parameter name: The descriptor name for the value.
   public subscript(stringVec name: String) -> [String] {
-    guard case .stringVec(let result) = self[name] else {
+    guard case .stringVec(let result) = self[descriptor: name] else {
       fatalError("Failed to retrieve string vector value for '\(name)'.")
     }
     return result
@@ -355,7 +355,7 @@ public final class Pool: WrappingType {
   /// - Requires: The pool contains a value for `name` of the appropriate data type.
   /// - Parameter name: The descriptor name for the value to retrieve.
   public subscript(stringVecVec name: String) -> [[String]] {
-    guard case .stringVecVec(let result) = self[name] else {
+    guard case .stringVecVec(let result) = self[descriptor: name] else {
       fatalError("Failed to retrieve string vector vector value for '\(name)'.")
     }
     return result
@@ -366,7 +366,7 @@ public final class Pool: WrappingType {
   /// - Requires: The pool contains a value for `name` of the appropriate data type.
   /// - Parameter name: The descriptor name for the value to retrieve.
   public subscript(realMatrixVec name: String) -> [[[Float]]] {
-    guard case .realMatrixVec(let result) = self[name] else {
+    guard case .realMatrixVec(let result) = self[descriptor: name] else {
       fatalError("Failed to retrieve real matrix vector value for '\(name)'.")
     }
     return result
@@ -377,83 +377,11 @@ public final class Pool: WrappingType {
   /// - Requires: The pool contains a value for `name` of the appropriate data type.
   /// - Parameter name: The descriptor name for the value to retrieve.
   public subscript(stereoSampleVec name: String) -> [StereoSample] {
-    guard case .stereoSampleVec(let result) = self[name] else {
+    guard case .stereoSampleVec(let result) = self[descriptor: name] else {
       fatalError("Failed to retrieve stereo sample vector value for '\(name)'.")
     }
     return result
   }
-
-  /// Subscript of convenience for getting/setting real value in the single pool.
-  ///
-  /// - Parameter name: The descriptor name for the value.
-//  public subscript (singleReal name: String) -> Float {
-//    get {
-//      guard isSingleValueDescriptor(name: name),
-//            case .real(let result) = self[name]
-//        else
-//      {
-//        fatalError("Failed to retrieve real value for '\(name)'.")
-//      }
-//      return result
-//    }
-//    set {
-//      set(.real(newValue), for: name)
-//    }
-//  }
-
-  /// Subscript of convenience for getting/setting real vector value in the single pool.
-  ///
-  /// - Parameter name: The descriptor name for the value.
-//  public subscript (singleRealVec name: String) -> [Float] {
-//    get {
-//      guard isSingleValueDescriptor(name: name),
-//        case .realVec(let result) = self[name]
-//        else
-//      {
-//        fatalError("Failed to retrieve real vector value for '\(name)'.")
-//      }
-//      return result
-//    }
-//    set {
-//      set(.realVec(newValue), for: name)
-//    }
-//  }
-
-  /// Subscript of convenience for getting/setting string value in the single pool.
-  ///
-  /// - Parameter name: The descriptor name for the value.
-//  public subscript (singleString name: String) -> String {
-//    get {
-//      guard isSingleValueDescriptor(name: name),
-//        case .string(let result) = self[name]
-//        else
-//      {
-//        fatalError("Failed to retrieve real value for '\(name)'.")
-//      }
-//      return result
-//    }
-//    set {
-//      set(.string(newValue), for: name)
-//    }
-//  }
-
-  /// Subscript of convenience for getting/setting string vector value in the single pool.
-  ///
-  /// - Parameter name: The descriptor name for the value.
-//  public subscript (singleStringVec name: String) -> [String] {
-//    get {
-//      guard isSingleValueDescriptor(name: name),
-//        case .stringVec(let result) = self[name]
-//        else
-//      {
-//        fatalError("Failed to retrieve real vector value for '\(name)'.")
-//      }
-//      return result
-//    }
-//    set {
-//      set(.stringVec(newValue), for: name)
-//    }
-//  }
 
   /// Queries for the existence of the specified descriptor for any data type.
   ///
@@ -1018,20 +946,98 @@ extension Pool.StoredValue: ExpressibleByStringLiteral {
 
 }
 
+extension Pool.StoredValue: Equatable {
+
+  /// Equatable support.
+  ///
+  /// - Parameters:
+  ///   - lhs: The first value being compared.
+  ///   - rhs: The second value being compared.
+  /// - Returns: `true` if `lhs` is equal to `rhs` and `false` otherwise.
+  public static func ==(lhs: Pool.StoredValue, rhs: Pool.StoredValue) -> Bool {
+
+    switch (lhs, rhs) {
+
+      case (.none, .none):
+        return true
+
+      case (.real(let value1), .real(let value2)) where value1 == value2:
+        return true
+
+      case (.realVec(let value1), .realVec(let value2)) where value1 == value2:
+        return true
+
+      case (.realVecVec(let value1), .realVecVec(let value2)):
+        guard value1.count == value2.count else { return false }
+        for (subarray1, subarray2) in zip(value1, value2) {
+          guard subarray1 == subarray2 else { return false }
+        }
+        return true
+
+      case (.string(let value1), .string(let value2)) where value1 == value2:
+        return true
+
+      case (.stringVec(let value1), .stringVec(let value2)) where value1 == value2:
+        return true
+
+      case (.stringVecVec(let value1), .stringVecVec(let value2)):
+        guard value1.count == value2.count else { return false }
+        for (subarray1, subarray2) in zip(value1, value2) {
+          guard subarray1 == subarray2 else { return false }
+        }
+        return true
+
+      case (.realMatrixVec(let value1), .realMatrixVec(let value2)):
+        guard value1.count == value2.count else { return false }
+        for (subarray1, subarray2) in zip(value1, value2) {
+          guard subarray1.count == subarray2.count else { return false }
+          for (subsubarray1, subsubarray2) in zip(subarray1, subarray2) {
+            guard subsubarray1 == subsubarray2 else { return false }
+          }
+        }
+        return true
+
+      case (.stereoSample(let value1), .stereoSample(let value2)) where value1 == value2:
+        return true
+
+      case (.stereoSampleVec(let value1), .stereoSampleVec(let value2)) where value1 == value2:
+        return true
+
+      default:
+        return false
+
+    }
+
+  }
+
+}
+
 extension Pool: Collection {
 
+  /// The index of the first element in the pool.
   public var startIndex: Int {
     return 0
   }
 
+  /// The index after the last element in the pool.
   public var endIndex: Int {
     return descriptorNames.count
   }
 
-  public func index(after i: Int) -> Int {
-    return i &+ 1
+  /// Calculates the pool's index after a specified index.
+  ///
+  /// - Parameter index: The index located just before the desired index.
+  /// - Returns: The index that follows `index`.
+  public func index(after index: Int) -> Int {
+    return index &+ 1
   }
 
+  /// Accessor for the data stored at a specifed index.
+  ///
+  /// - Parameter index: The index of the data to retrieve.
+  public subscript(index: Int) -> StoredValue {
+    return self[descriptor: descriptorNames[index]]
+  }
 
 }
 
