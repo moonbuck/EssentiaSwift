@@ -1185,46 +1185,41 @@ class TonalAlgorithmTests: XCTestCase {
 
   /// Tests the functionality of the SpectrumCQ algorithm.
   func testSpectrumCQ() {
-    //TODO: Implement the  function
-    XCTFail("\(#function) not yet implemented.")
+
+    /*
+     Test that the output is the same as the algorithm run in python.
+     */
+
+    let signal = loadVector(name: "spectrumcq_input")
+
+    let spectrumCQ = SpectrumCQAlgorithm()
+    spectrumCQ[realVecInput: .frame] = signal
+    spectrumCQ.compute()
+
+    let actual = spectrumCQ[realVecOutput: .spectrumCQ]
+    let expected = loadVector(name: "spectrumcq_expected")
+
+    XCTAssertDifferenceMeanLessThanOrEqual(actual, expected, 1e-7)
+    XCTAssertPercentDeviationLessThanOrEqual(actual, expected, 1e-4)
+
   }
 
   /// Tests the functionality of the Chromagram algorithm. Values taken from `test_chromagram.py`.
   func testChromagram() {
-    //TODO: Implement the  function
-    XCTFail("\(#function) not yet implemented.")
 
     /*
-    def testRandom(self):
-        # input is [1, 0, 0, ...] which corresponds to an ConstantQ of constant magnitude 1
-        with open(os.path.join(script_dir,'constantq/CQinput.txt'), 'r') as f:
-        	#read_data = f.read()
-        	data = np.array([], dtype='complex64')
-        	line = f.readline()
-        	while line != '':
-        		re = float(line.split('\t')[0])
-        		im = float(line.split('\t')[1])
-        		data = np.append(data, re + im * 1j)
-        		line = f.readline()
-
-
-
-        QMChroma_out = [float(line.rstrip('\n')) for line in open(os.path.join(script_dir,'constantq/QMChroma_out.txt'))]
-
-
-
-        Chroma_data = Chromagram()(cvec(data))
-
-        DifferMean = QMChroma_out-Chroma_data  # difference mean
-        DifferMean = sum(abs(DifferMean))/len(DifferMean)# difference mean
-
-        DiverPer = abs(sum(((QMChroma_out-Chroma_data)/QMChroma_out)*100)/len(QMChroma_out) )#divergence mean percentage
-
-        """
-        print 'Divergence mean percentage is : '+str(DiverPer)[:5]+'%'
-        print 'Difference Mean is : '+str(DifferMean)
-        """
+     Test for regression.
      */
+
+    let chromagram = ChromagramAlgorithm()
+    chromagram[complexRealVecInput: .frame] = loadComplexVector(name: "constantq_input")
+    chromagram.compute()
+
+    let actual = chromagram[realVecOutput: .chromagram]
+    let expected = loadVector(name: "chromagram_expected")
+
+    XCTAssertDifferenceMeanLessThanOrEqual(actual, expected, 9.92772994041e-5)
+    XCTAssertPercentDeviationLessThanOrEqual(actual, expected, 1.3680588172068069e-2)
 
   }
 
