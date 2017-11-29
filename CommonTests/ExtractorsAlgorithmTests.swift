@@ -39,14 +39,16 @@ class ExtractorsAlgorithmTests: XCTestCase {
                        "descriptor: '\(descriptor)'")
 
       case .realVec(let actual):
+        // failing: lowLevel.spectral_energyband_middle_high, sfx.inharmonicty, tonal.chords_strength, tonal.thpcp
         let expected = loadVector(name: expectedFileName)
-        XCTAssertEqual(actual, expected, deviation: 1e-5,
-                       "descriptor: '\(descriptor)'")
+        XCTAssertPercentDeviationLessThanOrEqual(actual, expected, 1e-5,
+                                                 "descriptor: '\(descriptor)'")
 
       case .realVecVec(let actual):
+        // failing: lowlevel.barkbands, lowlevel.mfcc,
         let expected = loadVectorVector(name: expectedFileName)
-        XCTAssertEqual(actual, expected, deviation: 1e-5,
-                       "descriptor: '\(descriptor)'")
+        XCTAssertPercentDeviationLessThanOrEqual(actual, expected, 1e-5,
+                                                 "descriptor: '\(descriptor)'")
 
       case .string(let actual):
         let expected = loadString(name: expectedFileName)

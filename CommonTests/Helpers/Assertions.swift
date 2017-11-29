@@ -170,11 +170,16 @@ private func differenceMean(_ array1: [DSPComplex], _ array2: [DSPComplex]) -> F
 /// - Parameters:
 ///   - array1: The first array of floating point values.
 ///   - array2: The second array of floating point values.
+///   - countMismatch: Boolean flag for indicating `array1` and `array2` have differening counts.
 /// - Returns: The percent deviation from `array1` to `array2`.
-private func percentDeviation<T:FloatingPoint>(_ array1: [T], _ array2: [T]) -> T {
+private func percentDeviation<T:FloatingPoint>(_ array1: [T],
+                                               _ array2: [T],
+                                               countMismatch: inout Bool) -> T
+{
 
   guard array1.count == array2.count else {
-    fatalError("Expected array1 and array2 to have the same number of elements.")
+    countMismatch = true
+    return T.infinity
   }
 
   if let array1 = array1 as? [Float], let array2 = array2 as? [Float] {
@@ -220,11 +225,15 @@ private func percentDeviation<T:FloatingPoint>(_ array1: [T], _ array2: [T]) -> 
 /// - Parameters:
 ///   - array1: The first array of complex values.
 ///   - array2: The second array of complex values.
+///   - countMismatch: Boolean flag for indicating `array1` and `array2` have differing counts.
 /// - Returns: The percent deviation from `array1` to `array2`.
-private func percentDeviation(_ array1: [DSPComplex], _ array2: [DSPComplex]) -> Float {
+private func percentDeviation(_ array1: [DSPComplex],
+                              _ array2: [DSPComplex],
+                              countMismatch: inout Bool) -> Float {
 
   guard array1.count == array2.count else {
-    fatalError("Expected array1 and array2 to have the same number of elements.")
+    countMismatch = true
+    return Float.infinity
   }
 
   let count = array1.count
@@ -1553,16 +1562,22 @@ public func XCTAssertPercentDeviationLessThan<T>(_ array1: [T],
   where T:FloatingPoint
 {
 
-  let calculatedPercentDeviation = percentDeviation(array1, array2)
+  var countMismatch = false
+  let calculatedPercentDeviation = percentDeviation(array1, array2, countMismatch: &countMismatch)
 
-  guard calculatedPercentDeviation >= deviation else { return }
+  guard countMismatch || calculatedPercentDeviation >= deviation else { return }
 
-  guard abs(calculatedPercentDeviation - deviation) > accuracy else { return }
+  guard countMismatch || abs(calculatedPercentDeviation - deviation) > accuracy else { return }
 
-  let failureDescription = """
-  XCTAssertPercentDeviationLessThan failed: ("\(calculatedPercentDeviation)") is not less than \
-  ("\(deviation)") +/- ("\(accuracy)")
-  """
+  let failureDescription =
+    countMismatch
+      ? """
+        XCTAssertEqual failed: The two arrays do not contain the same number of elements.
+        """
+      : """
+        XCTAssertPercentDeviationLessThan failed: ("\(calculatedPercentDeviation)") is not less than \
+        ("\(deviation)") +/- ("\(accuracy)")
+        """
 
   _XCTPreformattedFailureHandler(_XCTCurrentTestCase(),
                                  true,
@@ -1595,16 +1610,161 @@ public func XCTAssertPercentDeviationLessThanOrEqual<T>(_ array1: [T],
   where T:FloatingPoint
 {
 
-  let calculatedPercentDeviation = percentDeviation(array1, array2)
+  var countMismatch = false
+  let calculatedPercentDeviation = percentDeviation(array1, array2, countMismatch: &countMismatch)
 
-  guard calculatedPercentDeviation > deviation else { return }
+  guard countMismatch || calculatedPercentDeviation > deviation else { return }
 
-  guard abs(calculatedPercentDeviation - deviation) > accuracy else { return }
+  guard countMismatch || abs(calculatedPercentDeviation - deviation) > accuracy else { return }
 
-  let failureDescription = """
-  XCTAssertPercentDeviationLessThanOrEqual failed: ("\(calculatedPercentDeviation)") is not less
-  than or equal to ("\(deviation)") +/- ("\(accuracy)")
-  """
+  let failureDescription =
+    countMismatch
+      ? """
+        XCTAssertEqual failed: The two arrays do not contain the same number of elements.
+        """
+      : """
+        XCTAssertPercentDeviationLessThanOrEqual failed: ("\(calculatedPercentDeviation)") is not less
+        than or equal to ("\(deviation)") +/- ("\(accuracy)")
+        """
+
+  _XCTPreformattedFailureHandler(_XCTCurrentTestCase(),
+                                 true,
+                                 file.description,
+                                 Int(line),
+                                 failureDescription, message())
+
+}
+
+/// Asserts that the percent deviation between two arrays of floating point numbers is
+/// less than a given value.
+///
+/// - Parameters:
+///   - array1: The first array of floating point numbers.
+///   - array2: The second array of floating point numbers.
+///   - deviation: The value below which the deviation of `array1` from `array2` must lie.
+///   - accuracy: The allowable difference between the calculated deviaton and `deviation`.
+///   - message: An optional description of the failure.
+///   - file: The file in which failure occurred. Defaults to the file name of the test case in
+///           which this function was called.
+///   - line: The line number on which failure occurred. Defaults to the line number on which this
+///           function was called.
+public func XCTAssertPercentDeviationLessThan<T>(_ array1: [[T]],
+                                                 _ array2: [[T]],
+                                                 _ deviation: T,
+                                                 accuracy: T = 0,
+                                                 _ message: @autoclosure () -> String = "",
+                                                 file: StaticString = #file,
+                                                 line: UInt = #line)
+  where T:FloatingPoint
+{
+
+  var countMismatch = array1.count != array2.count
+
+  var calculatedPercentDeviation: T = T.infinity
+
+  if !countMismatch {
+
+    var sumDeviation: T = 0
+
+    for (subarray1, subarray2) in zip(array1, array2) {
+
+      sumDeviation += percentDeviation(subarray1, subarray2, countMismatch: &countMismatch)
+
+      guard !countMismatch else { break }
+
+    }
+
+    if !countMismatch {
+
+      calculatedPercentDeviation = sumDeviation / T(array1.count)
+
+    }
+
+  }
+
+  guard countMismatch || calculatedPercentDeviation >= deviation else { return }
+
+  guard countMismatch || abs(calculatedPercentDeviation - deviation) > accuracy else { return }
+
+
+  let failureDescription =
+    countMismatch
+      ? """
+        XCTAssertEqual failed: The two arrays do not contain the same number of elements.
+        """
+      : """
+        XCTAssertPercentDeviationLessThan failed: ("\(calculatedPercentDeviation)") is not less than \
+        ("\(deviation)") +/- ("\(accuracy)")
+        """
+
+  _XCTPreformattedFailureHandler(_XCTCurrentTestCase(),
+                                 true,
+                                 file.description,
+                                 Int(line),
+                                 failureDescription, message())
+
+}
+
+/// Asserts that the percent deviation between two arrays of floating point numbers is
+/// less than or equal to a given value.
+///
+/// - Parameters:
+///   - array1: The first array of floating point numbers.
+///   - array2: The second array of floating point numbers.
+///   - deviation: The value which the deviation of `array1` from `array2` must not be above.
+///   - accuracy: The allowable difference between the calculated deviaton and `deviation`.
+///   - message: An optional description of the failure.
+///   - file: The file in which failure occurred. Defaults to the file name of the test case in
+///           which this function was called.
+///   - line: The line number on which failure occurred. Defaults to the line number on which this
+///           function was called.
+public func XCTAssertPercentDeviationLessThanOrEqual<T>(_ array1: [[T]],
+                                                        _ array2: [[T]],
+                                                        _ deviation: T,
+                                                        accuracy: T = 0,
+                                                        _ message: @autoclosure () -> String = "",
+                                                        file: StaticString = #file,
+                                                        line: UInt = #line)
+  where T:FloatingPoint
+{
+
+  var countMismatch = array1.count != array2.count
+
+  var calculatedPercentDeviation: T = T.infinity
+
+  if !countMismatch {
+
+    var sumDeviation: T = 0
+
+    for (subarray1, subarray2) in zip(array1, array2) {
+
+      sumDeviation += percentDeviation(subarray1, subarray2, countMismatch: &countMismatch)
+
+      guard !countMismatch else { break }
+
+    }
+
+    if !countMismatch {
+
+      calculatedPercentDeviation = sumDeviation / T(array1.count)
+
+    }
+
+  }
+
+  guard countMismatch || calculatedPercentDeviation > deviation else { return }
+
+  guard countMismatch || abs(calculatedPercentDeviation - deviation) > accuracy else { return }
+
+  let failureDescription =
+    countMismatch
+      ? """
+        XCTAssertEqual failed: The two arrays do not contain the same number of elements.
+        """
+      : """
+        XCTAssertPercentDeviationLessThanOrEqual failed: ("\(calculatedPercentDeviation)") is not less
+        than or equal to ("\(deviation)") +/- ("\(accuracy)")
+        """
 
   _XCTPreformattedFailureHandler(_XCTCurrentTestCase(),
                                  true,
@@ -1636,16 +1796,22 @@ public func XCTAssertPercentDeviationLessThan(_ array1: [DSPComplex],
                                               line: UInt = #line)
 {
 
-  let calculatedPercentDeviation = percentDeviation(array1, array2)
+  var countMismatch = false
+  let calculatedPercentDeviation = percentDeviation(array1, array2, countMismatch: &countMismatch)
 
-  guard calculatedPercentDeviation >= deviation else { return }
+  guard countMismatch || calculatedPercentDeviation >= deviation else { return }
 
-  guard abs(calculatedPercentDeviation - deviation) > accuracy else { return }
+  guard countMismatch || abs(calculatedPercentDeviation - deviation) > accuracy else { return }
 
-  let failureDescription = """
-  XCTAssertPercentDeviationLessThan failed: ("\(calculatedPercentDeviation)") is not less than \
-  ("\(deviation)") +/- ("\(accuracy)")
-  """
+  let failureDescription =
+    countMismatch
+      ? """
+        XCTAssertEqual failed: The two arrays do not contain the same number of elements.
+        """
+      : """
+        XCTAssertPercentDeviationLessThan failed: ("\(calculatedPercentDeviation)") is not less than \
+        ("\(deviation)") +/- ("\(accuracy)")
+        """
 
   _XCTPreformattedFailureHandler(_XCTCurrentTestCase(),
                                  true,
@@ -1677,16 +1843,22 @@ public func XCTAssertPercentDeviationLessThanOrEqual(_ array1: [DSPComplex],
                                                      line: UInt = #line)
 {
 
-  let calculatedPercentDeviation = percentDeviation(array1, array2)
+  var countMismatch = false
+  let calculatedPercentDeviation = percentDeviation(array1, array2, countMismatch: &countMismatch)
 
-  guard calculatedPercentDeviation > deviation else { return }
+  guard countMismatch || calculatedPercentDeviation > deviation else { return }
 
-  guard abs(calculatedPercentDeviation - deviation) > accuracy else { return }
+  guard countMismatch || abs(calculatedPercentDeviation - deviation) > accuracy else { return }
 
-  let failureDescription = """
-  XCTAssertPercentDeviationLessThanOrEqual failed: ("\(calculatedPercentDeviation)") is not less
-  than or equal to ("\(deviation)") +/- ("\(accuracy)")
-  """
+  let failureDescription =
+    countMismatch
+      ? """
+        XCTAssertEqual failed: The two arrays do not contain the same number of elements.
+        """
+      : """
+        XCTAssertPercentDeviationLessThanOrEqual failed: ("\(calculatedPercentDeviation)") is not less
+        than or equal to ("\(deviation)") +/- ("\(accuracy)")
+        """
 
   _XCTPreformattedFailureHandler(_XCTCurrentTestCase(),
                                  true,

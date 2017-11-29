@@ -123,7 +123,8 @@ class Logger {
  public:
   Logger() : _addHeader(true) {
     #ifndef _WIN32
-    if(isatty(2)) { // no colors if stderr is not a terminal
+    if(isatty(2) && getenv("TERM") != nullptr) { // no colors if stderr is not a terminal
+                                                 // or is a terminal embedded in unknown host.
       GREEN_FONT = "\x1B[0;32m";
       YELLOW_FONT = "\x1B[0;33m";
       RED_FONT = "\x1B[0;31m";
