@@ -585,19 +585,10 @@ class TonalAlgorithmTests: XCTestCase {
     {
 
       let vectorInput = VectorInput<Float>(signal)
-
-      let frameCutter = FrameCutterSAlgorithm([
-        .frameSize: 1024, .hopSize: 1024
-        ])
-
+      let frameCutter = FrameCutterSAlgorithm([ .frameSize: 1024, .hopSize: 1024 ])
       let windowing = WindowingSAlgorithm([.type: "hann"])
-
       let spectrum = SpectrumSAlgorithm()
-
-      let pitchYinFFT = PitchYinFFTSAlgorithm([
-        .frameSize: 1024, .sampleRate: 44100
-        ])
-
+      let pitchYinFFT = PitchYinFFTSAlgorithm([ .frameSize: 1024, .sampleRate: 44100 ])
       let pool = Pool()
 
       vectorInput[output: .data] >> frameCutter[input: .signal]
@@ -703,31 +694,13 @@ class TonalAlgorithmTests: XCTestCase {
      Test with a real case.
      Note: The python test for this actually fails. The test performed here checks that the
            algorithm output matches the output when run using python.
-     TODO: The failures may be due to the algorithm receiving non-zero values for what should
-           be a first frame filled with zeros. The python `FrameGenerator` yields a first
-           frame of zeros but `FrameCutter` seems not to do the same given the same signal.
      */
 
-    let vectorInput = VectorInput<Float>(loadVector(name: "mozart_c_major_30sec_samples"))
-
-    let frameCutter = FrameCutterSAlgorithm([
-      .frameSize: 1024, .hopSize: 512
-      ])
-
-    let windowing = WindowingSAlgorithm([.type: "hann"])
-
-    let spectrum = SpectrumSAlgorithm()
-
-    let pitchYinFFT2 = PitchYinFFTSAlgorithm([
-      .frameSize: 1024, .sampleRate: 44100
-      ])
-
+    let vectorInput = VectorInput<[Float]>(loadVectorVector(name: "mozart_c_major_30sec_frames"))
+    let pitchYinFFT2 = PitchYinFFTSAlgorithm([ .frameSize: 1024, .sampleRate: 44100 ])
     let pool = Pool()
 
-    vectorInput[output: .data] >> frameCutter[input: .signal]
-    frameCutter[output: .frame] >> windowing[input: .frame]
-    windowing[output: .frame] >> spectrum[input: .frame]
-    spectrum[output: .spectrum] >> pitchYinFFT2[input: .spectrum]
+    vectorInput[output: .data] >> pitchYinFFT2[input: .spectrum]
     pitchYinFFT2[output: .pitch] >> pool[input: "pitch"]
     pitchYinFFT2[output: .pitchConfidence] >> pool[input: "confidence"]
 

@@ -1387,6 +1387,158 @@
 		C29C3CAC1FCD05EC00F6FF4D /* predominantpitchmelodia_input.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CAA1FCD05EC00F6FF4D /* predominantpitchmelodia_input.txt */; };
 		C29C3CAE1FCD064600F6FF4D /* multipitchklapuri_input.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CAD1FCD064600F6FF4D /* multipitchklapuri_input.txt */; };
 		C29C3CAF1FCD064600F6FF4D /* multipitchklapuri_input.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CAD1FCD064600F6FF4D /* multipitchklapuri_input.txt */; };
+		C29C3CB11FCE43C100F6FF4D /* mozart_c_major_30sec_frames.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CB01FCE43C100F6FF4D /* mozart_c_major_30sec_frames.txt */; };
+		C29C3CB21FCE43C100F6FF4D /* mozart_c_major_30sec_frames.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CB01FCE43C100F6FF4D /* mozart_c_major_30sec_frames.txt */; };
+		C29C3CB61FCE481200F6FF4D /* extractor_input.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CB41FCE481200F6FF4D /* extractor_input.txt */; };
+		C29C3CB71FCE481200F6FF4D /* extractor_input.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CB41FCE481200F6FF4D /* extractor_input.txt */; };
+		C29C3CB81FCE481200F6FF4D /* extractor_expected.json in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CB51FCE481200F6FF4D /* extractor_expected.json */; };
+		C29C3CB91FCE481200F6FF4D /* extractor_expected.json in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CB51FCE481200F6FF4D /* extractor_expected.json */; };
+		C29C3D031FCE66EC00F6FF4D /* sfx.tristimulus_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CBA1FCE66E000F6FF4D /* sfx.tristimulus_expected.txt */; };
+		C29C3D041FCE66EC00F6FF4D /* sfx.tristimulus_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CBA1FCE66E000F6FF4D /* sfx.tristimulus_expected.txt */; };
+		C29C3D051FCE66EC00F6FF4D /* lowLevel.spectral_energyband_low_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CBB1FCE66E000F6FF4D /* lowLevel.spectral_energyband_low_expected.txt */; };
+		C29C3D061FCE66EC00F6FF4D /* lowLevel.spectral_energyband_low_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CBB1FCE66E000F6FF4D /* lowLevel.spectral_energyband_low_expected.txt */; };
+		C29C3D071FCE66EC00F6FF4D /* sfx.pitch_centroid_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CBC1FCE66E000F6FF4D /* sfx.pitch_centroid_expected.txt */; };
+		C29C3D081FCE66EC00F6FF4D /* sfx.pitch_centroid_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CBC1FCE66E000F6FF4D /* sfx.pitch_centroid_expected.txt */; };
+		C29C3D091FCE66EC00F6FF4D /* lowLevel.spectral_energyband_high_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CBD1FCE66E100F6FF4D /* lowLevel.spectral_energyband_high_expected.txt */; };
+		C29C3D0A1FCE66EC00F6FF4D /* lowLevel.spectral_energyband_high_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CBD1FCE66E100F6FF4D /* lowLevel.spectral_energyband_high_expected.txt */; };
+		C29C3D0B1FCE66EC00F6FF4D /* lowLevel.spectral_complexity_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CBE1FCE66E100F6FF4D /* lowLevel.spectral_complexity_expected.txt */; };
+		C29C3D0C1FCE66EC00F6FF4D /* lowLevel.spectral_complexity_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CBE1FCE66E100F6FF4D /* lowLevel.spectral_complexity_expected.txt */; };
+		C29C3D0D1FCE66EC00F6FF4D /* lowLevel.spectral_skewness_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CBF1FCE66E100F6FF4D /* lowLevel.spectral_skewness_expected.txt */; };
+		C29C3D0E1FCE66EC00F6FF4D /* lowLevel.spectral_skewness_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CBF1FCE66E100F6FF4D /* lowLevel.spectral_skewness_expected.txt */; };
+		C29C3D0F1FCE66EC00F6FF4D /* sfx.pitch_max_to_total_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CC01FCE66E100F6FF4D /* sfx.pitch_max_to_total_expected.txt */; };
+		C29C3D101FCE66EC00F6FF4D /* sfx.pitch_max_to_total_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CC01FCE66E100F6FF4D /* sfx.pitch_max_to_total_expected.txt */; };
+		C29C3D111FCE66EC00F6FF4D /* rhythm.second_peak_weight_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CC11FCE66E100F6FF4D /* rhythm.second_peak_weight_expected.txt */; };
+		C29C3D121FCE66EC00F6FF4D /* rhythm.second_peak_weight_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CC11FCE66E100F6FF4D /* rhythm.second_peak_weight_expected.txt */; };
+		C29C3D131FCE66EC00F6FF4D /* lowLevel.pitch_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CC21FCE66E100F6FF4D /* lowLevel.pitch_expected.txt */; };
+		C29C3D141FCE66EC00F6FF4D /* lowLevel.pitch_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CC21FCE66E100F6FF4D /* lowLevel.pitch_expected.txt */; };
+		C29C3D151FCE66EC00F6FF4D /* sfx.oddtoevenharmonicenergyratio_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CC31FCE66E100F6FF4D /* sfx.oddtoevenharmonicenergyratio_expected.txt */; };
+		C29C3D161FCE66EC00F6FF4D /* sfx.oddtoevenharmonicenergyratio_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CC31FCE66E100F6FF4D /* sfx.oddtoevenharmonicenergyratio_expected.txt */; };
+		C29C3D171FCE66EC00F6FF4D /* lowLevel.barkbands_spread_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CC41FCE66E200F6FF4D /* lowLevel.barkbands_spread_expected.txt */; };
+		C29C3D181FCE66EC00F6FF4D /* lowLevel.barkbands_spread_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CC41FCE66E200F6FF4D /* lowLevel.barkbands_spread_expected.txt */; };
+		C29C3D191FCE66EC00F6FF4D /* tonal.chords_histogram_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CC51FCE66E200F6FF4D /* tonal.chords_histogram_expected.txt */; };
+		C29C3D1A1FCE66EC00F6FF4D /* tonal.chords_histogram_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CC51FCE66E200F6FF4D /* tonal.chords_histogram_expected.txt */; };
+		C29C3D1B1FCE66EC00F6FF4D /* tonal.tuning_equal_tempered_deviation_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CC61FCE66E200F6FF4D /* tonal.tuning_equal_tempered_deviation_expected.txt */; };
+		C29C3D1C1FCE66EC00F6FF4D /* tonal.tuning_equal_tempered_deviation_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CC61FCE66E200F6FF4D /* tonal.tuning_equal_tempered_deviation_expected.txt */; };
+		C29C3D1D1FCE66EC00F6FF4D /* lowLevel.silence_rate_60dB_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CC71FCE66E200F6FF4D /* lowLevel.silence_rate_60dB_expected.txt */; };
+		C29C3D1E1FCE66EC00F6FF4D /* lowLevel.silence_rate_60dB_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CC71FCE66E200F6FF4D /* lowLevel.silence_rate_60dB_expected.txt */; };
+		C29C3D1F1FCE66EC00F6FF4D /* rhythm.beats_position_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CC81FCE66E200F6FF4D /* rhythm.beats_position_expected.txt */; };
+		C29C3D201FCE66EC00F6FF4D /* rhythm.beats_position_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CC81FCE66E200F6FF4D /* rhythm.beats_position_expected.txt */; };
+		C29C3D211FCE66EC00F6FF4D /* lowLevel.hfc_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CC91FCE66E200F6FF4D /* lowLevel.hfc_expected.txt */; };
+		C29C3D221FCE66EC00F6FF4D /* lowLevel.hfc_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CC91FCE66E200F6FF4D /* lowLevel.hfc_expected.txt */; };
+		C29C3D231FCE66EC00F6FF4D /* lowLevel.pitch_instantaneous_confidence_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CCA1FCE66E200F6FF4D /* lowLevel.pitch_instantaneous_confidence_expected.txt */; };
+		C29C3D241FCE66EC00F6FF4D /* lowLevel.pitch_instantaneous_confidence_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CCA1FCE66E200F6FF4D /* lowLevel.pitch_instantaneous_confidence_expected.txt */; };
+		C29C3D251FCE66EC00F6FF4D /* lowLevel.spectral_crest_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CCB1FCE66E300F6FF4D /* lowLevel.spectral_crest_expected.txt */; };
+		C29C3D261FCE66EC00F6FF4D /* lowLevel.spectral_crest_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CCB1FCE66E300F6FF4D /* lowLevel.spectral_crest_expected.txt */; };
+		C29C3D271FCE66EC00F6FF4D /* lowLevel.spectral_energyband_middle_high_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CCC1FCE66E300F6FF4D /* lowLevel.spectral_energyband_middle_high_expected.txt */; };
+		C29C3D281FCE66EC00F6FF4D /* lowLevel.spectral_energyband_middle_high_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CCC1FCE66E300F6FF4D /* lowLevel.spectral_energyband_middle_high_expected.txt */; };
+		C29C3D291FCE66EC00F6FF4D /* lowLevel.scvalleys_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CCD1FCE66E300F6FF4D /* lowLevel.scvalleys_expected.txt */; };
+		C29C3D2A1FCE66EC00F6FF4D /* lowLevel.scvalleys_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CCD1FCE66E300F6FF4D /* lowLevel.scvalleys_expected.txt */; };
+		C29C3D2B1FCE66EC00F6FF4D /* lowLevel.spectral_flux_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CCE1FCE66E300F6FF4D /* lowLevel.spectral_flux_expected.txt */; };
+		C29C3D2C1FCE66EC00F6FF4D /* lowLevel.spectral_flux_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CCE1FCE66E300F6FF4D /* lowLevel.spectral_flux_expected.txt */; };
+		C29C3D2D1FCE66EC00F6FF4D /* lowLevel.zerocrossingrate_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CCF1FCE66E300F6FF4D /* lowLevel.zerocrossingrate_expected.txt */; };
+		C29C3D2E1FCE66EC00F6FF4D /* lowLevel.zerocrossingrate_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CCF1FCE66E300F6FF4D /* lowLevel.zerocrossingrate_expected.txt */; };
+		C29C3D2F1FCE66EC00F6FF4D /* lowLevel.spectral_flatness_db_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CD01FCE66E300F6FF4D /* lowLevel.spectral_flatness_db_expected.txt */; };
+		C29C3D301FCE66EC00F6FF4D /* lowLevel.spectral_flatness_db_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CD01FCE66E300F6FF4D /* lowLevel.spectral_flatness_db_expected.txt */; };
+		C29C3D311FCE66EC00F6FF4D /* lowLevel.barkbands_kurtosis_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CD11FCE66E400F6FF4D /* lowLevel.barkbands_kurtosis_expected.txt */; };
+		C29C3D321FCE66EC00F6FF4D /* lowLevel.barkbands_kurtosis_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CD11FCE66E400F6FF4D /* lowLevel.barkbands_kurtosis_expected.txt */; };
+		C29C3D331FCE66EC00F6FF4D /* tonal.chords_strength_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CD21FCE66E400F6FF4D /* tonal.chords_strength_expected.txt */; };
+		C29C3D341FCE66EC00F6FF4D /* tonal.chords_strength_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CD21FCE66E400F6FF4D /* tonal.chords_strength_expected.txt */; };
+		C29C3D351FCE66EC00F6FF4D /* sfx.pitch_min_to_total_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CD31FCE66E400F6FF4D /* sfx.pitch_min_to_total_expected.txt */; };
+		C29C3D361FCE66EC00F6FF4D /* sfx.pitch_min_to_total_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CD31FCE66E400F6FF4D /* sfx.pitch_min_to_total_expected.txt */; };
+		C29C3D371FCE66EC00F6FF4D /* rhythm.second_peak_bpm_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CD41FCE66E400F6FF4D /* rhythm.second_peak_bpm_expected.txt */; };
+		C29C3D381FCE66EC00F6FF4D /* rhythm.second_peak_bpm_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CD41FCE66E400F6FF4D /* rhythm.second_peak_bpm_expected.txt */; };
+		C29C3D391FCE66EC00F6FF4D /* tonal.thpcp_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CD51FCE66E400F6FF4D /* tonal.thpcp_expected.txt */; };
+		C29C3D3A1FCE66EC00F6FF4D /* tonal.thpcp_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CD51FCE66E400F6FF4D /* tonal.thpcp_expected.txt */; };
+		C29C3D3B1FCE66EC00F6FF4D /* lowLevel.spectral_strongpeak_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CD61FCE66E400F6FF4D /* lowLevel.spectral_strongpeak_expected.txt */; };
+		C29C3D3C1FCE66EC00F6FF4D /* lowLevel.spectral_strongpeak_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CD61FCE66E400F6FF4D /* lowLevel.spectral_strongpeak_expected.txt */; };
+		C29C3D3D1FCE66EC00F6FF4D /* lowLevel.spectral_decrease_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CD71FCE66E500F6FF4D /* lowLevel.spectral_decrease_expected.txt */; };
+		C29C3D3E1FCE66EC00F6FF4D /* lowLevel.spectral_decrease_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CD71FCE66E500F6FF4D /* lowLevel.spectral_decrease_expected.txt */; };
+		C29C3D3F1FCE66EC00F6FF4D /* lowLevel.barkbands_skewness_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CD81FCE66E500F6FF4D /* lowLevel.barkbands_skewness_expected.txt */; };
+		C29C3D401FCE66EC00F6FF4D /* lowLevel.barkbands_skewness_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CD81FCE66E500F6FF4D /* lowLevel.barkbands_skewness_expected.txt */; };
+		C29C3D411FCE66EC00F6FF4D /* tonal.chords_changes_rate_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CD91FCE66E500F6FF4D /* tonal.chords_changes_rate_expected.txt */; };
+		C29C3D421FCE66EC00F6FF4D /* tonal.chords_changes_rate_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CD91FCE66E500F6FF4D /* tonal.chords_changes_rate_expected.txt */; };
+		C29C3D431FCE66EC00F6FF4D /* tonal.chords_key_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CDA1FCE66E500F6FF4D /* tonal.chords_key_expected.txt */; };
+		C29C3D441FCE66EC00F6FF4D /* tonal.chords_key_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CDA1FCE66E500F6FF4D /* tonal.chords_key_expected.txt */; };
+		C29C3D451FCE66EC00F6FF4D /* lowLevel.barkbands_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CDB1FCE66E500F6FF4D /* lowLevel.barkbands_expected.txt */; };
+		C29C3D461FCE66EC00F6FF4D /* lowLevel.barkbands_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CDB1FCE66E500F6FF4D /* lowLevel.barkbands_expected.txt */; };
+		C29C3D471FCE66EC00F6FF4D /* rhythm.first_peak_bpm_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CDC1FCE66E500F6FF4D /* rhythm.first_peak_bpm_expected.txt */; };
+		C29C3D481FCE66EC00F6FF4D /* rhythm.first_peak_bpm_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CDC1FCE66E500F6FF4D /* rhythm.first_peak_bpm_expected.txt */; };
+		C29C3D491FCE66EC00F6FF4D /* lowLevel.spectral_rms_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CDD1FCE66E600F6FF4D /* lowLevel.spectral_rms_expected.txt */; };
+		C29C3D4A1FCE66EC00F6FF4D /* lowLevel.spectral_rms_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CDD1FCE66E600F6FF4D /* lowLevel.spectral_rms_expected.txt */; };
+		C29C3D4B1FCE66EC00F6FF4D /* tonal.key_scale_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CDE1FCE66E600F6FF4D /* tonal.key_scale_expected.txt */; };
+		C29C3D4C1FCE66EC00F6FF4D /* tonal.key_scale_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CDE1FCE66E600F6FF4D /* tonal.key_scale_expected.txt */; };
+		C29C3D4D1FCE66EC00F6FF4D /* rhythm.bpm_intervals_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CDF1FCE66E600F6FF4D /* rhythm.bpm_intervals_expected.txt */; };
+		C29C3D4E1FCE66EC00F6FF4D /* rhythm.bpm_intervals_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CDF1FCE66E600F6FF4D /* rhythm.bpm_intervals_expected.txt */; };
+		C29C3D4F1FCE66EC00F6FF4D /* tonal.tuning_nontempered_energy_ratio_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CE01FCE66E600F6FF4D /* tonal.tuning_nontempered_energy_ratio_expected.txt */; };
+		C29C3D501FCE66EC00F6FF4D /* tonal.tuning_nontempered_energy_ratio_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CE01FCE66E600F6FF4D /* tonal.tuning_nontempered_energy_ratio_expected.txt */; };
+		C29C3D511FCE66EC00F6FF4D /* tonal.key_key_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CE11FCE66E600F6FF4D /* tonal.key_key_expected.txt */; };
+		C29C3D521FCE66EC00F6FF4D /* tonal.key_key_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CE11FCE66E600F6FF4D /* tonal.key_key_expected.txt */; };
+		C29C3D531FCE66EC00F6FF4D /* rhythm.bpm_estimates_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CE21FCE66E600F6FF4D /* rhythm.bpm_estimates_expected.txt */; };
+		C29C3D541FCE66EC00F6FF4D /* rhythm.bpm_estimates_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CE21FCE66E600F6FF4D /* rhythm.bpm_estimates_expected.txt */; };
+		C29C3D551FCE66EC00F6FF4D /* lowLevel.silence_rate_20dB_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CE31FCE66E700F6FF4D /* lowLevel.silence_rate_20dB_expected.txt */; };
+		C29C3D561FCE66EC00F6FF4D /* lowLevel.silence_rate_20dB_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CE31FCE66E700F6FF4D /* lowLevel.silence_rate_20dB_expected.txt */; };
+		C29C3D571FCE66EC00F6FF4D /* rhythm.first_peak_weight_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CE41FCE66E700F6FF4D /* rhythm.first_peak_weight_expected.txt */; };
+		C29C3D581FCE66EC00F6FF4D /* rhythm.first_peak_weight_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CE41FCE66E700F6FF4D /* rhythm.first_peak_weight_expected.txt */; };
+		C29C3D591FCE66EC00F6FF4D /* lowLevel.silence_rate_30dB_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CE51FCE66E700F6FF4D /* lowLevel.silence_rate_30dB_expected.txt */; };
+		C29C3D5A1FCE66EC00F6FF4D /* lowLevel.silence_rate_30dB_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CE51FCE66E700F6FF4D /* lowLevel.silence_rate_30dB_expected.txt */; };
+		C29C3D5B1FCE66EC00F6FF4D /* lowLevel.spectral_energyband_middle_low_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CE61FCE66E700F6FF4D /* lowLevel.spectral_energyband_middle_low_expected.txt */; };
+		C29C3D5C1FCE66EC00F6FF4D /* lowLevel.spectral_energyband_middle_low_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CE61FCE66E700F6FF4D /* lowLevel.spectral_energyband_middle_low_expected.txt */; };
+		C29C3D5D1FCE66EC00F6FF4D /* rhythm.beats_loudness_band_ratio_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CE71FCE66E700F6FF4D /* rhythm.beats_loudness_band_ratio_expected.txt */; };
+		C29C3D5E1FCE66EC00F6FF4D /* rhythm.beats_loudness_band_ratio_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CE71FCE66E700F6FF4D /* rhythm.beats_loudness_band_ratio_expected.txt */; };
+		C29C3D5F1FCE66EC00F6FF4D /* lowLevel.sccoeffs_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CE81FCE66E700F6FF4D /* lowLevel.sccoeffs_expected.txt */; };
+		C29C3D601FCE66EC00F6FF4D /* lowLevel.sccoeffs_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CE81FCE66E700F6FF4D /* lowLevel.sccoeffs_expected.txt */; };
+		C29C3D611FCE66EC00F6FF4D /* rhythm.onset_times_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CE91FCE66E800F6FF4D /* rhythm.onset_times_expected.txt */; };
+		C29C3D621FCE66EC00F6FF4D /* rhythm.onset_times_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CE91FCE66E800F6FF4D /* rhythm.onset_times_expected.txt */; };
+		C29C3D631FCE66EC00F6FF4D /* rhythm.second_peak_spread_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CEA1FCE66E800F6FF4D /* rhythm.second_peak_spread_expected.txt */; };
+		C29C3D641FCE66EC00F6FF4D /* rhythm.second_peak_spread_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CEA1FCE66E800F6FF4D /* rhythm.second_peak_spread_expected.txt */; };
+		C29C3D651FCE66EC00F6FF4D /* lowLevel.spectral_energy_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CEB1FCE66E800F6FF4D /* lowLevel.spectral_energy_expected.txt */; };
+		C29C3D661FCE66EC00F6FF4D /* lowLevel.spectral_energy_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CEB1FCE66E800F6FF4D /* lowLevel.spectral_energy_expected.txt */; };
+		C29C3D671FCE66EC00F6FF4D /* lowLevel.spectral_spread_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CEC1FCE66E800F6FF4D /* lowLevel.spectral_spread_expected.txt */; };
+		C29C3D681FCE66EC00F6FF4D /* lowLevel.spectral_spread_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CEC1FCE66E800F6FF4D /* lowLevel.spectral_spread_expected.txt */; };
+		C29C3D691FCE66EC00F6FF4D /* tonal.chords_number_rate_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CED1FCE66E800F6FF4D /* tonal.chords_number_rate_expected.txt */; };
+		C29C3D6A1FCE66EC00F6FF4D /* tonal.chords_number_rate_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CED1FCE66E800F6FF4D /* tonal.chords_number_rate_expected.txt */; };
+		C29C3D6B1FCE66EC00F6FF4D /* lowLevel.spectral_centroid_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CEE1FCE66E800F6FF4D /* lowLevel.spectral_centroid_expected.txt */; };
+		C29C3D6C1FCE66EC00F6FF4D /* lowLevel.spectral_centroid_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CEE1FCE66E800F6FF4D /* lowLevel.spectral_centroid_expected.txt */; };
+		C29C3D6D1FCE66EC00F6FF4D /* tonal.hpcp_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CEF1FCE66E800F6FF4D /* tonal.hpcp_expected.txt */; };
+		C29C3D6E1FCE66EC00F6FF4D /* tonal.hpcp_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CEF1FCE66E800F6FF4D /* tonal.hpcp_expected.txt */; };
+		C29C3D6F1FCE66EC00F6FF4D /* rhythm.first_peak_spread_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CF01FCE66E900F6FF4D /* rhythm.first_peak_spread_expected.txt */; };
+		C29C3D701FCE66EC00F6FF4D /* rhythm.first_peak_spread_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CF01FCE66E900F6FF4D /* rhythm.first_peak_spread_expected.txt */; };
+		C29C3D711FCE66EC00F6FF4D /* lowLevel.average_loudness_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CF11FCE66E900F6FF4D /* lowLevel.average_loudness_expected.txt */; };
+		C29C3D721FCE66EC00F6FF4D /* lowLevel.average_loudness_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CF11FCE66E900F6FF4D /* lowLevel.average_loudness_expected.txt */; };
+		C29C3D731FCE66EC00F6FF4D /* sfx.inharmonicity_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CF21FCE66E900F6FF4D /* sfx.inharmonicity_expected.txt */; };
+		C29C3D741FCE66EC00F6FF4D /* sfx.inharmonicity_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CF21FCE66E900F6FF4D /* sfx.inharmonicity_expected.txt */; };
+		C29C3D751FCE66EC00F6FF4D /* lowLevel.mfcc_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CF31FCE66E900F6FF4D /* lowLevel.mfcc_expected.txt */; };
+		C29C3D761FCE66EC00F6FF4D /* lowLevel.mfcc_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CF31FCE66E900F6FF4D /* lowLevel.mfcc_expected.txt */; };
+		C29C3D771FCE66EC00F6FF4D /* lowLevel.dissonance_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CF41FCE66E900F6FF4D /* lowLevel.dissonance_expected.txt */; };
+		C29C3D781FCE66EC00F6FF4D /* lowLevel.dissonance_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CF41FCE66E900F6FF4D /* lowLevel.dissonance_expected.txt */; };
+		C29C3D791FCE66EC00F6FF4D /* lowLevel.pitch_salience_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CF51FCE66E900F6FF4D /* lowLevel.pitch_salience_expected.txt */; };
+		C29C3D7A1FCE66EC00F6FF4D /* lowLevel.pitch_salience_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CF51FCE66E900F6FF4D /* lowLevel.pitch_salience_expected.txt */; };
+		C29C3D7B1FCE66EC00F6FF4D /* rhythm.beats_loudness_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CF61FCE66EA00F6FF4D /* rhythm.beats_loudness_expected.txt */; };
+		C29C3D7C1FCE66EC00F6FF4D /* rhythm.beats_loudness_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CF61FCE66EA00F6FF4D /* rhythm.beats_loudness_expected.txt */; };
+		C29C3D7D1FCE66EC00F6FF4D /* rhythm.histogram_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CF71FCE66EA00F6FF4D /* rhythm.histogram_expected.txt */; };
+		C29C3D7E1FCE66EC00F6FF4D /* rhythm.histogram_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CF71FCE66EA00F6FF4D /* rhythm.histogram_expected.txt */; };
+		C29C3D7F1FCE66EC00F6FF4D /* tonal.key_strength_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CF81FCE66EA00F6FF4D /* tonal.key_strength_expected.txt */; };
+		C29C3D801FCE66EC00F6FF4D /* tonal.key_strength_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CF81FCE66EA00F6FF4D /* tonal.key_strength_expected.txt */; };
+		C29C3D811FCE66EC00F6FF4D /* lowLevel.spectral_kurtosis_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CF91FCE66EA00F6FF4D /* lowLevel.spectral_kurtosis_expected.txt */; };
+		C29C3D821FCE66EC00F6FF4D /* lowLevel.spectral_kurtosis_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CF91FCE66EA00F6FF4D /* lowLevel.spectral_kurtosis_expected.txt */; };
+		C29C3D831FCE66EC00F6FF4D /* tonal.tuning_frequency_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CFA1FCE66EA00F6FF4D /* tonal.tuning_frequency_expected.txt */; };
+		C29C3D841FCE66EC00F6FF4D /* tonal.tuning_frequency_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CFA1FCE66EA00F6FF4D /* tonal.tuning_frequency_expected.txt */; };
+		C29C3D851FCE66EC00F6FF4D /* rhythm.onset_rate_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CFB1FCE66EA00F6FF4D /* rhythm.onset_rate_expected.txt */; };
+		C29C3D861FCE66EC00F6FF4D /* rhythm.onset_rate_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CFB1FCE66EA00F6FF4D /* rhythm.onset_rate_expected.txt */; };
+		C29C3D871FCE66EC00F6FF4D /* tonal.chords_scale_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CFC1FCE66EB00F6FF4D /* tonal.chords_scale_expected.txt */; };
+		C29C3D881FCE66EC00F6FF4D /* tonal.chords_scale_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CFC1FCE66EB00F6FF4D /* tonal.chords_scale_expected.txt */; };
+		C29C3D891FCE66EC00F6FF4D /* lowLevel.spectral_rolloff_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CFD1FCE66EB00F6FF4D /* lowLevel.spectral_rolloff_expected.txt */; };
+		C29C3D8A1FCE66EC00F6FF4D /* lowLevel.spectral_rolloff_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CFD1FCE66EB00F6FF4D /* lowLevel.spectral_rolloff_expected.txt */; };
+		C29C3D8B1FCE66EC00F6FF4D /* sfx.pitch_after_max_to_before_max_energy_ratio_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CFE1FCE66EB00F6FF4D /* sfx.pitch_after_max_to_before_max_energy_ratio_expected.txt */; };
+		C29C3D8C1FCE66EC00F6FF4D /* sfx.pitch_after_max_to_before_max_energy_ratio_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CFE1FCE66EB00F6FF4D /* sfx.pitch_after_max_to_before_max_energy_ratio_expected.txt */; };
+		C29C3D8D1FCE66EC00F6FF4D /* rhythm.bpm_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CFF1FCE66EB00F6FF4D /* rhythm.bpm_expected.txt */; };
+		C29C3D8E1FCE66EC00F6FF4D /* rhythm.bpm_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CFF1FCE66EB00F6FF4D /* rhythm.bpm_expected.txt */; };
+		C29C3D8F1FCE66EC00F6FF4D /* rhythm.confidence_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3D001FCE66EB00F6FF4D /* rhythm.confidence_expected.txt */; };
+		C29C3D901FCE66EC00F6FF4D /* rhythm.confidence_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3D001FCE66EB00F6FF4D /* rhythm.confidence_expected.txt */; };
+		C29C3D911FCE66EC00F6FF4D /* tonal.chords_progression_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3D011FCE66EB00F6FF4D /* tonal.chords_progression_expected.txt */; };
+		C29C3D921FCE66EC00F6FF4D /* tonal.chords_progression_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3D011FCE66EB00F6FF4D /* tonal.chords_progression_expected.txt */; };
+		C29C3D931FCE66EC00F6FF4D /* tonal.tuning_diatonic_strength_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3D021FCE66EC00F6FF4D /* tonal.tuning_diatonic_strength_expected.txt */; };
+		C29C3D941FCE66EC00F6FF4D /* tonal.tuning_diatonic_strength_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3D021FCE66EC00F6FF4D /* tonal.tuning_diatonic_strength_expected.txt */; };
 		C2B7180E1FC0F86600ECB0A6 /* pool.json in Resources */ = {isa = PBXBuildFile; fileRef = C2B7180D1FC0F86600ECB0A6 /* pool.json */; };
 		C2B7180F1FC0F86600ECB0A6 /* pool.json in Resources */ = {isa = PBXBuildFile; fileRef = C2B7180D1FC0F86600ECB0A6 /* pool.json */; };
 		C2B718161FC1034F00ECB0A6 /* pitchsalience_sinesweep.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2B718101FC1034E00ECB0A6 /* pitchsalience_sinesweep.txt */; };
@@ -2485,6 +2637,82 @@
 		C29C3CA71FCD05DD00F6FF4D /* multipitchmelodia_input.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = multipitchmelodia_input.txt; sourceTree = "<group>"; };
 		C29C3CAA1FCD05EC00F6FF4D /* predominantpitchmelodia_input.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = predominantpitchmelodia_input.txt; sourceTree = "<group>"; };
 		C29C3CAD1FCD064600F6FF4D /* multipitchklapuri_input.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = multipitchklapuri_input.txt; sourceTree = "<group>"; };
+		C29C3CB01FCE43C100F6FF4D /* mozart_c_major_30sec_frames.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mozart_c_major_30sec_frames.txt; sourceTree = "<group>"; };
+		C29C3CB41FCE481200F6FF4D /* extractor_input.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = extractor_input.txt; sourceTree = "<group>"; };
+		C29C3CB51FCE481200F6FF4D /* extractor_expected.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = extractor_expected.json; sourceTree = "<group>"; };
+		C29C3CBA1FCE66E000F6FF4D /* sfx.tristimulus_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sfx.tristimulus_expected.txt; sourceTree = "<group>"; };
+		C29C3CBB1FCE66E000F6FF4D /* lowLevel.spectral_energyband_low_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lowLevel.spectral_energyband_low_expected.txt; sourceTree = "<group>"; };
+		C29C3CBC1FCE66E000F6FF4D /* sfx.pitch_centroid_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sfx.pitch_centroid_expected.txt; sourceTree = "<group>"; };
+		C29C3CBD1FCE66E100F6FF4D /* lowLevel.spectral_energyband_high_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lowLevel.spectral_energyband_high_expected.txt; sourceTree = "<group>"; };
+		C29C3CBE1FCE66E100F6FF4D /* lowLevel.spectral_complexity_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lowLevel.spectral_complexity_expected.txt; sourceTree = "<group>"; };
+		C29C3CBF1FCE66E100F6FF4D /* lowLevel.spectral_skewness_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lowLevel.spectral_skewness_expected.txt; sourceTree = "<group>"; };
+		C29C3CC01FCE66E100F6FF4D /* sfx.pitch_max_to_total_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sfx.pitch_max_to_total_expected.txt; sourceTree = "<group>"; };
+		C29C3CC11FCE66E100F6FF4D /* rhythm.second_peak_weight_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rhythm.second_peak_weight_expected.txt; sourceTree = "<group>"; };
+		C29C3CC21FCE66E100F6FF4D /* lowLevel.pitch_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lowLevel.pitch_expected.txt; sourceTree = "<group>"; };
+		C29C3CC31FCE66E100F6FF4D /* sfx.oddtoevenharmonicenergyratio_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sfx.oddtoevenharmonicenergyratio_expected.txt; sourceTree = "<group>"; };
+		C29C3CC41FCE66E200F6FF4D /* lowLevel.barkbands_spread_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lowLevel.barkbands_spread_expected.txt; sourceTree = "<group>"; };
+		C29C3CC51FCE66E200F6FF4D /* tonal.chords_histogram_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tonal.chords_histogram_expected.txt; sourceTree = "<group>"; };
+		C29C3CC61FCE66E200F6FF4D /* tonal.tuning_equal_tempered_deviation_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tonal.tuning_equal_tempered_deviation_expected.txt; sourceTree = "<group>"; };
+		C29C3CC71FCE66E200F6FF4D /* lowLevel.silence_rate_60dB_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lowLevel.silence_rate_60dB_expected.txt; sourceTree = "<group>"; };
+		C29C3CC81FCE66E200F6FF4D /* rhythm.beats_position_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rhythm.beats_position_expected.txt; sourceTree = "<group>"; };
+		C29C3CC91FCE66E200F6FF4D /* lowLevel.hfc_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lowLevel.hfc_expected.txt; sourceTree = "<group>"; };
+		C29C3CCA1FCE66E200F6FF4D /* lowLevel.pitch_instantaneous_confidence_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lowLevel.pitch_instantaneous_confidence_expected.txt; sourceTree = "<group>"; };
+		C29C3CCB1FCE66E300F6FF4D /* lowLevel.spectral_crest_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lowLevel.spectral_crest_expected.txt; sourceTree = "<group>"; };
+		C29C3CCC1FCE66E300F6FF4D /* lowLevel.spectral_energyband_middle_high_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lowLevel.spectral_energyband_middle_high_expected.txt; sourceTree = "<group>"; };
+		C29C3CCD1FCE66E300F6FF4D /* lowLevel.scvalleys_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lowLevel.scvalleys_expected.txt; sourceTree = "<group>"; };
+		C29C3CCE1FCE66E300F6FF4D /* lowLevel.spectral_flux_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lowLevel.spectral_flux_expected.txt; sourceTree = "<group>"; };
+		C29C3CCF1FCE66E300F6FF4D /* lowLevel.zerocrossingrate_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lowLevel.zerocrossingrate_expected.txt; sourceTree = "<group>"; };
+		C29C3CD01FCE66E300F6FF4D /* lowLevel.spectral_flatness_db_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lowLevel.spectral_flatness_db_expected.txt; sourceTree = "<group>"; };
+		C29C3CD11FCE66E400F6FF4D /* lowLevel.barkbands_kurtosis_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lowLevel.barkbands_kurtosis_expected.txt; sourceTree = "<group>"; };
+		C29C3CD21FCE66E400F6FF4D /* tonal.chords_strength_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tonal.chords_strength_expected.txt; sourceTree = "<group>"; };
+		C29C3CD31FCE66E400F6FF4D /* sfx.pitch_min_to_total_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sfx.pitch_min_to_total_expected.txt; sourceTree = "<group>"; };
+		C29C3CD41FCE66E400F6FF4D /* rhythm.second_peak_bpm_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rhythm.second_peak_bpm_expected.txt; sourceTree = "<group>"; };
+		C29C3CD51FCE66E400F6FF4D /* tonal.thpcp_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tonal.thpcp_expected.txt; sourceTree = "<group>"; };
+		C29C3CD61FCE66E400F6FF4D /* lowLevel.spectral_strongpeak_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lowLevel.spectral_strongpeak_expected.txt; sourceTree = "<group>"; };
+		C29C3CD71FCE66E500F6FF4D /* lowLevel.spectral_decrease_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lowLevel.spectral_decrease_expected.txt; sourceTree = "<group>"; };
+		C29C3CD81FCE66E500F6FF4D /* lowLevel.barkbands_skewness_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lowLevel.barkbands_skewness_expected.txt; sourceTree = "<group>"; };
+		C29C3CD91FCE66E500F6FF4D /* tonal.chords_changes_rate_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tonal.chords_changes_rate_expected.txt; sourceTree = "<group>"; };
+		C29C3CDA1FCE66E500F6FF4D /* tonal.chords_key_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tonal.chords_key_expected.txt; sourceTree = "<group>"; };
+		C29C3CDB1FCE66E500F6FF4D /* lowLevel.barkbands_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lowLevel.barkbands_expected.txt; sourceTree = "<group>"; };
+		C29C3CDC1FCE66E500F6FF4D /* rhythm.first_peak_bpm_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rhythm.first_peak_bpm_expected.txt; sourceTree = "<group>"; };
+		C29C3CDD1FCE66E600F6FF4D /* lowLevel.spectral_rms_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lowLevel.spectral_rms_expected.txt; sourceTree = "<group>"; };
+		C29C3CDE1FCE66E600F6FF4D /* tonal.key_scale_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tonal.key_scale_expected.txt; sourceTree = "<group>"; };
+		C29C3CDF1FCE66E600F6FF4D /* rhythm.bpm_intervals_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rhythm.bpm_intervals_expected.txt; sourceTree = "<group>"; };
+		C29C3CE01FCE66E600F6FF4D /* tonal.tuning_nontempered_energy_ratio_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tonal.tuning_nontempered_energy_ratio_expected.txt; sourceTree = "<group>"; };
+		C29C3CE11FCE66E600F6FF4D /* tonal.key_key_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tonal.key_key_expected.txt; sourceTree = "<group>"; };
+		C29C3CE21FCE66E600F6FF4D /* rhythm.bpm_estimates_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rhythm.bpm_estimates_expected.txt; sourceTree = "<group>"; };
+		C29C3CE31FCE66E700F6FF4D /* lowLevel.silence_rate_20dB_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lowLevel.silence_rate_20dB_expected.txt; sourceTree = "<group>"; };
+		C29C3CE41FCE66E700F6FF4D /* rhythm.first_peak_weight_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rhythm.first_peak_weight_expected.txt; sourceTree = "<group>"; };
+		C29C3CE51FCE66E700F6FF4D /* lowLevel.silence_rate_30dB_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lowLevel.silence_rate_30dB_expected.txt; sourceTree = "<group>"; };
+		C29C3CE61FCE66E700F6FF4D /* lowLevel.spectral_energyband_middle_low_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lowLevel.spectral_energyband_middle_low_expected.txt; sourceTree = "<group>"; };
+		C29C3CE71FCE66E700F6FF4D /* rhythm.beats_loudness_band_ratio_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rhythm.beats_loudness_band_ratio_expected.txt; sourceTree = "<group>"; };
+		C29C3CE81FCE66E700F6FF4D /* lowLevel.sccoeffs_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lowLevel.sccoeffs_expected.txt; sourceTree = "<group>"; };
+		C29C3CE91FCE66E800F6FF4D /* rhythm.onset_times_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rhythm.onset_times_expected.txt; sourceTree = "<group>"; };
+		C29C3CEA1FCE66E800F6FF4D /* rhythm.second_peak_spread_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rhythm.second_peak_spread_expected.txt; sourceTree = "<group>"; };
+		C29C3CEB1FCE66E800F6FF4D /* lowLevel.spectral_energy_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lowLevel.spectral_energy_expected.txt; sourceTree = "<group>"; };
+		C29C3CEC1FCE66E800F6FF4D /* lowLevel.spectral_spread_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lowLevel.spectral_spread_expected.txt; sourceTree = "<group>"; };
+		C29C3CED1FCE66E800F6FF4D /* tonal.chords_number_rate_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tonal.chords_number_rate_expected.txt; sourceTree = "<group>"; };
+		C29C3CEE1FCE66E800F6FF4D /* lowLevel.spectral_centroid_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lowLevel.spectral_centroid_expected.txt; sourceTree = "<group>"; };
+		C29C3CEF1FCE66E800F6FF4D /* tonal.hpcp_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tonal.hpcp_expected.txt; sourceTree = "<group>"; };
+		C29C3CF01FCE66E900F6FF4D /* rhythm.first_peak_spread_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rhythm.first_peak_spread_expected.txt; sourceTree = "<group>"; };
+		C29C3CF11FCE66E900F6FF4D /* lowLevel.average_loudness_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lowLevel.average_loudness_expected.txt; sourceTree = "<group>"; };
+		C29C3CF21FCE66E900F6FF4D /* sfx.inharmonicity_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sfx.inharmonicity_expected.txt; sourceTree = "<group>"; };
+		C29C3CF31FCE66E900F6FF4D /* lowLevel.mfcc_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lowLevel.mfcc_expected.txt; sourceTree = "<group>"; };
+		C29C3CF41FCE66E900F6FF4D /* lowLevel.dissonance_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lowLevel.dissonance_expected.txt; sourceTree = "<group>"; };
+		C29C3CF51FCE66E900F6FF4D /* lowLevel.pitch_salience_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lowLevel.pitch_salience_expected.txt; sourceTree = "<group>"; };
+		C29C3CF61FCE66EA00F6FF4D /* rhythm.beats_loudness_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rhythm.beats_loudness_expected.txt; sourceTree = "<group>"; };
+		C29C3CF71FCE66EA00F6FF4D /* rhythm.histogram_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rhythm.histogram_expected.txt; sourceTree = "<group>"; };
+		C29C3CF81FCE66EA00F6FF4D /* tonal.key_strength_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tonal.key_strength_expected.txt; sourceTree = "<group>"; };
+		C29C3CF91FCE66EA00F6FF4D /* lowLevel.spectral_kurtosis_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lowLevel.spectral_kurtosis_expected.txt; sourceTree = "<group>"; };
+		C29C3CFA1FCE66EA00F6FF4D /* tonal.tuning_frequency_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tonal.tuning_frequency_expected.txt; sourceTree = "<group>"; };
+		C29C3CFB1FCE66EA00F6FF4D /* rhythm.onset_rate_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rhythm.onset_rate_expected.txt; sourceTree = "<group>"; };
+		C29C3CFC1FCE66EB00F6FF4D /* tonal.chords_scale_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tonal.chords_scale_expected.txt; sourceTree = "<group>"; };
+		C29C3CFD1FCE66EB00F6FF4D /* lowLevel.spectral_rolloff_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lowLevel.spectral_rolloff_expected.txt; sourceTree = "<group>"; };
+		C29C3CFE1FCE66EB00F6FF4D /* sfx.pitch_after_max_to_before_max_energy_ratio_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sfx.pitch_after_max_to_before_max_energy_ratio_expected.txt; sourceTree = "<group>"; };
+		C29C3CFF1FCE66EB00F6FF4D /* rhythm.bpm_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rhythm.bpm_expected.txt; sourceTree = "<group>"; };
+		C29C3D001FCE66EB00F6FF4D /* rhythm.confidence_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rhythm.confidence_expected.txt; sourceTree = "<group>"; };
+		C29C3D011FCE66EB00F6FF4D /* tonal.chords_progression_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tonal.chords_progression_expected.txt; sourceTree = "<group>"; };
+		C29C3D021FCE66EC00F6FF4D /* tonal.tuning_diatonic_strength_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tonal.tuning_diatonic_strength_expected.txt; sourceTree = "<group>"; };
 		C2B7180D1FC0F86600ECB0A6 /* pool.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pool.json; sourceTree = "<group>"; };
 		C2B718101FC1034E00ECB0A6 /* pitchsalience_sinesweep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchsalience_sinesweep.txt; sourceTree = "<group>"; };
 		C2B718111FC1034E00ECB0A6 /* pitchsalience_puretone.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchsalience_puretone.txt; sourceTree = "<group>"; };
@@ -3883,6 +4111,88 @@
 			path = PitchSalienceFunctionPeaks;
 			sourceTree = "<group>";
 		};
+		C29C3CB31FCE481200F6FF4D /* Extractor */ = {
+			isa = PBXGroup;
+			children = (
+				C29C3CF11FCE66E900F6FF4D /* lowLevel.average_loudness_expected.txt */,
+				C29C3CDB1FCE66E500F6FF4D /* lowLevel.barkbands_expected.txt */,
+				C29C3CD11FCE66E400F6FF4D /* lowLevel.barkbands_kurtosis_expected.txt */,
+				C29C3CD81FCE66E500F6FF4D /* lowLevel.barkbands_skewness_expected.txt */,
+				C29C3CC41FCE66E200F6FF4D /* lowLevel.barkbands_spread_expected.txt */,
+				C29C3CF41FCE66E900F6FF4D /* lowLevel.dissonance_expected.txt */,
+				C29C3CC91FCE66E200F6FF4D /* lowLevel.hfc_expected.txt */,
+				C29C3CF31FCE66E900F6FF4D /* lowLevel.mfcc_expected.txt */,
+				C29C3CC21FCE66E100F6FF4D /* lowLevel.pitch_expected.txt */,
+				C29C3CCA1FCE66E200F6FF4D /* lowLevel.pitch_instantaneous_confidence_expected.txt */,
+				C29C3CF51FCE66E900F6FF4D /* lowLevel.pitch_salience_expected.txt */,
+				C29C3CE81FCE66E700F6FF4D /* lowLevel.sccoeffs_expected.txt */,
+				C29C3CCD1FCE66E300F6FF4D /* lowLevel.scvalleys_expected.txt */,
+				C29C3CE31FCE66E700F6FF4D /* lowLevel.silence_rate_20dB_expected.txt */,
+				C29C3CE51FCE66E700F6FF4D /* lowLevel.silence_rate_30dB_expected.txt */,
+				C29C3CC71FCE66E200F6FF4D /* lowLevel.silence_rate_60dB_expected.txt */,
+				C29C3CEE1FCE66E800F6FF4D /* lowLevel.spectral_centroid_expected.txt */,
+				C29C3CBE1FCE66E100F6FF4D /* lowLevel.spectral_complexity_expected.txt */,
+				C29C3CCB1FCE66E300F6FF4D /* lowLevel.spectral_crest_expected.txt */,
+				C29C3CD71FCE66E500F6FF4D /* lowLevel.spectral_decrease_expected.txt */,
+				C29C3CEB1FCE66E800F6FF4D /* lowLevel.spectral_energy_expected.txt */,
+				C29C3CBD1FCE66E100F6FF4D /* lowLevel.spectral_energyband_high_expected.txt */,
+				C29C3CBB1FCE66E000F6FF4D /* lowLevel.spectral_energyband_low_expected.txt */,
+				C29C3CCC1FCE66E300F6FF4D /* lowLevel.spectral_energyband_middle_high_expected.txt */,
+				C29C3CE61FCE66E700F6FF4D /* lowLevel.spectral_energyband_middle_low_expected.txt */,
+				C29C3CD01FCE66E300F6FF4D /* lowLevel.spectral_flatness_db_expected.txt */,
+				C29C3CCE1FCE66E300F6FF4D /* lowLevel.spectral_flux_expected.txt */,
+				C29C3CF91FCE66EA00F6FF4D /* lowLevel.spectral_kurtosis_expected.txt */,
+				C29C3CDD1FCE66E600F6FF4D /* lowLevel.spectral_rms_expected.txt */,
+				C29C3CFD1FCE66EB00F6FF4D /* lowLevel.spectral_rolloff_expected.txt */,
+				C29C3CBF1FCE66E100F6FF4D /* lowLevel.spectral_skewness_expected.txt */,
+				C29C3CEC1FCE66E800F6FF4D /* lowLevel.spectral_spread_expected.txt */,
+				C29C3CD61FCE66E400F6FF4D /* lowLevel.spectral_strongpeak_expected.txt */,
+				C29C3CCF1FCE66E300F6FF4D /* lowLevel.zerocrossingrate_expected.txt */,
+				C29C3CE71FCE66E700F6FF4D /* rhythm.beats_loudness_band_ratio_expected.txt */,
+				C29C3CF61FCE66EA00F6FF4D /* rhythm.beats_loudness_expected.txt */,
+				C29C3CC81FCE66E200F6FF4D /* rhythm.beats_position_expected.txt */,
+				C29C3CE21FCE66E600F6FF4D /* rhythm.bpm_estimates_expected.txt */,
+				C29C3CFF1FCE66EB00F6FF4D /* rhythm.bpm_expected.txt */,
+				C29C3CDF1FCE66E600F6FF4D /* rhythm.bpm_intervals_expected.txt */,
+				C29C3D001FCE66EB00F6FF4D /* rhythm.confidence_expected.txt */,
+				C29C3CDC1FCE66E500F6FF4D /* rhythm.first_peak_bpm_expected.txt */,
+				C29C3CF01FCE66E900F6FF4D /* rhythm.first_peak_spread_expected.txt */,
+				C29C3CE41FCE66E700F6FF4D /* rhythm.first_peak_weight_expected.txt */,
+				C29C3CF71FCE66EA00F6FF4D /* rhythm.histogram_expected.txt */,
+				C29C3CFB1FCE66EA00F6FF4D /* rhythm.onset_rate_expected.txt */,
+				C29C3CE91FCE66E800F6FF4D /* rhythm.onset_times_expected.txt */,
+				C29C3CD41FCE66E400F6FF4D /* rhythm.second_peak_bpm_expected.txt */,
+				C29C3CEA1FCE66E800F6FF4D /* rhythm.second_peak_spread_expected.txt */,
+				C29C3CC11FCE66E100F6FF4D /* rhythm.second_peak_weight_expected.txt */,
+				C29C3CF21FCE66E900F6FF4D /* sfx.inharmonicity_expected.txt */,
+				C29C3CC31FCE66E100F6FF4D /* sfx.oddtoevenharmonicenergyratio_expected.txt */,
+				C29C3CFE1FCE66EB00F6FF4D /* sfx.pitch_after_max_to_before_max_energy_ratio_expected.txt */,
+				C29C3CBC1FCE66E000F6FF4D /* sfx.pitch_centroid_expected.txt */,
+				C29C3CC01FCE66E100F6FF4D /* sfx.pitch_max_to_total_expected.txt */,
+				C29C3CD31FCE66E400F6FF4D /* sfx.pitch_min_to_total_expected.txt */,
+				C29C3CBA1FCE66E000F6FF4D /* sfx.tristimulus_expected.txt */,
+				C29C3CD91FCE66E500F6FF4D /* tonal.chords_changes_rate_expected.txt */,
+				C29C3CC51FCE66E200F6FF4D /* tonal.chords_histogram_expected.txt */,
+				C29C3CDA1FCE66E500F6FF4D /* tonal.chords_key_expected.txt */,
+				C29C3CED1FCE66E800F6FF4D /* tonal.chords_number_rate_expected.txt */,
+				C29C3D011FCE66EB00F6FF4D /* tonal.chords_progression_expected.txt */,
+				C29C3CFC1FCE66EB00F6FF4D /* tonal.chords_scale_expected.txt */,
+				C29C3CD21FCE66E400F6FF4D /* tonal.chords_strength_expected.txt */,
+				C29C3CEF1FCE66E800F6FF4D /* tonal.hpcp_expected.txt */,
+				C29C3CE11FCE66E600F6FF4D /* tonal.key_key_expected.txt */,
+				C29C3CDE1FCE66E600F6FF4D /* tonal.key_scale_expected.txt */,
+				C29C3CF81FCE66EA00F6FF4D /* tonal.key_strength_expected.txt */,
+				C29C3CD51FCE66E400F6FF4D /* tonal.thpcp_expected.txt */,
+				C29C3D021FCE66EC00F6FF4D /* tonal.tuning_diatonic_strength_expected.txt */,
+				C29C3CC61FCE66E200F6FF4D /* tonal.tuning_equal_tempered_deviation_expected.txt */,
+				C29C3CFA1FCE66EA00F6FF4D /* tonal.tuning_frequency_expected.txt */,
+				C29C3CE01FCE66E600F6FF4D /* tonal.tuning_nontempered_energy_ratio_expected.txt */,
+				C29C3CB41FCE481200F6FF4D /* extractor_input.txt */,
+				C29C3CB51FCE481200F6FF4D /* extractor_expected.json */,
+			);
+			path = Extractor;
+			sourceTree = "<group>";
+		};
 		C2EB6F9E1FC72CB10068D657 /* FFT */ = {
 			isa = PBXGroup;
 			children = (
@@ -4185,6 +4495,7 @@
 				C29C3C531FCD03D200F6FF4D /* C4-E♭4-G4_eq_samples.txt */,
 				C27C40581FC39C27005CB8BA /* mozart_c_major_30sec_samples.txt */,
 				C2EC95B91FBF6A1500D384C5 /* frequencyBands.txt */,
+				C29C3CB31FCE481200F6FF4D /* Extractor */,
 				C29C3C891FCD03F400F6FF4D /* PitchSalienceFunction */,
 				C29C3C901FCD03F500F6FF4D /* PitchSalienceFunctionPeaks */,
 				C29C3C8D1FCD03F500F6FF4D /* PredominantPitchMelodia */,
@@ -4262,6 +4573,7 @@
 		C2F136311FC66DBC006FF2E2 /* PitchYinFFT */ = {
 			isa = PBXGroup;
 			children = (
+				C29C3CB01FCE43C100F6FF4D /* mozart_c_major_30sec_frames.txt */,
 				C27C40531FC39A0E005CB8BA /* pitchyinfft_expectedconfidence.txt */,
 				C27C40521FC39A0E005CB8BA /* pitchyinfft_expectedpitch.txt */,
 			);
@@ -5163,12 +5475,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C29C3D2D1FCE66EC00F6FF4D /* lowLevel.zerocrossingrate_expected.txt in Resources */,
 				C2EC96D41FBF6A9100D384C5 /* impulses_1second_22050_st_bad_stream_info.flac in Resources */,
 				C2BADBE51FBFAAAB009D02C5 /* windowing_triangular.txt in Resources */,
 				C2BADBDC1FBFA89B009D02C5 /* windowing_blackmanharris74.txt in Resources */,
 				C27C404B1FC335FE005CB8BA /* pitchyin_expectedpitch.txt in Resources */,
 				C27C40541FC39A0E005CB8BA /* pitchyinfft_expectedpitch.txt in Resources */,
 				C29C3C751FCD03D200F6FF4D /* pitchcontours_expectedbins.txt in Resources */,
+				C29C3D191FCE66EC00F6FF4D /* tonal.chords_histogram_expected.txt in Resources */,
+				C29C3D131FCE66EC00F6FF4D /* lowLevel.pitch_expected.txt in Resources */,
 				C2EC96C31FBF6A8A00D384C5 /* impulses_1second_48000.flac in Resources */,
 				C2EC96731FBF6A5000D384C5 /* test.ape in Resources */,
 				C2EC96701FBF6A5000D384C5 /* test.mp3 in Resources */,
@@ -5178,35 +5493,52 @@
 				C27C40501FC338BB005CB8BA /* pitchyin_mozartframes.txt in Resources */,
 				C2ED11751FC759D400BD18D6 /* fftc_input.txt in Resources */,
 				C29C3C7B1FCD03D200F6FF4D /* multipitchklapuri_expected.txt in Resources */,
+				C29C3D6F1FCE66EC00F6FF4D /* rhythm.first_peak_spread_expected.txt in Resources */,
 				C2EC96951FBF6A7100D384C5 /* impulses_1second_44100_st.ogg in Resources */,
 				C2EC96F81FBF6ACD00D384C5 /* seq-3341-2-16bit.flac in Resources */,
 				C29C3C651FCD03D200F6FF4D /* pitchmelodia_expectedconfidences.txt in Resources */,
+				C29C3D7D1FCE66EC00F6FF4D /* rhythm.histogram_expected.txt in Resources */,
+				C29C3D171FCE66EC00F6FF4D /* lowLevel.barkbands_spread_expected.txt in Resources */,
 				C29C3C7D1FCD03D200F6FF4D /* C4-E♭4-G4_eq_samples.txt in Resources */,
 				C29C3CA01FCD03F500F6FF4D /* pitchsaliencefunctionpeaks_input.txt in Resources */,
 				C2EC96AB1FBF6A7F00D384C5 /* impulses_1samp_48000_st.wav in Resources */,
 				C2EC964A1FBF6A3C00D384C5 /* cat_purrrr.wav in Resources */,
 				C2EC96851FBF6A6500D384C5 /* sin5000.wav in Resources */,
+				C29C3D6D1FCE66EC00F6FF4D /* tonal.hpcp_expected.txt in Resources */,
+				C29C3D451FCE66EC00F6FF4D /* lowLevel.barkbands_expected.txt in Resources */,
 				C2EC97131FBF6AD800D384C5 /* silence.flac in Resources */,
 				C27C40591FC39C27005CB8BA /* mozart_c_major_30sec_samples.txt in Resources */,
 				C2EC964B1FBF6A3C00D384C5 /* vignesh.wav in Resources */,
 				C2EC96A41FBF6A7800D384C5 /* impulses_1second_44100_st.wav in Resources */,
+				C29C3D311FCE66EC00F6FF4D /* lowLevel.barkbands_kurtosis_expected.txt in Resources */,
+				C29C3D651FCE66EC00F6FF4D /* lowLevel.spectral_energy_expected.txt in Resources */,
 				C2EC964F1FBF6A3C00D384C5 /* spaceambient.wav in Resources */,
 				C2EC96411FBF6A3500D384C5 /* C4-E♭4-G4_Boesendorfer_Grand_Piano.aif in Resources */,
 				C29C3C811FCD03D200F6FF4D /* pitchcontoursegmentation_pitchesinput.txt in Resources */,
 				C2F1360F1FC64A28006FF2E2 /* iir_y1.txt in Resources */,
 				C2EC966A1FBF6A4800D384C5 /* sine_440_5000period.mp3 in Resources */,
+				C29C3D5B1FCE66EC00F6FF4D /* lowLevel.spectral_energyband_middle_low_expected.txt in Resources */,
 				C2EC968A1FBF6A6500D384C5 /* sin440_sweep_0db.wav in Resources */,
+				C29C3D1F1FCE66EC00F6FF4D /* rhythm.beats_position_expected.txt in Resources */,
 				C29C3CA51FCD05BE00F6FF4D /* pitchcontourssegmentation_signalinput.txt in Resources */,
+				C29C3D531FCE66EC00F6FF4D /* rhythm.bpm_estimates_expected.txt in Resources */,
+				C29C3D471FCE66EC00F6FF4D /* rhythm.first_peak_bpm_expected.txt in Resources */,
 				C2EC96381FBF6A2A00D384C5 /* spectrumOutput.txt in Resources */,
+				C29C3CB81FCE481200F6FF4D /* extractor_expected.json in Resources */,
 				C2EC96BC1FBF6A8400D384C5 /* impulses_1second_48000.aiff in Resources */,
+				C29C3D771FCE66EC00F6FF4D /* lowLevel.dissonance_expected.txt in Resources */,
 				C2EC967B1FBF6A5700D384C5 /* sin_30_seconds.wav in Resources */,
+				C29C3D411FCE66EC00F6FF4D /* tonal.chords_changes_rate_expected.txt in Resources */,
 				C2EC96491FBF6A3C00D384C5 /* musicbox.wav in Resources */,
+				C29C3D571FCE66EC00F6FF4D /* rhythm.first_peak_weight_expected.txt in Resources */,
 				C2EC96F21FBF6ACD00D384C5 /* 1kHz_sine_-40LUFS-16bit.flac in Resources */,
 				C2F136251FC66D98006FF2E2 /* autocorrelation_output_nonpow2.txt in Resources */,
 				C2EC964D1FBF6A3C00D384C5 /* dubstep.aac in Resources */,
+				C29C3D051FCE66EC00F6FF4D /* lowLevel.spectral_energyband_low_expected.txt in Resources */,
 				C29C3C6F1FCD03D200F6FF4D /* pitchcontours_inputsaliences.txt in Resources */,
 				C2EC96941FBF6A7100D384C5 /* impulses_1second_48000_st.ogg in Resources */,
 				C2EC96EF1FBF6AC800D384C5 /* multistream2.mka in Resources */,
+				C29C3D7F1FCE66EC00F6FF4D /* tonal.key_strength_expected.txt in Resources */,
 				C2700C281FC873A50028D3F7 /* constantq_expected.txt in Resources */,
 				C2EC96B91FBF6A8400D384C5 /* impulses_1second_44100.aiff in Resources */,
 				C2EC96D51FBF6A9100D384C5 /* impulses_1second_44100_st_bad_stream_info.flac in Resources */,
@@ -5215,15 +5547,23 @@
 				C2EC96971FBF6A7100D384C5 /* impulses_1second_22050.ogg in Resources */,
 				C2EC96741FBF6A5000D384C5 /* test.ogg in Resources */,
 				C2B7180E1FC0F86600ECB0A6 /* pool.json in Resources */,
+				C29C3CB11FCE43C100F6FF4D /* mozart_c_major_30sec_frames.txt in Resources */,
+				C29C3D691FCE66EC00F6FF4D /* tonal.chords_number_rate_expected.txt in Resources */,
 				C2EC96801FBF6A5E00D384C5 /* 4channels.wav in Resources */,
 				C2F136291FC66D98006FF2E2 /* autocorrelation_octave_input.txt in Resources */,
+				C29C3D271FCE66EC00F6FF4D /* lowLevel.spectral_energyband_middle_high_expected.txt in Resources */,
 				C2EC969F1FBF6A7800D384C5 /* impulses_1second_48000_st.wav in Resources */,
+				C29C3D511FCE66EC00F6FF4D /* tonal.key_key_expected.txt in Resources */,
 				C2EC96CF1FBF6A9100D384C5 /* impulses_1second_48000_st_bad_stream_info.flac in Resources */,
 				C2EC96F31FBF6ACD00D384C5 /* seq-3341-7_seq-3342-5-16bit.flac in Resources */,
 				C2F1361B1FC64A28006FF2E2 /* iir_ba.txt in Resources */,
 				C2B718201FC1034F00ECB0A6 /* pitchsalience_varyingsquarewave.txt in Resources */,
 				C2EC96B81FBF6A8400D384C5 /* impulses_1second_22050_st.aiff in Resources */,
 				C2EC967C1FBF6A5700D384C5 /* sin_30_seconds_eqloud.wav in Resources */,
+				C29C3D031FCE66EC00F6FF4D /* sfx.tristimulus_expected.txt in Resources */,
+				C29C3D2B1FCE66EC00F6FF4D /* lowLevel.spectral_flux_expected.txt in Resources */,
+				C29C3CB61FCE481200F6FF4D /* extractor_input.txt in Resources */,
+				C29C3D111FCE66EC00F6FF4D /* rhythm.second_peak_weight_expected.txt in Resources */,
 				C2EC96AD1FBF6A7F00D384C5 /* impulses_1samp_22050_st.wav in Resources */,
 				C2B7182F1FC10E5C00ECB0A6 /* puretone_saliencevalues.txt in Resources */,
 				C29C3C371FCBA33100F6FF4D /* spectrumcq_expected.txt in Resources */,
@@ -5232,13 +5572,22 @@
 				C2EC96B01FBF6A7F00D384C5 /* impulses_1samp_44100.wav in Resources */,
 				C29C3CAE1FCD064600F6FF4D /* multipitchklapuri_input.txt in Resources */,
 				C2BADBDA1FBFA89B009D02C5 /* windowing_blackmanharris70.txt in Resources */,
+				C29C3D711FCE66EC00F6FF4D /* lowLevel.average_loudness_expected.txt in Resources */,
 				C2B7182D1FC10E5C00ECB0A6 /* whitenoise_saliencevalues.txt in Resources */,
 				C2EC96D31FBF6A9100D384C5 /* impulses_1second_22050_bad_stream_info.flac in Resources */,
+				C29C3D3F1FCE66EC00F6FF4D /* lowLevel.barkbands_skewness_expected.txt in Resources */,
+				C29C3D611FCE66EC00F6FF4D /* rhythm.onset_times_expected.txt in Resources */,
+				C29C3D251FCE66EC00F6FF4D /* lowLevel.spectral_crest_expected.txt in Resources */,
+				C29C3D591FCE66EC00F6FF4D /* lowLevel.silence_rate_30dB_expected.txt in Resources */,
+				C29C3D331FCE66EC00F6FF4D /* tonal.chords_strength_expected.txt in Resources */,
+				C29C3D5D1FCE66EC00F6FF4D /* rhythm.beats_loudness_band_ratio_expected.txt in Resources */,
 				C2EC96F01FBF6AC800D384C5 /* multistream1.mka in Resources */,
 				C2B7182B1FC10E5C00ECB0A6 /* sinesweep_saliencevalues.txt in Resources */,
+				C29C3D351FCE66EC00F6FF4D /* sfx.pitch_min_to_total_expected.txt in Resources */,
 				C27C404D1FC335FE005CB8BA /* pitchyin_expectedconfidence.txt in Resources */,
 				C2EC96DF1FBF6AA100D384C5 /* impulses_1second_22050.mp3 in Resources */,
 				C2EC96891FBF6A6500D384C5 /* sin_pattern_decreasing.wav in Resources */,
+				C29C3D831FCE66EC00F6FF4D /* tonal.tuning_frequency_expected.txt in Resources */,
 				C2EC96541FBF6A3C00D384C5 /* techno_loop.wav in Resources */,
 				C2EC96EA1FBF6AAF00D384C5 /* 1024_samples.wav in Resources */,
 				C2EC96481FBF6A3C00D384C5 /* Vivaldi_Sonata_5_II_Allegro.wav in Resources */,
@@ -5248,26 +5597,43 @@
 				C2EC96561FBF6A3C00D384C5 /* distorted.wav in Resources */,
 				C2EC96AF1FBF6A7F00D384C5 /* impulses_1samp_22050.wav in Resources */,
 				C2EC96A11FBF6A7800D384C5 /* impulses_1second_22050.wav in Resources */,
+				C29C3D6B1FCE66EC00F6FF4D /* lowLevel.spectral_centroid_expected.txt in Resources */,
 				C2EC96671FBF6A4800D384C5 /* unsupported.sd2 in Resources */,
+				C29C3D0B1FCE66EC00F6FF4D /* lowLevel.spectral_complexity_expected.txt in Resources */,
 				C2EC96681FBF6A4800D384C5 /* sine_440_5000period.wav in Resources */,
 				C2F1360D1FC64A28006FF2E2 /* iir_y3.txt in Resources */,
+				C29C3D8D1FCE66EC00F6FF4D /* rhythm.bpm_expected.txt in Resources */,
 				C2EC96AE1FBF6A7F00D384C5 /* impulses_1samp_44100_st.wav in Resources */,
 				C2ED11731FC759D400BD18D6 /* fftc_output.txt in Resources */,
 				C2EC96FB1FBF6ACD00D384C5 /* 1kHz_sine_-20LUFS-16bit.flac in Resources */,
+				C29C3D071FCE66EC00F6FF4D /* sfx.pitch_centroid_expected.txt in Resources */,
 				C2BADBE31FBFAAAB009D02C5 /* windowing_hamming.txt in Resources */,
 				C2EC96C71FBF6A8A00D384C5 /* impulses_1second_44100_st.flac in Resources */,
 				C2EC967F1FBF6A5E00D384C5 /* 4channels.flac in Resources */,
 				C29C3C671FCD03D200F6FF4D /* pitchmelodia_expectedpitches.txt in Resources */,
+				C29C3D231FCE66EC00F6FF4D /* lowLevel.pitch_instantaneous_confidence_expected.txt in Resources */,
 				C2B718291FC10E5C00ECB0A6 /* varyingsquarewave_saliencevalues.txt in Resources */,
+				C29C3D391FCE66EC00F6FF4D /* tonal.thpcp_expected.txt in Resources */,
 				C29C3C831FCD03D200F6FF4D /* pitchcontoursegmentation_expectedonsets.txt in Resources */,
 				C2EC970C1FBF6AD300D384C5 /* empty.ogg in Resources */,
 				C29C3C6B1FCD03D200F6FF4D /* pitchfilter_inputpitchconfidence.txt in Resources */,
 				C2EC96F51FBF6ACD00D384C5 /* seq-3341-4-16bit-v02.flac in Resources */,
 				C2EC96471FBF6A3C00D384C5 /* dubstep.wav in Resources */,
 				C2EC96421FBF6A3500D384C5 /* 16-Bar-Progression_Boesendorfer_Grand_Piano.aif in Resources */,
+				C29C3D3B1FCE66EC00F6FF4D /* lowLevel.spectral_strongpeak_expected.txt in Resources */,
+				C29C3D551FCE66EC00F6FF4D /* lowLevel.silence_rate_20dB_expected.txt in Resources */,
+				C29C3D931FCE66EC00F6FF4D /* tonal.tuning_diatonic_strength_expected.txt in Resources */,
+				C29C3D151FCE66EC00F6FF4D /* sfx.oddtoevenharmonicenergyratio_expected.txt in Resources */,
+				C29C3D3D1FCE66EC00F6FF4D /* lowLevel.spectral_decrease_expected.txt in Resources */,
+				C29C3D0F1FCE66EC00F6FF4D /* sfx.pitch_max_to_total_expected.txt in Resources */,
+				C29C3D0D1FCE66EC00F6FF4D /* lowLevel.spectral_skewness_expected.txt in Resources */,
 				C2EC96811FBF6A5E00D384C5 /* 4channels.aiff in Resources */,
 				C29C3C5B1FCD03D200F6FF4D /* pitchcontoursmultimelody_expected.txt in Resources */,
 				C2EC96501FBF6A3C00D384C5 /* cat_purrrr22050.wav in Resources */,
+				C29C3D4F1FCE66EC00F6FF4D /* tonal.tuning_nontempered_energy_ratio_expected.txt in Resources */,
+				C29C3D731FCE66EC00F6FF4D /* sfx.inharmonicity_expected.txt in Resources */,
+				C29C3D4B1FCE66EC00F6FF4D /* tonal.key_scale_expected.txt in Resources */,
+				C29C3D851FCE66EC00F6FF4D /* rhythm.onset_rate_expected.txt in Resources */,
 				C2B718271FC10E5C00ECB0A6 /* squarewave_saliencevalues.txt in Resources */,
 				C29C3C791FCD03D200F6FF4D /* pitchcontours_expectedsaliences.txt in Resources */,
 				C2F136111FC64A28006FF2E2 /* iir_ab.txt in Resources */,
@@ -5276,16 +5642,22 @@
 				C2EC96C61FBF6A8A00D384C5 /* impulses_1second_48000_st.flac in Resources */,
 				C2EC96911FBF6A6C00D384C5 /* impulses_1second_441002.wav in Resources */,
 				C29C3C731FCD03D200F6FF4D /* pitchcontours_expectedstarttimes.txt in Resources */,
+				C29C3D911FCE66EC00F6FF4D /* tonal.chords_progression_expected.txt in Resources */,
 				C2EC96F61FBF6ACD00D384C5 /* seq-3341-3-16bit-v02.flac in Resources */,
 				C29C3C2D1FCB8A6900F6FF4D /* chromagram_expected.txt in Resources */,
 				C2EB6FA01FC72CEA0068D657 /* fft_output.txt in Resources */,
 				C2EC96F41FBF6ACD00D384C5 /* seq-3342-1-16bit.flac in Resources */,
 				C2ED117A1FC8606A00BD18D6 /* ifft_input.txt in Resources */,
+				C29C3D811FCE66EC00F6FF4D /* lowLevel.spectral_kurtosis_expected.txt in Resources */,
+				C29C3D7B1FCE66EC00F6FF4D /* rhythm.beats_loudness_expected.txt in Resources */,
 				C2F136131FC64A28006FF2E2 /* iir_b.txt in Resources */,
+				C29C3D431FCE66EC00F6FF4D /* tonal.chords_key_expected.txt in Resources */,
 				C2EC96E21FBF6AA100D384C5 /* impulses_1second_22050_st.mp3 in Resources */,
 				C2EC96C51FBF6A8A00D384C5 /* impulses_1second_22050.flac in Resources */,
+				C29C3D871FCE66EC00F6FF4D /* tonal.chords_scale_expected.txt in Resources */,
 				C2EC96FA1FBF6ACD00D384C5 /* seq-3341-5-16bit-v02.flac in Resources */,
 				C2700C2A1FC873A50028D3F7 /* constantq_pythonoutput.txt in Resources */,
+				C29C3D491FCE66EC00F6FF4D /* lowLevel.spectral_rms_expected.txt in Resources */,
 				C2EC96B71FBF6A8400D384C5 /* impulses_1second_44100_st.aiff in Resources */,
 				C2EC96FD1FBF6ACD00D384C5 /* seq-3342-2-16bit.flac in Resources */,
 				C29C3C291FCA344100F6FF4D /* pool_literal.json in Resources */,
@@ -5295,17 +5667,24 @@
 				C2F136171FC64A28006FF2E2 /* iir_x.txt in Resources */,
 				C2EC963A1FBF6A2A00D384C5 /* pitchsalience_whitenoise1.txt in Resources */,
 				C2EC970D1FBF6AD300D384C5 /* empty.mp3 in Resources */,
+				C29C3D211FCE66EC00F6FF4D /* lowLevel.hfc_expected.txt in Resources */,
 				C2B718181FC1034F00ECB0A6 /* pitchsalience_puretone.txt in Resources */,
+				C29C3D4D1FCE66EC00F6FF4D /* rhythm.bpm_intervals_expected.txt in Resources */,
 				C2EC96A21FBF6A7800D384C5 /* impulses_1second_44100.wav in Resources */,
 				C2B7181E1FC1034F00ECB0A6 /* pitchsalience_whitenoise2.txt in Resources */,
 				C2EC96D01FBF6A9100D384C5 /* impulses_1second_48000_bad_stream_info.flac in Resources */,
+				C29C3D371FCE66EC00F6FF4D /* rhythm.second_peak_bpm_expected.txt in Resources */,
+				C29C3D2F1FCE66EC00F6FF4D /* lowLevel.spectral_flatness_db_expected.txt in Resources */,
 				C2EC970E1FBF6AD300D384C5 /* empty.aiff in Resources */,
 				C29C3C851FCD03D200F6FF4D /* pitchcontoursegmentation_expectedpitches.txt in Resources */,
+				C29C3D891FCE66EC00F6FF4D /* lowLevel.spectral_rolloff_expected.txt in Resources */,
+				C29C3D1B1FCE66EC00F6FF4D /* tonal.tuning_equal_tempered_deviation_expected.txt in Resources */,
 				C2EC96F71FBF6ACD00D384C5 /* 1kHz_sine_-26LUFS-16bit.flac in Resources */,
 				C29C3CA81FCD05DD00F6FF4D /* multipitchmelodia_input.txt in Resources */,
 				C27C403B1FC2182D005CB8BA /* spectralpeaks_spectrum.txt in Resources */,
 				C2EC966F1FBF6A5000D384C5 /* test-unicode.flac in Resources */,
 				C2F136271FC66D98006FF2E2 /* autocorrelation_output.txt in Resources */,
+				C29C3D751FCE66EC00F6FF4D /* lowLevel.mfcc_expected.txt in Resources */,
 				C2EC96871FBF6A6500D384C5 /* beat_120_240_180.wav in Resources */,
 				C2EB6FA31FC7303C0068D657 /* fft_input.txt in Resources */,
 				C27C40561FC39A0E005CB8BA /* pitchyinfft_expectedconfidence.txt in Resources */,
@@ -5314,6 +5693,8 @@
 				C2EC96511FBF6A3C00D384C5 /* dubstep.mp3 in Resources */,
 				C2EC96391FBF6A2A00D384C5 /* frequencyBands.txt in Resources */,
 				C2BADBE11FBFAAAB009D02C5 /* windowing_hann.txt in Resources */,
+				C29C3D8B1FCE66EC00F6FF4D /* sfx.pitch_after_max_to_before_max_energy_ratio_expected.txt in Resources */,
+				C29C3D5F1FCE66EC00F6FF4D /* lowLevel.sccoeffs_expected.txt in Resources */,
 				C2EC96531FBF6A3C00D384C5 /* cat_purrrr24bit.wav in Resources */,
 				C29C3C691FCD03D200F6FF4D /* pitchfilter_inputpitch.txt in Resources */,
 				C2EC96C41FBF6A8A00D384C5 /* impulses_1second_44100.flac in Resources */,
@@ -5325,6 +5706,7 @@
 				C2F1362B1FC66D98006FF2E2 /* autocorrelation_octave_output.txt in Resources */,
 				C29C3C981FCD03F500F6FF4D /* pitchsaliencefunction_expected.txt in Resources */,
 				C29C3CA21FCD03F500F6FF4D /* pitchsaliencefunctionpeaks_expectedvalues.txt in Resources */,
+				C29C3D8F1FCE66EC00F6FF4D /* rhythm.confidence_expected.txt in Resources */,
 				C2EC96431FBF6A3500D384C5 /* C4-E♭4-G4_Boesendorfer_Grand_Piano-Trimmed.aif in Resources */,
 				C2EC96C81FBF6A8A00D384C5 /* impulses_1second_22050_st.flac in Resources */,
 				C2EC96521FBF6A3C00D384C5 /* cat_purrrr32bit.wav in Resources */,
@@ -5337,7 +5719,12 @@
 				C2EC96721FBF6A5000D384C5 /* empty2.mp3 in Resources */,
 				C2700C2C1FC873A60028D3F7 /* constantq_input.txt in Resources */,
 				C2EC96BB1FBF6A8400D384C5 /* impulses_1second_22050.aiff in Resources */,
+				C29C3D291FCE66EC00F6FF4D /* lowLevel.scvalleys_expected.txt in Resources */,
+				C29C3D671FCE66EC00F6FF4D /* lowLevel.spectral_spread_expected.txt in Resources */,
 				C2EC96881FBF6A6500D384C5 /* noise_pink.wav in Resources */,
+				C29C3D091FCE66EC00F6FF4D /* lowLevel.spectral_energyband_high_expected.txt in Resources */,
+				C29C3D1D1FCE66EC00F6FF4D /* lowLevel.silence_rate_60dB_expected.txt in Resources */,
+				C29C3D791FCE66EC00F6FF4D /* lowLevel.pitch_salience_expected.txt in Resources */,
 				C29C3C5F1FCD03D200F6FF4D /* pitchcontoursmultimelody_inputstarttimes.txt in Resources */,
 				C2EC96961FBF6A7100D384C5 /* impulses_1second_22050_st.ogg in Resources */,
 				C2EC970B1FBF6AD300D384C5 /* empty.wav in Resources */,
@@ -5345,6 +5732,7 @@
 				C2EC96551FBF6A3C00D384C5 /* dubstep.flac in Resources */,
 				C2EC96DD1FBF6AA100D384C5 /* impulses_1second_48000_st.mp3 in Resources */,
 				C29C3C5D1FCD03D200F6FF4D /* pitchcontoursmultimelody_inputbins.txt in Resources */,
+				C29C3D631FCE66EC00F6FF4D /* rhythm.second_peak_spread_expected.txt in Resources */,
 				C2EC96AC1FBF6A7F00D384C5 /* impulses_1samp_48000.wav in Resources */,
 				C27C40411FC2188E005CB8BA /* spectralpeaks_expectedmagnitudes.txt in Resources */,
 				C29C3C961FCD03F500F6FF4D /* pitchsaliencefunction_magnitudesinput.txt in Resources */,
@@ -5377,12 +5765,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C29C3D2E1FCE66EC00F6FF4D /* lowLevel.zerocrossingrate_expected.txt in Resources */,
 				C2EC96DB1FBF6A9200D384C5 /* impulses_1second_22050_st_bad_stream_info.flac in Resources */,
 				C2BADBE61FBFAAAB009D02C5 /* windowing_triangular.txt in Resources */,
 				C2BADBDD1FBFA89B009D02C5 /* windowing_blackmanharris74.txt in Resources */,
 				C27C404C1FC335FE005CB8BA /* pitchyin_expectedpitch.txt in Resources */,
 				C27C40551FC39A0E005CB8BA /* pitchyinfft_expectedpitch.txt in Resources */,
 				C29C3C761FCD03D200F6FF4D /* pitchcontours_expectedbins.txt in Resources */,
+				C29C3D1A1FCE66EC00F6FF4D /* tonal.chords_histogram_expected.txt in Resources */,
+				C29C3D141FCE66EC00F6FF4D /* lowLevel.pitch_expected.txt in Resources */,
 				C2EC96C91FBF6A8A00D384C5 /* impulses_1second_48000.flac in Resources */,
 				C2EC96791FBF6A5100D384C5 /* test.ape in Resources */,
 				C2EC96761FBF6A5100D384C5 /* test.mp3 in Resources */,
@@ -5392,35 +5783,52 @@
 				C27C40511FC338BB005CB8BA /* pitchyin_mozartframes.txt in Resources */,
 				C2ED11761FC759D400BD18D6 /* fftc_input.txt in Resources */,
 				C29C3C7C1FCD03D200F6FF4D /* multipitchklapuri_expected.txt in Resources */,
+				C29C3D701FCE66EC00F6FF4D /* rhythm.first_peak_spread_expected.txt in Resources */,
 				C2EC969B1FBF6A7200D384C5 /* impulses_1second_44100_st.ogg in Resources */,
 				C2EC97051FBF6ACE00D384C5 /* seq-3341-2-16bit.flac in Resources */,
 				C29C3C661FCD03D200F6FF4D /* pitchmelodia_expectedconfidences.txt in Resources */,
+				C29C3D7E1FCE66EC00F6FF4D /* rhythm.histogram_expected.txt in Resources */,
+				C29C3D181FCE66EC00F6FF4D /* lowLevel.barkbands_spread_expected.txt in Resources */,
 				C29C3C7E1FCD03D200F6FF4D /* C4-E♭4-G4_eq_samples.txt in Resources */,
 				C29C3CA11FCD03F500F6FF4D /* pitchsaliencefunctionpeaks_input.txt in Resources */,
 				C2EC96B11FBF6A7F00D384C5 /* impulses_1samp_48000_st.wav in Resources */,
 				C2EC965A1FBF6A3D00D384C5 /* cat_purrrr.wav in Resources */,
 				C2EC968B1FBF6A6500D384C5 /* sin5000.wav in Resources */,
+				C29C3D6E1FCE66EC00F6FF4D /* tonal.hpcp_expected.txt in Resources */,
+				C29C3D461FCE66EC00F6FF4D /* lowLevel.barkbands_expected.txt in Resources */,
 				C2EC97141FBF6AD900D384C5 /* silence.flac in Resources */,
 				C27C405A1FC39C27005CB8BA /* mozart_c_major_30sec_samples.txt in Resources */,
 				C2EC965B1FBF6A3D00D384C5 /* vignesh.wav in Resources */,
 				C2EC96AA1FBF6A7800D384C5 /* impulses_1second_44100_st.wav in Resources */,
+				C29C3D321FCE66EC00F6FF4D /* lowLevel.barkbands_kurtosis_expected.txt in Resources */,
+				C29C3D661FCE66EC00F6FF4D /* lowLevel.spectral_energy_expected.txt in Resources */,
 				C2EC965F1FBF6A3D00D384C5 /* spaceambient.wav in Resources */,
 				C2EC96441FBF6A3600D384C5 /* C4-E♭4-G4_Boesendorfer_Grand_Piano.aif in Resources */,
 				C29C3C821FCD03D200F6FF4D /* pitchcontoursegmentation_pitchesinput.txt in Resources */,
 				C2F136101FC64A28006FF2E2 /* iir_y1.txt in Resources */,
 				C2EC966E1FBF6A4900D384C5 /* sine_440_5000period.mp3 in Resources */,
+				C29C3D5C1FCE66EC00F6FF4D /* lowLevel.spectral_energyband_middle_low_expected.txt in Resources */,
 				C2EC96901FBF6A6500D384C5 /* sin440_sweep_0db.wav in Resources */,
+				C29C3D201FCE66EC00F6FF4D /* rhythm.beats_position_expected.txt in Resources */,
 				C29C3CA61FCD05BE00F6FF4D /* pitchcontourssegmentation_signalinput.txt in Resources */,
+				C29C3D541FCE66EC00F6FF4D /* rhythm.bpm_estimates_expected.txt in Resources */,
+				C29C3D481FCE66EC00F6FF4D /* rhythm.first_peak_bpm_expected.txt in Resources */,
 				C2EC963E1FBF6A2B00D384C5 /* spectrumOutput.txt in Resources */,
+				C29C3CB91FCE481200F6FF4D /* extractor_expected.json in Resources */,
 				C2EC96C21FBF6A8500D384C5 /* impulses_1second_48000.aiff in Resources */,
+				C29C3D781FCE66EC00F6FF4D /* lowLevel.dissonance_expected.txt in Resources */,
 				C2EC967D1FBF6A5800D384C5 /* sin_30_seconds.wav in Resources */,
+				C29C3D421FCE66EC00F6FF4D /* tonal.chords_changes_rate_expected.txt in Resources */,
 				C2EC96591FBF6A3D00D384C5 /* musicbox.wav in Resources */,
+				C29C3D581FCE66EC00F6FF4D /* rhythm.first_peak_weight_expected.txt in Resources */,
 				C2EC96FF1FBF6ACE00D384C5 /* 1kHz_sine_-40LUFS-16bit.flac in Resources */,
 				C2F136261FC66D98006FF2E2 /* autocorrelation_output_nonpow2.txt in Resources */,
 				C2EC965D1FBF6A3D00D384C5 /* dubstep.aac in Resources */,
+				C29C3D061FCE66EC00F6FF4D /* lowLevel.spectral_energyband_low_expected.txt in Resources */,
 				C29C3C701FCD03D200F6FF4D /* pitchcontours_inputsaliences.txt in Resources */,
 				C2EC969A1FBF6A7200D384C5 /* impulses_1second_48000_st.ogg in Resources */,
 				C2EC96ED1FBF6AC700D384C5 /* multistream2.mka in Resources */,
+				C29C3D801FCE66EC00F6FF4D /* tonal.key_strength_expected.txt in Resources */,
 				C2700C291FC873A50028D3F7 /* constantq_expected.txt in Resources */,
 				C2EC96BF1FBF6A8500D384C5 /* impulses_1second_44100.aiff in Resources */,
 				C2EC96DC1FBF6A9200D384C5 /* impulses_1second_44100_st_bad_stream_info.flac in Resources */,
@@ -5429,15 +5837,23 @@
 				C2EC969D1FBF6A7200D384C5 /* impulses_1second_22050.ogg in Resources */,
 				C2EC967A1FBF6A5100D384C5 /* test.ogg in Resources */,
 				C2B7180F1FC0F86600ECB0A6 /* pool.json in Resources */,
+				C29C3CB21FCE43C100F6FF4D /* mozart_c_major_30sec_frames.txt in Resources */,
+				C29C3D6A1FCE66EC00F6FF4D /* tonal.chords_number_rate_expected.txt in Resources */,
 				C2EC96831FBF6A5F00D384C5 /* 4channels.wav in Resources */,
 				C2F1362A1FC66D98006FF2E2 /* autocorrelation_octave_input.txt in Resources */,
+				C29C3D281FCE66EC00F6FF4D /* lowLevel.spectral_energyband_middle_high_expected.txt in Resources */,
 				C2EC96A51FBF6A7800D384C5 /* impulses_1second_48000_st.wav in Resources */,
+				C29C3D521FCE66EC00F6FF4D /* tonal.key_key_expected.txt in Resources */,
 				C2EC96D61FBF6A9200D384C5 /* impulses_1second_48000_st_bad_stream_info.flac in Resources */,
 				C2EC97001FBF6ACE00D384C5 /* seq-3341-7_seq-3342-5-16bit.flac in Resources */,
 				C2F1361C1FC64A28006FF2E2 /* iir_ba.txt in Resources */,
 				C2B718211FC1034F00ECB0A6 /* pitchsalience_varyingsquarewave.txt in Resources */,
 				C2EC96BE1FBF6A8500D384C5 /* impulses_1second_22050_st.aiff in Resources */,
 				C2EC967E1FBF6A5800D384C5 /* sin_30_seconds_eqloud.wav in Resources */,
+				C29C3D041FCE66EC00F6FF4D /* sfx.tristimulus_expected.txt in Resources */,
+				C29C3D2C1FCE66EC00F6FF4D /* lowLevel.spectral_flux_expected.txt in Resources */,
+				C29C3CB71FCE481200F6FF4D /* extractor_input.txt in Resources */,
+				C29C3D121FCE66EC00F6FF4D /* rhythm.second_peak_weight_expected.txt in Resources */,
 				C2EC96B31FBF6A7F00D384C5 /* impulses_1samp_22050_st.wav in Resources */,
 				C2B718301FC10E5C00ECB0A6 /* puretone_saliencevalues.txt in Resources */,
 				C29C3C381FCBA33100F6FF4D /* spectrumcq_expected.txt in Resources */,
@@ -5446,13 +5862,22 @@
 				C2EC96B61FBF6A7F00D384C5 /* impulses_1samp_44100.wav in Resources */,
 				C29C3CAF1FCD064600F6FF4D /* multipitchklapuri_input.txt in Resources */,
 				C2BADBDB1FBFA89B009D02C5 /* windowing_blackmanharris70.txt in Resources */,
+				C29C3D721FCE66EC00F6FF4D /* lowLevel.average_loudness_expected.txt in Resources */,
 				C2B7182E1FC10E5C00ECB0A6 /* whitenoise_saliencevalues.txt in Resources */,
 				C2EC96DA1FBF6A9200D384C5 /* impulses_1second_22050_bad_stream_info.flac in Resources */,
+				C29C3D401FCE66EC00F6FF4D /* lowLevel.barkbands_skewness_expected.txt in Resources */,
+				C29C3D621FCE66EC00F6FF4D /* rhythm.onset_times_expected.txt in Resources */,
+				C29C3D261FCE66EC00F6FF4D /* lowLevel.spectral_crest_expected.txt in Resources */,
+				C29C3D5A1FCE66EC00F6FF4D /* lowLevel.silence_rate_30dB_expected.txt in Resources */,
+				C29C3D341FCE66EC00F6FF4D /* tonal.chords_strength_expected.txt in Resources */,
+				C29C3D5E1FCE66EC00F6FF4D /* rhythm.beats_loudness_band_ratio_expected.txt in Resources */,
 				C2EC96EE1FBF6AC700D384C5 /* multistream1.mka in Resources */,
 				C2B7182C1FC10E5C00ECB0A6 /* sinesweep_saliencevalues.txt in Resources */,
+				C29C3D361FCE66EC00F6FF4D /* sfx.pitch_min_to_total_expected.txt in Resources */,
 				C27C404E1FC335FE005CB8BA /* pitchyin_expectedconfidence.txt in Resources */,
 				C2EC96E51FBF6AA200D384C5 /* impulses_1second_22050.mp3 in Resources */,
 				C2EC968F1FBF6A6500D384C5 /* sin_pattern_decreasing.wav in Resources */,
+				C29C3D841FCE66EC00F6FF4D /* tonal.tuning_frequency_expected.txt in Resources */,
 				C2EC96641FBF6A3D00D384C5 /* techno_loop.wav in Resources */,
 				C2EC96EC1FBF6AB000D384C5 /* 1024_samples.wav in Resources */,
 				C2EC96581FBF6A3D00D384C5 /* Vivaldi_Sonata_5_II_Allegro.wav in Resources */,
@@ -5462,26 +5887,43 @@
 				C2EC96661FBF6A3D00D384C5 /* distorted.wav in Resources */,
 				C2EC96B51FBF6A7F00D384C5 /* impulses_1samp_22050.wav in Resources */,
 				C2EC96A71FBF6A7800D384C5 /* impulses_1second_22050.wav in Resources */,
+				C29C3D6C1FCE66EC00F6FF4D /* lowLevel.spectral_centroid_expected.txt in Resources */,
 				C2EC966B1FBF6A4900D384C5 /* unsupported.sd2 in Resources */,
+				C29C3D0C1FCE66EC00F6FF4D /* lowLevel.spectral_complexity_expected.txt in Resources */,
 				C2EC966C1FBF6A4900D384C5 /* sine_440_5000period.wav in Resources */,
 				C2F1360E1FC64A28006FF2E2 /* iir_y3.txt in Resources */,
+				C29C3D8E1FCE66EC00F6FF4D /* rhythm.bpm_expected.txt in Resources */,
 				C2EC96B41FBF6A7F00D384C5 /* impulses_1samp_44100_st.wav in Resources */,
 				C2ED11741FC759D400BD18D6 /* fftc_output.txt in Resources */,
 				C2EC97081FBF6ACE00D384C5 /* 1kHz_sine_-20LUFS-16bit.flac in Resources */,
+				C29C3D081FCE66EC00F6FF4D /* sfx.pitch_centroid_expected.txt in Resources */,
 				C2BADBE41FBFAAAB009D02C5 /* windowing_hamming.txt in Resources */,
 				C2EC96CD1FBF6A8A00D384C5 /* impulses_1second_44100_st.flac in Resources */,
 				C2EC96821FBF6A5F00D384C5 /* 4channels.flac in Resources */,
 				C29C3C681FCD03D200F6FF4D /* pitchmelodia_expectedpitches.txt in Resources */,
+				C29C3D241FCE66EC00F6FF4D /* lowLevel.pitch_instantaneous_confidence_expected.txt in Resources */,
 				C2B7182A1FC10E5C00ECB0A6 /* varyingsquarewave_saliencevalues.txt in Resources */,
+				C29C3D3A1FCE66EC00F6FF4D /* tonal.thpcp_expected.txt in Resources */,
 				C29C3C841FCD03D200F6FF4D /* pitchcontoursegmentation_expectedonsets.txt in Resources */,
 				C2EC97101FBF6AD400D384C5 /* empty.ogg in Resources */,
 				C29C3C6C1FCD03D200F6FF4D /* pitchfilter_inputpitchconfidence.txt in Resources */,
 				C2EC97021FBF6ACE00D384C5 /* seq-3341-4-16bit-v02.flac in Resources */,
 				C2EC96571FBF6A3D00D384C5 /* dubstep.wav in Resources */,
 				C2EC96451FBF6A3600D384C5 /* 16-Bar-Progression_Boesendorfer_Grand_Piano.aif in Resources */,
+				C29C3D3C1FCE66EC00F6FF4D /* lowLevel.spectral_strongpeak_expected.txt in Resources */,
+				C29C3D561FCE66EC00F6FF4D /* lowLevel.silence_rate_20dB_expected.txt in Resources */,
+				C29C3D941FCE66EC00F6FF4D /* tonal.tuning_diatonic_strength_expected.txt in Resources */,
+				C29C3D161FCE66EC00F6FF4D /* sfx.oddtoevenharmonicenergyratio_expected.txt in Resources */,
+				C29C3D3E1FCE66EC00F6FF4D /* lowLevel.spectral_decrease_expected.txt in Resources */,
+				C29C3D101FCE66EC00F6FF4D /* sfx.pitch_max_to_total_expected.txt in Resources */,
+				C29C3D0E1FCE66EC00F6FF4D /* lowLevel.spectral_skewness_expected.txt in Resources */,
 				C2EC96841FBF6A5F00D384C5 /* 4channels.aiff in Resources */,
 				C29C3C5C1FCD03D200F6FF4D /* pitchcontoursmultimelody_expected.txt in Resources */,
 				C2EC96601FBF6A3D00D384C5 /* cat_purrrr22050.wav in Resources */,
+				C29C3D501FCE66EC00F6FF4D /* tonal.tuning_nontempered_energy_ratio_expected.txt in Resources */,
+				C29C3D741FCE66EC00F6FF4D /* sfx.inharmonicity_expected.txt in Resources */,
+				C29C3D4C1FCE66EC00F6FF4D /* tonal.key_scale_expected.txt in Resources */,
+				C29C3D861FCE66EC00F6FF4D /* rhythm.onset_rate_expected.txt in Resources */,
 				C2B718281FC10E5C00ECB0A6 /* squarewave_saliencevalues.txt in Resources */,
 				C29C3C7A1FCD03D200F6FF4D /* pitchcontours_expectedsaliences.txt in Resources */,
 				C2F136121FC64A28006FF2E2 /* iir_ab.txt in Resources */,
@@ -5490,16 +5932,22 @@
 				C2EC96CC1FBF6A8A00D384C5 /* impulses_1second_48000_st.flac in Resources */,
 				C2EC96921FBF6A6C00D384C5 /* impulses_1second_441002.wav in Resources */,
 				C29C3C741FCD03D200F6FF4D /* pitchcontours_expectedstarttimes.txt in Resources */,
+				C29C3D921FCE66EC00F6FF4D /* tonal.chords_progression_expected.txt in Resources */,
 				C2EC97031FBF6ACE00D384C5 /* seq-3341-3-16bit-v02.flac in Resources */,
 				C29C3C2E1FCB8A6900F6FF4D /* chromagram_expected.txt in Resources */,
 				C2EB6FA11FC72CEA0068D657 /* fft_output.txt in Resources */,
 				C2EC97011FBF6ACE00D384C5 /* seq-3342-1-16bit.flac in Resources */,
 				C2ED117B1FC8606A00BD18D6 /* ifft_input.txt in Resources */,
+				C29C3D821FCE66EC00F6FF4D /* lowLevel.spectral_kurtosis_expected.txt in Resources */,
+				C29C3D7C1FCE66EC00F6FF4D /* rhythm.beats_loudness_expected.txt in Resources */,
 				C2F136141FC64A28006FF2E2 /* iir_b.txt in Resources */,
+				C29C3D441FCE66EC00F6FF4D /* tonal.chords_key_expected.txt in Resources */,
 				C2EC96E81FBF6AA200D384C5 /* impulses_1second_22050_st.mp3 in Resources */,
 				C2EC96CB1FBF6A8A00D384C5 /* impulses_1second_22050.flac in Resources */,
+				C29C3D881FCE66EC00F6FF4D /* tonal.chords_scale_expected.txt in Resources */,
 				C2EC97071FBF6ACE00D384C5 /* seq-3341-5-16bit-v02.flac in Resources */,
 				C2700C2B1FC873A60028D3F7 /* constantq_pythonoutput.txt in Resources */,
+				C29C3D4A1FCE66EC00F6FF4D /* lowLevel.spectral_rms_expected.txt in Resources */,
 				C2EC96BD1FBF6A8500D384C5 /* impulses_1second_44100_st.aiff in Resources */,
 				C2EC970A1FBF6ACE00D384C5 /* seq-3342-2-16bit.flac in Resources */,
 				C29C3C2A1FCA344100F6FF4D /* pool_literal.json in Resources */,
@@ -5509,17 +5957,24 @@
 				C2F136181FC64A28006FF2E2 /* iir_x.txt in Resources */,
 				C2EC96401FBF6A2B00D384C5 /* pitchsalience_whitenoise1.txt in Resources */,
 				C2EC97111FBF6AD400D384C5 /* empty.mp3 in Resources */,
+				C29C3D221FCE66EC00F6FF4D /* lowLevel.hfc_expected.txt in Resources */,
 				C2B718191FC1034F00ECB0A6 /* pitchsalience_puretone.txt in Resources */,
+				C29C3D4E1FCE66EC00F6FF4D /* rhythm.bpm_intervals_expected.txt in Resources */,
 				C2EC96A81FBF6A7800D384C5 /* impulses_1second_44100.wav in Resources */,
 				C2B7181F1FC1034F00ECB0A6 /* pitchsalience_whitenoise2.txt in Resources */,
 				C2EC96D71FBF6A9200D384C5 /* impulses_1second_48000_bad_stream_info.flac in Resources */,
+				C29C3D381FCE66EC00F6FF4D /* rhythm.second_peak_bpm_expected.txt in Resources */,
+				C29C3D301FCE66EC00F6FF4D /* lowLevel.spectral_flatness_db_expected.txt in Resources */,
 				C2EC97121FBF6AD400D384C5 /* empty.aiff in Resources */,
 				C29C3C861FCD03D200F6FF4D /* pitchcontoursegmentation_expectedpitches.txt in Resources */,
+				C29C3D8A1FCE66EC00F6FF4D /* lowLevel.spectral_rolloff_expected.txt in Resources */,
+				C29C3D1C1FCE66EC00F6FF4D /* tonal.tuning_equal_tempered_deviation_expected.txt in Resources */,
 				C2EC97041FBF6ACE00D384C5 /* 1kHz_sine_-26LUFS-16bit.flac in Resources */,
 				C29C3CA91FCD05DD00F6FF4D /* multipitchmelodia_input.txt in Resources */,
 				C27C403C1FC2182D005CB8BA /* spectralpeaks_spectrum.txt in Resources */,
 				C2EC96751FBF6A5100D384C5 /* test-unicode.flac in Resources */,
 				C2F136281FC66D98006FF2E2 /* autocorrelation_output.txt in Resources */,
+				C29C3D761FCE66EC00F6FF4D /* lowLevel.mfcc_expected.txt in Resources */,
 				C2EC968D1FBF6A6500D384C5 /* beat_120_240_180.wav in Resources */,
 				C2EB6FA41FC7303C0068D657 /* fft_input.txt in Resources */,
 				C27C40571FC39A0E005CB8BA /* pitchyinfft_expectedconfidence.txt in Resources */,
@@ -5528,6 +5983,8 @@
 				C2EC96611FBF6A3D00D384C5 /* dubstep.mp3 in Resources */,
 				C2EC963F1FBF6A2B00D384C5 /* frequencyBands.txt in Resources */,
 				C2BADBE21FBFAAAB009D02C5 /* windowing_hann.txt in Resources */,
+				C29C3D8C1FCE66EC00F6FF4D /* sfx.pitch_after_max_to_before_max_energy_ratio_expected.txt in Resources */,
+				C29C3D601FCE66EC00F6FF4D /* lowLevel.sccoeffs_expected.txt in Resources */,
 				C2EC96631FBF6A3D00D384C5 /* cat_purrrr24bit.wav in Resources */,
 				C29C3C6A1FCD03D200F6FF4D /* pitchfilter_inputpitch.txt in Resources */,
 				C2EC96CA1FBF6A8A00D384C5 /* impulses_1second_44100.flac in Resources */,
@@ -5539,6 +5996,7 @@
 				C2F1362C1FC66D98006FF2E2 /* autocorrelation_octave_output.txt in Resources */,
 				C29C3C991FCD03F500F6FF4D /* pitchsaliencefunction_expected.txt in Resources */,
 				C29C3CA31FCD03F500F6FF4D /* pitchsaliencefunctionpeaks_expectedvalues.txt in Resources */,
+				C29C3D901FCE66EC00F6FF4D /* rhythm.confidence_expected.txt in Resources */,
 				C2EC96461FBF6A3600D384C5 /* C4-E♭4-G4_Boesendorfer_Grand_Piano-Trimmed.aif in Resources */,
 				C2EC96CE1FBF6A8A00D384C5 /* impulses_1second_22050_st.flac in Resources */,
 				C2EC96621FBF6A3D00D384C5 /* cat_purrrr32bit.wav in Resources */,
@@ -5551,7 +6009,12 @@
 				C2EC96781FBF6A5100D384C5 /* empty2.mp3 in Resources */,
 				C2700C2D1FC873A60028D3F7 /* constantq_input.txt in Resources */,
 				C2EC96C11FBF6A8500D384C5 /* impulses_1second_22050.aiff in Resources */,
+				C29C3D2A1FCE66EC00F6FF4D /* lowLevel.scvalleys_expected.txt in Resources */,
+				C29C3D681FCE66EC00F6FF4D /* lowLevel.spectral_spread_expected.txt in Resources */,
 				C2EC968E1FBF6A6500D384C5 /* noise_pink.wav in Resources */,
+				C29C3D0A1FCE66EC00F6FF4D /* lowLevel.spectral_energyband_high_expected.txt in Resources */,
+				C29C3D1E1FCE66EC00F6FF4D /* lowLevel.silence_rate_60dB_expected.txt in Resources */,
+				C29C3D7A1FCE66EC00F6FF4D /* lowLevel.pitch_salience_expected.txt in Resources */,
 				C29C3C601FCD03D200F6FF4D /* pitchcontoursmultimelody_inputstarttimes.txt in Resources */,
 				C2EC969C1FBF6A7200D384C5 /* impulses_1second_22050_st.ogg in Resources */,
 				C2EC970F1FBF6AD400D384C5 /* empty.wav in Resources */,
@@ -5559,6 +6022,7 @@
 				C2EC96651FBF6A3D00D384C5 /* dubstep.flac in Resources */,
 				C2EC96E31FBF6AA200D384C5 /* impulses_1second_48000_st.mp3 in Resources */,
 				C29C3C5E1FCD03D200F6FF4D /* pitchcontoursmultimelody_inputbins.txt in Resources */,
+				C29C3D641FCE66EC00F6FF4D /* rhythm.second_peak_spread_expected.txt in Resources */,
 				C2EC96B21FBF6A7F00D384C5 /* impulses_1samp_48000.wav in Resources */,
 				C27C40421FC2188E005CB8BA /* spectralpeaks_expectedmagnitudes.txt in Resources */,
 				C29C3C971FCD03F500F6FF4D /* pitchsaliencefunction_magnitudesinput.txt in Resources */,

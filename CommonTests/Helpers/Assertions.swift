@@ -325,7 +325,8 @@ private func test<T>(array: [[[T]]], using block: (_ element: T) -> Bool) -> Boo
 ///   - block: The block used to test the elements in `array`.
 ///   - element: The element of `array` being tested.
 /// - Returns: `true` if all elements pass and `false` otherwise.
-private func test<T>(array: [T], against value: T,
+private func test<T>(array: [T],
+                     against value: T,
                      using block: (_ element: T, _ value: T) -> Bool) -> Bool
 {
   for actual in array {
@@ -342,7 +343,8 @@ private func test<T>(array: [T], against value: T,
 ///   - block: The block used to test the elements in the elements of `array`.
 ///   - element: The element of an element of `array` being tested.
 /// - Returns: `true` if all elements pass and `false` otherwise.
-private func test<T>(array: [[T]], against value: T,
+private func test<T>(array: [[T]],
+                     against value: T,
                      using block: (_ element: T, _ value: T) -> Bool) -> Bool
 {
   for child in array {
@@ -359,7 +361,8 @@ private func test<T>(array: [[T]], against value: T,
 ///   - block: The block used to test the elements in the elements of the elements of `array`.
 ///   - element: The element of an element of an element of `array` being tested.
 /// - Returns: `true` if all elements pass and `false` otherwise.
-private func test<T>(array: [[[T]]], against value: T,
+private func test<T>(array: [[[T]]],
+                     against value: T,
                      using block: (_ element: T, _ value: T) -> Bool) -> Bool
 {
   for child in array {
@@ -373,15 +376,17 @@ private func test<T>(array: [[[T]]], against value: T,
 /// - Parameters:
 ///   - array1: The first array of elements to test.
 ///   - array2: The second array of elements to test.
+///   - countMismatch: A boolean flag for indicating whether two arrays had differing counts.
 ///   - block: The block used to test the elements in `array1` and `array2`.
 ///   - element1: The element of `array1` being tested.
 ///   - element2: The element of `array2` being tested.
 /// - Returns: `true` if all element pairs pass and `false` otherwise.
 private func test<T>(array array1: [T],
                      against array2: [T],
+                     countMismatch: inout Bool,
                      using block: (_ element1: T, _ element2: T) -> Bool) -> Bool
 {
-  guard array1.count == array2.count else { return false }
+  guard array1.count == array2.count else { countMismatch = true; return false }
   for (element1, element2) in zip(array1, array2) {
     guard block(element1, element2) else { return false }
   }
@@ -394,17 +399,21 @@ private func test<T>(array array1: [T],
 /// - Parameters:
 ///   - array1: The first array of elements to test.
 ///   - array2: The second array of elements to test.
+///   - countMismatch: A boolean flag for indicating whether two arrays had differing counts.
 ///   - block: The block used to test the elements in the elements of `array1` and `array2`.
 ///   - element1: The element of an element of `array1` being tested.
 ///   - element2: The element of an element of `array2` being tested.
 /// - Returns: `true` if all element pairs pass and `false` otherwise.
 private func test<T>(array array1: [[T]],
                      against array2: [[T]],
+                     countMismatch: inout Bool,
                      using block: (_ element1: T, _ element2: T) -> Bool) -> Bool
 {
-  guard array1.count == array2.count else { return false }
+  guard array1.count == array2.count else { countMismatch = true; return false }
   for (child1, child2) in zip(array1, array2) {
-    guard test(array: child1, against: child2, using: block) else { return false }
+    guard test(array: child1, against: child2, countMismatch: &countMismatch, using: block) else {
+      return false
+    }
   }
   return true
 }
@@ -415,6 +424,7 @@ private func test<T>(array array1: [[T]],
 /// - Parameters:
 ///   - array1: The first array of elements to test.
 ///   - array2: The second array of elements to test.
+///   - countMismatch: A boolean flag for indicating whether two arrays had differing counts.
 ///   - block: The block used to test the elements in the elements of the elements of `array1`
 ///            and `array2`.
 ///   - element1: The element of an element of an element of `array1` being tested.
@@ -422,11 +432,14 @@ private func test<T>(array array1: [[T]],
 /// - Returns: `true` if all element pairs pass and `false` otherwise.
 private func test<T>(array array1: [[[T]]],
                      against array2: [[[T]]],
+                     countMismatch: inout Bool,
                      using block: (_ element1: T, _ element2: T) -> Bool) -> Bool
 {
-  guard array1.count == array2.count else { return false }
+  guard array1.count == array2.count else { countMismatch = true; return false }
   for (child1, child2) in zip(array1, array2) {
-    guard test(array: child1, against: child2, using: block) else { return false }
+    guard test(array: child1, against: child2, countMismatch: &countMismatch, using: block) else {
+      return false
+    }
   }
   return true
 }
@@ -484,10 +497,20 @@ public func XCTAssertEqual<T:Equatable>(_ array1: [[T]],
                                         line: UInt = #line)
 {
 
-  guard !test(array: array1, against: array2, using: ==) else { return }
+  var countMismatch = false
+  guard !test(array: array1, against: array2, countMismatch: &countMismatch, using: ==) else {
+    return
+  }
 
-  let failureDescription = String(format: _XCTFailureFormat(.equal, 100),
-                                  description(of: array1), description(of: array2))
+  let failureDescription =
+    countMismatch
+      ? """
+        XCTAssertEqual failed: The two arrays do not contain the same number of elements.
+        """
+      : """
+        XCTAssertEqual failed: ("\(description(of: array1))") is not equal to \
+        ("\(description(of: array2))")
+        """
 
   _XCTPreformattedFailureHandler(_XCTCurrentTestCase(),
                                  true,
@@ -514,10 +537,20 @@ public func XCTAssertEqual<T:Equatable>(_ array1: [[[T]]],
                                         line: UInt = #line)
 {
 
-  guard !test(array: array1, against: array2, using: ==) else { return }
+  var countMismatch = false
+  guard !test(array: array1, against: array2, countMismatch: &countMismatch, using: ==) else {
+    return
+  }
 
-  let failureDescription = String(format: _XCTFailureFormat(.equal, 100),
-                                  description(of: array1), description(of: array2))
+  let failureDescription =
+    countMismatch
+      ? """
+        XCTAssertEqual failed: The two arrays do not contain the same number of elements.
+        """
+      : """
+        XCTAssertEqual failed: ("\(description(of: array1))") is not equal to \
+        ("\(description(of: array2))")
+        """
 
   _XCTPreformattedFailureHandler(_XCTCurrentTestCase(),
                                  true,
@@ -546,12 +579,20 @@ public func XCTAssertEqual<T:FloatingPoint>(_ array1: [T],
                                             line: UInt = #line)
 {
 
-  guard !test(array: array1, against: array2, using: {
+  var countMismatch = false
+  guard !test(array: array1, against: array2, countMismatch: &countMismatch, using: {
     !($0.isNaN || $1.isNaN) && abs($0 - $1) <= accuracy
   }) else { return }
 
-  let failureDescription = String(format: _XCTFailureFormat(.equalWithAccuracy, 100),
-                                  description(of: array1), description(of: array2), "\(accuracy)")
+  let failureDescription =
+    countMismatch
+      ? """
+        XCTAssertEqual failed: The two arrays do not contain the same number of elements.
+        """
+      : """
+        XCTAssertEqual failed: ("\(description(of: array1))") is not equal to \
+        ("\(description(of: array2))") +/- ("\(accuracy)")
+        """
 
   _XCTPreformattedFailureHandler(_XCTCurrentTestCase(),
                                  true,
@@ -581,12 +622,20 @@ public func XCTAssertEqual<T:FloatingPoint>(_ array1: [[T]],
                                             line: UInt = #line)
 {
 
-  guard !test(array: array1, against: array2, using: {
+  var countMismatch = false
+  guard !test(array: array1, against: array2, countMismatch: &countMismatch, using: {
     !($0.isNaN || $1.isNaN) && abs($0 - $1) <= accuracy
   }) else { return }
 
-  let failureDescription = String(format: _XCTFailureFormat(.equalWithAccuracy, 100),
-                                  description(of: array1), description(of: array2), "\(accuracy)")
+  let failureDescription =
+    countMismatch
+      ? """
+        XCTAssertEqual failed: The two arrays do not contain the same number of elements.
+        """
+      : """
+        XCTAssertEqual failed: ("\(description(of: array1))") is not equal to \
+        ("\(description(of: array2))") +/- ("\(accuracy)")
+        """
 
   _XCTPreformattedFailureHandler(_XCTCurrentTestCase(),
                                  true,
@@ -616,12 +665,20 @@ public func XCTAssertEqual<T:FloatingPoint>(_ array1: [[[T]]],
                                             line: UInt = #line)
 {
 
-  guard !test(array: array1, against: array2, using: {
+  var countMismatch = false
+  guard !test(array: array1, against: array2, countMismatch: &countMismatch, using: {
     !($0.isNaN || $1.isNaN) && abs($0 - $1) <= accuracy
   }) else { return }
 
-  let failureDescription = String(format: _XCTFailureFormat(.equalWithAccuracy, 100),
-                                  description(of: array1), description(of: array2), "\(accuracy)")
+  let failureDescription =
+    countMismatch
+      ? """
+        XCTAssertEqual failed: The two arrays do not contain the same number of elements.
+        """
+      : """
+        XCTAssertEqual failed: ("\(description(of: array1))") is not equal to \
+        ("\(description(of: array2))") +/- ("\(accuracy)")
+        """
 
   _XCTPreformattedFailureHandler(_XCTCurrentTestCase(),
                                  true,
@@ -650,15 +707,22 @@ public func XCTAssertEqual(_ array1: [DSPComplex],
                            line: UInt = #line)
 {
 
-  guard !test(array: array1, against: array2, using: {
+  var countMismatch = false
+  guard !test(array: array1, against: array2, countMismatch: &countMismatch, using: {
     !($0.real.isNaN || $1.real.isNaN || $0.imag.isNaN || $1.imag.isNaN)
       && abs($0.real - $1.real) <= accuracy
       && abs($0.imag - $1.imag) <= accuracy
   }) else { return }
 
-  let failureDescription = String(format: _XCTFailureFormat(.equalWithAccuracy, 100),
-                                  description(of: array1), description(of: array2),
-                                  accuracy.description)
+  let failureDescription =
+    countMismatch
+      ? """
+        XCTAssertEqual failed: The two arrays do not contain the same number of elements.
+        """
+      : """
+        XCTAssertEqual failed: ("\(description(of: array1))") is not equal to \
+        ("\(description(of: array2))") +/- ("\(accuracy)")
+        """
 
   _XCTPreformattedFailureHandler(_XCTCurrentTestCase(),
                                  true,
@@ -687,15 +751,22 @@ public func XCTAssertEqual(_ array1: [[DSPComplex]],
                            line: UInt = #line)
 {
 
-  guard !test(array: array1, against: array2, using: {
+  var countMismatch = false
+  guard !test(array: array1, against: array2, countMismatch: &countMismatch, using: {
     !($0.real.isNaN || $1.real.isNaN || $0.imag.isNaN || $1.imag.isNaN)
       && abs($0.real - $1.real) <= accuracy
       && abs($0.imag - $1.imag) <= accuracy
   }) else { return }
 
-  let failureDescription = String(format: _XCTFailureFormat(.equalWithAccuracy, 100),
-                                  description(of: array1), description(of: array2),
-                                  accuracy.description)
+  let failureDescription =
+    countMismatch
+      ? """
+        XCTAssertEqual failed: The two arrays do not contain the same number of elements.
+        """
+      : """
+        XCTAssertEqual failed: ("\(description(of: array1))") is not equal to \
+        ("\(description(of: array2))") +/- ("\(accuracy)")
+        """
 
   _XCTPreformattedFailureHandler(_XCTCurrentTestCase(),
                                  true,
@@ -724,15 +795,22 @@ public func XCTAssertEqual(_ array1: [[[DSPComplex]]],
                            line: UInt = #line)
 {
 
-  guard !test(array: array1, against: array2, using: {
+  var countMismatch = false
+  guard !test(array: array1, against: array2, countMismatch: &countMismatch, using: {
     !($0.real.isNaN || $1.real.isNaN || $0.imag.isNaN || $1.imag.isNaN)
       && abs($0.real - $1.real) <= accuracy
       && abs($0.imag - $1.imag) <= accuracy
   }) else { return }
 
-  let failureDescription = String(format: _XCTFailureFormat(.equalWithAccuracy, 100),
-                                  description(of: array1), description(of: array2),
-                                  accuracy.description)
+  let failureDescription =
+    countMismatch
+      ? """
+        XCTAssertEqual failed: The two arrays do not contain the same number of elements.
+        """
+      : """
+        XCTAssertEqual failed: ("\(description(of: array1))") is not equal to \
+        ("\(description(of: array2))") +/- ("\(accuracy)")
+        """
 
   _XCTPreformattedFailureHandler(_XCTCurrentTestCase(),
                                  true,
@@ -761,14 +839,20 @@ public func XCTAssertEqual<T:FloatingPoint>(_ array1: [T],
                                             line: UInt = #line)
 {
 
-  guard !test(array: array1, against: array2, using: {
+  var countMismatch = false
+  guard !test(array: array1, against: array2, countMismatch: &countMismatch, using: {
     equal($0, $1, deviation: deviation)
   }) else { return }
 
-  let failureDescription = """
-    XCTAssertEqual failed: ("\(description(of: array1))") is not equal to \
-    ("\(description(of: array2))") with deviation  ("\(deviation)")
-    """
+  let failureDescription =
+    countMismatch
+      ? """
+        XCTAssertEqual failed: The two arrays do not contain the same number of elements.
+        """
+      : """
+        XCTAssertEqual failed: ("\(description(of: array1))") is not equal to \
+        ("\(description(of: array2))") with deviation ("\(deviation)")
+        """
 
   _XCTPreformattedFailureHandler(_XCTCurrentTestCase(),
                                  true,
@@ -798,14 +882,20 @@ public func XCTAssertEqual<T:FloatingPoint>(_ array1: [[T]],
                                             line: UInt = #line)
 {
 
-  guard !test(array: array1, against: array2, using: {
+  var countMismatch = false
+  guard !test(array: array1, against: array2, countMismatch: &countMismatch, using: {
     equal($0, $1, deviation: deviation)
   }) else { return }
 
-  let failureDescription = """
-    XCTAssertEqual failed: ("\(description(of: array1))") is not equal to \
-    ("\(description(of: array2))") with deviation ("\(deviation)")
-    """
+  let failureDescription =
+    countMismatch
+      ? """
+        XCTAssertEqual failed: The two arrays do not contain the same number of elements.
+        """
+      : """
+        XCTAssertEqual failed: ("\(description(of: array1))") is not equal to \
+        ("\(description(of: array2))") with deviation ("\(deviation)")
+        """
 
   _XCTPreformattedFailureHandler(_XCTCurrentTestCase(),
                                  true,
@@ -835,14 +925,20 @@ public func XCTAssertEqual<T:FloatingPoint>(_ array1: [[[T]]],
                                             line: UInt = #line)
 {
 
-  guard !test(array: array1, against: array2, using: {
+  var countMismatch = false
+  guard !test(array: array1, against: array2, countMismatch: &countMismatch, using: {
     equal($0, $1, deviation: deviation)
   }) else { return }
 
-  let failureDescription = """
-    XCTAssertEqual failed: ("\(description(of: array1))") is not equal to \
-    ("\(description(of: array2))") with deviation ("\(deviation)")
-    """
+  let failureDescription =
+    countMismatch
+      ? """
+        XCTAssertEqual failed: The two arrays do not contain the same number of elements.
+        """
+      : """
+        XCTAssertEqual failed: ("\(description(of: array1))") is not equal to \
+        ("\(description(of: array2))") with deviation ("\(deviation)")
+        """
 
   _XCTPreformattedFailureHandler(_XCTCurrentTestCase(),
                                  true,
@@ -871,14 +967,20 @@ public func XCTAssertEqual(_ array1: [DSPComplex],
                            line: UInt = #line)
 {
 
-  guard !test(array: array1, against: array2, using: {
+  var countMismatch = false
+  guard !test(array: array1, against: array2, countMismatch: &countMismatch, using: {
     equal($0.real, $1.real, deviation: deviation) && equal($0.imag, $1.imag, deviation: deviation)
   }) else { return }
 
-  let failureDescription = """
-    XCTAssertEqual failed: ("\(description(of: array1))") is not equal to \
-    ("\(description(of: array2))") with deviation ("\(deviation)")
-    """
+  let failureDescription =
+    countMismatch
+      ? """
+        XCTAssertEqual failed: The two arrays do not contain the same number of elements.
+        """
+      : """
+        XCTAssertEqual failed: ("\(description(of: array1))") is not equal to \
+        ("\(description(of: array2))") with deviation ("\(deviation)")
+        """
 
   _XCTPreformattedFailureHandler(_XCTCurrentTestCase(),
                                  true,
@@ -907,14 +1009,20 @@ public func XCTAssertEqual(_ array1: [[DSPComplex]],
                            line: UInt = #line)
 {
 
-  guard !test(array: array1, against: array2, using: {
+  var countMismatch = false
+  guard !test(array: array1, against: array2, countMismatch: &countMismatch, using: {
     equal($0.real, $1.real, deviation: deviation) && equal($0.imag, $1.imag, deviation: deviation)
   }) else { return }
 
-  let failureDescription = """
-    XCTAssertEqual failed: ("\(description(of: array1))") is not equal to \
-    ("\(description(of: array2))") with deviation ("\(deviation)")
-    """
+  let failureDescription =
+    countMismatch
+      ? """
+        XCTAssertEqual failed: The two arrays do not contain the same number of elements.
+        """
+      : """
+        XCTAssertEqual failed: ("\(description(of: array1))") is not equal to \
+        ("\(description(of: array2))") with deviation ("\(deviation)")
+        """
 
   _XCTPreformattedFailureHandler(_XCTCurrentTestCase(),
                                  true,
@@ -943,14 +1051,20 @@ public func XCTAssertEqual(_ array1: [[[DSPComplex]]],
                            line: UInt = #line)
 {
 
-  guard !test(array: array1, against: array2, using: {
+  var countMismatch = false
+  guard !test(array: array1, against: array2, countMismatch: &countMismatch, using: {
     equal($0.real, $1.real, deviation: deviation) && equal($0.imag, $1.imag, deviation: deviation)
   }) else { return }
 
-  let failureDescription = """
-    XCTAssertEqual failed: ("\(description(of: array1))") is not equal to \
-    ("\(description(of: array2))") with deviation ("\(deviation)")
-    """
+  let failureDescription =
+    countMismatch
+      ? """
+        XCTAssertEqual failed: The two arrays do not contain the same number of elements.
+        """
+      : """
+        XCTAssertEqual failed: ("\(description(of: array1))") is not equal to \
+        ("\(description(of: array2))") with deviation ("\(deviation)")
+        """
 
   _XCTPreformattedFailureHandler(_XCTCurrentTestCase(),
                                  true,
@@ -1200,8 +1314,6 @@ public func XCTAssertAverageEqual<T:FloatingPoint>(_ array: [T],
                                                    line: UInt = #line)
 {
 
-//  let average = array.reduce(0, +) / T(array.count)
-
   let average = mean(array)
 
   guard abs(average - expected) > accuracy else  { return }
@@ -1238,8 +1350,6 @@ public func XCTAssertAverageEqual<T:FloatingPoint>(_ array: [T],
                                                    file: StaticString = #file,
                                                    line: UInt = #line)
 {
-
-//  let average = array.reduce(0, +) / T(array.count)
 
   let average = mean(array)
 

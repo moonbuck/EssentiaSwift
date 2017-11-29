@@ -54,14 +54,61 @@ public func monoBufferData(url: URL, forceEvenCount: Bool = false) -> [Float] {
 
 }
 
-/// Simple helper that loads values from a text file into an array of float values.
+/// Simple helper that retrieves a float value stored in a text file.
 ///
 /// - Parameter name: The name of the bundled file.
-/// - Returns: An array with the float values parsed from the file.
-public func loadVector(name: String) -> [Float] {
+/// - Returns: The float value initialized with the content of the bundled file.
+public func loadValue(name: String) -> Float {
   let url = bundleURL(name: name, ext: "txt")
   guard let text = try? String(contentsOf: url) else {
     fatalError("Failed to load text from file: '\(name).txt'.")
+  }
+  return (text as NSString).floatValue
+}
+
+/// Simple helper that retrieves a string value stored in a text file.
+///
+/// - Parameter name: The name of the bundled file.
+/// - Returns: The string contained in the file with `name` trimmed of any whitespace.
+public func loadString(name: String) -> String {
+  let url = bundleURL(name: name, ext: "txt")
+  guard let text = try? String(contentsOf: url) else {
+    fatalError("Failed to load text from file: '\(name).txt'.")
+  }
+  return (text as NSString).trimmingCharacters(in: .whitespacesAndNewlines)
+}
+
+/// Simple helper that retrieves a vector of string values stored in a text file.
+///
+/// - Parameters:
+///   - name: The name of the bundled file.
+///   - discardEmptyLastLine: Whether to discard the last line of the file if empty.
+/// - Returns: The vector of strings contained in the file with `name` trimmed of any whitespace.
+public func loadStringVector(name: String, discardEmptyLastLine: Bool = true) -> [String] {
+  let url = bundleURL(name: name, ext: "txt")
+  guard var text = try? String(contentsOf: url) else {
+    fatalError("Failed to load text from file: '\(name).txt'.")
+  }
+  if discardEmptyLastLine && text.hasSuffix("\n") {
+    _ = text.removeLast()
+  }
+  return (text.split(separator: "\n") as [NSString])
+    .map({$0.trimmingCharacters(in: .whitespacesAndNewlines)})
+}
+
+/// Simple helper that loads values from a text file into an array of float values.
+///
+/// - Parameters:
+///   - name: The name of the bundled file.
+///   - discardEmptyLastLine: Whether to discard the last line of the file if empty.
+/// - Returns: An array with the float values parsed from the file.
+public func loadVector(name: String, discardEmptyLastLine: Bool = true) -> [Float] {
+  let url = bundleURL(name: name, ext: "txt")
+  guard var text = try? String(contentsOf: url) else {
+    fatalError("Failed to load text from file: '\(name).txt'.")
+  }
+  if discardEmptyLastLine && text.hasSuffix("\n") {
+    _ = text.removeLast()
   }
   return (text.split(separator: "\n") as [NSString]).map(\.floatValue)
 }
@@ -71,15 +118,20 @@ public func loadVector(name: String) -> [Float] {
 ///
 /// - Parameters:
 ///   - name: The name of the bundled file.
+///   - discardEmptyLastLine: Whether to discard the last line of the file if empty.
 /// - Returns: A two dimensional array of the float values parsed from the file.
-public func loadVectorVector(name: String) -> [[Float]] {
+public func loadVectorVector(name: String, discardEmptyLastLine: Bool = true) -> [[Float]] {
   let url = bundleURL(name: name, ext: "txt")
-  guard let text = try? String(contentsOf: url) else {
+  guard var text = try? String(contentsOf: url) else {
     fatalError("Failed to load text from file: '\(name).txt'.")
   }
 
-  return (text as NSString).components(separatedBy: "\n\n")
-          .map({($0.split(separator: "\n") as [NSString]).map(\.floatValue)})
+  if discardEmptyLastLine && text.hasSuffix("\n") {
+    _ = text.removeLast()
+  }
+
+  return (text as NSString).components(separatedBy: "\n")
+          .map({($0.split(separator: " ") as [NSString]).map(\.floatValue)})
 }
 
 /// Simple helper that loads space-delimited real and imaginary parts for newline-delimited

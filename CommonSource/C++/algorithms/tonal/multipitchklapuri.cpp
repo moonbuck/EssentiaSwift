@@ -338,7 +338,8 @@ int MultiPitchKlapuri::frequencyToCentBin(Real frequency) {
   // formula: floor(1200 * log2(frequency / _referenceFrequency) / _binResolution + 0.5)
   //  --> 1200 * (log2(frequency) - log2(_referenceFrequency)) / _binResolution + 0.5
   //  --> 1200 * log2(frequency) / _binResolution + (0.5 - 1200 * log2(_referenceFrequency) / _binResolution)
-  return floor(_binsInOctave * log2(frequency) + _referenceTerm);
+  float result = floor(_binsInOctave * log2(frequency) + _referenceTerm);
+  return isnan(result) || isinf(result) ? 0 : static_cast<int>(result);
 }
 
 Real MultiPitchKlapuri::getWeight(int centBin, int harmonicNumber) {
