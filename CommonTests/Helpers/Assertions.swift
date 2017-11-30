@@ -179,6 +179,21 @@ private func differenceMean(_ array1: [DSPComplex],
 
 }
 
+/// Helper that calculates the percent deviation from one value to another.
+///
+/// - Parameters:
+///   - v1: The first value.
+///   - v2: The second value.
+/// - Returns: The percent deviation from `v1` to `v2`.
+public func percentDeviation(_ v1: Float, _ v2: Float) -> Float {
+  switch (v1, v2) {
+    case (0, 0): return 0
+    case (_, 0): return .infinity
+    case (0, _): return 100
+    default:     return abs(v2 - v1) / abs(v2) * 100
+  }
+}
+
 /// Calculates the percent deviation between two arrays of floating point numbers.
 ///
 /// - Parameters:
