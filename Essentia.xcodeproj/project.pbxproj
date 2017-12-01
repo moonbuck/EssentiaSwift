@@ -1539,6 +1539,8 @@
 		C29C3D921FCE66EC00F6FF4D /* tonal.chords_progression_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3D011FCE66EB00F6FF4D /* tonal.chords_progression_expected.txt */; };
 		C29C3D931FCE66EC00F6FF4D /* tonal.tuning_diatonic_strength_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3D021FCE66EC00F6FF4D /* tonal.tuning_diatonic_strength_expected.txt */; };
 		C29C3D941FCE66EC00F6FF4D /* tonal.tuning_diatonic_strength_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3D021FCE66EC00F6FF4D /* tonal.tuning_diatonic_strength_expected.txt */; };
+		C2ADA60E1FD0F082006704FD /* MathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2ADA60D1FD0F082006704FD /* MathExtensions.swift */; };
+		C2ADA60F1FD0F082006704FD /* MathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2ADA60D1FD0F082006704FD /* MathExtensions.swift */; };
 		C2B7180E1FC0F86600ECB0A6 /* pool.json in Resources */ = {isa = PBXBuildFile; fileRef = C2B7180D1FC0F86600ECB0A6 /* pool.json */; };
 		C2B7180F1FC0F86600ECB0A6 /* pool.json in Resources */ = {isa = PBXBuildFile; fileRef = C2B7180D1FC0F86600ECB0A6 /* pool.json */; };
 		C2B718161FC1034F00ECB0A6 /* pitchsalience_sinesweep.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2B718101FC1034E00ECB0A6 /* pitchsalience_sinesweep.txt */; };
@@ -2713,6 +2715,7 @@
 		C29C3D001FCE66EB00F6FF4D /* rhythm.confidence_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rhythm.confidence_expected.txt; sourceTree = "<group>"; };
 		C29C3D011FCE66EB00F6FF4D /* tonal.chords_progression_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tonal.chords_progression_expected.txt; sourceTree = "<group>"; };
 		C29C3D021FCE66EC00F6FF4D /* tonal.tuning_diatonic_strength_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tonal.tuning_diatonic_strength_expected.txt; sourceTree = "<group>"; };
+		C2ADA60D1FD0F082006704FD /* MathExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathExtensions.swift; sourceTree = "<group>"; };
 		C2B7180D1FC0F86600ECB0A6 /* pool.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pool.json; sourceTree = "<group>"; };
 		C2B718101FC1034E00ECB0A6 /* pitchsalience_sinesweep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchsalience_sinesweep.txt; sourceTree = "<group>"; };
 		C2B718111FC1034E00ECB0A6 /* pitchsalience_puretone.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchsalience_puretone.txt; sourceTree = "<group>"; };
@@ -4484,6 +4487,7 @@
 				C2EC95B31FBF6A1500D384C5 /* Attachments.swift */,
 				C2D966AB1FC5D170005736A9 /* FileHelpers.swift */,
 				C2126EF01FCF1E3E0001C774 /* LoggingHelpers.swift */,
+				C2ADA60D1FD0F082006704FD /* MathExtensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -6358,6 +6362,7 @@
 				C2EC97181FBF6B0E00D384C5 /* Assertions.swift in Sources */,
 				C2D966AC1FC5D170005736A9 /* FileHelpers.swift in Sources */,
 				C2D966A61FC5D0B1005736A9 /* FiltersAlgorithmTests.swift in Sources */,
+				C2ADA60E1FD0F082006704FD /* MathExtensions.swift in Sources */,
 				C2D9669D1FC5D023005736A9 /* SpectralAlgorithmTests.swift in Sources */,
 				C2F1361E1FC64AEF006FF2E2 /* MathAlgorithmTests.swift in Sources */,
 				C2D966A01FC5D03D005736A9 /* IOAlgorithmTests.swift in Sources */,
@@ -6698,6 +6703,7 @@
 				C2EC971D1FBF6B0F00D384C5 /* Assertions.swift in Sources */,
 				C2D966AD1FC5D170005736A9 /* FileHelpers.swift in Sources */,
 				C2D966A71FC5D0B1005736A9 /* FiltersAlgorithmTests.swift in Sources */,
+				C2ADA60F1FD0F082006704FD /* MathExtensions.swift in Sources */,
 				C2D9669E1FC5D023005736A9 /* SpectralAlgorithmTests.swift in Sources */,
 				C2F1361F1FC64AEF006FF2E2 /* MathAlgorithmTests.swift in Sources */,
 				C2D966A11FC5D03D005736A9 /* IOAlgorithmTests.swift in Sources */,

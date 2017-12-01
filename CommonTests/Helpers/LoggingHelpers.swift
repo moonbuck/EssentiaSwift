@@ -96,10 +96,10 @@ public func dumpComparison<Target>(of array1: [Float],
 
   for (index, (value1, value2)) in zip(array1, array2).enumerated() {
 
-    let difference = value2 - value1
+    let difference = abs(value2 - value1)
     differenceValues.append(difference)
 
-    let deviation = percentDeviation(value1, value2)
+    let deviation = value1.deviation(from: value2)
     deviationValues.append(deviation)
 
     print(format(index: index),
@@ -127,11 +127,11 @@ public func dumpComparison<Target>(of array1: [Float],
     }
     return nil
   } else {
-    var averageDifference: Float = 0, averageDeviation: Float = 0
+    let averageDifference = differenceValues.mean, averageDeviation = deviationValues.mean
     print(line, to: &target)
     print(averagesLabel,
-          formatAverage(for: differenceValues, result: &averageDifference),
-          formatAverage(for: deviationValues, isPercent: true, result: &averageDeviation),
+          format(value: averageDifference),
+          format(value: averageDeviation, isPercent: true),
           separator: "  ",
           to: &target)
     return (difference: averageDifference, deviation: averageDeviation)
@@ -178,8 +178,8 @@ public func dumpComparison<Target>(of array1: [[Float]], with array2: [[Float]],
     }
   } else if !nilResult {
     print("", to: &target)
-    print("Average difference for array:\(formatAverage(for: differenceValues))", to: &target)
-    print("Average deviation for array:\(formatAverage(for: deviationValues, isPercent: true))",
+    print("Average difference for array:\(format(value: differenceValues.mean))", to: &target)
+    print("Average deviation for array:\(format(value: deviationValues.mean, isPercent: true))",
       to: &target)
   }
 

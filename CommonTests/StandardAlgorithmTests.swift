@@ -1831,8 +1831,8 @@ class StandardAlgorithmTests: XCTestCase {
     let actual = constantQ[complexRealVecOutput: .constantq]
     let expected = loadComplexVector(name: "constantq_expected")
 
-    XCTAssertDifferenceMeanLessThanOrEqual(actual, expected, 1.130e-4, accuracy: 1e-7)
-    XCTAssertPercentDeviationLessThanOrEqual(actual, expected, 2e-3, accuracy: 1e-3)
+    XCTAssertDifferenceMeanLessThanOrEqual(actual, expected, 1.131e-4)
+    XCTAssertPercentDeviationLessThanOrEqual(actual, expected, 3e-3)
     
   }
 
