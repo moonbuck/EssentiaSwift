@@ -23,6 +23,20 @@ extension DSPComplex: CustomStringConvertible {
 
 }
 
+extension DSPComplex: Equatable {
+
+  /// Equatable support.
+  ///
+  /// - Parameters:
+  ///   - lhs: The first value.
+  ///   - rhs: The second value.
+  /// - Returns: `true` if `lhs.real == rhs.real` and `lhs.imag == rhs.imag`; `false` otherwise.
+  public static func ==(lhs: DSPComplex, rhs: DSPComplex) -> Bool {
+    return lhs.real == rhs.real && lhs.imag == rhs.imag
+  }
+
+}
+
 /// An operator for designating a complex number's imaginary part.
 postfix operator ⍳
 

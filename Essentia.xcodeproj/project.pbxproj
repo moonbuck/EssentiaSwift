@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C2126EF11FCF1E3E0001C774 /* LoggingHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2126EF01FCF1E3E0001C774 /* LoggingHelpers.swift */; };
-		C2126EF21FCF1E3E0001C774 /* LoggingHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2126EF01FCF1E3E0001C774 /* LoggingHelpers.swift */; };
+		C2126EF11FCF1E3E0001C774 /* ComparisonTableAttachments.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2126EF01FCF1E3E0001C774 /* ComparisonTableAttachments.swift */; };
+		C2126EF21FCF1E3E0001C774 /* ComparisonTableAttachments.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2126EF01FCF1E3E0001C774 /* ComparisonTableAttachments.swift */; };
 		C23A332D1FBF571A0083F6CE /* Essentia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C23A33231FBF571A0083F6CE /* Essentia.framework */; };
 		C23A334B1FBF57370083F6CE /* Essentia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C23A33421FBF57360083F6CE /* Essentia.framework */; };
 		C23A335F1FBF580F0083F6CE /* Essentia.h in Headers */ = {isa = PBXBuildFile; fileRef = C23A335A1FBF57870083F6CE /* Essentia.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1275,6 +1275,10 @@
 		C23A3B5A1FBF636B0083F6CE /* Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23A33BC1FBF5A2A0083F6CE /* Debugging.swift */; };
 		C23A3B601FBF649E0083F6CE /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C23A3B5E1FBF64510083F6CE /* Accelerate.framework */; };
 		C23A3B611FBF64AC0083F6CE /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C23A3B5C1FBF64220083F6CE /* Accelerate.framework */; };
+		C241D5E71FD1C819007D7664 /* InternalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C241D5E61FD1C819007D7664 /* InternalTests.swift */; };
+		C241D5E81FD1C819007D7664 /* InternalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C241D5E61FD1C819007D7664 /* InternalTests.swift */; };
+		C241D5EA1FD1E10D007D7664 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = C241D5E91FD1E10D007D7664 /* test.swift */; };
+		C241D5EB1FD1E10D007D7664 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = C241D5E91FD1E10D007D7664 /* test.swift */; };
 		C2700C281FC873A50028D3F7 /* constantq_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2700C251FC873A50028D3F7 /* constantq_expected.txt */; };
 		C2700C291FC873A50028D3F7 /* constantq_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2700C251FC873A50028D3F7 /* constantq_expected.txt */; };
 		C2700C2A1FC873A50028D3F7 /* constantq_pythonoutput.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2700C261FC873A50028D3F7 /* constantq_pythonoutput.txt */; };
@@ -1901,7 +1905,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C2126EF01FCF1E3E0001C774 /* LoggingHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingHelpers.swift; sourceTree = "<group>"; };
+		C2126EF01FCF1E3E0001C774 /* ComparisonTableAttachments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonTableAttachments.swift; sourceTree = "<group>"; };
 		C23A33231FBF571A0083F6CE /* Essentia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Essentia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C23A332C1FBF571A0083F6CE /* Essentia_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Essentia_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C23A33421FBF57360083F6CE /* Essentia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Essentia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2583,6 +2587,8 @@
 		C23A3A7C1FBF5E390083F6CE /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
 		C23A3B5C1FBF64220083F6CE /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Accelerate.framework; sourceTree = DEVELOPER_DIR; };
 		C23A3B5E1FBF64510083F6CE /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		C241D5E61FD1C819007D7664 /* InternalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalTests.swift; sourceTree = "<group>"; };
+		C241D5E91FD1E10D007D7664 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		C2700C251FC873A50028D3F7 /* constantq_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = constantq_expected.txt; sourceTree = "<group>"; };
 		C2700C261FC873A50028D3F7 /* constantq_pythonoutput.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = constantq_pythonoutput.txt; sourceTree = "<group>"; };
 		C2700C271FC873A50028D3F7 /* constantq_input.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = constantq_input.txt; sourceTree = "<group>"; };
@@ -2957,6 +2963,7 @@
 		C23A335C1FBF57BF0083F6CE /* CommonTests */ = {
 			isa = PBXGroup;
 			children = (
+				C241D5E61FD1C819007D7664 /* InternalTests.swift */,
 				C2EC95BB1FBF6A1500D384C5 /* EssentiaTests.swift */,
 				C2F1361D1FC64AEF006FF2E2 /* MathAlgorithmTests.swift */,
 				C2D966B41FC5DCC4005736A9 /* ExtractorsAlgorithmTests.swift */,
@@ -4486,8 +4493,9 @@
 				C2EC95B21FBF6A1500D384C5 /* Assertions.swift */,
 				C2EC95B31FBF6A1500D384C5 /* Attachments.swift */,
 				C2D966AB1FC5D170005736A9 /* FileHelpers.swift */,
-				C2126EF01FCF1E3E0001C774 /* LoggingHelpers.swift */,
+				C2126EF01FCF1E3E0001C774 /* ComparisonTableAttachments.swift */,
 				C2ADA60D1FD0F082006704FD /* MathExtensions.swift */,
+				C241D5E91FD1E10D007D7664 /* test.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -6358,15 +6366,17 @@
 			files = (
 				C2D9669A1FC5CFF9005736A9 /* StandardAlgorithmTests.swift in Sources */,
 				C2D966AF1FC5D5C0005736A9 /* PitchAlgorithmTests.swift in Sources */,
+				C241D5E71FD1C819007D7664 /* InternalTests.swift in Sources */,
 				C2D966A31FC5D066005736A9 /* TonalAlgorithmTests.swift in Sources */,
 				C2EC97181FBF6B0E00D384C5 /* Assertions.swift in Sources */,
 				C2D966AC1FC5D170005736A9 /* FileHelpers.swift in Sources */,
 				C2D966A61FC5D0B1005736A9 /* FiltersAlgorithmTests.swift in Sources */,
+				C241D5EA1FD1E10D007D7664 /* test.swift in Sources */,
 				C2ADA60E1FD0F082006704FD /* MathExtensions.swift in Sources */,
 				C2D9669D1FC5D023005736A9 /* SpectralAlgorithmTests.swift in Sources */,
 				C2F1361E1FC64AEF006FF2E2 /* MathAlgorithmTests.swift in Sources */,
 				C2D966A01FC5D03D005736A9 /* IOAlgorithmTests.swift in Sources */,
-				C2126EF11FCF1E3E0001C774 /* LoggingHelpers.swift in Sources */,
+				C2126EF11FCF1E3E0001C774 /* ComparisonTableAttachments.swift in Sources */,
 				C2EC97151FBF6B0E00D384C5 /* SpecificationHelpers.swift in Sources */,
 				C2EC97171FBF6B0E00D384C5 /* RTFHelpers.swift in Sources */,
 				C2EC97191FBF6B0E00D384C5 /* Attachments.swift in Sources */,
@@ -6699,15 +6709,17 @@
 			files = (
 				C2D9669B1FC5CFF9005736A9 /* StandardAlgorithmTests.swift in Sources */,
 				C2D966B01FC5D5C0005736A9 /* PitchAlgorithmTests.swift in Sources */,
+				C241D5E81FD1C819007D7664 /* InternalTests.swift in Sources */,
 				C2D966A41FC5D066005736A9 /* TonalAlgorithmTests.swift in Sources */,
 				C2EC971D1FBF6B0F00D384C5 /* Assertions.swift in Sources */,
 				C2D966AD1FC5D170005736A9 /* FileHelpers.swift in Sources */,
 				C2D966A71FC5D0B1005736A9 /* FiltersAlgorithmTests.swift in Sources */,
+				C241D5EB1FD1E10D007D7664 /* test.swift in Sources */,
 				C2ADA60F1FD0F082006704FD /* MathExtensions.swift in Sources */,
 				C2D9669E1FC5D023005736A9 /* SpectralAlgorithmTests.swift in Sources */,
 				C2F1361F1FC64AEF006FF2E2 /* MathAlgorithmTests.swift in Sources */,
 				C2D966A11FC5D03D005736A9 /* IOAlgorithmTests.swift in Sources */,
-				C2126EF21FCF1E3E0001C774 /* LoggingHelpers.swift in Sources */,
+				C2126EF21FCF1E3E0001C774 /* ComparisonTableAttachments.swift in Sources */,
 				C2EC971A1FBF6B0F00D384C5 /* SpecificationHelpers.swift in Sources */,
 				C2EC971C1FBF6B0F00D384C5 /* RTFHelpers.swift in Sources */,
 				C2EC971E1FBF6B0F00D384C5 /* Attachments.swift in Sources */,

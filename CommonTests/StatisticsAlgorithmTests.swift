@@ -263,4 +263,141 @@ class StatisticsAlgorithmTests: XCTestCase {
 
   }
 
+  /// Tests the functionality of the PowerMean algorithm. Values taken from `test_powermean.py`.
+  func testPowerMean() {
+
+    /*
+     Test with all-zero input.
+     */
+
+    let alg1 = PowerMeanAlgorithm()
+    alg1[realVecInput: .array] = [0.0] * 10
+    alg1.compute()
+
+    XCTAssertEqual(alg1[realOutput: .powerMean], 0)
+
+    /*
+     Test with a single input.
+     */
+
+    let alg2 = PowerMeanAlgorithm()
+    alg2[realVecInput: .array] = [100]
+    alg2.compute()
+
+    XCTAssertEqual(alg2[realOutput: .powerMean], 100, accuracy: 1e-7)
+
+    let alg3 = PowerMeanAlgorithm([.power: 0])
+    alg3[realVecInput: .array] = [100]
+    alg3.compute()
+
+    XCTAssertEqual(alg3[realOutput: .powerMean], 100, accuracy: 1e-7)
+
+    let alg4 = PowerMeanAlgorithm([.power: -2])
+    alg4[realVecInput: .array] = [100]
+    alg4.compute()
+
+    XCTAssertEqual(alg4[realOutput: .powerMean], 100, accuracy: 1e-7)
+
+    let alg5 = PowerMeanAlgorithm([.power: 6])
+    alg5[realVecInput: .array] = [100]
+    alg5.compute()
+
+    XCTAssertEqual(alg5[realOutput: .powerMean], 100, accuracy: 1e-6)
+
+    /*
+     Test with multi-value array.
+     */
+
+    let alg6 = PowerMeanAlgorithm()
+    alg6[realVecInput: .array] = [5, 8, 4, 9, 1]
+    alg6.compute()
+
+    XCTAssertEqual(alg6[realOutput: .powerMean], 5.4, accuracy: 1e-7)
+
+    let alg7 = PowerMeanAlgorithm([.power: 0])
+    alg7[realVecInput: .array] = [5, 8, 4, 9, 1]
+    alg7.compute()
+
+    XCTAssertEqual(alg7[realOutput: .powerMean], 4.28225474, accuracy: 1e-7)
+
+    let alg8 = PowerMeanAlgorithm([.power: -3])
+    alg8[realVecInput: .array] = [5, 8, 4, 9, 1]
+    alg8.compute()
+
+    XCTAssertEqual(alg8[realOutput: .powerMean], 1.69488507, accuracy: 1e-7)
+
+    let alg9 = PowerMeanAlgorithm([.power: 4])
+    alg9[realVecInput: .array] = [5, 8, 4, 9, 1]
+    alg9.compute()
+
+    XCTAssertEqual(alg9[realOutput: .powerMean], 6.93105815, accuracy: 1e-7)
+
+
+    /*
+     Test with rational numbers.
+     */
+
+    let alg10 = PowerMeanAlgorithm()
+    alg10[realVecInput: .array] = [3.1459, 0.4444, 0.00002]
+    alg10.compute()
+
+    XCTAssertEqual(alg10[realOutput: .powerMean], 1.19677333, accuracy: 1e-7)
+
+    let alg11 = PowerMeanAlgorithm([.power: 0])
+    alg11[realVecInput: .array] = [3.1459, 0.4444, 0.00002]
+    alg11.compute()
+
+    XCTAssertEqual(alg11[realOutput: .powerMean], 0.0303516976, accuracy: 1e-7)
+
+    let alg12 = PowerMeanAlgorithm([.power: -5.1])
+    alg12[realVecInput: .array] = [3.1459, 0.4444, 0.00002]
+    alg12.compute()
+
+    XCTAssertEqual(alg12[realOutput: .powerMean], 2.48075104e-5, accuracy: 1e-7)
+
+    let alg13 = PowerMeanAlgorithm([.power: 2.3])
+    alg13[realVecInput: .array] = [3.1459, 0.4444, 0.00002]
+    alg13.compute()
+
+    XCTAssertEqual(alg13[realOutput: .powerMean], 1.96057772, accuracy: 1e-7)
+
+  }
+
+  /// Tests the functionality of the InstantPower algorithm. Values taken from
+  /// `test_instantpower.py`.
+  func testInstantPower() {
+
+    /*
+     Test with all-zero input.
+     */
+
+    let alg1 = InstantPowerAlgorithm()
+    alg1[realVecInput: .array] = [0.0] * 1000
+    alg1.compute()
+
+    XCTAssertEqual(alg1[realOutput: .power], 0)
+
+    /*
+     Test with a single value.
+     */
+
+    let alg2 = InstantPowerAlgorithm()
+    alg2[realVecInput: .array] = [23]
+    alg2.compute()
+
+    XCTAssertEqual(alg2[realOutput: .power], 529)
+
+    /*
+     Test for regression.
+     */
+
+    let alg3 = InstantPowerAlgorithm()
+    alg3[realVecInput: .array] = [0, 1, 2, 3]
+    alg3.compute()
+
+    XCTAssertEqual(alg3[realOutput: .power], 3.5, accuracy: 1e-7)
+
+
+  }
+
 }

@@ -624,4 +624,40 @@ class SpectralAlgorithmTests: XCTestCase {
 
   }
 
+  /// Tests the functionality of the MaxMagFreq algorithm. Values taken from
+  /// `test_maxmagfreq.py`.
+  func testMaxMagFreq() {
+
+    /*
+     Test with zero frequency.
+     */
+
+    let alg1 = MaxMagFreqAlgorithm()
+    alg1[realVecInput: .spectrum] = [10, 1, 2, 3]
+    alg1.compute()
+
+    XCTAssertEqual(alg1[realOutput: .maxMagFreq], 0, accuracy: 1e-7)
+
+    /*
+     Test for regression.
+     */
+
+    let alg2 = MaxMagFreqAlgorithm()
+    alg2[realVecInput: .spectrum] = [3.55, -4.11, 0.443, 3.9555, 2]
+    alg2.compute()
+
+    XCTAssertEqual(alg2[realOutput: .maxMagFreq], 16537.5, accuracy: 1e-7)
+
+    /*
+     Test with a non-default sample rate.
+     */
+
+    let alg3 = MaxMagFreqAlgorithm([.sampleRate: 10])
+    alg3[realVecInput: .spectrum] = [1, 2, 3, 4, 5]
+    alg3.compute()
+
+    XCTAssertEqual(alg3[realOutput: .maxMagFreq], 5, accuracy: 1e-7)
+
+  }
+
 }

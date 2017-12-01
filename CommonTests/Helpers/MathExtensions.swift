@@ -66,10 +66,39 @@ extension DSPComplex {
     {
       return false
     }
-    return real.deviation(from: other.real) <= deviation
-        && imag.deviation(from: other.imag) <= deviation
+    let actualDeviation = self.deviation(from: other)
+    let isOkay = actualDeviation <= deviation
+    return isOkay
   }
 
+  /// Support for the plus operator.
+  ///
+  /// - Parameters:
+  ///   - lhs: The first value.
+  ///   - rhs: The second value.
+  /// - Returns: `rhs` added to `lhs`.
+  public static func +(lhs: DSPComplex, rhs: DSPComplex) -> DSPComplex {
+    return DSPComplex(real: lhs.real + rhs.real, imag: lhs.imag + rhs.imag)
+  }
+
+  /// Support for the minus operator.
+  ///
+  /// - Parameters:
+  ///   - lhs: The first value.
+  ///   - rhs: The second value.
+  /// - Returns: `rhs` subtracted from `lhs`.
+  public static func -(lhs: DSPComplex, rhs: DSPComplex) -> DSPComplex {
+    return DSPComplex(real: lhs.real - rhs.real, imag: lhs.imag + rhs.imag)
+  }
+
+}
+
+/// Calculates the absolute value of a complex number.
+///
+/// - Parameter value: The value for which the absolute value will be calculated.
+/// - Returns: The absolute value of `value`.
+public func abs(_ value: DSPComplex) -> Float {
+  return sqrtf(powf(value.real, 2) + powf(value.imag, 2))
 }
 
 extension Array where Element:FloatingPoint {
@@ -107,11 +136,11 @@ extension Array where Element:FloatingPoint {
 
 extension Array where Element == DSPComplex {
 
-  /// The mean value of the real parts of the array's elements.
-  public var realMean: Float {  return map(\.real).mean  }
-
-  /// The mean value of the imaginary parts of the array's elements.
-  public var imaginaryMean: Float {  return map(\.imag).mean  }
+//  /// The mean value of the real parts of the array's elements.
+//  public var realMean: Float {  return map(\.real).mean  }
+//
+//  /// The mean value of the imaginary parts of the array's elements.
+//  public var imaginaryMean: Float {  return map(\.imag).mean  }
 
 
   /// Calculates the average of the absolute values of the differences of array elements.
