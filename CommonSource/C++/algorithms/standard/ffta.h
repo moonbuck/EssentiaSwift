@@ -36,8 +36,8 @@ class FFTA : public Algorithm {
 
  public:
     FFTA() {
-    declareInput(_signal, "frame", "the input audio frame");
-    declareOutput(_fft, "fft", "the FFT of the input frame");
+        declareInput(_signal, "frame", "the input audio frame");
+        declareOutput(_fft, "fft", "the FFT of the input frame");
         
         fftSetup = NULL;
         accelBuffer.realp = NULL;

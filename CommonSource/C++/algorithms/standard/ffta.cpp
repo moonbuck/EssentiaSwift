@@ -64,8 +64,7 @@ void FFTA::compute() {
     throw EssentiaException("FFT: Input size cannot be 0");
   }
  
-  if ((fftSetup == 0) ||
-      ((fftSetup != 0) && _fftPlanSize != size)) {
+  if (fftSetup == NULL || _fftPlanSize != size) {
     createFFTObject(size);
   }
     

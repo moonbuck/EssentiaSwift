@@ -2269,7 +2269,7 @@
 		C23A34E11FBF5A2B0083F6CE /* cubicspline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cubicspline.h; sourceTree = "<group>"; };
 		C23A34E21FBF5A2B0083F6CE /* ifftk.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ifftk.cpp; sourceTree = "<group>"; };
 		C23A34E31FBF5A2B0083F6CE /* fftw.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fftw.cpp; sourceTree = "<group>"; };
-		C23A34E41FBF5A2B0083F6CE /* fftca.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fftca.h; sourceTree = "<group>"; };
+		C23A34E41FBF5A2B0083F6CE /* fftca.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; path = fftca.h; sourceTree = "<group>"; tabWidth = 4; };
 		C23A34E51FBF5A2B0083F6CE /* spline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spline.h; sourceTree = "<group>"; };
 		C23A34E61FBF5A2B0083F6CE /* binaryoperatorstream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = binaryoperatorstream.h; sourceTree = "<group>"; };
 		C23A34E71FBF5A2B0083F6CE /* dct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dct.h; sourceTree = "<group>"; };

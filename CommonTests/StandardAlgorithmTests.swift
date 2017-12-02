@@ -178,31 +178,49 @@ class StandardAlgorithmTests: XCTestCase {
      */
 
     let fft1 = FFTCAlgorithm()
-    fft1[complexRealVecInput: .frame] = [1+0⍳] + [0+0⍳] * 511
+    fft1[complexRealVecInput: .frame] = [1+0⍳, 0+0⍳, 0+0⍳, 0+0⍳]
     fft1.compute()
 
     let actual = fft1[complexRealVecOutput: .fft]
-    let expected: [DSPComplex] = [1+0⍳] * 257
+    let expected: [DSPComplex] = [1+0⍳, 1+0⍳, 1+0⍳]
 
     if !XCTAssertEqual(actual, expected, accuracy: 1e-5) {
       add(comparisonAttachment(with: actual,
                                expected: expected,
                                accuracyUsed: 1e-5,
                                deviationUsed: 0,
-                               descriptor: "FFTC-DCSignal", 
+                               descriptor: "FFTC-DCSignal",
                                results: [.accuracy: false]))
     }
 
-
-    /*
-     Test with a Fs/2 sine wave to check the nyquist value.
-     */
-
     let fft2 = FFTCAlgorithm()
-    fft2[complexRealVecInput: .frame] = [1+0⍳, -1+0⍳] * 512
+    fft2[complexRealVecInput: .frame] = [1+0⍳] + [0+0⍳] * 1023
     fft2.compute()
 
-    XCTAssertEqual(fft2[complexRealVecOutput: .fft], [0+0⍳] * 512 + [1024+0⍳], accuracy: 1e-7)
+    XCTAssertEqual(fft2[complexRealVecOutput: .fft], [1+0⍳] * 513, accuracy: 1e-7)
+
+    /*
+     Test with a Fs/2 sine wave to check the nyquist value using various size signals.
+     */
+
+
+    let fft3 = FFTCAlgorithm()
+    fft3[complexRealVecInput: .frame] = [1+0⍳, -1+0⍳] * 256
+    fft3.compute()
+
+    XCTAssertEqual(fft3[complexRealVecOutput: .fft], [0+0⍳] * 256 + [512+0⍳], accuracy: 1e-7)
+
+    let fft4 = FFTCAlgorithm()
+    fft4[complexRealVecInput: .frame] = [1+0⍳, -1+0⍳] * 512
+    fft4.compute()
+
+    XCTAssertEqual(fft4[complexRealVecOutput: .fft], [0+0⍳] * 512 + [1024+0⍳], accuracy: 1e-7)
+
+    let fft5 = FFTCAlgorithm()
+    fft5[complexRealVecInput: .frame] = [1+0⍳, -1+0⍳] * 1024
+    fft5.compute()
+
+    XCTAssertEqual(fft5[complexRealVecOutput: .fft], [0+0⍳] * 1024 + [2048+0⍳], accuracy: 1e-7)
 
     /*
      Test for regression.
@@ -211,12 +229,12 @@ class StandardAlgorithmTests: XCTestCase {
            'fft_input.txt' in python.
      */
 
-    let fft3 = FFTCAlgorithm()
+    let fft6 = FFTCAlgorithm()
     let complexSignal = loadComplexVector(name: "fftc_input")
-    fft3[complexRealVecInput: .frame] = complexSignal
-    fft3.compute()
+    fft6[complexRealVecInput: .frame] = complexSignal
+    fft6.compute()
 
-    XCTAssertEqual(fft3[complexRealVecOutput: .fft],
+    XCTAssertEqual(fft6[complexRealVecOutput: .fft],
                    loadComplexVector(name: "fft_output"),
                    accuracy: 1e-3)
 
@@ -224,11 +242,11 @@ class StandardAlgorithmTests: XCTestCase {
      Test with all-zero input.
      */
 
-    let fft4 = FFTCAlgorithm()
-    fft4[complexRealVecInput: .frame] = [0+0⍳] * 2048
-    fft4.compute()
+    let fft7 = FFTCAlgorithm()
+    fft7[complexRealVecInput: .frame] = [0+0⍳] * 2048
+    fft7.compute()
 
-    XCTAssertEqual(fft4[complexRealVecOutput: .fft], [DSPComplex()] * 1025, accuracy: 0)
+    XCTAssertEqual(fft7[complexRealVecOutput: .fft], [DSPComplex()] * 1025, accuracy: 0)
 
     /*
      Test with a real signal, comparing that standard and streaming return the same result and
@@ -249,7 +267,7 @@ class StandardAlgorithmTests: XCTestCase {
     let windowing1 = WindowingAlgorithm([.type: "hann"])
     
 
-    let fft5 = FFTCAlgorithm([.size: 1024])
+    let fft8 = FFTCAlgorithm([.size: 1024])
 
     frameCutter1[realVecInput: .signal] = signal
 
@@ -263,11 +281,11 @@ class StandardAlgorithmTests: XCTestCase {
       let frame = frameCutter1[realVecOutput: .frame]
       if frame.isEmpty { break }
       windowing1.compute()
-      fft5[complexRealVecInput: .frame] = windowing1[realVecOutput: .frame].map {
+      fft8[complexRealVecInput: .frame] = windowing1[realVecOutput: .frame].map {
         DSPComplex(real: $0, imag: 0)
       }
-      fft5.compute()
-      complexFrames1.append(fft5[complexRealVecOutput: .fft])
+      fft8.compute()
+      complexFrames1.append(fft8[complexRealVecOutput: .fft])
     } while true
 
     // Compute using the streaming algorithm.
@@ -284,7 +302,7 @@ class StandardAlgorithmTests: XCTestCase {
 
     let windowedSignal = VectorOutput<[Float]>()
 
-    let fft6 = FFTCSAlgorithm([.size: 1024])
+    let fft9 = FFTCSAlgorithm([.size: 1024])
 
     let vectorOutput = VectorOutput<[DSPComplex]>()
 
@@ -299,8 +317,8 @@ class StandardAlgorithmTests: XCTestCase {
       $0.map { DSPComplex(real: $0, imag: 0) }
     })
 
-    vectorInput2[output: .data] >> fft6[input: .frame]
-    fft6[output: .fft] >> vectorOutput[input: .data]
+    vectorInput2[output: .data] >> fft9[input: .frame]
+    fft9[output: .fft] >> vectorOutput[input: .data]
 
     let network2 = Network(generator: vectorInput2)
     network2.run()

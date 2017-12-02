@@ -26,77 +26,73 @@
 #include <Accelerate/Accelerate.h>
 
 namespace essentia {
-namespace standard {
+    namespace standard {
 
-class FFTCA : public Algorithm {
+        class FFTCA : public Algorithm {
 
- protected:
-  Input<std::vector<std::complex<Real> > > _signal;
-  Output<std::vector<std::complex<Real> > > _fft;
+        protected:
+            Input<std::vector<std::complex<Real> > > _signal;
+            Output<std::vector<std::complex<Real> > > _fft;
 
- public:
-    FFTCA() {
-    declareInput(_signal, "frame", "the input audio frame (complex)");
-    declareOutput(_fft, "fft", "the FFT of the input frame");
-        
-        fftSetup = NULL;
-        accelBuffer.realp = NULL;
-        accelBuffer.imagp = NULL;
-        outputBuffer.realp = NULL;
-        outputBuffer.imagp = NULL;
-        _fftPlanSize = 0;
-  }
+        public:
+            FFTCA() {
+                declareInput(_signal, "frame", "the input audio frame (complex)");
+                declareOutput(_fft, "fft", "the FFT of the input frame");
 
-  ~FFTCA();
+                accelBuffer.realp = NULL;
+                accelBuffer.imagp = NULL;
+                fftSetup = NULL;
+            }
 
-  void declareParameters() {
-    declareParameter("size", "the expected size of the input frame. This is purely optional and only targeted at optimizing the creation time of the FFT object", "[1,inf)", 1024);
-  }
+            ~FFTCA();
 
-  void compute();
-  void configure();
+            void declareParameters() {
+                declareParameter("size", "the expected size of the input frame. This is purely optional and only targeted at optimizing the creation time of the FFT object", "[1,inf)", 1024);
+            }
 
-  static const char* name;
-  static const char* category;
-  static const char* description;
+            void compute();
+            void configure();
 
- protected:
-  friend class IFFTCA;
-  static ForcedMutex globalFFTCAMutex;
+            static const char* name;
+            static const char* category;
+            static const char* description;
 
-    vDSP_DFT_Setup fftSetup;
-    
-    int logSize;
-    int _fftPlanSize;    
-    DSPSplitComplex accelBuffer;
-    DSPSplitComplex outputBuffer;
+        protected:
+            friend class IFFTCA;
+            static ForcedMutex globalFFTCAMutex;
 
-  void createFFTObject(int size);
-};
+            FFTSetup fftSetup;
 
-} // namespace standard
+            int logSize;
+            int _fftPlanSize;
+            DSPSplitComplex accelBuffer;
+
+            void createFFTObject(int size);
+        };
+
+    } // namespace standard
 } // namespace essentia
 
 #include "streamingalgorithmwrapper.h"
 
 namespace essentia {
-namespace streaming {
+    namespace streaming {
 
-class FFTCA : public StreamingAlgorithmWrapper {
+        class FFTCA : public StreamingAlgorithmWrapper {
 
- protected:
-  Sink<std::vector<std::complex<Real> > > _signal;
-  Source<std::vector<std::complex<Real> > > _fft;
+        protected:
+            Sink<std::vector<std::complex<Real> > > _signal;
+            Source<std::vector<std::complex<Real> > > _fft;
 
- public:
-  FFTCA() {
-    declareAlgorithm("FFTC");
-    declareInput(_signal, TOKEN, "frame");
-    declareOutput(_fft, TOKEN, "fft");
-  }
-};
+        public:
+            FFTCA() {
+                declareAlgorithm("FFTC");
+                declareInput(_signal, TOKEN, "frame");
+                declareOutput(_fft, TOKEN, "fft");
+            }
+        };
 
-} // namespace streaming
+    } // namespace streaming
 } // namespace essentia
 
 #endif // ESSENTIA_FFTW_H
