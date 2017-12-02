@@ -34,9 +34,19 @@ extension FloatingPoint {
   public func isEqual(to other: Self, deviation: Self) -> Bool {
     guard other != self else { return true }
     guard !(isNaN || isInfinite || other.isNaN || other.isInfinite) else { return false }
-    let actualDeviation = self.deviation(from: other)
-    let isOkay = actualDeviation <= deviation
-    return isOkay
+    return self.deviation(from: other) <= deviation
+  }
+
+  /// Determines equality with another value given an allowable difference.
+  ///
+  /// - Parameters:
+  ///   - other: The other value.
+  ///   - accuracy: The allowable difference.
+  /// - Returns: `true` if the values are equal within `accuracy` and `false` otherwise.
+  public func isEqual(to other: Self, accuracy: Self) -> Bool {
+    guard other != self else { return true }
+    guard !(isNaN || isInfinite || other.isNaN || other.isInfinite) else { return false }
+    return abs(self - other) <= accuracy
   }
 
 }
@@ -66,9 +76,26 @@ extension DSPComplex {
     {
       return false
     }
-    let actualDeviation = self.deviation(from: other)
-    let isOkay = actualDeviation <= deviation
-    return isOkay
+    return self.deviation(from: other) <= deviation
+  }
+
+  /// Determines equality with another value given an allowable difference.
+  ///
+  /// - Parameters:
+  ///   - other: The other value.
+  ///   - accuracy: The allowable difference.
+  /// - Returns: `true` if the values are equal within `accuracy` and `false` otherwise.
+  public func isEqual(to other: DSPComplex, accuracy: Float) -> Bool {
+    guard !(   real.isNaN || real.isInfinite
+            || imag.isNaN || imag.isInfinite
+            || other.real.isNaN || other.real.isInfinite
+            || other.imag.isNaN || other.imag.isInfinite)
+      else
+    {
+      return false
+    }
+    return real.isEqual(to: other.real, accuracy: accuracy)
+        && imag.isEqual(to: other.imag, accuracy: accuracy)
   }
 
   /// Support for the plus operator.
@@ -135,13 +162,6 @@ extension Array where Element:FloatingPoint {
 }
 
 extension Array where Element == DSPComplex {
-
-//  /// The mean value of the real parts of the array's elements.
-//  public var realMean: Float {  return map(\.real).mean  }
-//
-//  /// The mean value of the imaginary parts of the array's elements.
-//  public var imaginaryMean: Float {  return map(\.imag).mean  }
-
 
   /// Calculates the average of the absolute values of the differences of array elements.
   ///

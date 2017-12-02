@@ -372,32 +372,19 @@ private func appendHeader<T>(descriptor: String,
 ///   - array1: The first array.
 ///   - array2: The second array.
 ///   - target: The output stream to which the text will be written.
-/// - Returns: The average difference and the average deviation.
-@discardableResult
-private func appendComparison<T>(of array1: [Float],
-                                 with array2: [Float],
-                                 target: inout T) -> (difference: Float, deviation: Float)?
+private func appendComparison<T>(of array1: [Float], with array2: [Float], target: inout T)
   where T:TextOutputStream
 {
 
   print(tableHeader, to: &target)
 
-  var differenceValues: [Float] = []
-  var deviationValues: [Float] = []
-
   for (index, (value1, value2)) in zip(array1, array2).enumerated() {
-
-    let difference = abs(value2 - value1)
-    differenceValues.append(difference)
-
-    let deviation = value1.deviation(from: value2)
-    deviationValues.append(deviation)
 
     print(format(index: index),
           format(value: value1),
           format(value: value2),
-          format(value: difference),
-          format(value: deviation, isPercent: true),
+          format(value: abs(value2 - value1)),
+          format(value: value1.deviation(from: value2), isPercent: true),
           separator: "  ",
           to: &target)
 
@@ -411,8 +398,6 @@ private func appendComparison<T>(of array1: [Float],
 
     }
 
-    return nil
-
   } else if array2.count > array1.count {
 
     for (index, value) in zip(array1.count..<array2.count, array2[array1.count...]) {
@@ -425,20 +410,14 @@ private func appendComparison<T>(of array1: [Float],
 
     }
 
-    return nil
-
   } else {
-
-    let averageDifference = differenceValues.mean, averageDeviation = deviationValues.mean
 
     print(line, to: &target)
     print(averagesLabel,
-          format(value: averageDifference),
-          format(value: averageDeviation, isPercent: true),
+          format(value: array1.averageDifference(with: array2)),
+          format(value: array1.averageDeviation(from: array2), isPercent: true),
           separator: "  ",
           to: &target)
-
-    return (difference: averageDifference, deviation: averageDeviation)
 
   }
 
@@ -456,25 +435,11 @@ private func appendComparison<T>(of array1: [[Float]],
   where T:TextOutputStream
 {
 
-  var nilResult = false
-
-  var differenceValues: [Float] = []
-  var deviationValues: [Float] = []
-
   for (index, (subarray1, subarray2)) in zip(array1, array2).enumerated() {
 
     print("Subarray index: \(index)\n", to: &target)
 
-    if let result = appendComparison(of: subarray1, with: subarray2, target: &target) {
-
-      differenceValues.append(result.difference)
-      deviationValues.append(result.deviation)
-
-    } else {
-
-      nilResult = true
-
-    }
+    appendComparison(of: subarray1, with: subarray2, target: &target)
 
     print("", to: &target)
 
@@ -498,11 +463,19 @@ private func appendComparison<T>(of array1: [[Float]],
 
     }
 
-  } else if !nilResult {
+  } else {
+
+    var averageDifferences: [Float] = []
+    var averageDeviations: [Float] = []
+
+    for (subarray1, subarray2) in zip(array1, array2) {
+      averageDifferences.append(subarray1.averageDifference(with: subarray2))
+      averageDeviations.append(subarray1.averageDeviation(from: subarray2))
+    }
 
     print("", to: &target)
-    print("Average difference for array:\(format(value: differenceValues.mean))", to: &target)
-    print("Average deviation for array:\(format(value: deviationValues.mean, isPercent: true))",
+    print("Average difference for array:\(format(value: averageDifferences.mean))", to: &target)
+    print("Average deviation for array:\(format(value: averageDeviations.mean, isPercent: true))",
       to: &target)
 
   }
@@ -515,32 +488,19 @@ private func appendComparison<T>(of array1: [[Float]],
 ///   - array1: The first array.
 ///   - array2: The second array.
 ///   - target: The output stream to which the text will be written.
-/// - Returns: The average difference and the average deviation.
-@discardableResult
-private func appendComparison<T>(of array1: [DSPComplex],
-                                 with array2: [DSPComplex],
-                                 target: inout T) -> (difference: Float, deviation: Float)?
+private func appendComparison<T>(of array1: [DSPComplex], with array2: [DSPComplex], target: inout T)
   where T:TextOutputStream
 {
 
   print(zTableHeader, to: &target)
 
-  var differenceValues: [Float] = []
-  var deviationValues: [Float] = []
-
   for (index, (value1, value2)) in zip(array1, array2).enumerated() {
-
-    let difference = abs(value2 - value1)
-    differenceValues.append(difference)
-
-    let deviation = value1.deviation(from: value2)
-    deviationValues.append(deviation)
 
     print(format(index: index),
           format(value: value1),
           format(value: value2),
-          format(value: difference),
-          format(value: deviation, isPercent: true),
+          format(value: (abs(value2.real - value1.real) + abs(value2.imag - value1.imag)) / 2),
+          format(value: value1.deviation(from: value2), isPercent: true),
           separator: "  ",
           to: &target)
 
@@ -554,8 +514,6 @@ private func appendComparison<T>(of array1: [DSPComplex],
 
     }
 
-    return nil
-
   } else if array2.count > array1.count {
 
     for (index, value) in zip(array1.count..<array2.count, array2[array1.count...]) {
@@ -568,20 +526,14 @@ private func appendComparison<T>(of array1: [DSPComplex],
 
     }
 
-    return nil
-
   } else {
-
-    let averageDifference = differenceValues.mean, averageDeviation = deviationValues.mean
 
     print(zLine, to: &target)
     print(zAveragesLabel,
-          format(value: averageDifference),
-          format(value: averageDeviation, isPercent: true),
+          format(value: array1.averageDifference(with: array2)),
+          format(value: array1.averageDeviation(from: array2), isPercent: true),
           separator: "  ",
           to: &target)
-
-    return (difference: averageDifference, deviation: averageDeviation)
 
   }
 
@@ -599,25 +551,11 @@ private func appendComparison<T>(of array1: [[DSPComplex]],
   where T:TextOutputStream
 {
 
-  var nilResult = false
-
-  var differenceValues: [Float] = []
-  var deviationValues: [Float] = []
-
   for (index, (subarray1, subarray2)) in zip(array1, array2).enumerated() {
 
     print("Subarray index: \(index)\n", to: &target)
 
-    if let result = appendComparison(of: subarray1, with: subarray2, target: &target) {
-
-      differenceValues.append(result.difference)
-      deviationValues.append(result.deviation)
-
-    } else {
-
-      nilResult = true
-
-    }
+    appendComparison(of: subarray1, with: subarray2, target: &target)
 
     print("", to: &target)
 
@@ -641,11 +579,19 @@ private func appendComparison<T>(of array1: [[DSPComplex]],
 
     }
 
-  } else if !nilResult {
+  } else {
+
+    var averageDifferences: [Float] = []
+    var averageDeviations: [Float] = []
+
+    for (subarray1, subarray2) in zip(array1, array2) {
+      averageDifferences.append(subarray1.averageDifference(with: subarray2))
+      averageDeviations.append(subarray1.averageDeviation(from: subarray2))
+    }
 
     print("", to: &target)
-    print("Average difference for array:\(format(value: differenceValues.mean))", to: &target)
-    print("Average deviation for array:\(format(value: deviationValues.mean, isPercent: true))",
+    print("Average difference for array:\(format(value: averageDifferences.mean))", to: &target)
+    print("Average deviation for array:\(format(value: averageDeviations.mean, isPercent: true))",
       to: &target)
 
   }

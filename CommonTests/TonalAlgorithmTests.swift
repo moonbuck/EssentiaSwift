@@ -1173,7 +1173,7 @@ class TonalAlgorithmTests: XCTestCase {
     let expected = loadVector(name: "spectrumcq_expected")
 
     XCTAssertDifferenceMeanLessThanOrEqual(actual, expected, 1e-7)
-    XCTAssertPercentDeviationLessThanOrEqual(actual, expected, 1e-4)
+    XCTAssertPercentDeviationLessThanOrEqual(actual, expected, 1e-3)
 
   }
 

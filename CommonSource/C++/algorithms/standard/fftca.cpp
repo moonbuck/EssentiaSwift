@@ -50,8 +50,8 @@ FFTCA::~FFTCA() {
       vDSP_DFT_DestroySetup(fftSetup);
       free(accelBuffer.realp);
       free(accelBuffer.imagp);
-      free(outputBuffer.realp);
-      free(outputBuffer.imagp);
+//      free(outputBuffer.realp);
+//      free(outputBuffer.imagp);
   }
 }
 

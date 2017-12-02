@@ -39,8 +39,8 @@ class StatisticsAlgorithmTests: XCTestCase {
     XCTAssertEqual(result1[real: "foo.median"], 5)
     XCTAssertEqual(result1[real: "foo.min"], 1)
     XCTAssertEqual(result1[real: "foo.max"], 34)
-    XCTAssertEqual(result1[real: "foo.var"], 112.172839506, deviation: 1e-7)
-    XCTAssertEqual(result1[real: "foo.stdev"], 10.591167995362929, deviation: 1e-7)
+    XCTAssertEqual(result1[real: "foo.var"], 112.172839506, deviation: 1e-5)
+    XCTAssertEqual(result1[real: "foo.stdev"], 10.591167995362929, deviation: 1e-5)
     XCTAssertEqual(result1[real: "foo.dmean"], 4.125)
     XCTAssertEqual(result1[real: "foo.dvar"], 17.109375)
     XCTAssertEqual(result1[real: "foo.dmean2"], 1.85714285714)
@@ -98,9 +98,9 @@ class StatisticsAlgorithmTests: XCTestCase {
     XCTAssertEqual(result4[realVec: "foo.median"], [4.4, 5.5, 6.6])
     XCTAssertEqual(result4[realVec: "foo.min"], [1.1, 2.2, 3.3])
     XCTAssertEqual(result4[realVec: "foo.max"], [7.7, 8.8, 9.9])
-    XCTAssertEqual(result4[realVec: "foo.var"], [7.26, 7.26, 7.26], deviation: 1e-7)
+    XCTAssertEqual(result4[realVec: "foo.var"], [7.26, 7.26, 7.26], deviation: 1e-5)
     XCTAssertEqual(result4[realVec: "foo.stdev"], [2.6944387, 2.6944387, 2.6944387], accuracy: 1e-6)
-    XCTAssertEqual(result4[realVec: "foo.dmean"], [3.3, 3.3, 3.3], deviation: 1e-7)
+    XCTAssertEqual(result4[realVec: "foo.dmean"], [3.3, 3.3, 3.3], deviation: 1e-5)
     XCTAssertEqual(result4[realVec: "foo.dvar"], [0, 0, 0], accuracy: 1e-7)
     XCTAssertEqual(result4[realVec: "foo.dmean2"], [0, 0, 0], accuracy: 1e-6)
     XCTAssertEqual(result4[realVec: "foo.dvar2"], [0, 0, 0], accuracy: 1e-6)
@@ -290,7 +290,7 @@ class StatisticsAlgorithmTests: XCTestCase {
     alg3[realVecInput: .array] = [100]
     alg3.compute()
 
-    XCTAssertEqual(alg3[realOutput: .powerMean], 100, accuracy: 1e-7)
+    XCTAssertEqual(alg3[realOutput: .powerMean], 100, accuracy: 1e-5)
 
     let alg4 = PowerMeanAlgorithm([.power: -2])
     alg4[realVecInput: .array] = [100]
@@ -302,7 +302,7 @@ class StatisticsAlgorithmTests: XCTestCase {
     alg5[realVecInput: .array] = [100]
     alg5.compute()
 
-    XCTAssertEqual(alg5[realOutput: .powerMean], 100, accuracy: 1e-6)
+    XCTAssertEqual(alg5[realOutput: .powerMean], 100, accuracy: 1e-4)
 
     /*
      Test with multi-value array.
@@ -324,13 +324,13 @@ class StatisticsAlgorithmTests: XCTestCase {
     alg8[realVecInput: .array] = [5, 8, 4, 9, 1]
     alg8.compute()
 
-    XCTAssertEqual(alg8[realOutput: .powerMean], 1.69488507, accuracy: 1e-7)
+    XCTAssertEqual(alg8[realOutput: .powerMean], 1.69488507, accuracy: 1e-4)
 
     let alg9 = PowerMeanAlgorithm([.power: 4])
     alg9[realVecInput: .array] = [5, 8, 4, 9, 1]
     alg9.compute()
 
-    XCTAssertEqual(alg9[realOutput: .powerMean], 6.93105815, accuracy: 1e-7)
+    XCTAssertEqual(alg9[realOutput: .powerMean], 6.93105815, accuracy: 1e-4)
 
 
     /*
@@ -341,7 +341,7 @@ class StatisticsAlgorithmTests: XCTestCase {
     alg10[realVecInput: .array] = [3.1459, 0.4444, 0.00002]
     alg10.compute()
 
-    XCTAssertEqual(alg10[realOutput: .powerMean], 1.19677333, accuracy: 1e-7)
+    XCTAssertEqual(alg10[realOutput: .powerMean], 1.19677333, accuracy: 1e-4)
 
     let alg11 = PowerMeanAlgorithm([.power: 0])
     alg11[realVecInput: .array] = [3.1459, 0.4444, 0.00002]

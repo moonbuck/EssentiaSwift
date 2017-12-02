@@ -46,7 +46,7 @@ class ExtractorsAlgorithmTests: XCTestCase {
         let expected = loadVector(name: expectedFileName)
 
         if !XCTAssertDifferenceMeanOrDeviationLessThanOrEqual(actual, expected,
-                                                              differenceMean: accuracy,
+                                                              mean: accuracy,
                                                               deviation: deviation,
                                                               descriptorʹ)
         {
@@ -63,7 +63,7 @@ class ExtractorsAlgorithmTests: XCTestCase {
         let expected = loadVectorVector(name: expectedFileName)
 
         if !XCTAssertDifferenceMeanOrDeviationLessThanOrEqual(actual, expected,
-                                                              differenceMean: accuracy,
+                                                              mean: accuracy,
                                                               deviation: deviation,
                                                               descriptorʹ)
         {

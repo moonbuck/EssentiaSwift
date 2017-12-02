@@ -167,7 +167,7 @@ public func XCTAssertEqual<T:FloatingPoint>(_ array1: [T],
 
   var countMismatch = false
   guard !test(array: array1, against: array2, countMismatch: &countMismatch, using: {
-    !($0.isNaN || $1.isNaN) && abs($0 - $1) <= accuracy
+    $0.isEqual(to: $1, accuracy: accuracy)
   }) else { return true }
 
   let failureDescription =
@@ -214,7 +214,7 @@ public func XCTAssertEqual<T:FloatingPoint>(_ array1: [[T]],
 
   var countMismatch = false
   guard !test(array: array1, against: array2, countMismatch: &countMismatch, using: {
-    !($0.isNaN || $1.isNaN) && abs($0 - $1) <= accuracy
+    $0.isEqual(to: $1, accuracy: accuracy)
   }) else { return true }
 
   let failureDescription =
@@ -261,7 +261,7 @@ public func XCTAssertEqual<T:FloatingPoint>(_ array1: [[[T]]],
 
   var countMismatch = false
   guard !test(array: array1, against: array2, countMismatch: &countMismatch, using: {
-    !($0.isNaN || $1.isNaN) && abs($0 - $1) <= accuracy
+    $0.isEqual(to: $1, accuracy: accuracy)
   }) else { return true }
 
   let failureDescription =
@@ -307,9 +307,7 @@ public func XCTAssertEqual(_ array1: [DSPComplex],
 
   var countMismatch = false
   guard !test(array: array1, against: array2, countMismatch: &countMismatch, using: {
-    !($0.real.isNaN || $1.real.isNaN || $0.imag.isNaN || $1.imag.isNaN)
-      && abs($0.real - $1.real) <= accuracy
-      && abs($0.imag - $1.imag) <= accuracy
+    $0.isEqual(to: $1, accuracy: accuracy)
   }) else { return true }
 
   let failureDescription =
@@ -355,9 +353,7 @@ public func XCTAssertEqual(_ array1: [[DSPComplex]],
 
   var countMismatch = false
   guard !test(array: array1, against: array2, countMismatch: &countMismatch, using: {
-    !($0.real.isNaN || $1.real.isNaN || $0.imag.isNaN || $1.imag.isNaN)
-      && abs($0.real - $1.real) <= accuracy
-      && abs($0.imag - $1.imag) <= accuracy
+    $0.isEqual(to: $1, accuracy: accuracy)
   }) else { return true }
 
   let failureDescription =
@@ -403,9 +399,7 @@ public func XCTAssertEqual(_ array1: [[[DSPComplex]]],
 
   var countMismatch = false
   guard !test(array: array1, against: array2, countMismatch: &countMismatch, using: {
-    !($0.real.isNaN || $1.real.isNaN || $0.imag.isNaN || $1.imag.isNaN)
-      && abs($0.real - $1.real) <= accuracy
-      && abs($0.imag - $1.imag) <= accuracy
+    $0.isEqual(to: $1, accuracy: accuracy)
   }) else { return true }
 
   let failureDescription =
@@ -1358,7 +1352,7 @@ public func XCTAssertPercentDeviationLessThanOrEqual(_ array1: [DSPComplex],
 /// - Parameters:
 ///   - array1: The first array of complex numbers.
 ///   - array2: The second array of complex numbers.
-///   - differenceMean: The value which the average difference must not be above.
+///   - mean: The value which the average difference must not be above.
 ///   - deviation: The value which the percent deviation must not be above.
 ///   - message: An optional description of the failure.
 ///   - file: The file in which failure occurred. Defaults to the file name of the test case in
@@ -1370,7 +1364,7 @@ public func XCTAssertPercentDeviationLessThanOrEqual(_ array1: [DSPComplex],
 public func XCTAssertDifferenceMeanOrDeviationLessThanOrEqual<T:FloatingPoint>(
   _ array1: [T],
   _ array2: [T],
-  differenceMean: T,
+  mean: T,
   deviation: T,
   _ message: @autoclosure () -> String = "",
   file: StaticString = #file,
@@ -1380,7 +1374,7 @@ public func XCTAssertDifferenceMeanOrDeviationLessThanOrEqual<T:FloatingPoint>(
   var countMismatch = false
 
   let averageDifference = array1.averageDifference(with: array2, countMismatch: &countMismatch)
-  let meanFail = averageDifference > differenceMean
+  let meanFail = averageDifference > mean
 
   let actualDeviation = array1.averageDeviation(from: array2, countMismatch: &countMismatch)
   let deviationFail = actualDeviation > deviation
@@ -1400,7 +1394,7 @@ public func XCTAssertDifferenceMeanOrDeviationLessThanOrEqual<T:FloatingPoint>(
   case (true, false):
     failureDescription = """
       XCTAssertDifferenceMeanOrDeviationLessThanOrEqual failed: average difference \
-      ("\(averageDifference)") is not less than or equal to ("\(differenceMean)")
+      ("\(averageDifference)") is not less than or equal to ("\(mean)")
       """
 
   case (false, true):
@@ -1412,7 +1406,7 @@ public func XCTAssertDifferenceMeanOrDeviationLessThanOrEqual<T:FloatingPoint>(
   case (true, true):
     failureDescription = """
     XCTAssertDifferenceMeanOrDeviationLessThanOrEqual failed: average difference \
-    ("\(averageDifference)") is not less than or equal to ("\(differenceMean)") and deviation \
+    ("\(averageDifference)") is not less than or equal to ("\(mean)") and deviation \
     ("\(actualDeviation)") is not less than or equal to ("\(deviation)")
     """
 
@@ -1438,7 +1432,7 @@ public func XCTAssertDifferenceMeanOrDeviationLessThanOrEqual<T:FloatingPoint>(
 /// - Parameters:
 ///   - array1: The first array of complex numbers.
 ///   - array2: The second array of complex numbers.
-///   - differenceMean: The value which the average difference must not be above.
+///   - mean: The value which the average difference must not be above.
 ///   - deviation: The value which the percent deviation must not be above.
 ///   - message: An optional description of the failure.
 ///   - file: The file in which failure occurred. Defaults to the file name of the test case in
@@ -1450,7 +1444,7 @@ public func XCTAssertDifferenceMeanOrDeviationLessThanOrEqual<T:FloatingPoint>(
 public func XCTAssertDifferenceMeanOrDeviationLessThanOrEqual<T:FloatingPoint>(
   _ array1: [[T]],
   _ array2: [[T]],
-  differenceMean: T,
+  mean: T,
   deviation: T,
   _ message: @autoclosure () -> String = "",
   file: StaticString = #file,
@@ -1474,7 +1468,7 @@ public func XCTAssertDifferenceMeanOrDeviationLessThanOrEqual<T:FloatingPoint>(
 
   }
 
-  let meanFail = averageDifference > differenceMean
+  let meanFail = averageDifference > mean
 
   var actualDeviation: T = T.infinity
 
@@ -1508,7 +1502,7 @@ public func XCTAssertDifferenceMeanOrDeviationLessThanOrEqual<T:FloatingPoint>(
   case (true, false):
     failureDescription = """
       XCTAssertDifferenceMeanOrDeviationLessThanOrEqual failed: average difference \
-      ("\(averageDifference)") is not less than or equal to ("\(differenceMean)")
+      ("\(averageDifference)") is not less than or equal to ("\(mean)")
       """
 
   case (false, true):
@@ -1520,7 +1514,7 @@ public func XCTAssertDifferenceMeanOrDeviationLessThanOrEqual<T:FloatingPoint>(
   case (true, true):
     failureDescription = """
     XCTAssertDifferenceMeanOrDeviationLessThanOrEqual failed: average difference \
-    ("\(averageDifference)") is not less than or equal to ("\(differenceMean)") and deviation \
+    ("\(averageDifference)") is not less than or equal to ("\(mean)") and deviation \
     ("\(actualDeviation)") is not less than or equal to ("\(deviation)")
     """
 
@@ -1546,7 +1540,7 @@ public func XCTAssertDifferenceMeanOrDeviationLessThanOrEqual<T:FloatingPoint>(
 /// - Parameters:
 ///   - array1: The first array of complex numbers.
 ///   - array2: The second array of complex numbers.
-///   - differenceMean: The value which the average difference must not be above.
+///   - man: The value which the average difference must not be above.
 ///   - deviation: The value which the percent deviation must not be above.
 ///   - message: An optional description of the failure.
 ///   - file: The file in which failure occurred. Defaults to the file name of the test case in
@@ -1558,7 +1552,7 @@ public func XCTAssertDifferenceMeanOrDeviationLessThanOrEqual<T:FloatingPoint>(
 public func XCTAssertDifferenceMeanOrDeviationLessThanOrEqual(
   _ array1: [DSPComplex],
   _ array2: [DSPComplex],
-  differenceMean: Float,
+  mean: Float,
   deviation: Float,
   _ message: @autoclosure () -> String = "",
   file: StaticString = #file,
@@ -1568,7 +1562,7 @@ public func XCTAssertDifferenceMeanOrDeviationLessThanOrEqual(
   var countMismatch = false
 
   let averageDifference = array1.averageDifference(with: array2, countMismatch: &countMismatch)
-  let meanFail = averageDifference > differenceMean
+  let meanFail = averageDifference > mean
 
   let actualDeviation = array1.averageDeviation(from: array2, countMismatch: &countMismatch)
   let deviationFail = actualDeviation > deviation
@@ -1588,7 +1582,7 @@ public func XCTAssertDifferenceMeanOrDeviationLessThanOrEqual(
   case (true, false):
     failureDescription = """
       XCTAssertDifferenceMeanOrDeviationLessThanOrEqual failed: average difference \
-      ("\(averageDifference)") is not less than or equal to ("\(differenceMean)")
+      ("\(averageDifference)") is not less than or equal to ("\(mean)")
       """
 
   case (false, true):
@@ -1600,7 +1594,7 @@ public func XCTAssertDifferenceMeanOrDeviationLessThanOrEqual(
   case (true, true):
     failureDescription = """
     XCTAssertDifferenceMeanOrDeviationLessThanOrEqual failed: average difference \
-    ("\(averageDifference)") is not less than or equal to ("\(differenceMean)") and deviation \
+    ("\(averageDifference)") is not less than or equal to ("\(mean)") and deviation \
     ("\(actualDeviation)") is not less than or equal to ("\(deviation)")
     """
 

@@ -43,6 +43,7 @@ class InternalTests: XCTestCase {
 
   }
 
+  /// Tests the functionality of the complex number extensions.
   func testDSPComplexExtensions() {
 
     /*
@@ -83,6 +84,9 @@ class InternalTests: XCTestCase {
 
     XCTAssertTrue((2+6⍳).isEqual(to: 4+8⍳, deviation: 40), descriptionSuffix)
     XCTAssertFalse((2+6⍳).isEqual(to: 4+8⍳, deviation: 30), descriptionSuffix)
+
+    XCTAssertTrue((2+6⍳).isEqual(to: 4+8⍳, accuracy: 3), descriptionSuffix)
+    XCTAssertFalse((2+6⍳).isEqual(to: 4+8⍳, accuracy: 1), descriptionSuffix)
 
     /*
      Test addition.
@@ -125,8 +129,8 @@ class InternalTests: XCTestCase {
 
   }
 
+  /// Tests the functionality of the floating point extenions.
   func testFloatingPointExtensions() {
-
 
     /*
      Test deviation.
@@ -147,187 +151,429 @@ class InternalTests: XCTestCase {
     XCTAssertFalse(Float(2).isEqual(to: 4, deviation:  40), descriptionSuffix)
     XCTAssertFalse(Float(2).isEqual(to: 0, deviation: 100), descriptionSuffix)
 
+    XCTAssertTrue(Float(2).isEqual(to: 2, accuracy: 0), descriptionSuffix)
+    XCTAssertTrue(Float(2).isEqual(to: 3, accuracy: 2), descriptionSuffix)
+
+    XCTAssertFalse(Float(2).isEqual(to: 3, accuracy: 0.5), descriptionSuffix)
+
   }
 
+  /// Tests the functionality of the array extensions.
   func testArrayExtensions() {
 
-    let floatValues1: [Float] = [1, 2, 3, 4, 5]
-    let floatValues2: [Float] = [5, 4, 3, 2, 1]
+    let f1: [Float] = [1, 2, 3, 4, 5]
+    let f2: [Float] = [5, 4, 3, 2, 1]
 
-    let complexValues1: [DSPComplex] = [1+1⍳, 2+2⍳, 3+3⍳, 4+4⍳, 5+5⍳]
-    let complexValues2: [DSPComplex] = [5+5⍳, 4+4⍳, 3+3⍳, 2+2⍳, 1+1⍳]
+    let c1: [DSPComplex] = [1+1⍳, 2+2⍳, 3+3⍳, 4+4⍳, 5+5⍳]
+    let c2: [DSPComplex] = [5+5⍳, 4+4⍳, 3+3⍳, 2+2⍳, 1+1⍳]
 
     /*
      Test mean.
      */
 
-    XCTAssertEqual(floatValues1.mean, 3, descriptionSuffix)
-    XCTAssertEqual(floatValues2.mean, 3, descriptionSuffix)
+    XCTAssertEqual(f1.mean, 3, descriptionSuffix)
+    XCTAssertEqual(f2.mean, 3, descriptionSuffix)
 
     /*
      Test average difference.
      */
 
-    XCTAssertEqual(floatValues1.averageDifference(with: floatValues2), 2.4)
-    XCTAssertEqual(floatValues2.averageDifference(with: floatValues1), 2.4)
-    XCTAssertEqual(floatValues1.averageDifference(with: floatValues1),   0)
-    XCTAssertEqual(floatValues2.averageDifference(with: floatValues2),   0)
+    XCTAssertEqual(f1.averageDifference(with: f2), 2.4)
+    XCTAssertEqual(f2.averageDifference(with: f1), 2.4)
+    XCTAssertEqual(f1.averageDifference(with: f1),   0)
+    XCTAssertEqual(f2.averageDifference(with: f2),   0)
 
-    XCTAssertEqual(complexValues1.averageDifference(with: complexValues2), 2.4)
-    XCTAssertEqual(complexValues2.averageDifference(with: complexValues1), 2.4)
-    XCTAssertEqual(complexValues1.averageDifference(with: complexValues1),   0)
-    XCTAssertEqual(complexValues2.averageDifference(with: complexValues2),   0)
+    XCTAssertEqual(c1.averageDifference(with: c2), 2.4)
+    XCTAssertEqual(c2.averageDifference(with: c1), 2.4)
+    XCTAssertEqual(c1.averageDifference(with: c1),   0)
+    XCTAssertEqual(c2.averageDifference(with: c2),   0)
 
     /*
      Test average deviation.
      */
 
-    XCTAssertEqual(floatValues1.averageDeviation(from: floatValues2), 126)
-    XCTAssertEqual(floatValues2.averageDeviation(from: floatValues1), 126)
-    XCTAssertEqual(floatValues1.averageDeviation(from: floatValues1),   0)
-    XCTAssertEqual(floatValues2.averageDeviation(from: floatValues2),   0)
+    XCTAssertEqual(f1.averageDeviation(from: f2), 126)
+    XCTAssertEqual(f2.averageDeviation(from: f1), 126)
+    XCTAssertEqual(f1.averageDeviation(from: f1),   0)
+    XCTAssertEqual(f2.averageDeviation(from: f2),   0)
 
-    XCTAssertEqual(complexValues1.averageDeviation(from: complexValues2), 126)
-    XCTAssertEqual(complexValues2.averageDeviation(from: complexValues1), 126)
-    XCTAssertEqual(complexValues1.averageDeviation(from: complexValues1),   0)
-    XCTAssertEqual(complexValues2.averageDeviation(from: complexValues2),   0)
+    XCTAssertEqual(c1.averageDeviation(from: c2), 126)
+    XCTAssertEqual(c2.averageDeviation(from: c1), 126)
+    XCTAssertEqual(c1.averageDeviation(from: c1),   0)
+    XCTAssertEqual(c2.averageDeviation(from: c2),   0)
 
   }
 
+  /// Tests the functionality of the test functions used to construct the assertions.
   func testTestFunctions() {
 
-    //TODO: Implement the  function
-    XCTFail("\(#function) not yet implemented." + descriptionSuffix)
+    let f1d1: [Float] = [1, 2, 3, 4, 5]
+    let f1d2: [Float] = [1, 2, 3, .nan, 5]
+    let f1d3: [Float] = [1, 2, 3, .infinity, 5]
+    let f1d4: [Float] = [5, 5, 5, 5, 5]
+
+    let f2d12 = [f1d1, f1d2]
+    let f2d14 = [f1d1, f1d4]
+    let f2d31 = [f1d3, f1d1]
+    let f2d41 = [f1d4, f1d1]
+    let f2d11 = [f1d1, f1d1]
+    let f2d44 = [f1d4, f1d4]
+
+    let f3d11_11 = [f2d11, f2d11]
+    let f3d12_11 = [f2d12, f2d11]
+    let f3d11_31 = [f2d11, f2d31]
+    let f3d14_44 = [f2d14, f2d44]
+    let f3d44_41 = [f2d44, f2d41]
+    let f3d14_14 = [f2d14, f2d14]
+    let f3d14_41 = [f2d14, f2d41]
+
+    let notNaNorInfFloatBlock: (Float) -> Bool = {!($0.isNaN || $0.isInfinite)}
+    let equalWithAccuracyPassBlock: (Float, Float) -> Bool = { $0.isEqual(to: $1, accuracy: 5) }
+    let equalWithAccuracyFailBlock: (Float, Float) -> Bool = { $0.isEqual(to: $1, accuracy: 1) }
 
     /*
-     test<T>(array: [T], using block: (_ element: T) -> Bool) -> Bool
+     Test the test function for a 1d array.
      */
 
 
-    /*
-     test<T>(array: [[T]], using block: (_ element: T) -> Bool) -> Bool
-     */
-
-
-    /*
-     test<T>(array: [[[T]]], using block: (_ element: T) -> Bool) -> Bool
-     */
-
+    XCTAssertTrue(test(array: f1d1, using: notNaNorInfFloatBlock), descriptionSuffix)
+    XCTAssertFalse(test(array: f1d2, using: notNaNorInfFloatBlock), descriptionSuffix)
+    XCTAssertFalse(test(array: f1d3, using: notNaNorInfFloatBlock), descriptionSuffix)
 
     /*
-     test<T>(array: [T], against value: T, using block: (_ element: T, _ value: T) -> Bool) -> Bool
+     Test the test function for a 2d array.
      */
 
+    XCTAssertTrue(test(array: f2d11, using: notNaNorInfFloatBlock), descriptionSuffix)
+    XCTAssertFalse(test(array: f2d12, using: notNaNorInfFloatBlock), descriptionSuffix)
+    XCTAssertFalse(test(array: f2d31, using: notNaNorInfFloatBlock), descriptionSuffix)
 
     /*
-     test<T>(array: [[T]], against value: T, using block: (_ element: T, _ value: T) -> Bool) -> Bool
+     Test the test function for a 3d array.
      */
 
+    XCTAssertTrue(test(array: f3d11_11, using: notNaNorInfFloatBlock), descriptionSuffix)
+    XCTAssertFalse(test(array: f3d12_11, using: notNaNorInfFloatBlock), descriptionSuffix)
+    XCTAssertFalse(test(array: f3d11_31, using: notNaNorInfFloatBlock), descriptionSuffix)
 
     /*
-     test<T>(array: [[[T]]], against value: T, using block: (_ element: T, _ value: T) -> Bool) -> Bool
+     Test the test function for a 1d array and a value.
      */
 
+    XCTAssertTrue(test(array: f1d1, against: 1, using: >=), descriptionSuffix)
+    XCTAssertFalse(test(array: f1d1, against: 2, using: >=), descriptionSuffix)
 
     /*
-     test<T>(array array1: [T], against array2: [T], countMismatch: UnsafeMutablePointer<Bool>? = nil, using block: (_ element1: T, _ element2: T) -> Bool) -> Bool
+     Test the test function for a 2d array and a value.
      */
 
+    XCTAssertTrue(test(array: f2d14, against: 1, using: >=), descriptionSuffix)
+    XCTAssertTrue(test(array: f2d41, against: 1, using: >=), descriptionSuffix)
+    XCTAssertFalse(test(array: f2d14, against: 2, using: >=), descriptionSuffix)
+    XCTAssertFalse(test(array: f2d41, against: 2, using: >=), descriptionSuffix)
 
     /*
-     test<T>(array array1: [[T]], against array2: [[T]], countMismatch: UnsafeMutablePointer<Bool>? = nil, using block: (_ element1: T, _ element2: T) -> Bool) -> Bool
+     Test the test function for a 3d array and a value.
      */
 
+    XCTAssertTrue(test(array: f3d14_44, against: 1, using: >=), descriptionSuffix)
+    XCTAssertTrue(test(array: f3d44_41, against: 1, using: >=), descriptionSuffix)
+    XCTAssertFalse(test(array: f3d14_44, against: 2, using: >=), descriptionSuffix)
+    XCTAssertFalse(test(array: f3d44_41, against: 2, using: >=), descriptionSuffix)
 
     /*
-     test<T>(array array1: [[[T]]], against array2: [[[T]]], countMismatch: UnsafeMutablePointer<Bool>? = nil, using block: (_ element1: T, _ element2: T) -> Bool) -> Bool
+     Test the test function for two 1d arrays.
      */
 
+    XCTAssertTrue(test(array: f1d1, against: f1d1, using: ==), descriptionSuffix)
+    XCTAssertFalse(test(array: f1d1, against: f1d4, using: ==), descriptionSuffix)
+
+    XCTAssertTrue(test(array: f1d1, against: f1d4,
+                       using: equalWithAccuracyPassBlock), descriptionSuffix)
+    XCTAssertFalse(test(array: f1d1, against: f1d4,
+                        using: equalWithAccuracyFailBlock), descriptionSuffix)
+
+    /*
+     Test the test function for two 2d arrays.
+     */
+
+    XCTAssertTrue(test(array: f2d14, against: f2d14, using: ==), descriptionSuffix)
+    XCTAssertFalse(test(array: f2d41, against: f2d14, using: ==), descriptionSuffix)
+
+    XCTAssertTrue(test(array: f2d14, against: f2d14,
+                       using: equalWithAccuracyPassBlock), descriptionSuffix)
+    XCTAssertFalse(test(array: f2d41, against: f2d14,
+                        using: equalWithAccuracyFailBlock), descriptionSuffix)
+
+    /*
+     Test the test function for two 3d arrays.
+     */
+
+    XCTAssertTrue(test(array: f3d14_14, against: f3d14_14, using: ==), descriptionSuffix)
+    XCTAssertFalse(test(array: f3d14_41, against: f3d14_14, using: ==), descriptionSuffix)
+
+    XCTAssertTrue(test(array: f3d14_14, against: f3d14_14,
+                       using: equalWithAccuracyPassBlock), descriptionSuffix)
+    XCTAssertFalse(test(array: f3d14_41, against: f3d14_14,
+                        using: equalWithAccuracyFailBlock), descriptionSuffix)
 
   }
 
+  /// Tests the functionality of the assertions.
   func testAssertions() {
 
-    //TODO: Implement the  function
-    XCTFail("\(#function) not yet implemented." + descriptionSuffix)
+    let s1d1 = ["a", "b"]
+    let s1d2 = ["c", "d"]
+
+    let s2d11 = [s1d1, s1d1]
+    let s2d12 = [s1d1, s1d2]
+    let s2d21 = [s1d2, s1d1]
+    let s2d22 = [s1d2, s1d2]
+
+    let s3d11_22 = [s2d11, s2d22]
+    let s3d12_21 = [s2d12, s2d21]
+
+    let f1d1: [Float] = [1, 2, 3, 4, 5]
+    let f1d2: [Float] = [1, 2, 3, .nan, 5]
+    let f1d3: [Float] = [1, 2, 3, .infinity, 5]
+    let f1d4: [Float] = [5, 5, 5, 5, 5]
+
+    let f2d12 = [f1d1, f1d2]
+    let f2d14 = [f1d1, f1d4]
+    let f2d31 = [f1d3, f1d1]
+    let f2d41 = [f1d4, f1d1]
+    let f2d11 = [f1d1, f1d1]
+    let f2d44 = [f1d4, f1d4]
+
+    let f3d11_11 = [f2d11, f2d11]
+    let f3d14_41 = [f2d14, f2d41]
+    let f3d11_12 = [f2d11, f2d12]
+    let f3d11_31 = [f2d11, f2d31]
+
+    let c1d1: [DSPComplex] = [1+1⍳, 2+2⍳, 3+3⍳, 4+4⍳, 5+5⍳]
+    let c1d2: [DSPComplex] = [5+5⍳, 4+4⍳, 3+3⍳, 2+2⍳, 1+1⍳]
+
+    let c2d11 = [c1d1, c1d1]
+    let c2d12 = [c1d1, c1d2]
+    let c2d21 = [c1d2, c1d1]
+
+    let c3d11_11 = [c2d11, c2d11]
+    let c3d12_21 = [c2d12, c2d21]
 
     /*
      Test multi-dimensional arrays of an equatable type.
-     XCTAssertEqual<T:Equatable>(_ array1: [[T]], _ array2: [[T]]) -> Bool
-     XCTAssertEqual<T:Equatable>(_ array1: [[[T]]], _ array2: [[[T]]]) -> Bool
      */
 
-    
+    XCTAssertTrue(XCTAssertEqual(s2d11, s2d11), descriptionSuffix)
+    XCTAssertFalse(XCTAssertEqual(s2d11, s2d12), descriptionSuffix)
+
+    XCTAssertTrue(XCTAssertEqual(s3d11_22, s3d11_22), descriptionSuffix)
+    XCTAssertFalse(XCTAssertEqual(s3d11_22, s3d12_21), descriptionSuffix)
+
+
     /*
      Test equal with accuracy.
-     XCTAssertEqual<T:FloatingPoint>(_ array1: [T], _ array2: [T], accuracy: T = 0) -> Bool
-     XCTAssertEqual<T:FloatingPoint>(_ array1: [[T]], _ array2: [[T]], accuracy: T = 0) -> Bool
-     XCTAssertEqual<T:FloatingPoint>(_ array1: [[[T]]], _ array2: [[[T]]], accuracy: T = 0) -> Bool
-     XCTAssertEqual(_ array1: [DSPComplex], _ array2: [DSPComplex], accuracy: Float = 0) -> Bool
-     XCTAssertEqual(_ array1: [[DSPComplex]], _ array2: [[DSPComplex]], accuracy: Float = 0) -> Bool
-     XCTAssertEqual(_ array1: [[[DSPComplex]]], _ array2: [[[DSPComplex]]], accuracy: Float = 0) -> Bool
      */
+
+    XCTAssertTrue(XCTAssertEqual(f1d1, f1d1, accuracy: 0), descriptionSuffix)
+    XCTAssertTrue(XCTAssertEqual(f1d1, f1d4, accuracy: 5), descriptionSuffix)
+    XCTAssertFalse(XCTAssertEqual(f1d1, f1d4, accuracy: 1), descriptionSuffix)
+
+    XCTAssertTrue(XCTAssertEqual(f2d11, f2d11, accuracy: 0), descriptionSuffix)
+    XCTAssertTrue(XCTAssertEqual(f2d11, f2d14, accuracy: 5), descriptionSuffix)
+    XCTAssertFalse(XCTAssertEqual(f2d11, f2d14, accuracy: 1), descriptionSuffix)
+
+    XCTAssertTrue(XCTAssertEqual(f3d11_11, f3d11_11, accuracy: 0), descriptionSuffix)
+    XCTAssertTrue(XCTAssertEqual(f3d11_11, f3d14_41, accuracy: 5), descriptionSuffix)
+    XCTAssertFalse(XCTAssertEqual(f3d11_11, f3d14_41, accuracy: 1), descriptionSuffix)
+
+    XCTAssertTrue(XCTAssertEqual(c1d1, c1d1, accuracy: 0), descriptionSuffix)
+    XCTAssertTrue(XCTAssertEqual(c1d1, c1d2, accuracy: 5), descriptionSuffix)
+    XCTAssertFalse(XCTAssertEqual(c1d1, c1d2, accuracy: 1), descriptionSuffix)
+
+    XCTAssertTrue(XCTAssertEqual(c2d11, c2d11, accuracy: 0), descriptionSuffix)
+    XCTAssertTrue(XCTAssertEqual(c2d11, c2d12, accuracy: 5), descriptionSuffix)
+    XCTAssertFalse(XCTAssertEqual(c2d11, c2d12, accuracy: 1), descriptionSuffix)
+
+    XCTAssertTrue(XCTAssertEqual(c3d11_11, c3d11_11, accuracy: 0), descriptionSuffix)
+    XCTAssertTrue(XCTAssertEqual(c3d11_11, c3d12_21, accuracy: 5), descriptionSuffix)
+    XCTAssertFalse(XCTAssertEqual(c3d11_11, c3d12_21, accuracy: 1), descriptionSuffix)
+
 
 
     /*
      Test equal with deviation.
-     XCTAssertEqual<T:FloatingPoint>(_ actual: T, _ expected: T, deviation: T = 0) -> Bool
-     XCTAssertEqual<T:FloatingPoint>(_ array1: [T], _ array2: [T], deviation: T = 0) -> Bool
-     XCTAssertEqual<T:FloatingPoint>(_ array1: [[T]], _ array2: [[T]], deviation: T = 0) -> Bool
-     XCTAssertEqual<T:FloatingPoint>(_ array1: [[[T]]], _ array2: [[[T]]], deviation: T = 0) -> Bool
-     XCTAssertEqual(_ array1: [DSPComplex], _ array2: [DSPComplex], deviation: Float = 0) -> Bool
-     XCTAssertEqual(_ array1: [[DSPComplex]], _ array2: [[DSPComplex]], deviation: Float = 0) -> Bool
-     XCTAssertEqual(_ array1: [[[DSPComplex]]], _ array2: [[[DSPComplex]]], deviation: Float = 0) -> Bool
      */
 
+    XCTAssertTrue(XCTAssertEqual(Float(2), Float(4), deviation: 60), descriptionSuffix)
+    XCTAssertFalse(XCTAssertEqual(Float(2), Float(4), deviation: 30), descriptionSuffix)
+
+    XCTAssertTrue(XCTAssertEqual(f1d1, f1d1, deviation: 0), descriptionSuffix)
+    XCTAssertTrue(XCTAssertEqual(f1d1, f1d4, deviation: 90), descriptionSuffix)
+    XCTAssertFalse(XCTAssertEqual(f1d1, f1d4, deviation: 10), descriptionSuffix)
+
+    XCTAssertTrue(XCTAssertEqual(f2d11, f2d11, deviation: 0), descriptionSuffix)
+    XCTAssertTrue(XCTAssertEqual(f2d11, f2d14, deviation: 90), descriptionSuffix)
+    XCTAssertFalse(XCTAssertEqual(f2d11, f2d14, deviation: 10), descriptionSuffix)
+
+    XCTAssertTrue(XCTAssertEqual(f3d11_11, f3d11_11, deviation: 0), descriptionSuffix)
+    XCTAssertTrue(XCTAssertEqual(f3d11_11, f3d14_41, deviation: 90), descriptionSuffix)
+    XCTAssertFalse(XCTAssertEqual(f3d11_11, f3d14_41, deviation: 10), descriptionSuffix)
+
+    XCTAssertTrue(XCTAssertEqual(c1d1, c1d1, deviation: 0), descriptionSuffix)
+    XCTAssertTrue(XCTAssertEqual(c1d1, c1d2, deviation: 500), descriptionSuffix)
+    XCTAssertFalse(XCTAssertEqual(c1d1, c1d2, deviation: 100), descriptionSuffix)
+
+    XCTAssertTrue(XCTAssertEqual(c2d11, c2d11, deviation: 0), descriptionSuffix)
+    XCTAssertTrue(XCTAssertEqual(c2d11, c2d12, deviation: 500), descriptionSuffix)
+    XCTAssertFalse(XCTAssertEqual(c2d11, c2d12, deviation: 100), descriptionSuffix)
+
+    XCTAssertTrue(XCTAssertEqual(c3d11_11, c3d11_11, deviation: 0), descriptionSuffix)
+    XCTAssertTrue(XCTAssertEqual(c3d11_11, c3d12_21, deviation: 500), descriptionSuffix)
+    XCTAssertFalse(XCTAssertEqual(c3d11_11, c3d12_21, deviation: 100), descriptionSuffix)
 
     /*
      Test not nan or inf.
-     XCTAssertNotNaNOrInf<T:FloatingPoint>(_ value: T) -> Bool
-     XCTAssertNotNaNOrInf<T:FloatingPoint>(_ array: [T]) -> Bool
-     XCTAssertNotNaNOrInf<T:FloatingPoint>(_ array: [[T]]) -> Bool
-     XCTAssertNotNaNOrInf<T:FloatingPoint>(_ array: [[[T]]]) -> Bool
      */
 
+    XCTAssertTrue(XCTAssertNotNaNOrInf(Float(4)), descriptionSuffix)
+    XCTAssertFalse(XCTAssertNotNaNOrInf(Float.nan), descriptionSuffix)
+    XCTAssertFalse(XCTAssertNotNaNOrInf(Float.infinity), descriptionSuffix)
+
+    XCTAssertTrue(XCTAssertNotNaNOrInf(f1d1), descriptionSuffix)
+    XCTAssertFalse(XCTAssertNotNaNOrInf(f1d2), descriptionSuffix)
+    XCTAssertFalse(XCTAssertNotNaNOrInf(f1d3), descriptionSuffix)
+
+    XCTAssertTrue(XCTAssertNotNaNOrInf(f2d14), descriptionSuffix)
+    XCTAssertFalse(XCTAssertNotNaNOrInf(f2d12), descriptionSuffix)
+    XCTAssertFalse(XCTAssertNotNaNOrInf(f2d31), descriptionSuffix)
+
+    XCTAssertTrue(XCTAssertNotNaNOrInf(f3d11_11), descriptionSuffix)
+    XCTAssertFalse(XCTAssertNotNaNOrInf(f3d11_12), descriptionSuffix)
+    XCTAssertFalse(XCTAssertNotNaNOrInf(f3d11_31), descriptionSuffix)
 
     /*
-     Test ≥.
-     XCTAssertGreaterThanOrEqual<T:FloatingPoint>(_ array: [T], _ value: T) -> Bool
-     XCTAssertGreaterThanOrEqual<T:FloatingPoint>(_ array: [[T]], _ value: T) -> Bool
-     XCTAssertGreaterThanOrEqual<T:FloatingPoint>(_ array: [[[T]]], _ value: T) -> Bool
+     Test ≥ for arrays..
      */
 
+    XCTAssertTrue(XCTAssertGreaterThanOrEqual(f1d1, 0), descriptionSuffix)
+    XCTAssertFalse(XCTAssertGreaterThanOrEqual(f1d1, 2), descriptionSuffix)
+
+    XCTAssertTrue(XCTAssertGreaterThanOrEqual(f2d11, 0), descriptionSuffix)
+    XCTAssertFalse(XCTAssertGreaterThanOrEqual(f2d11, 2), descriptionSuffix)
+
+    XCTAssertTrue(XCTAssertGreaterThanOrEqual(f3d11_11, 0), descriptionSuffix)
+    XCTAssertFalse(XCTAssertGreaterThanOrEqual(f3d11_11, 2), descriptionSuffix)
 
     /*
-     Test average equal.
-     XCTAssertAverageEqual<T:FloatingPoint>(_ array: [T], _ expected: T, accuracy: T = 0) -> Bool
-     XCTAssertAverageEqual<T:FloatingPoint>(_ array: [T], _ expected: T, deviation: T = 0) -> Bool
+     Test average equal using accuracy and deviation.
      */
 
+    XCTAssertTrue(XCTAssertAverageEqual(f1d1, 3, accuracy: 0), descriptionSuffix)
+    XCTAssertTrue(XCTAssertAverageEqual(f1d1, 3, accuracy: 10), descriptionSuffix)
+    XCTAssertTrue(XCTAssertAverageEqual(f1d1, 4, accuracy: 10), descriptionSuffix)
+    XCTAssertFalse(XCTAssertAverageEqual(f1d1, 4, accuracy: 0), descriptionSuffix)
+    XCTAssertFalse(XCTAssertAverageEqual(f1d1, 10, accuracy: 4), descriptionSuffix)
+
+    XCTAssertTrue(XCTAssertAverageEqual(f1d1, 3, deviation: 0), descriptionSuffix)
+    XCTAssertTrue(XCTAssertAverageEqual(f1d1, 3, deviation: 10), descriptionSuffix)
+    XCTAssertTrue(XCTAssertAverageEqual(f1d1, 4, deviation: 26), descriptionSuffix)
+    XCTAssertFalse(XCTAssertAverageEqual(f1d1, 4, deviation: 0), descriptionSuffix)
+    XCTAssertFalse(XCTAssertAverageEqual(f1d1, 4, deviation: 24), descriptionSuffix)
 
     /*
      Test difference mean ≤.
-     XCTAssertDifferenceMeanLessThanOrEqual<T:FloatingPoint>(_ array1: [T], _ array2: [T], _ mean: T) -> Bool
-     XCTAssertDifferenceMeanLessThanOrEqual<T:FloatingPoint>(_ array1: [[T]], _ array2: [[T]], _ mean: T) -> Bool
-     XCTAssertDifferenceMeanLessThanOrEqual(_ array1: [DSPComplex], _ array2: [DSPComplex], _ mean: Float) -> Bool
      */
+
+    XCTAssertTrue(XCTAssertDifferenceMeanLessThanOrEqual(f1d1, f1d4, 2), descriptionSuffix)
+    XCTAssertTrue(XCTAssertDifferenceMeanLessThanOrEqual(f1d1, f1d4, 3), descriptionSuffix)
+    XCTAssertFalse(XCTAssertDifferenceMeanLessThanOrEqual(f1d1, f1d4, 1), descriptionSuffix)
+
+    XCTAssertTrue(XCTAssertDifferenceMeanLessThanOrEqual(f2d11, f2d44, 2), descriptionSuffix)
+    XCTAssertTrue(XCTAssertDifferenceMeanLessThanOrEqual(f2d11, f2d44, 3), descriptionSuffix)
+    XCTAssertFalse(XCTAssertDifferenceMeanLessThanOrEqual(f2d11, f2d44, 1), descriptionSuffix)
+
+    XCTAssertTrue(XCTAssertDifferenceMeanLessThanOrEqual(c1d1, c1d2, 2.4), descriptionSuffix)
+    XCTAssertFalse(XCTAssertDifferenceMeanLessThanOrEqual(c1d1, c1d2, 2), descriptionSuffix)
+
+/*
+     1 5  4
+     2 4  2
+     3 3  0
+     4 2  2
+     5 1  4
+     ──────
+          2.4
+ */
 
 
     /*
      Test deviation ≤.
-     XCTAssertPercentDeviationLessThanOrEqual<T>(_ array1: [T], _ array2: [T], _ deviation: T) -> Bool where T:FloatingPoint
-     XCTAssertPercentDeviationLessThanOrEqual<T>(_ array1: [[T]], _ array2: [[T]], _ deviation: T) -> Bool where T:FloatingPoint
-     XCTAssertPercentDeviationLessThanOrEqual(_ array1: [DSPComplex], _ array2: [DSPComplex], _ deviation: Float) -> Bool
      */
 
+    XCTAssertTrue(XCTAssertPercentDeviationLessThanOrEqual(f1d1, f1d4, 40), descriptionSuffix)
+    XCTAssertTrue(XCTAssertPercentDeviationLessThanOrEqual(f1d1, f1d4, 50), descriptionSuffix)
+    XCTAssertFalse(XCTAssertPercentDeviationLessThanOrEqual(f1d1, f1d4, 10), descriptionSuffix)
+
+    XCTAssertTrue(XCTAssertPercentDeviationLessThanOrEqual(f2d11, f2d44, 40), descriptionSuffix)
+    XCTAssertTrue(XCTAssertPercentDeviationLessThanOrEqual(f2d11, f2d44, 50), descriptionSuffix)
+    XCTAssertFalse(XCTAssertPercentDeviationLessThanOrEqual(f2d11, f2d44, 10), descriptionSuffix)
+
+    XCTAssertTrue(XCTAssertPercentDeviationLessThanOrEqual(c1d1, c1d2, 126), descriptionSuffix)
+    XCTAssertTrue(XCTAssertPercentDeviationLessThanOrEqual(c1d1, c1d2, 130), descriptionSuffix)
+    XCTAssertFalse(XCTAssertPercentDeviationLessThanOrEqual(c1d1, c1d2, 100), descriptionSuffix)
 
     /*
      Test difference mean or deviation ≤.
-     XCTAssertDifferenceMeanOrDeviationLessThanOrEqual<T:FloatingPoint>( _ array1: [T], _ array2: [T], differenceMean: T, deviation: T) -> Bool
-     XCTAssertDifferenceMeanOrDeviationLessThanOrEqual<T:FloatingPoint>( _ array1: [[T]], _ array2: [[T]], differenceMean: T, deviation: T) -> Bool
-     XCTAssertDifferenceMeanOrDeviationLessThanOrEqual( _ array1: [DSPComplex], _ array2: [DSPComplex], differenceMean: Float, deviation: Float) -> Bool
      */
 
+    XCTAssertTrue(XCTAssertDifferenceMeanOrDeviationLessThanOrEqual(f1d1, f1d4,
+                                                                    mean: 2, deviation: 10),
+                  descriptionSuffix)
+    XCTAssertTrue(XCTAssertDifferenceMeanOrDeviationLessThanOrEqual(f1d1, f1d4,
+                                                                    mean: 3, deviation: 10),
+                  descriptionSuffix)
+    XCTAssertTrue(XCTAssertDifferenceMeanOrDeviationLessThanOrEqual(f1d1, f1d4,
+                                                                    mean: 1, deviation: 40),
+                  descriptionSuffix)
+    XCTAssertTrue(XCTAssertDifferenceMeanOrDeviationLessThanOrEqual(f1d1, f1d4,
+                                                                    mean: 1, deviation: 50),
+                  descriptionSuffix)
+
+    XCTAssertFalse(XCTAssertDifferenceMeanOrDeviationLessThanOrEqual(f1d1, f1d4,
+                                                                     mean: 1, deviation: 10),
+                   descriptionSuffix)
+
+    XCTAssertTrue(XCTAssertDifferenceMeanOrDeviationLessThanOrEqual(f2d11, f2d44,
+                                                                    mean: 2, deviation: 10),
+                  descriptionSuffix)
+    XCTAssertTrue(XCTAssertDifferenceMeanOrDeviationLessThanOrEqual(f2d11, f2d44,
+                                                                    mean: 3, deviation: 10),
+                  descriptionSuffix)
+    XCTAssertTrue(XCTAssertDifferenceMeanOrDeviationLessThanOrEqual(f2d11, f2d44,
+                                                                    mean: 1, deviation: 40),
+                  descriptionSuffix)
+    XCTAssertTrue(XCTAssertDifferenceMeanOrDeviationLessThanOrEqual(f2d11, f2d44,
+                                                                    mean: 1, deviation: 50),
+                  descriptionSuffix)
+
+    XCTAssertFalse(XCTAssertDifferenceMeanOrDeviationLessThanOrEqual(f2d11, f2d44,
+                                                                     mean: 1, deviation: 10),
+                   descriptionSuffix)
+
+    XCTAssertTrue(XCTAssertDifferenceMeanOrDeviationLessThanOrEqual(c1d1, c1d2,
+                                                                    mean: 5.5, deviation: 100),
+                  descriptionSuffix)
+    XCTAssertTrue(XCTAssertDifferenceMeanOrDeviationLessThanOrEqual(c1d1, c1d2,
+                                                                    mean: 5, deviation: 126),
+                  descriptionSuffix)
+    XCTAssertTrue(XCTAssertDifferenceMeanOrDeviationLessThanOrEqual(c1d1, c1d2,
+                                                                    mean: 5, deviation: 130),
+                  descriptionSuffix)
+
+    XCTAssertFalse(XCTAssertDifferenceMeanOrDeviationLessThanOrEqual(c1d1, c1d2,
+                                                                     mean: 2, deviation: 100),
+                   descriptionSuffix)
 
   }
 

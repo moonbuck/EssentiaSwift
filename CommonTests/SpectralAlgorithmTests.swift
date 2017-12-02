@@ -315,13 +315,29 @@ class SpectralAlgorithmTests: XCTestCase {
     spectralPeaks1[realVecInput: .spectrum] = loadVector(name: "spectralpeaks_spectrum")
     spectralPeaks1.compute()
 
-    XCTAssertEqual(spectralPeaks1[realVecOutput: .frequencies],
-                   loadVector(name: "spectralpeaks_expectedfrequencies"),
-                   deviation: 1e-5)
+    let actualFrequencies = spectralPeaks1[realVecOutput: .frequencies]
+    let expectedFrequencies = loadVector(name: "spectralpeaks_expectedfrequencies")
 
-    XCTAssertEqual(spectralPeaks1[realVecOutput: .magnitudes],
-                   loadVector(name: "spectralpeaks_expectedmagnitudes"),
-                   accuracy: 1e-5)
+    if !XCTAssertEqual(actualFrequencies, expectedFrequencies, deviation: 1e-4) {
+      add(comparisonAttachment(with: actualFrequencies,
+                               expected: expectedFrequencies,
+                               accuracyUsed: 0,
+                               deviationUsed: 1e-5,
+                               descriptor: "SpectralPeaks-Frequencies",
+                               results: [.deviation: false]))
+    }
+
+    let actualMagnitudes = spectralPeaks1[realVecOutput: .magnitudes]
+    let expectedMagnitudes = loadVector(name: "spectralpeaks_expectedmagnitudes")
+
+    if !XCTAssertEqual(actualMagnitudes, expectedMagnitudes, accuracy: 1e-5) {
+      add(comparisonAttachment(with: actualMagnitudes,
+                               expected: expectedMagnitudes,
+                               accuracyUsed: 1e-5,
+                               deviationUsed: 0,
+                               descriptor: "SpectralPeaks-Magnitudes",
+                               results: [.deviation: false]))
+    }
 
     /*
      Test with a sinusoid.
