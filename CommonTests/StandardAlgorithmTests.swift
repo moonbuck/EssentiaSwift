@@ -2211,4 +2211,113 @@ class StandardAlgorithmTests: XCTestCase {
 
   }
 
+  /// Tests the functionality of the CrossCorrelation algorithm. Values taken from
+  /// `test_crosscorrelation.py`.
+  func testCrossCorrelation() {
+
+    /*
+     Test for regression.
+     */
+
+    let crossCorrelation1 = CrossCorrelationAlgorithm([.minLag: -5, .maxLag: 5])
+    crossCorrelation1[realVecInput: .arrayX] = loadVector(name: "crosscorrelation_input1")
+    crossCorrelation1[realVecInput: .arrayY] = loadVector(name: "crosscorrelation_input2")
+    crossCorrelation1.compute()
+
+    XCTAssertEqual(crossCorrelation1[realVecOutput: .crossCorrelation],
+                   loadVector(name: "crosscorrelation_expected"),
+                   accuracy: 1e-5)
+
+    /*
+     Test invalid min/max WRT inputs.
+     */
+
+    let crossCorrelation2 = CrossCorrelationAlgorithm([.minLag: -1, .maxLag: 2])
+    crossCorrelation2[realVecInput: .arrayX] = [1]
+    crossCorrelation2[realVecInput: .arrayY] = [10]
+    crossCorrelation2.compute()
+
+    XCTAssertEqual(crossCorrelation2[realVecOutput: .crossCorrelation], [0, 10, 0, 0], accuracy: 0)
+
+    /*
+     Test with different size inputs.
+     */
+
+    let crossCorrelation3 = CrossCorrelationAlgorithm([.minLag: -3, .maxLag: 4])
+    crossCorrelation3[realVecInput: .arrayX] = [1, 2, 3, 4, 5]
+    crossCorrelation3[realVecInput: .arrayY] = [-3.546, -65, 0, 32]
+    crossCorrelation3.compute()
+
+    XCTAssertEqual(crossCorrelation3[realVecOutput: .crossCorrelation],
+                   [32, 64, 31, -5.546, -42.092, -270.638, -339.184, -17.73],
+                   accuracy: 1e-5)
+
+    /*
+     Test with same size inputs.
+     */
+
+    let crossCorrelation4 = CrossCorrelationAlgorithm([.minLag: -1, .maxLag: 1])
+    crossCorrelation4[realVecInput: .arrayX] = [4.1, 8.6]
+    crossCorrelation4[realVecInput: .arrayY] = [-3.1, 0.4321]
+    crossCorrelation4.compute()
+
+    XCTAssertEqual(crossCorrelation4[realVecOutput: .crossCorrelation],
+                   [1.77161, -8.99394, -26.66],
+                   accuracy: 1e-5)
+
+    /*
+     Test min/max equal.
+     */
+
+    let crossCorrelation5 = CrossCorrelationAlgorithm([.minLag: 0, .maxLag: 0])
+    crossCorrelation5[realVecInput: .arrayX] = [10]
+    crossCorrelation5[realVecInput: .arrayY] = [10]
+    crossCorrelation5.compute()
+
+    XCTAssertEqual(crossCorrelation5[realVecOutput: .crossCorrelation], [100], accuracy: 0)
+
+    /*
+     Test with all-zero inputs.
+     */
+
+    let crossCorrelation6 = CrossCorrelationAlgorithm([.minLag: -49, .maxLag: 49])
+    crossCorrelation6[realVecInput: .arrayX] = [0.0] * 50
+    crossCorrelation6[realVecInput: .arrayY] = [0.0] * 50
+    crossCorrelation6.compute()
+
+    XCTAssertEqual(crossCorrelation6[realVecOutput: .crossCorrelation], [0.0] * 99, accuracy: 0)
+
+    let crossCorrelation7 = CrossCorrelationAlgorithm([.maxLag: 49])
+    crossCorrelation7[realVecInput: .arrayX] = [10.0] * 50
+    crossCorrelation7[realVecInput: .arrayY] = [0]
+    crossCorrelation7.compute()
+
+    XCTAssertEqual(crossCorrelation7[realVecOutput: .crossCorrelation], [0.0] * 50, accuracy: 0)
+
+    /*
+     Test with equivalent inputs.
+     */
+
+    let crossCorrelation8 = CrossCorrelationAlgorithm([.minLag: -2, .maxLag: 2])
+    crossCorrelation8[realVecInput: .arrayX] = [45, -12, 4.783, -0.342, 1]
+    crossCorrelation8[realVecInput: .arrayY] = [45, -12, 4.783, -0.342, 1]
+    crossCorrelation8.compute()
+
+    XCTAssertEqual(crossCorrelation8[realVecOutput: .crossCorrelation],
+                   [224.122, -599.373786, 2192.99405, -599.373786, 224.122],
+                   accuracy: 1e-4)
+
+    /*
+     Test with all-zero inputs of different sizes.
+     */
+
+    let crossCorrelation9 = CrossCorrelationAlgorithm([.minLag: -5, .maxLag: 5])
+    crossCorrelation9[realVecInput: .arrayX] = [0.0] * 1024
+    crossCorrelation9[realVecInput: .arrayY] = [0.0] * 100
+    crossCorrelation9.compute()
+
+    XCTAssertEqual(crossCorrelation9[realVecOutput: .crossCorrelation], [0.0] * 11, accuracy: 0)
+
+  }
+
 }

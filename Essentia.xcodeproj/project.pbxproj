@@ -71,6 +71,12 @@
 		C23198411FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsquareinput_expectedconfidence.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23198241FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsquareinput_expectedconfidence.txt */; };
 		C23198421FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsawinput_expectedpitch.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23198251FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsawinput_expectedpitch.txt */; };
 		C23198431FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsawinput_expectedpitch.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23198251FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsawinput_expectedpitch.txt */; };
+		C23198481FD5015F00C9FF9C /* crosscorrelation_input2.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23198451FD5015F00C9FF9C /* crosscorrelation_input2.txt */; };
+		C23198491FD5015F00C9FF9C /* crosscorrelation_input2.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23198451FD5015F00C9FF9C /* crosscorrelation_input2.txt */; };
+		C231984A1FD5015F00C9FF9C /* crosscorrelation_input1.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23198461FD5015F00C9FF9C /* crosscorrelation_input1.txt */; };
+		C231984B1FD5015F00C9FF9C /* crosscorrelation_input1.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23198461FD5015F00C9FF9C /* crosscorrelation_input1.txt */; };
+		C231984C1FD5015F00C9FF9C /* crosscorrelation_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23198471FD5015F00C9FF9C /* crosscorrelation_expected.txt */; };
+		C231984D1FD5015F00C9FF9C /* crosscorrelation_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23198471FD5015F00C9FF9C /* crosscorrelation_expected.txt */; };
 		C23A332D1FBF571A0083F6CE /* Essentia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C23A33231FBF571A0083F6CE /* Essentia.framework */; };
 		C23A334B1FBF57370083F6CE /* Essentia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C23A33421FBF57360083F6CE /* Essentia.framework */; };
 		C23A335F1FBF580F0083F6CE /* Essentia.h in Headers */ = {isa = PBXBuildFile; fileRef = C23A335A1FBF57870083F6CE /* Essentia.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1987,6 +1993,9 @@
 		C23198231FD4E5E900C9FF9C /* pitchyinfft_mozartinput.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyinfft_mozartinput.txt; sourceTree = "<group>"; };
 		C23198241FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsquareinput_expectedconfidence.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyinfft_bandlimitedsquareinput_expectedconfidence.txt; sourceTree = "<group>"; };
 		C23198251FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsawinput_expectedpitch.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyinfft_bandlimitedsawinput_expectedpitch.txt; sourceTree = "<group>"; };
+		C23198451FD5015F00C9FF9C /* crosscorrelation_input2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = crosscorrelation_input2.txt; sourceTree = "<group>"; };
+		C23198461FD5015F00C9FF9C /* crosscorrelation_input1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = crosscorrelation_input1.txt; sourceTree = "<group>"; };
+		C23198471FD5015F00C9FF9C /* crosscorrelation_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = crosscorrelation_expected.txt; sourceTree = "<group>"; };
 		C23A33231FBF571A0083F6CE /* Essentia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Essentia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C23A332C1FBF571A0083F6CE /* Essentia_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Essentia_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C23A33421FBF57360083F6CE /* Essentia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Essentia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3003,6 +3012,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C23198441FD5015F00C9FF9C /* CrossCorrelation */ = {
+			isa = PBXGroup;
+			children = (
+				C23198451FD5015F00C9FF9C /* crosscorrelation_input2.txt */,
+				C23198461FD5015F00C9FF9C /* crosscorrelation_input1.txt */,
+				C23198471FD5015F00C9FF9C /* crosscorrelation_expected.txt */,
+			);
+			path = CrossCorrelation;
+			sourceTree = "<group>";
+		};
 		C23A33191FBF571A0083F6CE = {
 			isa = PBXGroup;
 			children = (
@@ -4584,6 +4603,7 @@
 				C27C40581FC39C27005CB8BA /* mozart_c_major_30sec_samples.txt */,
 				C2EC95B91FBF6A1500D384C5 /* frequencyBands.txt */,
 				C29C3CB31FCE481200F6FF4D /* Extractor */,
+				C23198441FD5015F00C9FF9C /* CrossCorrelation */,
 				C29C3C891FCD03F400F6FF4D /* PitchSalienceFunction */,
 				C29C3C901FCD03F500F6FF4D /* PitchSalienceFunctionPeaks */,
 				C29C3C8D1FCD03F500F6FF4D /* PredominantPitchMelodia */,
@@ -5615,6 +5635,7 @@
 				C2EC96AB1FBF6A7F00D384C5 /* impulses_1samp_48000_st.wav in Resources */,
 				C2EC964A1FBF6A3C00D384C5 /* cat_purrrr.wav in Resources */,
 				C2EC96851FBF6A6500D384C5 /* sin5000.wav in Resources */,
+				C231984C1FD5015F00C9FF9C /* crosscorrelation_expected.txt in Resources */,
 				C29C3D6D1FCE66EC00F6FF4D /* tonal.hpcp_expected.txt in Resources */,
 				C29C3D451FCE66EC00F6FF4D /* lowLevel.barkbands_expected.txt in Resources */,
 				C2EC97131FBF6AD800D384C5 /* silence.flac in Resources */,
@@ -5693,6 +5714,7 @@
 				C29C3D611FCE66EC00F6FF4D /* rhythm.onset_times_expected.txt in Resources */,
 				C29C3D251FCE66EC00F6FF4D /* lowLevel.spectral_crest_expected.txt in Resources */,
 				C29C3D591FCE66EC00F6FF4D /* lowLevel.silence_rate_30dB_expected.txt in Resources */,
+				C231984A1FD5015F00C9FF9C /* crosscorrelation_input1.txt in Resources */,
 				C29C3D331FCE66EC00F6FF4D /* tonal.chords_strength_expected.txt in Resources */,
 				C29C3D5D1FCE66EC00F6FF4D /* rhythm.beats_loudness_band_ratio_expected.txt in Resources */,
 				C23198341FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsawinput.txt in Resources */,
@@ -5837,6 +5859,7 @@
 				C2EC96D11FBF6A9100D384C5 /* impulses_1second_44100_bad_stream_info.flac in Resources */,
 				C23198421FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsawinput_expectedpitch.txt in Resources */,
 				C2F1362B1FC66D98006FF2E2 /* autocorrelation_octave_output.txt in Resources */,
+				C23198481FD5015F00C9FF9C /* crosscorrelation_input2.txt in Resources */,
 				C29C3C981FCD03F500F6FF4D /* pitchsaliencefunction_expected.txt in Resources */,
 				C29C3CA21FCD03F500F6FF4D /* pitchsaliencefunctionpeaks_expectedvalues.txt in Resources */,
 				C29C3D8F1FCE66EC00F6FF4D /* rhythm.confidence_expected.txt in Resources */,
@@ -5928,6 +5951,7 @@
 				C2EC96B11FBF6A7F00D384C5 /* impulses_1samp_48000_st.wav in Resources */,
 				C2EC965A1FBF6A3D00D384C5 /* cat_purrrr.wav in Resources */,
 				C2EC968B1FBF6A6500D384C5 /* sin5000.wav in Resources */,
+				C231984D1FD5015F00C9FF9C /* crosscorrelation_expected.txt in Resources */,
 				C29C3D6E1FCE66EC00F6FF4D /* tonal.hpcp_expected.txt in Resources */,
 				C29C3D461FCE66EC00F6FF4D /* lowLevel.barkbands_expected.txt in Resources */,
 				C2EC97141FBF6AD900D384C5 /* silence.flac in Resources */,
@@ -6006,6 +6030,7 @@
 				C29C3D621FCE66EC00F6FF4D /* rhythm.onset_times_expected.txt in Resources */,
 				C29C3D261FCE66EC00F6FF4D /* lowLevel.spectral_crest_expected.txt in Resources */,
 				C29C3D5A1FCE66EC00F6FF4D /* lowLevel.silence_rate_30dB_expected.txt in Resources */,
+				C231984B1FD5015F00C9FF9C /* crosscorrelation_input1.txt in Resources */,
 				C29C3D341FCE66EC00F6FF4D /* tonal.chords_strength_expected.txt in Resources */,
 				C29C3D5E1FCE66EC00F6FF4D /* rhythm.beats_loudness_band_ratio_expected.txt in Resources */,
 				C23198351FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsawinput.txt in Resources */,
@@ -6150,6 +6175,7 @@
 				C2EC96D81FBF6A9200D384C5 /* impulses_1second_44100_bad_stream_info.flac in Resources */,
 				C23198431FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsawinput_expectedpitch.txt in Resources */,
 				C2F1362C1FC66D98006FF2E2 /* autocorrelation_octave_output.txt in Resources */,
+				C23198491FD5015F00C9FF9C /* crosscorrelation_input2.txt in Resources */,
 				C29C3C991FCD03F500F6FF4D /* pitchsaliencefunction_expected.txt in Resources */,
 				C29C3CA31FCD03F500F6FF4D /* pitchsaliencefunctionpeaks_expectedvalues.txt in Resources */,
 				C29C3D901FCE66EC00F6FF4D /* rhythm.confidence_expected.txt in Resources */,
