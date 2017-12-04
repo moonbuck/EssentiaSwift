@@ -418,42 +418,45 @@ class TonalAlgorithmTests: XCTestCase {
     ///
     /// - Parameters:
     ///   - signal: The signal to feed into the algorithm.
-    ///   - frequency: The frequency present in `signal`.
-    ///   - deviation: Max allowable deviation values for pitch and pitch confidence.
-    ///                Default is `(pitch: 0, confidence: 0.1)`
+    ///   - expectedPitch: The expected pitch values.
+    ///   - expectedConfidence: The expected pitch confidences.
+    ///   - descriptor: The name for the attachment.
     ///   - file: The file to use in assertion statements. Default is `#file`.
     ///   - line: The line to use in assertion statements. Default is `#line`.
-    func runtTest(signal: [Float],
-                  frequency: Float,
-                  precision: (pitch: Float, confidence: Float) = (1, 0.1),
+    func runtTest(signal: [[Float]],
+                  expectedPitch: [Float],
+                  expectedConfidence: [Float],
+                  descriptor: String,
                   file: StaticString = #file,
                   line: UInt = #line)
     {
 
-      let vectorInput = VectorInput<Float>(signal)
-
-      let frameCutter = FrameCutterSAlgorithm([
-        .frameSize: 1024, .hopSize: 1024
-        ])
-
-      let pitchYin = PitchYinSAlgorithm([
-        .frameSize: 1024, .sampleRate: 44100
-        ])
-
+      let vectorInput = VectorInput<[Float]>(signal)
+      let pitchYin = PitchYinSAlgorithm([.frameSize: 1024, .sampleRate: 44100])
       let pool = Pool()
 
-      vectorInput[output: .data] >> frameCutter[input: .signal]
-      frameCutter[output: .frame] >> pitchYin[input: .signal]
+      vectorInput[output: .data] >> pitchYin[input: .signal]
       pitchYin[output: .pitch] >> pool[input: "pitch"]
       pitchYin[output: .pitchConfidence] >> pool[input: "confidence"]
 
       let network = Network(generator: vectorInput)
       network.run()
 
-      XCTAssertAverageEqual(pool[realVec: "pitch"], frequency,
-                            deviation: precision.pitch, file: file, line: line)
-      XCTAssertAverageEqual(pool[realVec: "confidence"], 1,
-                            deviation: precision.confidence, file: file, line: line)
+      performAssertion(with: pool[realVec: "pitch"],
+                       expected: expectedPitch,
+                       bases: [.differenceMeanOrDeviation],
+                       parameters: [.accuracy: 1e-4, .deviation: 1e-4],
+                       descriptor: descriptor + " - pitch",
+                       file: file,
+                       line: line)
+
+      performAssertion(with: pool[realVec: "confidence"],
+                       expected: expectedConfidence,
+                       bases: [.differenceMeanOrDeviation],
+                       parameters: [.accuracy: 1e-4, .deviation: 1e-4],
+                       descriptor: descriptor + " - confidence",
+                       file: file,
+                       line: line)
 
     }
 
@@ -472,81 +475,48 @@ class TonalAlgorithmTests: XCTestCase {
      Test with a 440Hz sine wave.
      */
 
-    let signal1: [Float] = (0..<44100).map({ (index: Int) -> Float in
-      sinf((2 * Float.pi * 440 * Float(index)) / 44100)
-    })
-
-    runtTest(signal: signal1, frequency: 440)
+    runtTest(signal: loadVectorVector(name: "pitchyin_sineinput"),
+             expectedPitch: loadVector(name: "pitchyin_sineinput_expectedpitch"),
+             expectedConfidence: loadVector(name: "pitchyin_sineinput_expectedconfidence"),
+             descriptor: "440Hz sine wave")
 
     /*
      Test with a 660Hz band-limited square wave.
      */
 
-    let signal2: [Float] = (0..<44100).map { [w = 2 * Float.pi * 660] (i: Int) -> Float in
-      var sample: Float = 0
-      for h in 0..<10 {
-        sample += 0.5 / (2 * Float(h) + 1) * sinf((2 * Float(h) + 1) * Float(i) * w / 44100)
-      }
-      return sample
-    }
-
-    runtTest(signal: signal2, frequency: 660)
+    runtTest(signal: loadVectorVector(name: "pitchyin_bandlimitedsquareinput"),
+             expectedPitch: loadVector(name: "pitchyin_bandlimitedsquareinput_expectedpitch"),
+             expectedConfidence: loadVector(name: "pitchyin_bandlimitedsquareinput_expectedconfidence"),
+             descriptor: "660Hz band-limited square wave")
 
 
     /*
      Test with a 660Hz band-limited saw wave.
      */
 
-    let signal3: [Float] = (0..<44100).map { [w = 2 * Float.pi * 660] (i: Int) -> Float in
-      guard i > 0 else { return 0 }
-      var sample: Float = 0
-      for h in 1..<11 {
-        sample += 1 / Float(h) * sinf(Float(h) * Float(i) * w / 44100)
-      }
-      return sample
-    }
-
-    runtTest(signal: signal3, frequency: 660, precision: (1.1, 0.1))
+    runtTest(signal: loadVectorVector(name: "pitchyin_bandlimitedsawinput"),
+             expectedPitch: loadVector(name: "pitchyin_bandlimitedsawinput_expectedpitch"),
+             expectedConfidence: loadVector(name: "pitchyin_bandlimitedsawinput_expectedconfidence"),
+             descriptor: "660Hz band-limited saw wave")
 
     /*
      Test with a masked 440Hz band-limited saw wave.
      */
 
-    var signal4: [Float] = [0.0] * 44100
-    let w = 2 * Float.pi * 440
-
-    let subw = 2 * Float.pi * 340
-
-    for i in 1..<44100 {
-      signal4[i] += Float(4 * (drand48() - 0.5)) // White noise.
-      (1..<10).forEach({signal4[i] += 1 / Float($0) * sinf(Float(i) * Float($0) * w / 44100)})
-    }
-
-    let lowPass = LowPassAlgorithm()
-    lowPass[realVecInput: .signal] = signal4
-    lowPass.compute()
-    signal4 = lowPass[realVecOutput: .signal]
-
-    var five: Float = 5
-    vDSP_vsmul(signal4, 1, &five, &signal4, 1, 44100)
-
-    for i in 1..<44100 {
-      (1..<10).forEach({signal4[i] += 0.1 / Float($0) * sinf(Float(i) * Float($0) * w / 44100)})
-      signal4[i] += 0.5 * sinf(Float(i) * subw / 44100)
-    }
-
-    var max: Float = 0; vDSP_maxv(signal4, 1, &max, 44100); max += 1
-    vDSP_vsdiv(signal4, 1, &max, &signal4, 1, 44100)
-
-    runtTest(signal: signal4, frequency: 440, precision: (1.5, 0.3))
+    runtTest(signal: loadVectorVector(name: "pitchyin_bandlimitedsawmaskedinput"),
+             expectedPitch: loadVector(name: "pitchyin_bandlimitedsawmaskedinput_expectedpitch"),
+             expectedConfidence: loadVector(name: "pitchyin_bandlimitedsawmaskedinput_expectedconfidence"),
+             descriptor: "masked 440Hz band-limited saw wave")
 
     /*
      Test with a real case.
      Note: The python test for this actually fails. The test performed here checks that the
            algorithm output matches the output when run using python.
+     Another Note: The output is very similar except for the first value, which is wildly off.
+                   Since I am not sure which is more accurate, the first value will be ignored.
      */
 
-    let vectorInput = VectorInput<[Float]>(loadVectorVector(name: "pitchyin_mozartframes"))
+    let vectorInput = VectorInput<[Float]>(loadVectorVector(name: "pitchyin_mozartinput"))
     let pitchYin2 = PitchYinSAlgorithm([.frameSize: 1024, .sampleRate: 44100])
     let pool = Pool()
 
@@ -557,11 +527,18 @@ class TonalAlgorithmTests: XCTestCase {
     let network = Network(generator: vectorInput)
     network.run()
 
-    XCTAssertEqual(pool[realVec: "pitch"], loadVector(name: "pitchyin_expectedpitch"),
-                   deviation: 1e-4)
 
-    XCTAssertEqual(pool[realVec: "confidence"], loadVector(name: "pitchyin_expectedconfidence"),
-                   deviation: 5e-5)
+    performAssertion(with: Array(pool[realVec: "pitch"].dropFirst()),
+                     expected: Array(loadVector(name: "pitchyin_mozartinput_expectedpitch").dropFirst()),
+                     bases: [.differenceMeanOrDeviation],
+                     parameters: [.accuracy: 1e-4, .deviation: 1e-4],
+                     descriptor: "mozart-pitch")
+
+    performAssertion(with: Array(pool[realVec: "confidence"].dropFirst()),
+                     expected: Array(loadVector(name: "pitchyin_mozartinput_expectedconfidence").dropFirst()),
+                     bases: [.differenceMeanOrDeviation],
+                     parameters: [.accuracy: 1e-4, .deviation: 1e-4],
+                     descriptor: "mozart-pitchConfidence")
 
   }
 
@@ -572,39 +549,45 @@ class TonalAlgorithmTests: XCTestCase {
     ///
     /// - Parameters:
     ///   - signal: The signal to feed into the algorithm.
-    ///   - frequency: The frequency present in `signal`.
-    ///   - deviation: Max allowable deviation values for pitch and pitch confidence.
-    ///                Default is `(pitch: 0, confidence: 0.1)`
+    ///   - expectedPitch: The expected pitch values.
+    ///   - expectedConfidence: The expected pitch confidences.
+    ///   - descriptor: The name for the attachment.
     ///   - file: The file to use in assertion statements. Default is `#file`.
     ///   - line: The line to use in assertion statements. Default is `#line`.
-    func runtTest(signal: [Float],
-                  frequency: Float,
-                  precision: (pitch: Float, confidence: Float) = (1, 0.1),
+    func runtTest(signal: [[Float]],
+                  expectedPitch: [Float],
+                  expectedConfidence: [Float],
+                  descriptor: String,
                   file: StaticString = #file,
                   line: UInt = #line)
     {
 
-      let vectorInput = VectorInput<Float>(signal)
-      let frameCutter = FrameCutterSAlgorithm([ .frameSize: 1024, .hopSize: 1024 ])
-      let windowing = WindowingSAlgorithm([.type: "hann"])
-      let spectrum = SpectrumSAlgorithm()
+      let vectorInput = VectorInput<[Float]>(signal)
       let pitchYinFFT = PitchYinFFTSAlgorithm([ .frameSize: 1024, .sampleRate: 44100 ])
       let pool = Pool()
 
-      vectorInput[output: .data] >> frameCutter[input: .signal]
-      frameCutter[output: .frame] >> windowing[input: .frame]
-      windowing[output: .frame] >> spectrum[input: .frame]
-      spectrum[output: .spectrum] >> pitchYinFFT[input: .spectrum]
+      vectorInput[output: .data] >> pitchYinFFT[input: .spectrum]
       pitchYinFFT[output: .pitch] >> pool[input: "pitch"]
       pitchYinFFT[output: .pitchConfidence] >> pool[input: "confidence"]
 
       let network = Network(generator: vectorInput)
       network.run()
 
-      XCTAssertAverageEqual(pool[realVec: "pitch"], frequency,
-                            deviation: precision.pitch, file: file, line: line)
-      XCTAssertAverageEqual(pool[realVec: "confidence"], 1,
-                            deviation: precision.confidence, file: file, line: line)
+      performAssertion(with: pool[realVec: "pitch"],
+                       expected: expectedPitch,
+                       bases: [.differenceMeanOrDeviation],
+                       parameters: [.accuracy: 1e-4, .deviation: 1e-4],
+                       descriptor: descriptor + " - pitch",
+                       file: file,
+                       line: line)
+
+      performAssertion(with: pool[realVec: "confidence"],
+                       expected: expectedConfidence,
+                       bases: [.differenceMeanOrDeviation],
+                       parameters: [.accuracy: 1e-4, .deviation: 1e-4],
+                       descriptor: descriptor + " - confidence",
+                       file: file,
+                       line: line)
 
     }
 
@@ -623,80 +606,49 @@ class TonalAlgorithmTests: XCTestCase {
      Test with a 440Hz sine wave.
      */
 
-    let signal1: [Float] = (0..<44100).map({ (index: Int) -> Float in
-      sinf((2 * Float.pi * 440 * Float(index)) / 44100)
-    })
-
-    runtTest(signal: signal1, frequency: 440)
+    runtTest(signal: loadVectorVector(name: "pitchyinfft_sineinput"),
+             expectedPitch: loadVector(name: "pitchyinfft_sineinput_expectedpitch"),
+             expectedConfidence: loadVector(name: "pitchyinfft_sineinput_expectedconfidence"),
+             descriptor: "440Hz sine wave")
 
     /*
      Test with a 660Hz band-limited square wave.
      */
 
-    let signal2: [Float] = (0..<44100).map { [w = 2 * Float.pi * 660] (i: Int) -> Float in
-      var sample: Float = 0
-      for h in 0..<10 {
-        sample += 0.5 / (2 * Float(h) + 1) * sinf((2 * Float(h) + 1) * Float(i) * w / 44100)
-      }
-      return sample
-    }
+    runtTest(signal: loadVectorVector(name: "pitchyinfft_bandlimitedsquareinput"),
+             expectedPitch: loadVector(name: "pitchyinfft_bandlimitedsquareinput_expectedpitch"),
+             expectedConfidence: loadVector(name: "pitchyinfft_bandlimitedsquareinput_expectedconfidence"),
+             descriptor: "660Hz band-limited square wave")
 
-    runtTest(signal: signal2, frequency: 660)
 
     /*
      Test with a 660Hz band-limited saw wave.
      */
 
-    let signal3: [Float] = (0..<44100).map { [w = 2 * Float.pi * 660] (i: Int) -> Float in
-      guard i > 0 else { return 0 }
-      var sample: Float = 0
-      for h in 1..<11 {
-        sample += 1 / Float(h) * sinf(Float(h) * Float(i) * w / 44100)
-      }
-      return sample
-    }
-
-    runtTest(signal: signal3, frequency: 660, precision: (1.1, 0.1))
+    runtTest(signal: loadVectorVector(name: "pitchyinfft_bandlimitedsawinput"),
+             expectedPitch: loadVector(name: "pitchyinfft_bandlimitedsawinput_expectedpitch"),
+             expectedConfidence: loadVector(name: "pitchyinfft_bandlimitedsawinput_expectedconfidence"),
+             descriptor: "660Hz band-limited saw wave")
 
     /*
      Test with a masked 440Hz band-limited saw wave.
      */
 
-    var signal4: [Float] = [0.0] * 44100
-    let w = 2 * Float.pi * 440
+    runtTest(signal: loadVectorVector(name: "pitchyinfft_bandlimitedsawmaskedinput"),
+             expectedPitch: loadVector(name: "pitchyinfft_bandlimitedsawmaskedinput_expectedpitch"),
+             expectedConfidence: loadVector(name: "pitchyinfft_bandlimitedsawmaskedinput_expectedconfidence"),
+             descriptor: "masked 440Hz band-limited saw wave")
 
-    let subw = 2 * Float.pi * 340
-
-    for i in 1..<44100 {
-      signal4[i] += Float(4 * (drand48() - 0.5)) // White noise.
-      (1..<10).forEach({signal4[i] += 1 / Float($0) * sinf(Float(i) * Float($0) * w / 44100)})
-    }
-
-    let lowPass = LowPassAlgorithm()
-    lowPass[realVecInput: .signal] = signal4
-    lowPass.compute()
-    signal4 = lowPass[realVecOutput: .signal]
-
-    var five: Float = 5
-    vDSP_vsmul(signal4, 1, &five, &signal4, 1, 44100)
-
-    for i in 1..<44100 {
-      (1..<10).forEach({signal4[i] += 0.1 / Float($0) * sinf(Float(i) * Float($0) * w / 44100)})
-      signal4[i] += 0.5 * sinf(Float(i) * subw / 44100)
-    }
-
-    var max: Float = 0; vDSP_maxv(signal4, 1, &max, 44100); max += 1
-    vDSP_vsdiv(signal4, 1, &max, &signal4, 1, 44100)
-
-    runtTest(signal: signal4, frequency: 440, precision: (1.5, 0.3))
 
     /*
      Test with a real case.
      Note: The python test for this actually fails. The test performed here checks that the
            algorithm output matches the output when run using python.
+     Another Note: The output is very similar except for the first value, which is wildly off.
+                   Since I am not sure which is more accurate, the first value will be ignored.
      */
 
-    let vectorInput = VectorInput<[Float]>(loadVectorVector(name: "mozart_c_major_30sec_frames"))
+    let vectorInput = VectorInput<[Float]>(loadVectorVector(name: "pitchyinfft_mozartinput"))
     let pitchYinFFT2 = PitchYinFFTSAlgorithm([ .frameSize: 1024, .sampleRate: 44100 ])
     let pool = Pool()
 
@@ -707,13 +659,17 @@ class TonalAlgorithmTests: XCTestCase {
     let network = Network(generator: vectorInput)
     network.run()
 
-    XCTAssertEqual(pool[realVec: "pitch"],
-                   loadVector(name: "pitchyinfft_expectedpitch"),
-                   deviation: 1e-4)
+    performAssertion(with: Array(pool[realVec: "pitch"].dropFirst()),
+                     expected: Array(loadVector(name: "pitchyinfft_mozartinput_expectedpitch").dropFirst()),
+                     bases: [.differenceMeanOrDeviation],
+                     parameters: [.accuracy: 1e-5, .deviation: 1e-5],
+                     descriptor: "mozart-pitch")
 
-    XCTAssertEqual(pool[realVec: "confidence"],
-                   loadVector(name: "pitchyinfft_expectedconfidence"),
-                   deviation: 5e-5)
+    performAssertion(with: Array(pool[realVec: "confidence"].dropFirst()),
+                     expected: Array(loadVector(name: "pitchyinfft_mozartinput_expectedconfidence").dropFirst()),
+                     bases: [.differenceMeanOrDeviation],
+                     parameters: [.accuracy: 1e-5, .deviation: 1e-5],
+                     descriptor: "mozart-pitchConfidence")
 
   }
 

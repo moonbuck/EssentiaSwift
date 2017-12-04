@@ -1062,7 +1062,8 @@ public func XCTAssertDifferenceMeanLessThanOrEqual<T>(_ array1: [T],
   let failureDescription =
     countMismatch
       ? """
-        XCTAssertEqual failed: The two arrays do not contain the same number of elements.
+        XCTAssertDifferenceMeanLessThanOrEqual failed: The two arrays do not contain the same \
+        number of elements.
         """
       : """
         XCTAssertDifferenceMeanLessThanOrEqual failed: ("\(averageDifference)") is not less than or equal \
@@ -1124,7 +1125,8 @@ public func XCTAssertDifferenceMeanLessThanOrEqual<T>(_ array1: [[T]],
   let failureDescription =
     countMismatch
       ? """
-        XCTAssertEqual failed: The two arrays do not contain the same number of elements.
+        XCTAssertDifferenceMeanLessThan failed: The two arrays do not contain the same number \
+        of elements.
         """
       : """
         XCTAssertDifferenceMeanLessThan failed: ("\(calculatedMean)") is not less than ("\(mean)")
@@ -1171,7 +1173,70 @@ public func XCTAssertDifferenceMeanLessThanOrEqual(_ array1: [DSPComplex],
   let failureDescription =
     countMismatch
       ? """
-        XCTAssertEqual failed: The two arrays do not contain the same number of elements.
+        XCTAssertDifferenceMeanLessThanOrEqual failed: The two arrays do not contain the same \
+        number of elements.
+        """
+      : """
+        XCTAssertDifferenceMeanLessThanOrEqual failed: ("\(calculatedMean)") is not less than or \
+        equal to ("\(mean)")
+        """
+
+  _XCTPreformattedFailureHandler(_XCTCurrentTestCase(),
+                                 true,
+                                 file.description,
+                                 Int(line),
+                                 failureDescription, message())
+
+  return false
+
+}
+
+/// Asserts that the mean of the difference between two arrays of arrays of complex numbers is
+/// less than or equal to a given value.
+///
+/// - Parameters:
+///   - array1: The first array of arrays of complex numbers.
+///   - array2: The second array of arrays of complex numbers.
+///   - mean: The value that the difference mean of `array1` and `array2` must not be above.
+///   - message: An optional description of the failure.
+///   - file: The file in which failure occurred. Defaults to the file name of the test case in
+///           which this function was called.
+///   - line: The line number on which failure occurred. Defaults to the line number on which this
+///           function was called.
+/// - Returns: `true` if the assertion does not fail and `false` otherwise.
+@discardableResult
+public func XCTAssertDifferenceMeanLessThanOrEqual(_ array1: [[DSPComplex]],
+                                                   _ array2: [[DSPComplex]],
+                                                   _ mean: Float,
+                                                   _ message: @autoclosure () -> String = "",
+                                                   file: StaticString = #file,
+                                                   line: UInt = #line) -> Bool
+{
+
+  var countMismatch = array1.count != array2.count
+
+  var calculatedMean: Float = .infinity
+
+  if !countMismatch {
+
+    var sumMean: Float = 0
+
+    for (subarray1, subarray2) in zip(array1, array2) {
+      sumMean += subarray1.averageDifference(with: subarray2, countMismatch: &countMismatch)
+      guard !countMismatch else { break }
+    }
+
+    if !countMismatch {  calculatedMean = sumMean / Float(array1.count)  }
+
+  }
+
+  guard countMismatch || calculatedMean > mean else { return true }
+
+  let failureDescription =
+    countMismatch
+      ? """
+        XCTAssertDifferenceMeanLessThanOrEqual failed: The two arrays do not contain the same \
+        number of elements.
         """
       : """
         XCTAssertDifferenceMeanLessThanOrEqual failed: ("\(calculatedMean)") is not less than or \
@@ -1219,7 +1284,8 @@ public func XCTAssertPercentDeviationLessThanOrEqual<T>(_ array1: [T],
   let failureDescription =
     countMismatch
       ? """
-        XCTAssertEqual failed: The two arrays do not contain the same number of elements.
+        XCTAssertPercentDeviationLessThanOrEqual failed: The two arrays do not contain the same \
+        number of elements.
         """
       : """
         XCTAssertPercentDeviationLessThanOrEqual failed: ("\(actualDeviation)") is not less
@@ -1281,7 +1347,8 @@ public func XCTAssertPercentDeviationLessThanOrEqual<T>(_ array1: [[T]],
   let failureDescription =
     countMismatch
       ? """
-        XCTAssertEqual failed: The two arrays do not contain the same number of elements.
+        XCTAssertPercentDeviationLessThanOrEqual failed: The two arrays do not contain the same \
+        number of elements.
         """
       : """
         XCTAssertPercentDeviationLessThanOrEqual failed: ("\(actualDeviation)") is not less
@@ -1328,7 +1395,70 @@ public func XCTAssertPercentDeviationLessThanOrEqual(_ array1: [DSPComplex],
   let failureDescription =
     countMismatch
       ? """
-        XCTAssertEqual failed: The two arrays do not contain the same number of elements.
+        XCTAssertPercentDeviationLessThanOrEqual failed: The two arrays do not contain the same \
+        number of elements.
+        """
+      : """
+        XCTAssertPercentDeviationLessThanOrEqual failed: ("\(actualDeviation)") is not less
+        than or equal to ("\(deviation)")
+        """
+
+  _XCTPreformattedFailureHandler(_XCTCurrentTestCase(),
+                                 true,
+                                 file.description,
+                                 Int(line),
+                                 failureDescription, message())
+
+  return false
+
+}
+
+/// Asserts that the percent deviation between two arrays of arrays of complex numbers is less
+/// than or equal to a given value.
+///
+/// - Parameters:
+///   - array1: The first array  of arrays of complex numbers.
+///   - array2: The second array of arrays of complex numbers.
+///   - deviation: The value which the deviation of `array1` from `array2` must not be above.
+///   - message: An optional description of the failure.
+///   - file: The file in which failure occurred. Defaults to the file name of the test case in
+///           which this function was called.
+///   - line: The line number on which failure occurred. Defaults to the line number on which this
+///           function was called.
+/// - Returns: `true` if the assertion does not fail and `false` otherwise.
+@discardableResult
+public func XCTAssertPercentDeviationLessThanOrEqual(_ array1: [[DSPComplex]],
+                                                     _ array2: [[DSPComplex]],
+                                                     _ deviation: Float,
+                                                     _ message: @autoclosure () -> String = "",
+                                                     file: StaticString = #file,
+                                                     line: UInt = #line) -> Bool
+{
+
+  var countMismatch = array1.count != array2.count
+
+  var actualDeviation: Float = .infinity
+
+  if !countMismatch {
+
+    var sumDeviation: Float = 0
+
+    for (subarray1, subarray2) in zip(array1, array2) {
+      sumDeviation += subarray1.averageDeviation(from: subarray2, countMismatch: &countMismatch)
+      guard !countMismatch else { break }
+    }
+
+    if !countMismatch {  actualDeviation = sumDeviation / Float(array1.count)  }
+
+  }
+
+  guard countMismatch || actualDeviation > deviation else { return true }
+
+  let failureDescription =
+    countMismatch
+      ? """
+        XCTAssertPercentDeviationLessThanOrEqual failed: The two arrays do not contain the same \
+        number of elements.
         """
       : """
         XCTAssertPercentDeviationLessThanOrEqual failed: ("\(actualDeviation)") is not less
@@ -1565,6 +1695,114 @@ public func XCTAssertDifferenceMeanOrDeviationLessThanOrEqual(
   let meanFail = averageDifference > mean
 
   let actualDeviation = array1.averageDeviation(from: array2, countMismatch: &countMismatch)
+  let deviationFail = actualDeviation > deviation
+
+  guard countMismatch || (meanFail && deviationFail) else { return true }
+
+  let failureDescription: String
+
+  switch (meanFail, deviationFail) {
+
+  case (_, _) where countMismatch:
+    failureDescription = """
+      XCTAssertDifferenceMeanOrDeviationLessThanOrEqual failed: The two arrays do not contain \
+      the same number of elements.
+      """
+
+  case (true, false):
+    failureDescription = """
+      XCTAssertDifferenceMeanOrDeviationLessThanOrEqual failed: average difference \
+      ("\(averageDifference)") is not less than or equal to ("\(mean)")
+      """
+
+  case (false, true):
+    failureDescription = """
+    XCTAssertDifferenceMeanOrDeviationLessThanOrEqual failed: deviation \
+    ("\(actualDeviation)") is not less than or equal to ("\(deviation)")
+    """
+
+  case (true, true):
+    failureDescription = """
+    XCTAssertDifferenceMeanOrDeviationLessThanOrEqual failed: average difference \
+    ("\(averageDifference)") is not less than or equal to ("\(mean)") and deviation \
+    ("\(actualDeviation)") is not less than or equal to ("\(deviation)")
+    """
+
+  case (false, false):
+    fatalError("The impossible happened.")
+
+  }
+
+  _XCTPreformattedFailureHandler(_XCTCurrentTestCase(),
+                                 true,
+                                 file.description,
+                                 Int(line),
+                                 failureDescription, message())
+
+  return false
+
+}
+
+/// Asserts that at least one of the following is true:
+///  1) That the percent deviation between two arrays is less than or equal to a given value.
+///  2) That the mean of the difference between two arrays is less than or equal to a given value.
+///
+/// - Parameters:
+///   - array1: The first array of arrays of complex numbers.
+///   - array2: The second array of arrays of complex numbers.
+///   - man: The value which the average difference must not be above.
+///   - deviation: The value which the percent deviation must not be above.
+///   - message: An optional description of the failure.
+///   - file: The file in which failure occurred. Defaults to the file name of the test case in
+///           which this function was called.
+///   - line: The line number on which failure occurred. Defaults to the line number on which this
+///           function was called.
+/// - Returns: `true` if the assertion does not fail and `false` otherwise.
+@discardableResult
+public func XCTAssertDifferenceMeanOrDeviationLessThanOrEqual(
+  _ array1: [[DSPComplex]],
+  _ array2: [[DSPComplex]],
+  mean: Float,
+  deviation: Float,
+  _ message: @autoclosure () -> String = "",
+  file: StaticString = #file,
+  line: UInt = #line) -> Bool
+{
+
+  var countMismatch = array1.count != array2.count
+
+  var averageDifference: Float = .infinity
+
+  if !countMismatch {
+
+    var sumMean: Float = 0
+
+    for (subarray1, subarray2) in zip(array1, array2) {
+      sumMean += subarray1.averageDifference(with: subarray2, countMismatch: &countMismatch)
+      guard !countMismatch else { break }
+    }
+
+    if !countMismatch {  averageDifference = sumMean / Float(array1.count)  }
+
+  }
+
+  let meanFail = averageDifference > mean
+
+  var actualDeviation: Float = .infinity
+
+  if !countMismatch {
+
+    var sumDeviation: Float = 0
+
+    for (subarray1, subarray2) in zip(array1, array2) {
+      sumDeviation += subarray1.averageDeviation(from: subarray2, countMismatch: &countMismatch)
+      guard !countMismatch else { break }
+    }
+
+    if !countMismatch {  actualDeviation = sumDeviation / Float(array1.count)  }
+
+  }
+
   let deviationFail = actualDeviation > deviation
 
   guard countMismatch || (meanFail && deviationFail) else { return true }

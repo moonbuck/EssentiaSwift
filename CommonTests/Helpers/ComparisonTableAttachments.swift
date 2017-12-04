@@ -347,7 +347,7 @@ private func appendHeader<T>(descriptor: String,
   }
 
   if includeDeviation, let deviation = deviation {
-    print("Deviation value used during tests: \(deviation * 100)%", to: &target)
+    print("Deviation value used during tests: \(deviation)%", to: &target)
   }
 
   if includeAccuracy || includeDeviation {

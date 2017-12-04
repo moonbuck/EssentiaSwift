@@ -9,6 +9,68 @@
 /* Begin PBXBuildFile section */
 		C2126EF11FCF1E3E0001C774 /* ComparisonTableAttachments.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2126EF01FCF1E3E0001C774 /* ComparisonTableAttachments.swift */; };
 		C2126EF21FCF1E3E0001C774 /* ComparisonTableAttachments.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2126EF01FCF1E3E0001C774 /* ComparisonTableAttachments.swift */; };
+		C23197E81FD46C5700C9FF9C /* TestCaseExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23197E71FD46C5700C9FF9C /* TestCaseExtensions.swift */; };
+		C23197E91FD46C5700C9FF9C /* TestCaseExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23197E71FD46C5700C9FF9C /* TestCaseExtensions.swift */; };
+		C23197F61FD49AF300C9FF9C /* pitchyin_bandlimitedsawinput_expectedpitch.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23197EA1FD49AF200C9FF9C /* pitchyin_bandlimitedsawinput_expectedpitch.txt */; };
+		C23197F71FD49AF300C9FF9C /* pitchyin_bandlimitedsawinput_expectedpitch.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23197EA1FD49AF200C9FF9C /* pitchyin_bandlimitedsawinput_expectedpitch.txt */; };
+		C23197F81FD49AF300C9FF9C /* pitchyin_bandlimitedsquareinput.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23197EB1FD49AF200C9FF9C /* pitchyin_bandlimitedsquareinput.txt */; };
+		C23197F91FD49AF300C9FF9C /* pitchyin_bandlimitedsquareinput.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23197EB1FD49AF200C9FF9C /* pitchyin_bandlimitedsquareinput.txt */; };
+		C23197FA1FD49AF300C9FF9C /* pitchyin_bandlimitedsquareinput_expectedpitch.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23197EC1FD49AF200C9FF9C /* pitchyin_bandlimitedsquareinput_expectedpitch.txt */; };
+		C23197FB1FD49AF300C9FF9C /* pitchyin_bandlimitedsquareinput_expectedpitch.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23197EC1FD49AF200C9FF9C /* pitchyin_bandlimitedsquareinput_expectedpitch.txt */; };
+		C23197FC1FD49AF300C9FF9C /* pitchyin_bandlimitedsawmaskedinput_expectedconfidence.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23197ED1FD49AF200C9FF9C /* pitchyin_bandlimitedsawmaskedinput_expectedconfidence.txt */; };
+		C23197FD1FD49AF300C9FF9C /* pitchyin_bandlimitedsawmaskedinput_expectedconfidence.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23197ED1FD49AF200C9FF9C /* pitchyin_bandlimitedsawmaskedinput_expectedconfidence.txt */; };
+		C23197FE1FD49AF300C9FF9C /* pitchyin_bandlimitedsawmaskedinput_expectedpitch.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23197EE1FD49AF200C9FF9C /* pitchyin_bandlimitedsawmaskedinput_expectedpitch.txt */; };
+		C23197FF1FD49AF300C9FF9C /* pitchyin_bandlimitedsawmaskedinput_expectedpitch.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23197EE1FD49AF200C9FF9C /* pitchyin_bandlimitedsawmaskedinput_expectedpitch.txt */; };
+		C23198001FD49AF300C9FF9C /* pitchyin_sineinput_expectedpitch.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23197EF1FD49AF200C9FF9C /* pitchyin_sineinput_expectedpitch.txt */; };
+		C23198011FD49AF300C9FF9C /* pitchyin_sineinput_expectedpitch.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23197EF1FD49AF200C9FF9C /* pitchyin_sineinput_expectedpitch.txt */; };
+		C23198021FD49AF300C9FF9C /* pitchyin_bandlimitedsawinput.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23197F01FD49AF200C9FF9C /* pitchyin_bandlimitedsawinput.txt */; };
+		C23198031FD49AF300C9FF9C /* pitchyin_bandlimitedsawinput.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23197F01FD49AF200C9FF9C /* pitchyin_bandlimitedsawinput.txt */; };
+		C23198041FD49AF300C9FF9C /* pitchyin_sineinput_expectedconfidence.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23197F11FD49AF300C9FF9C /* pitchyin_sineinput_expectedconfidence.txt */; };
+		C23198051FD49AF300C9FF9C /* pitchyin_sineinput_expectedconfidence.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23197F11FD49AF300C9FF9C /* pitchyin_sineinput_expectedconfidence.txt */; };
+		C23198061FD49AF300C9FF9C /* pitchyin_sineinput.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23197F21FD49AF300C9FF9C /* pitchyin_sineinput.txt */; };
+		C23198071FD49AF300C9FF9C /* pitchyin_sineinput.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23197F21FD49AF300C9FF9C /* pitchyin_sineinput.txt */; };
+		C23198081FD49AF300C9FF9C /* pitchyin_bandlimitedsquareinput_expectedconfidence.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23197F31FD49AF300C9FF9C /* pitchyin_bandlimitedsquareinput_expectedconfidence.txt */; };
+		C23198091FD49AF300C9FF9C /* pitchyin_bandlimitedsquareinput_expectedconfidence.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23197F31FD49AF300C9FF9C /* pitchyin_bandlimitedsquareinput_expectedconfidence.txt */; };
+		C231980A1FD49AF300C9FF9C /* pitchyin_bandlimitedsawinput_expectedconfidence.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23197F41FD49AF300C9FF9C /* pitchyin_bandlimitedsawinput_expectedconfidence.txt */; };
+		C231980B1FD49AF300C9FF9C /* pitchyin_bandlimitedsawinput_expectedconfidence.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23197F41FD49AF300C9FF9C /* pitchyin_bandlimitedsawinput_expectedconfidence.txt */; };
+		C231980C1FD49AF300C9FF9C /* pitchyin_bandlimitedsawmaskedinput.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23197F51FD49AF300C9FF9C /* pitchyin_bandlimitedsawmaskedinput.txt */; };
+		C231980D1FD49AF300C9FF9C /* pitchyin_bandlimitedsawmaskedinput.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23197F51FD49AF300C9FF9C /* pitchyin_bandlimitedsawmaskedinput.txt */; };
+		C23198111FD49DA100C9FF9C /* pitchyin_mozartinput_expectedconfidence.txt in Resources */ = {isa = PBXBuildFile; fileRef = C231980E1FD49DA000C9FF9C /* pitchyin_mozartinput_expectedconfidence.txt */; };
+		C23198121FD49DA100C9FF9C /* pitchyin_mozartinput_expectedconfidence.txt in Resources */ = {isa = PBXBuildFile; fileRef = C231980E1FD49DA000C9FF9C /* pitchyin_mozartinput_expectedconfidence.txt */; };
+		C23198131FD49DA100C9FF9C /* pitchyin_mozartinput.txt in Resources */ = {isa = PBXBuildFile; fileRef = C231980F1FD49DA000C9FF9C /* pitchyin_mozartinput.txt */; };
+		C23198141FD49DA100C9FF9C /* pitchyin_mozartinput.txt in Resources */ = {isa = PBXBuildFile; fileRef = C231980F1FD49DA000C9FF9C /* pitchyin_mozartinput.txt */; };
+		C23198151FD49DA100C9FF9C /* pitchyin_mozartinput_expectedpitch.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23198101FD49DA000C9FF9C /* pitchyin_mozartinput_expectedpitch.txt */; };
+		C23198161FD49DA100C9FF9C /* pitchyin_mozartinput_expectedpitch.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23198101FD49DA000C9FF9C /* pitchyin_mozartinput_expectedpitch.txt */; };
+		C23198261FD4E5EA00C9FF9C /* pitchyinfft_sineinput.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23198171FD4E5E800C9FF9C /* pitchyinfft_sineinput.txt */; };
+		C23198271FD4E5EA00C9FF9C /* pitchyinfft_sineinput.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23198171FD4E5E800C9FF9C /* pitchyinfft_sineinput.txt */; };
+		C23198281FD4E5EA00C9FF9C /* pitchyinfft_sineinput_expectedconfidence.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23198181FD4E5E800C9FF9C /* pitchyinfft_sineinput_expectedconfidence.txt */; };
+		C23198291FD4E5EA00C9FF9C /* pitchyinfft_sineinput_expectedconfidence.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23198181FD4E5E800C9FF9C /* pitchyinfft_sineinput_expectedconfidence.txt */; };
+		C231982A1FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsawinput_expectedconfidence.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23198191FD4E5E800C9FF9C /* pitchyinfft_bandlimitedsawinput_expectedconfidence.txt */; };
+		C231982B1FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsawinput_expectedconfidence.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23198191FD4E5E800C9FF9C /* pitchyinfft_bandlimitedsawinput_expectedconfidence.txt */; };
+		C231982C1FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsquareinput.txt in Resources */ = {isa = PBXBuildFile; fileRef = C231981A1FD4E5E800C9FF9C /* pitchyinfft_bandlimitedsquareinput.txt */; };
+		C231982D1FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsquareinput.txt in Resources */ = {isa = PBXBuildFile; fileRef = C231981A1FD4E5E800C9FF9C /* pitchyinfft_bandlimitedsquareinput.txt */; };
+		C231982E1FD4E5EA00C9FF9C /* pitchyinfft_sineinput_expectedpitch.txt in Resources */ = {isa = PBXBuildFile; fileRef = C231981B1FD4E5E800C9FF9C /* pitchyinfft_sineinput_expectedpitch.txt */; };
+		C231982F1FD4E5EA00C9FF9C /* pitchyinfft_sineinput_expectedpitch.txt in Resources */ = {isa = PBXBuildFile; fileRef = C231981B1FD4E5E800C9FF9C /* pitchyinfft_sineinput_expectedpitch.txt */; };
+		C23198301FD4E5EA00C9FF9C /* pitchyinfft_mozartinput_expectedconfidence.txt in Resources */ = {isa = PBXBuildFile; fileRef = C231981C1FD4E5E900C9FF9C /* pitchyinfft_mozartinput_expectedconfidence.txt */; };
+		C23198311FD4E5EA00C9FF9C /* pitchyinfft_mozartinput_expectedconfidence.txt in Resources */ = {isa = PBXBuildFile; fileRef = C231981C1FD4E5E900C9FF9C /* pitchyinfft_mozartinput_expectedconfidence.txt */; };
+		C23198321FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsawmaskedinput.txt in Resources */ = {isa = PBXBuildFile; fileRef = C231981D1FD4E5E900C9FF9C /* pitchyinfft_bandlimitedsawmaskedinput.txt */; };
+		C23198331FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsawmaskedinput.txt in Resources */ = {isa = PBXBuildFile; fileRef = C231981D1FD4E5E900C9FF9C /* pitchyinfft_bandlimitedsawmaskedinput.txt */; };
+		C23198341FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsawinput.txt in Resources */ = {isa = PBXBuildFile; fileRef = C231981E1FD4E5E900C9FF9C /* pitchyinfft_bandlimitedsawinput.txt */; };
+		C23198351FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsawinput.txt in Resources */ = {isa = PBXBuildFile; fileRef = C231981E1FD4E5E900C9FF9C /* pitchyinfft_bandlimitedsawinput.txt */; };
+		C23198361FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsquareinput_expectedpitch.txt in Resources */ = {isa = PBXBuildFile; fileRef = C231981F1FD4E5E900C9FF9C /* pitchyinfft_bandlimitedsquareinput_expectedpitch.txt */; };
+		C23198371FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsquareinput_expectedpitch.txt in Resources */ = {isa = PBXBuildFile; fileRef = C231981F1FD4E5E900C9FF9C /* pitchyinfft_bandlimitedsquareinput_expectedpitch.txt */; };
+		C23198381FD4E5EA00C9FF9C /* pitchyinfft_mozartinput_expectedpitch.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23198201FD4E5E900C9FF9C /* pitchyinfft_mozartinput_expectedpitch.txt */; };
+		C23198391FD4E5EA00C9FF9C /* pitchyinfft_mozartinput_expectedpitch.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23198201FD4E5E900C9FF9C /* pitchyinfft_mozartinput_expectedpitch.txt */; };
+		C231983A1FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsawmaskedinput_expectedpitch.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23198211FD4E5E900C9FF9C /* pitchyinfft_bandlimitedsawmaskedinput_expectedpitch.txt */; };
+		C231983B1FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsawmaskedinput_expectedpitch.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23198211FD4E5E900C9FF9C /* pitchyinfft_bandlimitedsawmaskedinput_expectedpitch.txt */; };
+		C231983C1FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsawmaskedinput_expectedconfidence.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23198221FD4E5E900C9FF9C /* pitchyinfft_bandlimitedsawmaskedinput_expectedconfidence.txt */; };
+		C231983D1FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsawmaskedinput_expectedconfidence.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23198221FD4E5E900C9FF9C /* pitchyinfft_bandlimitedsawmaskedinput_expectedconfidence.txt */; };
+		C231983E1FD4E5EA00C9FF9C /* pitchyinfft_mozartinput.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23198231FD4E5E900C9FF9C /* pitchyinfft_mozartinput.txt */; };
+		C231983F1FD4E5EA00C9FF9C /* pitchyinfft_mozartinput.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23198231FD4E5E900C9FF9C /* pitchyinfft_mozartinput.txt */; };
+		C23198401FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsquareinput_expectedconfidence.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23198241FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsquareinput_expectedconfidence.txt */; };
+		C23198411FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsquareinput_expectedconfidence.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23198241FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsquareinput_expectedconfidence.txt */; };
+		C23198421FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsawinput_expectedpitch.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23198251FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsawinput_expectedpitch.txt */; };
+		C23198431FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsawinput_expectedpitch.txt in Resources */ = {isa = PBXBuildFile; fileRef = C23198251FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsawinput_expectedpitch.txt */; };
 		C23A332D1FBF571A0083F6CE /* Essentia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C23A33231FBF571A0083F6CE /* Essentia.framework */; };
 		C23A334B1FBF57370083F6CE /* Essentia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C23A33421FBF57360083F6CE /* Essentia.framework */; };
 		C23A335F1FBF580F0083F6CE /* Essentia.h in Headers */ = {isa = PBXBuildFile; fileRef = C23A335A1FBF57870083F6CE /* Essentia.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1301,16 +1363,6 @@
 		C27C40401FC2188E005CB8BA /* spectralpeaks_expectedfrequencies.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C403D1FC2188E005CB8BA /* spectralpeaks_expectedfrequencies.txt */; };
 		C27C40411FC2188E005CB8BA /* spectralpeaks_expectedmagnitudes.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C403E1FC2188E005CB8BA /* spectralpeaks_expectedmagnitudes.txt */; };
 		C27C40421FC2188E005CB8BA /* spectralpeaks_expectedmagnitudes.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C403E1FC2188E005CB8BA /* spectralpeaks_expectedmagnitudes.txt */; };
-		C27C404B1FC335FE005CB8BA /* pitchyin_expectedpitch.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C40491FC335FE005CB8BA /* pitchyin_expectedpitch.txt */; };
-		C27C404C1FC335FE005CB8BA /* pitchyin_expectedpitch.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C40491FC335FE005CB8BA /* pitchyin_expectedpitch.txt */; };
-		C27C404D1FC335FE005CB8BA /* pitchyin_expectedconfidence.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C404A1FC335FE005CB8BA /* pitchyin_expectedconfidence.txt */; };
-		C27C404E1FC335FE005CB8BA /* pitchyin_expectedconfidence.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C404A1FC335FE005CB8BA /* pitchyin_expectedconfidence.txt */; };
-		C27C40501FC338BB005CB8BA /* pitchyin_mozartframes.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C404F1FC338BB005CB8BA /* pitchyin_mozartframes.txt */; };
-		C27C40511FC338BB005CB8BA /* pitchyin_mozartframes.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C404F1FC338BB005CB8BA /* pitchyin_mozartframes.txt */; };
-		C27C40541FC39A0E005CB8BA /* pitchyinfft_expectedpitch.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C40521FC39A0E005CB8BA /* pitchyinfft_expectedpitch.txt */; };
-		C27C40551FC39A0E005CB8BA /* pitchyinfft_expectedpitch.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C40521FC39A0E005CB8BA /* pitchyinfft_expectedpitch.txt */; };
-		C27C40561FC39A0E005CB8BA /* pitchyinfft_expectedconfidence.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C40531FC39A0E005CB8BA /* pitchyinfft_expectedconfidence.txt */; };
-		C27C40571FC39A0E005CB8BA /* pitchyinfft_expectedconfidence.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C40531FC39A0E005CB8BA /* pitchyinfft_expectedconfidence.txt */; };
 		C27C40591FC39C27005CB8BA /* mozart_c_major_30sec_samples.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C40581FC39C27005CB8BA /* mozart_c_major_30sec_samples.txt */; };
 		C27C405A1FC39C27005CB8BA /* mozart_c_major_30sec_samples.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C40581FC39C27005CB8BA /* mozart_c_major_30sec_samples.txt */; };
 		C29C3C291FCA344100F6FF4D /* pool_literal.json in Resources */ = {isa = PBXBuildFile; fileRef = C29C3C281FCA344100F6FF4D /* pool_literal.json */; };
@@ -1393,8 +1445,6 @@
 		C29C3CAC1FCD05EC00F6FF4D /* predominantpitchmelodia_input.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CAA1FCD05EC00F6FF4D /* predominantpitchmelodia_input.txt */; };
 		C29C3CAE1FCD064600F6FF4D /* multipitchklapuri_input.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CAD1FCD064600F6FF4D /* multipitchklapuri_input.txt */; };
 		C29C3CAF1FCD064600F6FF4D /* multipitchklapuri_input.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CAD1FCD064600F6FF4D /* multipitchklapuri_input.txt */; };
-		C29C3CB11FCE43C100F6FF4D /* mozart_c_major_30sec_frames.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CB01FCE43C100F6FF4D /* mozart_c_major_30sec_frames.txt */; };
-		C29C3CB21FCE43C100F6FF4D /* mozart_c_major_30sec_frames.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CB01FCE43C100F6FF4D /* mozart_c_major_30sec_frames.txt */; };
 		C29C3CB61FCE481200F6FF4D /* extractor_input.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CB41FCE481200F6FF4D /* extractor_input.txt */; };
 		C29C3CB71FCE481200F6FF4D /* extractor_input.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CB41FCE481200F6FF4D /* extractor_input.txt */; };
 		C29C3D031FCE66EC00F6FF4D /* sfx.tristimulus_expected.txt in Resources */ = {isa = PBXBuildFile; fileRef = C29C3CBA1FCE66E000F6FF4D /* sfx.tristimulus_expected.txt */; };
@@ -1906,6 +1956,37 @@
 
 /* Begin PBXFileReference section */
 		C2126EF01FCF1E3E0001C774 /* ComparisonTableAttachments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonTableAttachments.swift; sourceTree = "<group>"; };
+		C23197E71FD46C5700C9FF9C /* TestCaseExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCaseExtensions.swift; sourceTree = "<group>"; };
+		C23197EA1FD49AF200C9FF9C /* pitchyin_bandlimitedsawinput_expectedpitch.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyin_bandlimitedsawinput_expectedpitch.txt; sourceTree = "<group>"; };
+		C23197EB1FD49AF200C9FF9C /* pitchyin_bandlimitedsquareinput.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyin_bandlimitedsquareinput.txt; sourceTree = "<group>"; };
+		C23197EC1FD49AF200C9FF9C /* pitchyin_bandlimitedsquareinput_expectedpitch.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyin_bandlimitedsquareinput_expectedpitch.txt; sourceTree = "<group>"; };
+		C23197ED1FD49AF200C9FF9C /* pitchyin_bandlimitedsawmaskedinput_expectedconfidence.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyin_bandlimitedsawmaskedinput_expectedconfidence.txt; sourceTree = "<group>"; };
+		C23197EE1FD49AF200C9FF9C /* pitchyin_bandlimitedsawmaskedinput_expectedpitch.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyin_bandlimitedsawmaskedinput_expectedpitch.txt; sourceTree = "<group>"; };
+		C23197EF1FD49AF200C9FF9C /* pitchyin_sineinput_expectedpitch.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyin_sineinput_expectedpitch.txt; sourceTree = "<group>"; };
+		C23197F01FD49AF200C9FF9C /* pitchyin_bandlimitedsawinput.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyin_bandlimitedsawinput.txt; sourceTree = "<group>"; };
+		C23197F11FD49AF300C9FF9C /* pitchyin_sineinput_expectedconfidence.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyin_sineinput_expectedconfidence.txt; sourceTree = "<group>"; };
+		C23197F21FD49AF300C9FF9C /* pitchyin_sineinput.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyin_sineinput.txt; sourceTree = "<group>"; };
+		C23197F31FD49AF300C9FF9C /* pitchyin_bandlimitedsquareinput_expectedconfidence.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyin_bandlimitedsquareinput_expectedconfidence.txt; sourceTree = "<group>"; };
+		C23197F41FD49AF300C9FF9C /* pitchyin_bandlimitedsawinput_expectedconfidence.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyin_bandlimitedsawinput_expectedconfidence.txt; sourceTree = "<group>"; };
+		C23197F51FD49AF300C9FF9C /* pitchyin_bandlimitedsawmaskedinput.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyin_bandlimitedsawmaskedinput.txt; sourceTree = "<group>"; };
+		C231980E1FD49DA000C9FF9C /* pitchyin_mozartinput_expectedconfidence.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyin_mozartinput_expectedconfidence.txt; sourceTree = "<group>"; };
+		C231980F1FD49DA000C9FF9C /* pitchyin_mozartinput.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyin_mozartinput.txt; sourceTree = "<group>"; };
+		C23198101FD49DA000C9FF9C /* pitchyin_mozartinput_expectedpitch.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyin_mozartinput_expectedpitch.txt; sourceTree = "<group>"; };
+		C23198171FD4E5E800C9FF9C /* pitchyinfft_sineinput.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyinfft_sineinput.txt; sourceTree = "<group>"; };
+		C23198181FD4E5E800C9FF9C /* pitchyinfft_sineinput_expectedconfidence.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyinfft_sineinput_expectedconfidence.txt; sourceTree = "<group>"; };
+		C23198191FD4E5E800C9FF9C /* pitchyinfft_bandlimitedsawinput_expectedconfidence.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyinfft_bandlimitedsawinput_expectedconfidence.txt; sourceTree = "<group>"; };
+		C231981A1FD4E5E800C9FF9C /* pitchyinfft_bandlimitedsquareinput.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyinfft_bandlimitedsquareinput.txt; sourceTree = "<group>"; };
+		C231981B1FD4E5E800C9FF9C /* pitchyinfft_sineinput_expectedpitch.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyinfft_sineinput_expectedpitch.txt; sourceTree = "<group>"; };
+		C231981C1FD4E5E900C9FF9C /* pitchyinfft_mozartinput_expectedconfidence.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyinfft_mozartinput_expectedconfidence.txt; sourceTree = "<group>"; };
+		C231981D1FD4E5E900C9FF9C /* pitchyinfft_bandlimitedsawmaskedinput.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyinfft_bandlimitedsawmaskedinput.txt; sourceTree = "<group>"; };
+		C231981E1FD4E5E900C9FF9C /* pitchyinfft_bandlimitedsawinput.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyinfft_bandlimitedsawinput.txt; sourceTree = "<group>"; };
+		C231981F1FD4E5E900C9FF9C /* pitchyinfft_bandlimitedsquareinput_expectedpitch.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyinfft_bandlimitedsquareinput_expectedpitch.txt; sourceTree = "<group>"; };
+		C23198201FD4E5E900C9FF9C /* pitchyinfft_mozartinput_expectedpitch.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyinfft_mozartinput_expectedpitch.txt; sourceTree = "<group>"; };
+		C23198211FD4E5E900C9FF9C /* pitchyinfft_bandlimitedsawmaskedinput_expectedpitch.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyinfft_bandlimitedsawmaskedinput_expectedpitch.txt; sourceTree = "<group>"; };
+		C23198221FD4E5E900C9FF9C /* pitchyinfft_bandlimitedsawmaskedinput_expectedconfidence.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyinfft_bandlimitedsawmaskedinput_expectedconfidence.txt; sourceTree = "<group>"; };
+		C23198231FD4E5E900C9FF9C /* pitchyinfft_mozartinput.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyinfft_mozartinput.txt; sourceTree = "<group>"; };
+		C23198241FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsquareinput_expectedconfidence.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyinfft_bandlimitedsquareinput_expectedconfidence.txt; sourceTree = "<group>"; };
+		C23198251FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsawinput_expectedpitch.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyinfft_bandlimitedsawinput_expectedpitch.txt; sourceTree = "<group>"; };
 		C23A33231FBF571A0083F6CE /* Essentia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Essentia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C23A332C1FBF571A0083F6CE /* Essentia_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Essentia_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C23A33421FBF57360083F6CE /* Essentia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Essentia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2600,11 +2681,6 @@
 		C27C403A1FC2182C005CB8BA /* spectralpeaks_spectrum.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = spectralpeaks_spectrum.txt; sourceTree = "<group>"; };
 		C27C403D1FC2188E005CB8BA /* spectralpeaks_expectedfrequencies.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = spectralpeaks_expectedfrequencies.txt; sourceTree = "<group>"; };
 		C27C403E1FC2188E005CB8BA /* spectralpeaks_expectedmagnitudes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = spectralpeaks_expectedmagnitudes.txt; sourceTree = "<group>"; };
-		C27C40491FC335FE005CB8BA /* pitchyin_expectedpitch.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyin_expectedpitch.txt; sourceTree = "<group>"; };
-		C27C404A1FC335FE005CB8BA /* pitchyin_expectedconfidence.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyin_expectedconfidence.txt; sourceTree = "<group>"; };
-		C27C404F1FC338BB005CB8BA /* pitchyin_mozartframes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyin_mozartframes.txt; sourceTree = "<group>"; };
-		C27C40521FC39A0E005CB8BA /* pitchyinfft_expectedpitch.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyinfft_expectedpitch.txt; sourceTree = "<group>"; };
-		C27C40531FC39A0E005CB8BA /* pitchyinfft_expectedconfidence.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pitchyinfft_expectedconfidence.txt; sourceTree = "<group>"; };
 		C27C40581FC39C27005CB8BA /* mozart_c_major_30sec_samples.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mozart_c_major_30sec_samples.txt; sourceTree = "<group>"; };
 		C29C3C281FCA344100F6FF4D /* pool_literal.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pool_literal.json; sourceTree = "<group>"; };
 		C29C3C2C1FCB8A6900F6FF4D /* chromagram_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = chromagram_expected.txt; sourceTree = "<group>"; };
@@ -2646,7 +2722,6 @@
 		C29C3CA71FCD05DD00F6FF4D /* multipitchmelodia_input.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = multipitchmelodia_input.txt; sourceTree = "<group>"; };
 		C29C3CAA1FCD05EC00F6FF4D /* predominantpitchmelodia_input.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = predominantpitchmelodia_input.txt; sourceTree = "<group>"; };
 		C29C3CAD1FCD064600F6FF4D /* multipitchklapuri_input.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = multipitchklapuri_input.txt; sourceTree = "<group>"; };
-		C29C3CB01FCE43C100F6FF4D /* mozart_c_major_30sec_frames.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mozart_c_major_30sec_frames.txt; sourceTree = "<group>"; };
 		C29C3CB41FCE481200F6FF4D /* extractor_input.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = extractor_input.txt; sourceTree = "<group>"; };
 		C29C3CBA1FCE66E000F6FF4D /* sfx.tristimulus_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sfx.tristimulus_expected.txt; sourceTree = "<group>"; };
 		C29C3CBB1FCE66E000F6FF4D /* lowLevel.spectral_energyband_low_expected.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lowLevel.spectral_energyband_low_expected.txt; sourceTree = "<group>"; };
@@ -4496,6 +4571,7 @@
 				C2126EF01FCF1E3E0001C774 /* ComparisonTableAttachments.swift */,
 				C2ADA60D1FD0F082006704FD /* MathExtensions.swift */,
 				C241D5E91FD1E10D007D7664 /* test.swift */,
+				C23197E71FD46C5700C9FF9C /* TestCaseExtensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -4585,9 +4661,21 @@
 		C2F136311FC66DBC006FF2E2 /* PitchYinFFT */ = {
 			isa = PBXGroup;
 			children = (
-				C29C3CB01FCE43C100F6FF4D /* mozart_c_major_30sec_frames.txt */,
-				C27C40531FC39A0E005CB8BA /* pitchyinfft_expectedconfidence.txt */,
-				C27C40521FC39A0E005CB8BA /* pitchyinfft_expectedpitch.txt */,
+				C231981E1FD4E5E900C9FF9C /* pitchyinfft_bandlimitedsawinput.txt */,
+				C23198191FD4E5E800C9FF9C /* pitchyinfft_bandlimitedsawinput_expectedconfidence.txt */,
+				C23198251FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsawinput_expectedpitch.txt */,
+				C231981D1FD4E5E900C9FF9C /* pitchyinfft_bandlimitedsawmaskedinput.txt */,
+				C23198221FD4E5E900C9FF9C /* pitchyinfft_bandlimitedsawmaskedinput_expectedconfidence.txt */,
+				C23198211FD4E5E900C9FF9C /* pitchyinfft_bandlimitedsawmaskedinput_expectedpitch.txt */,
+				C231981A1FD4E5E800C9FF9C /* pitchyinfft_bandlimitedsquareinput.txt */,
+				C23198241FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsquareinput_expectedconfidence.txt */,
+				C231981F1FD4E5E900C9FF9C /* pitchyinfft_bandlimitedsquareinput_expectedpitch.txt */,
+				C231981C1FD4E5E900C9FF9C /* pitchyinfft_mozartinput_expectedconfidence.txt */,
+				C23198201FD4E5E900C9FF9C /* pitchyinfft_mozartinput_expectedpitch.txt */,
+				C23198231FD4E5E900C9FF9C /* pitchyinfft_mozartinput.txt */,
+				C23198171FD4E5E800C9FF9C /* pitchyinfft_sineinput.txt */,
+				C23198181FD4E5E800C9FF9C /* pitchyinfft_sineinput_expectedconfidence.txt */,
+				C231981B1FD4E5E800C9FF9C /* pitchyinfft_sineinput_expectedpitch.txt */,
 			);
 			path = PitchYinFFT;
 			sourceTree = "<group>";
@@ -4595,9 +4683,21 @@
 		C2F136321FC66DC9006FF2E2 /* PitchYin */ = {
 			isa = PBXGroup;
 			children = (
-				C27C404F1FC338BB005CB8BA /* pitchyin_mozartframes.txt */,
-				C27C404A1FC335FE005CB8BA /* pitchyin_expectedconfidence.txt */,
-				C27C40491FC335FE005CB8BA /* pitchyin_expectedpitch.txt */,
+				C231980E1FD49DA000C9FF9C /* pitchyin_mozartinput_expectedconfidence.txt */,
+				C23198101FD49DA000C9FF9C /* pitchyin_mozartinput_expectedpitch.txt */,
+				C231980F1FD49DA000C9FF9C /* pitchyin_mozartinput.txt */,
+				C23197F41FD49AF300C9FF9C /* pitchyin_bandlimitedsawinput_expectedconfidence.txt */,
+				C23197EA1FD49AF200C9FF9C /* pitchyin_bandlimitedsawinput_expectedpitch.txt */,
+				C23197F01FD49AF200C9FF9C /* pitchyin_bandlimitedsawinput.txt */,
+				C23197ED1FD49AF200C9FF9C /* pitchyin_bandlimitedsawmaskedinput_expectedconfidence.txt */,
+				C23197EE1FD49AF200C9FF9C /* pitchyin_bandlimitedsawmaskedinput_expectedpitch.txt */,
+				C23197F51FD49AF300C9FF9C /* pitchyin_bandlimitedsawmaskedinput.txt */,
+				C23197F31FD49AF300C9FF9C /* pitchyin_bandlimitedsquareinput_expectedconfidence.txt */,
+				C23197EC1FD49AF200C9FF9C /* pitchyin_bandlimitedsquareinput_expectedpitch.txt */,
+				C23197EB1FD49AF200C9FF9C /* pitchyin_bandlimitedsquareinput.txt */,
+				C23197F11FD49AF300C9FF9C /* pitchyin_sineinput_expectedconfidence.txt */,
+				C23197EF1FD49AF200C9FF9C /* pitchyin_sineinput_expectedpitch.txt */,
+				C23197F21FD49AF300C9FF9C /* pitchyin_sineinput.txt */,
 			);
 			path = PitchYin;
 			sourceTree = "<group>";
@@ -5491,8 +5591,6 @@
 				C2EC96D41FBF6A9100D384C5 /* impulses_1second_22050_st_bad_stream_info.flac in Resources */,
 				C2BADBE51FBFAAAB009D02C5 /* windowing_triangular.txt in Resources */,
 				C2BADBDC1FBFA89B009D02C5 /* windowing_blackmanharris74.txt in Resources */,
-				C27C404B1FC335FE005CB8BA /* pitchyin_expectedpitch.txt in Resources */,
-				C27C40541FC39A0E005CB8BA /* pitchyinfft_expectedpitch.txt in Resources */,
 				C29C3C751FCD03D200F6FF4D /* pitchcontours_expectedbins.txt in Resources */,
 				C29C3D191FCE66EC00F6FF4D /* tonal.chords_histogram_expected.txt in Resources */,
 				C29C3D131FCE66EC00F6FF4D /* lowLevel.pitch_expected.txt in Resources */,
@@ -5502,7 +5600,6 @@
 				C2EC96FC1FBF6ACD00D384C5 /* seq-3341-1-16bit.flac in Resources */,
 				C29C3C711FCD03D200F6FF4D /* pitchcontours_expectedduration.txt in Resources */,
 				C29C3C631FCD03D200F6FF4D /* pitchcontoursmultimelody_inputsaliences.txt in Resources */,
-				C27C40501FC338BB005CB8BA /* pitchyin_mozartframes.txt in Resources */,
 				C2ED11751FC759D400BD18D6 /* fftc_input.txt in Resources */,
 				C29C3C7B1FCD03D200F6FF4D /* multipitchklapuri_expected.txt in Resources */,
 				C29C3D6F1FCE66EC00F6FF4D /* rhythm.first_peak_spread_expected.txt in Resources */,
@@ -5510,9 +5607,11 @@
 				C2EC96F81FBF6ACD00D384C5 /* seq-3341-2-16bit.flac in Resources */,
 				C29C3C651FCD03D200F6FF4D /* pitchmelodia_expectedconfidences.txt in Resources */,
 				C29C3D7D1FCE66EC00F6FF4D /* rhythm.histogram_expected.txt in Resources */,
+				C231983E1FD4E5EA00C9FF9C /* pitchyinfft_mozartinput.txt in Resources */,
 				C29C3D171FCE66EC00F6FF4D /* lowLevel.barkbands_spread_expected.txt in Resources */,
 				C29C3C7D1FCD03D200F6FF4D /* C4-E♭4-G4_eq_samples.txt in Resources */,
 				C29C3CA01FCD03F500F6FF4D /* pitchsaliencefunctionpeaks_input.txt in Resources */,
+				C23198401FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsquareinput_expectedconfidence.txt in Resources */,
 				C2EC96AB1FBF6A7F00D384C5 /* impulses_1samp_48000_st.wav in Resources */,
 				C2EC964A1FBF6A3C00D384C5 /* cat_purrrr.wav in Resources */,
 				C2EC96851FBF6A6500D384C5 /* sin5000.wav in Resources */,
@@ -5521,6 +5620,7 @@
 				C2EC97131FBF6AD800D384C5 /* silence.flac in Resources */,
 				C27C40591FC39C27005CB8BA /* mozart_c_major_30sec_samples.txt in Resources */,
 				C2EC964B1FBF6A3C00D384C5 /* vignesh.wav in Resources */,
+				C23198021FD49AF300C9FF9C /* pitchyin_bandlimitedsawinput.txt in Resources */,
 				C2EC96A41FBF6A7800D384C5 /* impulses_1second_44100_st.wav in Resources */,
 				C29C3D311FCE66EC00F6FF4D /* lowLevel.barkbands_kurtosis_expected.txt in Resources */,
 				C29C3D651FCE66EC00F6FF4D /* lowLevel.spectral_energy_expected.txt in Resources */,
@@ -5540,11 +5640,14 @@
 				C29C3D771FCE66EC00F6FF4D /* lowLevel.dissonance_expected.txt in Resources */,
 				C2EC967B1FBF6A5700D384C5 /* sin_30_seconds.wav in Resources */,
 				C29C3D411FCE66EC00F6FF4D /* tonal.chords_changes_rate_expected.txt in Resources */,
+				C231983A1FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsawmaskedinput_expectedpitch.txt in Resources */,
 				C2EC96491FBF6A3C00D384C5 /* musicbox.wav in Resources */,
+				C23198151FD49DA100C9FF9C /* pitchyin_mozartinput_expectedpitch.txt in Resources */,
 				C29C3D571FCE66EC00F6FF4D /* rhythm.first_peak_weight_expected.txt in Resources */,
 				C2EC96F21FBF6ACD00D384C5 /* 1kHz_sine_-40LUFS-16bit.flac in Resources */,
 				C2F136251FC66D98006FF2E2 /* autocorrelation_output_nonpow2.txt in Resources */,
 				C2EC964D1FBF6A3C00D384C5 /* dubstep.aac in Resources */,
+				C23197F81FD49AF300C9FF9C /* pitchyin_bandlimitedsquareinput.txt in Resources */,
 				C29C3D051FCE66EC00F6FF4D /* lowLevel.spectral_energyband_low_expected.txt in Resources */,
 				C29C3C6F1FCD03D200F6FF4D /* pitchcontours_inputsaliences.txt in Resources */,
 				C2EC96941FBF6A7100D384C5 /* impulses_1second_48000_st.ogg in Resources */,
@@ -5558,7 +5661,6 @@
 				C2EC96971FBF6A7100D384C5 /* impulses_1second_22050.ogg in Resources */,
 				C2EC96741FBF6A5000D384C5 /* test.ogg in Resources */,
 				C2B7180E1FC0F86600ECB0A6 /* pool.json in Resources */,
-				C29C3CB11FCE43C100F6FF4D /* mozart_c_major_30sec_frames.txt in Resources */,
 				C29C3D691FCE66EC00F6FF4D /* tonal.chords_number_rate_expected.txt in Resources */,
 				C2EC96801FBF6A5E00D384C5 /* 4channels.wav in Resources */,
 				C2F136291FC66D98006FF2E2 /* autocorrelation_octave_input.txt in Resources */,
@@ -5583,6 +5685,7 @@
 				C2EC96B01FBF6A7F00D384C5 /* impulses_1samp_44100.wav in Resources */,
 				C29C3CAE1FCD064600F6FF4D /* multipitchklapuri_input.txt in Resources */,
 				C2BADBDA1FBFA89B009D02C5 /* windowing_blackmanharris70.txt in Resources */,
+				C23197F61FD49AF300C9FF9C /* pitchyin_bandlimitedsawinput_expectedpitch.txt in Resources */,
 				C29C3D711FCE66EC00F6FF4D /* lowLevel.average_loudness_expected.txt in Resources */,
 				C2B7182D1FC10E5C00ECB0A6 /* whitenoise_saliencevalues.txt in Resources */,
 				C2EC96D31FBF6A9100D384C5 /* impulses_1second_22050_bad_stream_info.flac in Resources */,
@@ -5592,10 +5695,11 @@
 				C29C3D591FCE66EC00F6FF4D /* lowLevel.silence_rate_30dB_expected.txt in Resources */,
 				C29C3D331FCE66EC00F6FF4D /* tonal.chords_strength_expected.txt in Resources */,
 				C29C3D5D1FCE66EC00F6FF4D /* rhythm.beats_loudness_band_ratio_expected.txt in Resources */,
+				C23198341FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsawinput.txt in Resources */,
 				C2EC96F01FBF6AC800D384C5 /* multistream1.mka in Resources */,
+				C23198131FD49DA100C9FF9C /* pitchyin_mozartinput.txt in Resources */,
 				C2B7182B1FC10E5C00ECB0A6 /* sinesweep_saliencevalues.txt in Resources */,
 				C29C3D351FCE66EC00F6FF4D /* sfx.pitch_min_to_total_expected.txt in Resources */,
-				C27C404D1FC335FE005CB8BA /* pitchyin_expectedconfidence.txt in Resources */,
 				C2EC96DF1FBF6AA100D384C5 /* impulses_1second_22050.mp3 in Resources */,
 				C2EC96891FBF6A6500D384C5 /* sin_pattern_decreasing.wav in Resources */,
 				C29C3D831FCE66EC00F6FF4D /* tonal.tuning_frequency_expected.txt in Resources */,
@@ -5614,6 +5718,7 @@
 				C2EC96681FBF6A4800D384C5 /* sine_440_5000period.wav in Resources */,
 				C2F1360D1FC64A28006FF2E2 /* iir_y3.txt in Resources */,
 				C29C3D8D1FCE66EC00F6FF4D /* rhythm.bpm_expected.txt in Resources */,
+				C231983C1FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsawmaskedinput_expectedconfidence.txt in Resources */,
 				C2EC96AE1FBF6A7F00D384C5 /* impulses_1samp_44100_st.wav in Resources */,
 				C2ED11731FC759D400BD18D6 /* fftc_output.txt in Resources */,
 				C2EC96FB1FBF6ACD00D384C5 /* 1kHz_sine_-20LUFS-16bit.flac in Resources */,
@@ -5621,14 +5726,18 @@
 				C2BADBE31FBFAAAB009D02C5 /* windowing_hamming.txt in Resources */,
 				C2EC96C71FBF6A8A00D384C5 /* impulses_1second_44100_st.flac in Resources */,
 				C2EC967F1FBF6A5E00D384C5 /* 4channels.flac in Resources */,
+				C23198081FD49AF300C9FF9C /* pitchyin_bandlimitedsquareinput_expectedconfidence.txt in Resources */,
 				C29C3C671FCD03D200F6FF4D /* pitchmelodia_expectedpitches.txt in Resources */,
 				C29C3D231FCE66EC00F6FF4D /* lowLevel.pitch_instantaneous_confidence_expected.txt in Resources */,
 				C2B718291FC10E5C00ECB0A6 /* varyingsquarewave_saliencevalues.txt in Resources */,
 				C29C3D391FCE66EC00F6FF4D /* tonal.thpcp_expected.txt in Resources */,
+				C23198261FD4E5EA00C9FF9C /* pitchyinfft_sineinput.txt in Resources */,
 				C29C3C831FCD03D200F6FF4D /* pitchcontoursegmentation_expectedonsets.txt in Resources */,
+				C23198001FD49AF300C9FF9C /* pitchyin_sineinput_expectedpitch.txt in Resources */,
 				C2EC970C1FBF6AD300D384C5 /* empty.ogg in Resources */,
 				C29C3C6B1FCD03D200F6FF4D /* pitchfilter_inputpitchconfidence.txt in Resources */,
 				C2EC96F51FBF6ACD00D384C5 /* seq-3341-4-16bit-v02.flac in Resources */,
+				C23198301FD4E5EA00C9FF9C /* pitchyinfft_mozartinput_expectedconfidence.txt in Resources */,
 				C2EC96471FBF6A3C00D384C5 /* dubstep.wav in Resources */,
 				C2EC96421FBF6A3500D384C5 /* 16-Bar-Progression_Boesendorfer_Grand_Piano.aif in Resources */,
 				C29C3D3B1FCE66EC00F6FF4D /* lowLevel.spectral_strongpeak_expected.txt in Resources */,
@@ -5639,12 +5748,16 @@
 				C29C3D0F1FCE66EC00F6FF4D /* sfx.pitch_max_to_total_expected.txt in Resources */,
 				C29C3D0D1FCE66EC00F6FF4D /* lowLevel.spectral_skewness_expected.txt in Resources */,
 				C2EC96811FBF6A5E00D384C5 /* 4channels.aiff in Resources */,
+				C231982C1FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsquareinput.txt in Resources */,
+				C23198321FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsawmaskedinput.txt in Resources */,
 				C29C3C5B1FCD03D200F6FF4D /* pitchcontoursmultimelody_expected.txt in Resources */,
 				C2EC96501FBF6A3C00D384C5 /* cat_purrrr22050.wav in Resources */,
 				C29C3D4F1FCE66EC00F6FF4D /* tonal.tuning_nontempered_energy_ratio_expected.txt in Resources */,
 				C29C3D731FCE66EC00F6FF4D /* sfx.inharmonicity_expected.txt in Resources */,
 				C29C3D4B1FCE66EC00F6FF4D /* tonal.key_scale_expected.txt in Resources */,
 				C29C3D851FCE66EC00F6FF4D /* rhythm.onset_rate_expected.txt in Resources */,
+				C231980A1FD49AF300C9FF9C /* pitchyin_bandlimitedsawinput_expectedconfidence.txt in Resources */,
+				C23198361FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsquareinput_expectedpitch.txt in Resources */,
 				C2B718271FC10E5C00ECB0A6 /* squarewave_saliencevalues.txt in Resources */,
 				C29C3C791FCD03D200F6FF4D /* pitchcontours_expectedsaliences.txt in Resources */,
 				C2F136111FC64A28006FF2E2 /* iir_ab.txt in Resources */,
@@ -5653,6 +5766,7 @@
 				C2EC96C61FBF6A8A00D384C5 /* impulses_1second_48000_st.flac in Resources */,
 				C2EC96911FBF6A6C00D384C5 /* impulses_1second_441002.wav in Resources */,
 				C29C3C731FCD03D200F6FF4D /* pitchcontours_expectedstarttimes.txt in Resources */,
+				C23198111FD49DA100C9FF9C /* pitchyin_mozartinput_expectedconfidence.txt in Resources */,
 				C29C3D911FCE66EC00F6FF4D /* tonal.chords_progression_expected.txt in Resources */,
 				C2EC96F61FBF6ACD00D384C5 /* seq-3341-3-16bit-v02.flac in Resources */,
 				C29C3C2D1FCB8A6900F6FF4D /* chromagram_expected.txt in Resources */,
@@ -5672,6 +5786,7 @@
 				C2EC96B71FBF6A8400D384C5 /* impulses_1second_44100_st.aiff in Resources */,
 				C2EC96FD1FBF6ACD00D384C5 /* seq-3342-2-16bit.flac in Resources */,
 				C29C3C291FCA344100F6FF4D /* pool_literal.json in Resources */,
+				C23198381FD4E5EA00C9FF9C /* pitchyinfft_mozartinput_expectedpitch.txt in Resources */,
 				C2EC964E1FBF6A3C00D384C5 /* dubstep.ogg in Resources */,
 				C29C3C871FCD03D200F6FF4D /* multipitchmelodia_expected.txt in Resources */,
 				C2EC96E01FBF6AA100D384C5 /* impulses_1second_44100.mp3 in Resources */,
@@ -5684,10 +5799,12 @@
 				C2EC96A21FBF6A7800D384C5 /* impulses_1second_44100.wav in Resources */,
 				C2B7181E1FC1034F00ECB0A6 /* pitchsalience_whitenoise2.txt in Resources */,
 				C2EC96D01FBF6A9100D384C5 /* impulses_1second_48000_bad_stream_info.flac in Resources */,
+				C23197FE1FD49AF300C9FF9C /* pitchyin_bandlimitedsawmaskedinput_expectedpitch.txt in Resources */,
 				C29C3D371FCE66EC00F6FF4D /* rhythm.second_peak_bpm_expected.txt in Resources */,
 				C29C3D2F1FCE66EC00F6FF4D /* lowLevel.spectral_flatness_db_expected.txt in Resources */,
 				C2EC970E1FBF6AD300D384C5 /* empty.aiff in Resources */,
 				C29C3C851FCD03D200F6FF4D /* pitchcontoursegmentation_expectedpitches.txt in Resources */,
+				C23198061FD49AF300C9FF9C /* pitchyin_sineinput.txt in Resources */,
 				C29C3D891FCE66EC00F6FF4D /* lowLevel.spectral_rolloff_expected.txt in Resources */,
 				C29C3D1B1FCE66EC00F6FF4D /* tonal.tuning_equal_tempered_deviation_expected.txt in Resources */,
 				C2EC96F71FBF6ACD00D384C5 /* 1kHz_sine_-26LUFS-16bit.flac in Resources */,
@@ -5696,24 +5813,29 @@
 				C2EC966F1FBF6A5000D384C5 /* test-unicode.flac in Resources */,
 				C2F136271FC66D98006FF2E2 /* autocorrelation_output.txt in Resources */,
 				C29C3D751FCE66EC00F6FF4D /* lowLevel.mfcc_expected.txt in Resources */,
+				C23197FA1FD49AF300C9FF9C /* pitchyin_bandlimitedsquareinput_expectedpitch.txt in Resources */,
 				C2EC96871FBF6A6500D384C5 /* beat_120_240_180.wav in Resources */,
+				C231982A1FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsawinput_expectedconfidence.txt in Resources */,
 				C2EB6FA31FC7303C0068D657 /* fft_input.txt in Resources */,
-				C27C40561FC39A0E005CB8BA /* pitchyinfft_expectedconfidence.txt in Resources */,
 				C2F136191FC64A28006FF2E2 /* iir_y2.txt in Resources */,
 				C2EC96A31FBF6A7800D384C5 /* impulses_1second_22050_st.wav in Resources */,
 				C2EC96511FBF6A3C00D384C5 /* dubstep.mp3 in Resources */,
 				C2EC96391FBF6A2A00D384C5 /* frequencyBands.txt in Resources */,
+				C23198041FD49AF300C9FF9C /* pitchyin_sineinput_expectedconfidence.txt in Resources */,
 				C2BADBE11FBFAAAB009D02C5 /* windowing_hann.txt in Resources */,
 				C29C3D8B1FCE66EC00F6FF4D /* sfx.pitch_after_max_to_before_max_energy_ratio_expected.txt in Resources */,
 				C29C3D5F1FCE66EC00F6FF4D /* lowLevel.sccoeffs_expected.txt in Resources */,
 				C2EC96531FBF6A3C00D384C5 /* cat_purrrr24bit.wav in Resources */,
 				C29C3C691FCD03D200F6FF4D /* pitchfilter_inputpitch.txt in Resources */,
 				C2EC96C41FBF6A8A00D384C5 /* impulses_1second_44100.flac in Resources */,
+				C231980C1FD49AF300C9FF9C /* pitchyin_bandlimitedsawmaskedinput.txt in Resources */,
 				C2EC96E11FBF6AA100D384C5 /* impulses_1second_44100_st.mp3 in Resources */,
 				C2EC96F11FBF6ACD00D384C5 /* seq-3342-3-16bit.flac in Resources */,
 				C29C3C9C1FCD03F500F6FF4D /* predominantpitchmelodia_expectedconfidences.txt in Resources */,
+				C23197FC1FD49AF300C9FF9C /* pitchyin_bandlimitedsawmaskedinput_expectedconfidence.txt in Resources */,
 				C29C3C941FCD03F500F6FF4D /* pitchsaliencefunction_frequenciesinput.txt in Resources */,
 				C2EC96D11FBF6A9100D384C5 /* impulses_1second_44100_bad_stream_info.flac in Resources */,
+				C23198421FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsawinput_expectedpitch.txt in Resources */,
 				C2F1362B1FC66D98006FF2E2 /* autocorrelation_octave_output.txt in Resources */,
 				C29C3C981FCD03F500F6FF4D /* pitchsaliencefunction_expected.txt in Resources */,
 				C29C3CA21FCD03F500F6FF4D /* pitchsaliencefunctionpeaks_expectedvalues.txt in Resources */,
@@ -5752,9 +5874,11 @@
 				C27C40311FC1FFFB005CB8BA /* spectralpeaks_sinusoidfrequencies.txt in Resources */,
 				C2EC96A01FBF6A7800D384C5 /* impulses_1second_48000.wav in Resources */,
 				C2B7181C1FC1034F00ECB0A6 /* pitchsalience_squarewave.txt in Resources */,
+				C23198281FD4E5EA00C9FF9C /* pitchyinfft_sineinput_expectedconfidence.txt in Resources */,
 				C2F1362D1FC66D98006FF2E2 /* autocorrelation_input_pow2.txt in Resources */,
 				C2ED117C1FC8606A00BD18D6 /* ifft_output.txt in Resources */,
 				C29C3C9E1FCD03F500F6FF4D /* pitchsaliencefunctionpeaks_expectedbins.txt in Resources */,
+				C231982E1FD4E5EA00C9FF9C /* pitchyinfft_sineinput_expectedpitch.txt in Resources */,
 				C2EC96931FBF6A7100D384C5 /* impulses_1second_48000.ogg in Resources */,
 				C2B7181A1FC1034F00ECB0A6 /* pitchsalience_realwhitenoise.txt in Resources */,
 				C2EC96691FBF6A4800D384C5 /* unsupported.au in Resources */,
@@ -5780,8 +5904,6 @@
 				C2EC96DB1FBF6A9200D384C5 /* impulses_1second_22050_st_bad_stream_info.flac in Resources */,
 				C2BADBE61FBFAAAB009D02C5 /* windowing_triangular.txt in Resources */,
 				C2BADBDD1FBFA89B009D02C5 /* windowing_blackmanharris74.txt in Resources */,
-				C27C404C1FC335FE005CB8BA /* pitchyin_expectedpitch.txt in Resources */,
-				C27C40551FC39A0E005CB8BA /* pitchyinfft_expectedpitch.txt in Resources */,
 				C29C3C761FCD03D200F6FF4D /* pitchcontours_expectedbins.txt in Resources */,
 				C29C3D1A1FCE66EC00F6FF4D /* tonal.chords_histogram_expected.txt in Resources */,
 				C29C3D141FCE66EC00F6FF4D /* lowLevel.pitch_expected.txt in Resources */,
@@ -5791,7 +5913,6 @@
 				C2EC97091FBF6ACE00D384C5 /* seq-3341-1-16bit.flac in Resources */,
 				C29C3C721FCD03D200F6FF4D /* pitchcontours_expectedduration.txt in Resources */,
 				C29C3C641FCD03D200F6FF4D /* pitchcontoursmultimelody_inputsaliences.txt in Resources */,
-				C27C40511FC338BB005CB8BA /* pitchyin_mozartframes.txt in Resources */,
 				C2ED11761FC759D400BD18D6 /* fftc_input.txt in Resources */,
 				C29C3C7C1FCD03D200F6FF4D /* multipitchklapuri_expected.txt in Resources */,
 				C29C3D701FCE66EC00F6FF4D /* rhythm.first_peak_spread_expected.txt in Resources */,
@@ -5799,9 +5920,11 @@
 				C2EC97051FBF6ACE00D384C5 /* seq-3341-2-16bit.flac in Resources */,
 				C29C3C661FCD03D200F6FF4D /* pitchmelodia_expectedconfidences.txt in Resources */,
 				C29C3D7E1FCE66EC00F6FF4D /* rhythm.histogram_expected.txt in Resources */,
+				C231983F1FD4E5EA00C9FF9C /* pitchyinfft_mozartinput.txt in Resources */,
 				C29C3D181FCE66EC00F6FF4D /* lowLevel.barkbands_spread_expected.txt in Resources */,
 				C29C3C7E1FCD03D200F6FF4D /* C4-E♭4-G4_eq_samples.txt in Resources */,
 				C29C3CA11FCD03F500F6FF4D /* pitchsaliencefunctionpeaks_input.txt in Resources */,
+				C23198411FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsquareinput_expectedconfidence.txt in Resources */,
 				C2EC96B11FBF6A7F00D384C5 /* impulses_1samp_48000_st.wav in Resources */,
 				C2EC965A1FBF6A3D00D384C5 /* cat_purrrr.wav in Resources */,
 				C2EC968B1FBF6A6500D384C5 /* sin5000.wav in Resources */,
@@ -5810,6 +5933,7 @@
 				C2EC97141FBF6AD900D384C5 /* silence.flac in Resources */,
 				C27C405A1FC39C27005CB8BA /* mozart_c_major_30sec_samples.txt in Resources */,
 				C2EC965B1FBF6A3D00D384C5 /* vignesh.wav in Resources */,
+				C23198031FD49AF300C9FF9C /* pitchyin_bandlimitedsawinput.txt in Resources */,
 				C2EC96AA1FBF6A7800D384C5 /* impulses_1second_44100_st.wav in Resources */,
 				C29C3D321FCE66EC00F6FF4D /* lowLevel.barkbands_kurtosis_expected.txt in Resources */,
 				C29C3D661FCE66EC00F6FF4D /* lowLevel.spectral_energy_expected.txt in Resources */,
@@ -5829,11 +5953,14 @@
 				C29C3D781FCE66EC00F6FF4D /* lowLevel.dissonance_expected.txt in Resources */,
 				C2EC967D1FBF6A5800D384C5 /* sin_30_seconds.wav in Resources */,
 				C29C3D421FCE66EC00F6FF4D /* tonal.chords_changes_rate_expected.txt in Resources */,
+				C231983B1FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsawmaskedinput_expectedpitch.txt in Resources */,
 				C2EC96591FBF6A3D00D384C5 /* musicbox.wav in Resources */,
+				C23198161FD49DA100C9FF9C /* pitchyin_mozartinput_expectedpitch.txt in Resources */,
 				C29C3D581FCE66EC00F6FF4D /* rhythm.first_peak_weight_expected.txt in Resources */,
 				C2EC96FF1FBF6ACE00D384C5 /* 1kHz_sine_-40LUFS-16bit.flac in Resources */,
 				C2F136261FC66D98006FF2E2 /* autocorrelation_output_nonpow2.txt in Resources */,
 				C2EC965D1FBF6A3D00D384C5 /* dubstep.aac in Resources */,
+				C23197F91FD49AF300C9FF9C /* pitchyin_bandlimitedsquareinput.txt in Resources */,
 				C29C3D061FCE66EC00F6FF4D /* lowLevel.spectral_energyband_low_expected.txt in Resources */,
 				C29C3C701FCD03D200F6FF4D /* pitchcontours_inputsaliences.txt in Resources */,
 				C2EC969A1FBF6A7200D384C5 /* impulses_1second_48000_st.ogg in Resources */,
@@ -5847,7 +5974,6 @@
 				C2EC969D1FBF6A7200D384C5 /* impulses_1second_22050.ogg in Resources */,
 				C2EC967A1FBF6A5100D384C5 /* test.ogg in Resources */,
 				C2B7180F1FC0F86600ECB0A6 /* pool.json in Resources */,
-				C29C3CB21FCE43C100F6FF4D /* mozart_c_major_30sec_frames.txt in Resources */,
 				C29C3D6A1FCE66EC00F6FF4D /* tonal.chords_number_rate_expected.txt in Resources */,
 				C2EC96831FBF6A5F00D384C5 /* 4channels.wav in Resources */,
 				C2F1362A1FC66D98006FF2E2 /* autocorrelation_octave_input.txt in Resources */,
@@ -5872,6 +5998,7 @@
 				C2EC96B61FBF6A7F00D384C5 /* impulses_1samp_44100.wav in Resources */,
 				C29C3CAF1FCD064600F6FF4D /* multipitchklapuri_input.txt in Resources */,
 				C2BADBDB1FBFA89B009D02C5 /* windowing_blackmanharris70.txt in Resources */,
+				C23197F71FD49AF300C9FF9C /* pitchyin_bandlimitedsawinput_expectedpitch.txt in Resources */,
 				C29C3D721FCE66EC00F6FF4D /* lowLevel.average_loudness_expected.txt in Resources */,
 				C2B7182E1FC10E5C00ECB0A6 /* whitenoise_saliencevalues.txt in Resources */,
 				C2EC96DA1FBF6A9200D384C5 /* impulses_1second_22050_bad_stream_info.flac in Resources */,
@@ -5881,10 +6008,11 @@
 				C29C3D5A1FCE66EC00F6FF4D /* lowLevel.silence_rate_30dB_expected.txt in Resources */,
 				C29C3D341FCE66EC00F6FF4D /* tonal.chords_strength_expected.txt in Resources */,
 				C29C3D5E1FCE66EC00F6FF4D /* rhythm.beats_loudness_band_ratio_expected.txt in Resources */,
+				C23198351FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsawinput.txt in Resources */,
 				C2EC96EE1FBF6AC700D384C5 /* multistream1.mka in Resources */,
+				C23198141FD49DA100C9FF9C /* pitchyin_mozartinput.txt in Resources */,
 				C2B7182C1FC10E5C00ECB0A6 /* sinesweep_saliencevalues.txt in Resources */,
 				C29C3D361FCE66EC00F6FF4D /* sfx.pitch_min_to_total_expected.txt in Resources */,
-				C27C404E1FC335FE005CB8BA /* pitchyin_expectedconfidence.txt in Resources */,
 				C2EC96E51FBF6AA200D384C5 /* impulses_1second_22050.mp3 in Resources */,
 				C2EC968F1FBF6A6500D384C5 /* sin_pattern_decreasing.wav in Resources */,
 				C29C3D841FCE66EC00F6FF4D /* tonal.tuning_frequency_expected.txt in Resources */,
@@ -5903,6 +6031,7 @@
 				C2EC966C1FBF6A4900D384C5 /* sine_440_5000period.wav in Resources */,
 				C2F1360E1FC64A28006FF2E2 /* iir_y3.txt in Resources */,
 				C29C3D8E1FCE66EC00F6FF4D /* rhythm.bpm_expected.txt in Resources */,
+				C231983D1FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsawmaskedinput_expectedconfidence.txt in Resources */,
 				C2EC96B41FBF6A7F00D384C5 /* impulses_1samp_44100_st.wav in Resources */,
 				C2ED11741FC759D400BD18D6 /* fftc_output.txt in Resources */,
 				C2EC97081FBF6ACE00D384C5 /* 1kHz_sine_-20LUFS-16bit.flac in Resources */,
@@ -5910,14 +6039,18 @@
 				C2BADBE41FBFAAAB009D02C5 /* windowing_hamming.txt in Resources */,
 				C2EC96CD1FBF6A8A00D384C5 /* impulses_1second_44100_st.flac in Resources */,
 				C2EC96821FBF6A5F00D384C5 /* 4channels.flac in Resources */,
+				C23198091FD49AF300C9FF9C /* pitchyin_bandlimitedsquareinput_expectedconfidence.txt in Resources */,
 				C29C3C681FCD03D200F6FF4D /* pitchmelodia_expectedpitches.txt in Resources */,
 				C29C3D241FCE66EC00F6FF4D /* lowLevel.pitch_instantaneous_confidence_expected.txt in Resources */,
 				C2B7182A1FC10E5C00ECB0A6 /* varyingsquarewave_saliencevalues.txt in Resources */,
 				C29C3D3A1FCE66EC00F6FF4D /* tonal.thpcp_expected.txt in Resources */,
+				C23198271FD4E5EA00C9FF9C /* pitchyinfft_sineinput.txt in Resources */,
 				C29C3C841FCD03D200F6FF4D /* pitchcontoursegmentation_expectedonsets.txt in Resources */,
+				C23198011FD49AF300C9FF9C /* pitchyin_sineinput_expectedpitch.txt in Resources */,
 				C2EC97101FBF6AD400D384C5 /* empty.ogg in Resources */,
 				C29C3C6C1FCD03D200F6FF4D /* pitchfilter_inputpitchconfidence.txt in Resources */,
 				C2EC97021FBF6ACE00D384C5 /* seq-3341-4-16bit-v02.flac in Resources */,
+				C23198311FD4E5EA00C9FF9C /* pitchyinfft_mozartinput_expectedconfidence.txt in Resources */,
 				C2EC96571FBF6A3D00D384C5 /* dubstep.wav in Resources */,
 				C2EC96451FBF6A3600D384C5 /* 16-Bar-Progression_Boesendorfer_Grand_Piano.aif in Resources */,
 				C29C3D3C1FCE66EC00F6FF4D /* lowLevel.spectral_strongpeak_expected.txt in Resources */,
@@ -5928,12 +6061,16 @@
 				C29C3D101FCE66EC00F6FF4D /* sfx.pitch_max_to_total_expected.txt in Resources */,
 				C29C3D0E1FCE66EC00F6FF4D /* lowLevel.spectral_skewness_expected.txt in Resources */,
 				C2EC96841FBF6A5F00D384C5 /* 4channels.aiff in Resources */,
+				C231982D1FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsquareinput.txt in Resources */,
+				C23198331FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsawmaskedinput.txt in Resources */,
 				C29C3C5C1FCD03D200F6FF4D /* pitchcontoursmultimelody_expected.txt in Resources */,
 				C2EC96601FBF6A3D00D384C5 /* cat_purrrr22050.wav in Resources */,
 				C29C3D501FCE66EC00F6FF4D /* tonal.tuning_nontempered_energy_ratio_expected.txt in Resources */,
 				C29C3D741FCE66EC00F6FF4D /* sfx.inharmonicity_expected.txt in Resources */,
 				C29C3D4C1FCE66EC00F6FF4D /* tonal.key_scale_expected.txt in Resources */,
 				C29C3D861FCE66EC00F6FF4D /* rhythm.onset_rate_expected.txt in Resources */,
+				C231980B1FD49AF300C9FF9C /* pitchyin_bandlimitedsawinput_expectedconfidence.txt in Resources */,
+				C23198371FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsquareinput_expectedpitch.txt in Resources */,
 				C2B718281FC10E5C00ECB0A6 /* squarewave_saliencevalues.txt in Resources */,
 				C29C3C7A1FCD03D200F6FF4D /* pitchcontours_expectedsaliences.txt in Resources */,
 				C2F136121FC64A28006FF2E2 /* iir_ab.txt in Resources */,
@@ -5942,6 +6079,7 @@
 				C2EC96CC1FBF6A8A00D384C5 /* impulses_1second_48000_st.flac in Resources */,
 				C2EC96921FBF6A6C00D384C5 /* impulses_1second_441002.wav in Resources */,
 				C29C3C741FCD03D200F6FF4D /* pitchcontours_expectedstarttimes.txt in Resources */,
+				C23198121FD49DA100C9FF9C /* pitchyin_mozartinput_expectedconfidence.txt in Resources */,
 				C29C3D921FCE66EC00F6FF4D /* tonal.chords_progression_expected.txt in Resources */,
 				C2EC97031FBF6ACE00D384C5 /* seq-3341-3-16bit-v02.flac in Resources */,
 				C29C3C2E1FCB8A6900F6FF4D /* chromagram_expected.txt in Resources */,
@@ -5961,6 +6099,7 @@
 				C2EC96BD1FBF6A8500D384C5 /* impulses_1second_44100_st.aiff in Resources */,
 				C2EC970A1FBF6ACE00D384C5 /* seq-3342-2-16bit.flac in Resources */,
 				C29C3C2A1FCA344100F6FF4D /* pool_literal.json in Resources */,
+				C23198391FD4E5EA00C9FF9C /* pitchyinfft_mozartinput_expectedpitch.txt in Resources */,
 				C2EC965E1FBF6A3D00D384C5 /* dubstep.ogg in Resources */,
 				C29C3C881FCD03D200F6FF4D /* multipitchmelodia_expected.txt in Resources */,
 				C2EC96E61FBF6AA200D384C5 /* impulses_1second_44100.mp3 in Resources */,
@@ -5973,10 +6112,12 @@
 				C2EC96A81FBF6A7800D384C5 /* impulses_1second_44100.wav in Resources */,
 				C2B7181F1FC1034F00ECB0A6 /* pitchsalience_whitenoise2.txt in Resources */,
 				C2EC96D71FBF6A9200D384C5 /* impulses_1second_48000_bad_stream_info.flac in Resources */,
+				C23197FF1FD49AF300C9FF9C /* pitchyin_bandlimitedsawmaskedinput_expectedpitch.txt in Resources */,
 				C29C3D381FCE66EC00F6FF4D /* rhythm.second_peak_bpm_expected.txt in Resources */,
 				C29C3D301FCE66EC00F6FF4D /* lowLevel.spectral_flatness_db_expected.txt in Resources */,
 				C2EC97121FBF6AD400D384C5 /* empty.aiff in Resources */,
 				C29C3C861FCD03D200F6FF4D /* pitchcontoursegmentation_expectedpitches.txt in Resources */,
+				C23198071FD49AF300C9FF9C /* pitchyin_sineinput.txt in Resources */,
 				C29C3D8A1FCE66EC00F6FF4D /* lowLevel.spectral_rolloff_expected.txt in Resources */,
 				C29C3D1C1FCE66EC00F6FF4D /* tonal.tuning_equal_tempered_deviation_expected.txt in Resources */,
 				C2EC97041FBF6ACE00D384C5 /* 1kHz_sine_-26LUFS-16bit.flac in Resources */,
@@ -5985,24 +6126,29 @@
 				C2EC96751FBF6A5100D384C5 /* test-unicode.flac in Resources */,
 				C2F136281FC66D98006FF2E2 /* autocorrelation_output.txt in Resources */,
 				C29C3D761FCE66EC00F6FF4D /* lowLevel.mfcc_expected.txt in Resources */,
+				C23197FB1FD49AF300C9FF9C /* pitchyin_bandlimitedsquareinput_expectedpitch.txt in Resources */,
 				C2EC968D1FBF6A6500D384C5 /* beat_120_240_180.wav in Resources */,
+				C231982B1FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsawinput_expectedconfidence.txt in Resources */,
 				C2EB6FA41FC7303C0068D657 /* fft_input.txt in Resources */,
-				C27C40571FC39A0E005CB8BA /* pitchyinfft_expectedconfidence.txt in Resources */,
 				C2F1361A1FC64A28006FF2E2 /* iir_y2.txt in Resources */,
 				C2EC96A91FBF6A7800D384C5 /* impulses_1second_22050_st.wav in Resources */,
 				C2EC96611FBF6A3D00D384C5 /* dubstep.mp3 in Resources */,
 				C2EC963F1FBF6A2B00D384C5 /* frequencyBands.txt in Resources */,
+				C23198051FD49AF300C9FF9C /* pitchyin_sineinput_expectedconfidence.txt in Resources */,
 				C2BADBE21FBFAAAB009D02C5 /* windowing_hann.txt in Resources */,
 				C29C3D8C1FCE66EC00F6FF4D /* sfx.pitch_after_max_to_before_max_energy_ratio_expected.txt in Resources */,
 				C29C3D601FCE66EC00F6FF4D /* lowLevel.sccoeffs_expected.txt in Resources */,
 				C2EC96631FBF6A3D00D384C5 /* cat_purrrr24bit.wav in Resources */,
 				C29C3C6A1FCD03D200F6FF4D /* pitchfilter_inputpitch.txt in Resources */,
 				C2EC96CA1FBF6A8A00D384C5 /* impulses_1second_44100.flac in Resources */,
+				C231980D1FD49AF300C9FF9C /* pitchyin_bandlimitedsawmaskedinput.txt in Resources */,
 				C2EC96E71FBF6AA200D384C5 /* impulses_1second_44100_st.mp3 in Resources */,
 				C2EC96FE1FBF6ACE00D384C5 /* seq-3342-3-16bit.flac in Resources */,
 				C29C3C9D1FCD03F500F6FF4D /* predominantpitchmelodia_expectedconfidences.txt in Resources */,
+				C23197FD1FD49AF300C9FF9C /* pitchyin_bandlimitedsawmaskedinput_expectedconfidence.txt in Resources */,
 				C29C3C951FCD03F500F6FF4D /* pitchsaliencefunction_frequenciesinput.txt in Resources */,
 				C2EC96D81FBF6A9200D384C5 /* impulses_1second_44100_bad_stream_info.flac in Resources */,
+				C23198431FD4E5EA00C9FF9C /* pitchyinfft_bandlimitedsawinput_expectedpitch.txt in Resources */,
 				C2F1362C1FC66D98006FF2E2 /* autocorrelation_octave_output.txt in Resources */,
 				C29C3C991FCD03F500F6FF4D /* pitchsaliencefunction_expected.txt in Resources */,
 				C29C3CA31FCD03F500F6FF4D /* pitchsaliencefunctionpeaks_expectedvalues.txt in Resources */,
@@ -6041,9 +6187,11 @@
 				C27C40321FC1FFFB005CB8BA /* spectralpeaks_sinusoidfrequencies.txt in Resources */,
 				C2EC96A61FBF6A7800D384C5 /* impulses_1second_48000.wav in Resources */,
 				C2B7181D1FC1034F00ECB0A6 /* pitchsalience_squarewave.txt in Resources */,
+				C23198291FD4E5EA00C9FF9C /* pitchyinfft_sineinput_expectedconfidence.txt in Resources */,
 				C2F1362E1FC66D98006FF2E2 /* autocorrelation_input_pow2.txt in Resources */,
 				C2ED117D1FC8606A00BD18D6 /* ifft_output.txt in Resources */,
 				C29C3C9F1FCD03F500F6FF4D /* pitchsaliencefunctionpeaks_expectedbins.txt in Resources */,
+				C231982F1FD4E5EA00C9FF9C /* pitchyinfft_sineinput_expectedpitch.txt in Resources */,
 				C2EC96991FBF6A7200D384C5 /* impulses_1second_48000.ogg in Resources */,
 				C2B7181B1FC1034F00ECB0A6 /* pitchsalience_realwhitenoise.txt in Resources */,
 				C2EC966D1FBF6A4900D384C5 /* unsupported.au in Resources */,
@@ -6367,6 +6515,7 @@
 				C2D9669A1FC5CFF9005736A9 /* StandardAlgorithmTests.swift in Sources */,
 				C2D966AF1FC5D5C0005736A9 /* PitchAlgorithmTests.swift in Sources */,
 				C241D5E71FD1C819007D7664 /* InternalTests.swift in Sources */,
+				C23197E81FD46C5700C9FF9C /* TestCaseExtensions.swift in Sources */,
 				C2D966A31FC5D066005736A9 /* TonalAlgorithmTests.swift in Sources */,
 				C2EC97181FBF6B0E00D384C5 /* Assertions.swift in Sources */,
 				C2D966AC1FC5D170005736A9 /* FileHelpers.swift in Sources */,
@@ -6710,6 +6859,7 @@
 				C2D9669B1FC5CFF9005736A9 /* StandardAlgorithmTests.swift in Sources */,
 				C2D966B01FC5D5C0005736A9 /* PitchAlgorithmTests.swift in Sources */,
 				C241D5E81FD1C819007D7664 /* InternalTests.swift in Sources */,
+				C23197E91FD46C5700C9FF9C /* TestCaseExtensions.swift in Sources */,
 				C2D966A41FC5D066005736A9 /* TonalAlgorithmTests.swift in Sources */,
 				C2EC971D1FBF6B0F00D384C5 /* Assertions.swift in Sources */,
 				C2D966AD1FC5D170005736A9 /* FileHelpers.swift in Sources */,
