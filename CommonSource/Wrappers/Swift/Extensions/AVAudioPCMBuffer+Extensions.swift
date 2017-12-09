@@ -13,10 +13,10 @@ import Accelerate
 extension AVAudioPCMBuffer {
 
   /// A type for specifying how a stereo signal should be downmixed into a mono signal.
-  public enum DownmixMethod { case left, right, mix }
+  internal enum DownmixMethod { case left, right, mix }
 
   /// Derived property for the buffer downmixed to mono.
-  public var mono: AVAudioPCMBuffer {
+  internal var mono: AVAudioPCMBuffer {
 
     // Check that the buffer isn't already mono or just return it.
     guard format.channelCount > 1 else { return self }
@@ -93,7 +93,7 @@ extension AVAudioPCMBuffer {
   ///   - method: The method to use when downmixing.
   ///   - sampleRate: The sample rate for the new buffer or `nil` to use the buffer's rate.
   /// - Returns: `self` if the buffer is already a mono signal and a downmixed buffer otherwise.
-  public func downmixed(method: DownmixMethod = .mix,
+  internal func downmixed(method: DownmixMethod = .mix,
                         sampleRate: Double? = nil) -> AVAudioPCMBuffer
   {
 
@@ -239,7 +239,7 @@ extension AVAudioPCMBuffer {
   /// - Parameters:
   ///   - url: The url for the audio file to load.
   /// - Throws: Any error encountered reading the audio file into the new buffer.
-  public convenience init(contentsOf url: URL) throws {
+  internal convenience init(contentsOf url: URL) throws {
 
     // Get the audio file.
     let audioFile = try AVAudioFile(forReading: url)
@@ -376,7 +376,7 @@ private func convert(sourceBuffer: AVAudioPCMBuffer, to rate: Double) throws -> 
 
 extension AVAudioPCMBuffer {
 
-  public enum Error: String, Swift.Error {
+  internal enum Error: String, Swift.Error {
 
     case invalidSampleRate = "The supplied buffer must have a sample rate ≥ 44100 Hz."
     case failureToCreateConverter = "Failed to create the `AVAudioConverter`."
