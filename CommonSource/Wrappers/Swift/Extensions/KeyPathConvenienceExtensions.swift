@@ -13,7 +13,7 @@ extension Sequence {
   ///
   /// - Parameter keyPath: The key path used to map each value.
   /// - Returns: An array consisting of the value of `keyPath` for each element.
-  public func map<T>(_ keyPath: KeyPath<Element, T>) -> [T] {
+  internal func map<T>(_ keyPath: KeyPath<Element, T>) -> [T] {
     return map { $0[keyPath: keyPath] }
   }
 
@@ -21,7 +21,7 @@ extension Sequence {
   ///
   /// - Parameter keyPath: The key path used to map each value.
   /// - Returns: An array consisting of the value of `keyPath` for each element where `value != nil`.
-  public func flatMap<T>(_ keyPath: KeyPath<Element, T?>) -> [T] {
+  internal func flatMap<T>(_ keyPath: KeyPath<Element, T?>) -> [T] {
     return flatMap { $0[keyPath: keyPath] }
   }
 
@@ -34,7 +34,7 @@ extension Dictionary {
   ///
   /// - Parameter keyPath: The key path used to map the values.
   /// - Returns: A dictionary with the values mapped via `keyPath`.
-  public func mapValues<T>(_ keyPath: KeyPath<Value, T>) -> Dictionary<Key, T> {
+  internal func mapValues<T>(_ keyPath: KeyPath<Value, T>) -> Dictionary<Key, T> {
     return mapValues({ $0[keyPath: keyPath] })
   }
 
@@ -45,7 +45,7 @@ extension Dictionary {
   ///   - valueTransform: The closure used to map values.
   /// - Returns: The dictionary of mapped keys and values.
   /// - Throws: Any error thrown within one of the closures provided.
-  public func mapKeysValues<K, V>(_ keyTransform: (Key) throws -> K,
+  internal func mapKeysValues<K, V>(_ keyTransform: (Key) throws -> K,
                                   _ valueTransform: (Value) throws -> V) rethrows -> Dictionary<K, V>
     where K:Hashable
   {
@@ -61,7 +61,7 @@ extension Dictionary {
   ///   - valueTransform: The closure used to map values.
   /// - Returns: The dictionary of mapped keys and values.
   /// - Throws: Any error thrown by `valueTransform`.
-  public func mapKeysValues<K, V>(_ keyTransform: KeyPath<Key, K>,
+  internal func mapKeysValues<K, V>(_ keyTransform: KeyPath<Key, K>,
                                   _ valueTransform: (Value) throws -> V) rethrows -> Dictionary<K, V>
     where K:Hashable
   {
@@ -77,7 +77,7 @@ extension Dictionary {
   ///   - valueTransform: The key path with which to map the values.
   /// - Returns: The dictionary of mapped keys and values.
   /// - Throws: Any error thrown by `keyTransform`.
-  public func mapKeysValues<K, V>(_ keyTransform: (Key) throws -> K,
+  internal func mapKeysValues<K, V>(_ keyTransform: (Key) throws -> K,
                                   _ valueTransform: KeyPath<Value, V>) rethrows -> Dictionary<K, V>
     where K:Hashable
   {
@@ -92,7 +92,7 @@ extension Dictionary {
   ///   - keyTransform: The key path with which to map the keys.
   ///   - valueTransform: The key path with which to map the values.
   /// - Returns: The dictionary of mapped keys and values.
-  public func mapKeysValues<K, V>(_ keyTransform: KeyPath<Key, K>,
+  internal func mapKeysValues<K, V>(_ keyTransform: KeyPath<Key, K>,
                                   _ valueTransform: KeyPath<Value, V>) -> Dictionary<K, V>
     where K:Hashable
   {
@@ -108,7 +108,7 @@ extension Dictionary {
   ///   - valueTransform: The closure used to map values.
   /// - Returns: The dictionary of mapped keys and values.
   /// - Throws: Any error thrown within one of the closures provided.
-  public func flatMapKeysValues<K, V>(_ keyTransform: (Key) throws -> K?,
+  internal func flatMapKeysValues<K, V>(_ keyTransform: (Key) throws -> K?,
                                       _ valueTransform: (Value) throws -> V?) rethrows -> Dictionary<K, V>
     where K:Hashable
   {
@@ -127,7 +127,7 @@ extension Dictionary {
   ///   - valueTransform: The closure used to map values.
   /// - Returns: The dictionary of mapped keys and values.
   /// - Throws: Any error thrown by `valueTransform`.
-  public func flatMapKeysValues<K, V>(_ keyTransform: KeyPath<Key, K?>,
+  internal func flatMapKeysValues<K, V>(_ keyTransform: KeyPath<Key, K?>,
                                       _ valueTransform: (Value) throws -> V?) rethrows -> Dictionary<K, V>
     where K:Hashable
   {
@@ -146,7 +146,7 @@ extension Dictionary {
   ///   - valueTransform: The key path with which to map the values.
   /// - Returns: The dictionary of mapped keys and values.
   /// - Throws: Any error thrown by `keyTransform`.
-  public func flatMapKeysValues<K, V>(_ keyTransform: (Key) throws -> K?,
+  internal func flatMapKeysValues<K, V>(_ keyTransform: (Key) throws -> K?,
                                       _ valueTransform: KeyPath<Value, V?>) rethrows -> Dictionary<K, V>
     where K:Hashable
   {
@@ -164,7 +164,7 @@ extension Dictionary {
   ///   - keyTransform: The key path with which to map the keys.
   ///   - valueTransform: The key path with which to map the values.
   /// - Returns: The dictionary of mapped keys and values.
-  public func flatMapKeysValues<K, V>(_ keyTransform: KeyPath<Key, K?>,
+  internal func flatMapKeysValues<K, V>(_ keyTransform: KeyPath<Key, K?>,
                                       _ valueTransform: KeyPath<Value, V?>) -> Dictionary<K, V>
     where K:Hashable
   {
@@ -182,7 +182,7 @@ extension Dictionary {
   ///   - keyTransform: The closure used to map keys.
   /// - Returns: The dictionary with mapped keys.
   /// - Throws: Any error thrown by `keyTransform`.
-  public func mapKeys<K:Hashable>(_ keyTransform: (Key) throws -> K) rethrows -> Dictionary<K, Value> {
+  internal func mapKeys<K:Hashable>(_ keyTransform: (Key) throws -> K) rethrows -> Dictionary<K, Value> {
     return Dictionary<K,Value>(uniqueKeysWithValues: try map {
       (try keyTransform($0), $1)
       })
@@ -193,7 +193,7 @@ extension Dictionary {
   /// - Parameters:
   ///   - keyTransform: The key path with which to map the keys.
   /// - Returns: The dictionary with mapped keys.
-  public func mapKeys<K:Hashable>(_ keyTransform: KeyPath<Key, K>) -> Dictionary<K, Value> {
+  internal func mapKeys<K:Hashable>(_ keyTransform: KeyPath<Key, K>) -> Dictionary<K, Value> {
     return Dictionary<K,Value>(uniqueKeysWithValues: map {
       ($0[keyPath: keyTransform], $1)
       })
@@ -205,7 +205,7 @@ extension Dictionary {
   ///   - keyTransform: The closure used to map keys.
   /// - Returns: The dictionary with mapped keys.
   /// - Throws: Any error thrown by `keyTransform`.
-  public func flatMapKeys<K:Hashable>(_ keyTransform: (Key) throws -> K?) rethrows -> Dictionary<K, Value> {
+  internal func flatMapKeys<K:Hashable>(_ keyTransform: (Key) throws -> K?) rethrows -> Dictionary<K, Value> {
     return Dictionary<K,Value>(uniqueKeysWithValues: try flatMap {
       guard let newKey = try keyTransform($0) else { return nil }
       return (newKey, $1)
@@ -217,7 +217,7 @@ extension Dictionary {
   /// - Parameters:
   ///   - keyTransform: The key path with which to map the keys.
   /// - Returns: The dictionary with mapped keys.
-  public func flatMapKeys<K:Hashable>(_ keyTransform: KeyPath<Key, K?>) -> Dictionary<K, Value> {
+  internal func flatMapKeys<K:Hashable>(_ keyTransform: KeyPath<Key, K?>) -> Dictionary<K, Value> {
     return Dictionary<K,Value>(uniqueKeysWithValues: flatMap {
       guard let newKey = $0[keyPath: keyTransform] else { return nil }
       return (newKey, $1)
@@ -230,7 +230,7 @@ extension Dictionary {
   ///   - valueTransform: The closure used to map values.
   /// - Returns: The dictionary with mapped values.
   /// - Throws: Any error thrown by `valueTransform`.
-  public func flatMapValues<V>(_ valueTransform: (Value) throws -> V?) rethrows -> Dictionary<Key, V> {
+  internal func flatMapValues<V>(_ valueTransform: (Value) throws -> V?) rethrows -> Dictionary<Key, V> {
     return Dictionary<Key,V>(uniqueKeysWithValues: try flatMap {
       guard let newValue = try valueTransform($1) else { return nil }
       return ($0, newValue)
@@ -242,7 +242,7 @@ extension Dictionary {
   /// - Parameters:
   ///   - valueTransform: The key path with which to map the values.
   /// - Returns: The dictionary of mapped keys and values.
-  public func flatMapValues<V>(_ valueTransform: KeyPath<Value, V?>) -> Dictionary<Key, V> {
+  internal func flatMapValues<V>(_ valueTransform: KeyPath<Value, V?>) -> Dictionary<Key, V> {
     return Dictionary<Key,V>(uniqueKeysWithValues: flatMap {
       guard let newValue = $1[keyPath: valueTransform] else { return nil }
       return ($0, newValue)
@@ -255,7 +255,7 @@ extension Dictionary {
   /// - Parameters:
   ///   - values: The values to group.
   ///   - keyPath: The key path with which to derive keys for the grouped values.
-  public init<S>(grouping values: S, by keyPath: KeyPath<S.Element, Key>)
+  internal init<S>(grouping values: S, by keyPath: KeyPath<S.Element, Key>)
     where Value == [S.Element], S:Sequence
   {
     self = Dictionary<Key, Value>(grouping: values, by: { $0[keyPath: keyPath] })

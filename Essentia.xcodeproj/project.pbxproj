@@ -657,7 +657,6 @@
 		C23A388C1FBF5A2C0083F6CE /* extractor_version.h in Headers */ = {isa = PBXBuildFile; fileRef = C23A35EC1FBF5A2B0083F6CE /* extractor_version.h */; };
 		C23A388D1FBF5A2C0083F6CE /* FreesoundSfxDescriptors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C23A35ED1FBF5A2B0083F6CE /* FreesoundSfxDescriptors.cpp */; };
 		C23A388E1FBF5A2C0083F6CE /* FreesoundRhythmDescriptors.h in Headers */ = {isa = PBXBuildFile; fileRef = C23A35EE1FBF5A2B0083F6CE /* FreesoundRhythmDescriptors.h */; };
-		C23A38901FBF5A2C0083F6CE /* ffmpegapi.h in Headers */ = {isa = PBXBuildFile; fileRef = C23A35F01FBF5A2B0083F6CE /* ffmpegapi.h */; };
 		C23A38911FBF5A2C0083F6CE /* peak.h in Headers */ = {isa = PBXBuildFile; fileRef = C23A35F11FBF5A2B0083F6CE /* peak.h */; };
 		C23A38941FBF5A2C0083F6CE /* atomic.h in Headers */ = {isa = PBXBuildFile; fileRef = C23A35F41FBF5A2B0083F6CE /* atomic.h */; };
 		C23A38951FBF5A2C0083F6CE /* bpfutil.h in Headers */ = {isa = PBXBuildFile; fileRef = C23A35F51FBF5A2B0083F6CE /* bpfutil.h */; };
@@ -1215,7 +1214,6 @@
 		C23A3AD11FBF5EFD0083F6CE /* extractor_version.h in Headers */ = {isa = PBXBuildFile; fileRef = C23A35EC1FBF5A2B0083F6CE /* extractor_version.h */; };
 		C23A3AD21FBF5EFD0083F6CE /* FreesoundSfxDescriptors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C23A35ED1FBF5A2B0083F6CE /* FreesoundSfxDescriptors.cpp */; };
 		C23A3AD31FBF5EFE0083F6CE /* FreesoundRhythmDescriptors.h in Headers */ = {isa = PBXBuildFile; fileRef = C23A35EE1FBF5A2B0083F6CE /* FreesoundRhythmDescriptors.h */; };
-		C23A3AD51FBF5F040083F6CE /* ffmpegapi.h in Headers */ = {isa = PBXBuildFile; fileRef = C23A35F01FBF5A2B0083F6CE /* ffmpegapi.h */; };
 		C23A3AD61FBF5F040083F6CE /* peak.h in Headers */ = {isa = PBXBuildFile; fileRef = C23A35F11FBF5A2B0083F6CE /* peak.h */; };
 		C23A3AD91FBF5F040083F6CE /* atomic.h in Headers */ = {isa = PBXBuildFile; fileRef = C23A35F41FBF5A2B0083F6CE /* atomic.h */; };
 		C23A3ADA1FBF5F040083F6CE /* bpfutil.h in Headers */ = {isa = PBXBuildFile; fileRef = C23A35F51FBF5A2B0083F6CE /* bpfutil.h */; };
@@ -1641,8 +1639,6 @@
 		C2BADBE61FBFAAAB009D02C5 /* windowing_triangular.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2BADBE01FBFAAAB009D02C5 /* windowing_triangular.txt */; };
 		C2BADBFE1FBFC4BD009D02C5 /* AVAudioPCMBuffer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EC95B01FBF6A1500D384C5 /* AVAudioPCMBuffer+Extensions.swift */; };
 		C2BADBFF1FBFC4BD009D02C5 /* AVAudioPCMBuffer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EC95B01FBF6A1500D384C5 /* AVAudioPCMBuffer+Extensions.swift */; };
-		C2BADC031FC0878E009D02C5 /* Zip.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BADC021FC0878E009D02C5 /* Zip.swift */; };
-		C2BADC041FC0878E009D02C5 /* Zip.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BADC021FC0878E009D02C5 /* Zip.swift */; };
 		C2BADC061FC0926E009D02C5 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BADC051FC0926E009D02C5 /* Strings.swift */; };
 		C2BADC071FC0926E009D02C5 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BADC051FC0926E009D02C5 /* Strings.swift */; };
 		C2D9669A1FC5CFF9005736A9 /* StandardAlgorithmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D966991FC5CFF9005736A9 /* StandardAlgorithmTests.swift */; };
@@ -2974,6 +2970,15 @@
 		C2F136221FC66D98006FF2E2 /* autocorrelation_octave_input.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = autocorrelation_octave_input.txt; sourceTree = "<group>"; };
 		C2F136231FC66D98006FF2E2 /* autocorrelation_octave_output.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = autocorrelation_octave_output.txt; sourceTree = "<group>"; };
 		C2F136241FC66D98006FF2E2 /* autocorrelation_input_pow2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = autocorrelation_input_pow2.txt; sourceTree = "<group>"; };
+		C2F81CB41FDDEBF800D344FE /* libavdevice.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavdevice.a; path = ../../../../usr/local/Cellar/ffmpeg/3.3.4/lib/libavdevice.a; sourceTree = "<group>"; };
+		C2F81CB51FDDEBF800D344FE /* libavfilter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavfilter.a; path = ../../../../usr/local/Cellar/ffmpeg/3.3.4/lib/libavfilter.a; sourceTree = "<group>"; };
+		C2F81CB61FDDEBF800D344FE /* libswresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libswresample.a; path = ../../../../usr/local/Cellar/ffmpeg/3.3.4/lib/libswresample.a; sourceTree = "<group>"; };
+		C2F81CB71FDDEBF800D344FE /* libavcodec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavcodec.a; path = ../../../../usr/local/Cellar/ffmpeg/3.3.4/lib/libavcodec.a; sourceTree = "<group>"; };
+		C2F81CB81FDDEBF900D344FE /* libswscale.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libswscale.a; path = ../../../../usr/local/Cellar/ffmpeg/3.3.4/lib/libswscale.a; sourceTree = "<group>"; };
+		C2F81CB91FDDEBF900D344FE /* libavresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavresample.a; path = ../../../../usr/local/Cellar/ffmpeg/3.3.4/lib/libavresample.a; sourceTree = "<group>"; };
+		C2F81CBA1FDDEBF900D344FE /* libavutil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavutil.a; path = ../../../../usr/local/Cellar/ffmpeg/3.3.4/lib/libavutil.a; sourceTree = "<group>"; };
+		C2F81CBB1FDDEBF900D344FE /* libavformat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavformat.a; path = ../../../../usr/local/Cellar/ffmpeg/3.3.4/lib/libavformat.a; sourceTree = "<group>"; };
+		C2F81CBC1FDDEBF900D344FE /* libpostproc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpostproc.a; path = ../../../../usr/local/Cellar/ffmpeg/3.3.4/lib/libpostproc.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -4069,6 +4074,15 @@
 		C23A3B5B1FBF64220083F6CE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C2F81CB71FDDEBF800D344FE /* libavcodec.a */,
+				C2F81CB41FDDEBF800D344FE /* libavdevice.a */,
+				C2F81CB51FDDEBF800D344FE /* libavfilter.a */,
+				C2F81CBB1FDDEBF900D344FE /* libavformat.a */,
+				C2F81CB91FDDEBF900D344FE /* libavresample.a */,
+				C2F81CBA1FDDEBF900D344FE /* libavutil.a */,
+				C2F81CBC1FDDEBF900D344FE /* libpostproc.a */,
+				C2F81CB61FDDEBF800D344FE /* libswresample.a */,
+				C2F81CB81FDDEBF900D344FE /* libswscale.a */,
 				C23A3B5E1FBF64510083F6CE /* Accelerate.framework */,
 				C23A3B5C1FBF64220083F6CE /* Accelerate.framework */,
 			);
@@ -4798,7 +4812,6 @@
 				C23A363D1FBF5A2B0083F6CE /* IODataType+BridgingExtensions.hpp in Headers */,
 				C23A37C01FBF5A2B0083F6CE /* windowing.h in Headers */,
 				C23A376E1FBF5A2B0083F6CE /* resamplefft.h in Headers */,
-				C23A38901FBF5A2C0083F6CE /* ffmpegapi.h in Headers */,
 				C23A37311FBF5A2B0083F6CE /* spectralwhitening.h in Headers */,
 				C23A36341FBF5A2B0083F6CE /* NetworkWrapper.h in Headers */,
 				C23A36C31FBF5A2B0083F6CE /* tristimulus.h in Headers */,
@@ -5402,7 +5415,6 @@
 				C23A39201FBF5B7B0083F6CE /* tonicindianartmusic.h in Headers */,
 				C23A3A8D1FBF5E8D0083F6CE /* iotypewrappers.h in Headers */,
 				C23A3A4C1FBF5DB20083F6CE /* distributionshape.h in Headers */,
-				C23A3AD51FBF5F040083F6CE /* ffmpegapi.h in Headers */,
 				C23A39371FBF5BF10083F6CE /* pca.h in Headers */,
 				C23A3A9D1FBF5EE20083F6CE /* MusicDescriptorsSet.h in Headers */,
 				C23A3AA71FBF5EEF0083F6CE /* tnt_fortran_array3d.h in Headers */,
@@ -6388,7 +6400,6 @@
 				C23A364C1FBF5A2B0083F6CE /* ParameterWrapper.mm in Sources */,
 				C23A388B1FBF5A2C0083F6CE /* FreesoundRhythmDescriptors.cpp in Sources */,
 				C23A36E81FBF5A2B0083F6CE /* maxtototal.cpp in Sources */,
-				C2BADC031FC0878E009D02C5 /* Zip.swift in Sources */,
 				C23A376B1FBF5A2B0083F6CE /* stochasticmodelsynth.cpp in Sources */,
 				C23A36351FBF5A2B0083F6CE /* IODataType.mm in Sources */,
 				C23A37A61FBF5A2B0083F6CE /* binaryoperatorstream.cpp in Sources */,
@@ -6803,7 +6814,6 @@
 				C23A3ADC1FBF5F090083F6CE /* configurable.cpp in Sources */,
 				C23A39331FBF5BF10083F6CE /* sbic.cpp in Sources */,
 				C23A3A631FBF5DB20083F6CE /* decrease.cpp in Sources */,
-				C2BADC041FC0878E009D02C5 /* Zip.swift in Sources */,
 				C23A3AE21FBF5F160083F6CE /* ringbuffervectoroutput.cpp in Sources */,
 				C23A39D21FBF5CCF0083F6CE /* frametoreal.cpp in Sources */,
 				C23A3A051FBF5CCF0083F6CE /* realaccumulator.cpp in Sources */,

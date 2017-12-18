@@ -8,17 +8,19 @@
 import Foundation
 import struct Accelerate.DSPComplex
 
-extension DSPComplex: CustomStringConvertible {
+extension DSPComplex/*: CustomStringConvertible*/ {
 
+  /*
   /// A simple description for the complex number of the form 'a±bi'.
   public var description: String {
     return imag.sign == .minus ? "\(real)\(imag)i" : "\(real)+\(imag)i"
   }
+   */
 
   /// Stores the absolute value of a complex number's imaginary part.
-  public struct ImaginaryPart {
-    public let value: Float
-    public init(value: Float) { self.value = abs(value) }
+  internal struct ImaginaryPart {
+    internal let value: Float
+    internal init(value: Float) { self.value = abs(value) }
   }
 
 }
@@ -44,7 +46,7 @@ postfix operator ⍳
 ///
 /// - Parameter lhs: The absolute value of a complex number's imaginary part.
 /// - Returns: The imaginary part structure.
-public postfix func ⍳(lhs: Float) -> DSPComplex.ImaginaryPart {
+internal postfix func ⍳(lhs: Float) -> DSPComplex.ImaginaryPart {
   return DSPComplex.ImaginaryPart(value: lhs)
 }
 
@@ -54,7 +56,7 @@ public postfix func ⍳(lhs: Float) -> DSPComplex.ImaginaryPart {
 ///   - lhs: The value for the complex number's real part.
 ///   - rhs: The imaginary part.
 /// - Returns: The complex number constructed using `lhs` and `rhs`.
-public func +(lhs: Float, rhs: DSPComplex.ImaginaryPart) -> DSPComplex {
+internal func +(lhs: Float, rhs: DSPComplex.ImaginaryPart) -> DSPComplex {
   return DSPComplex(real: lhs, imag: rhs.value)
 }
 
@@ -64,6 +66,6 @@ public func +(lhs: Float, rhs: DSPComplex.ImaginaryPart) -> DSPComplex {
 ///   - lhs: The value for the complex number's real part.
 ///   - rhs: The imaginary part.
 /// - Returns: The complex number constructed using `lhs` and `rhs`.
-public func -(lhs: Float, rhs: DSPComplex.ImaginaryPart) -> DSPComplex {
+internal func -(lhs: Float, rhs: DSPComplex.ImaginaryPart) -> DSPComplex {
   return DSPComplex(real: lhs, imag: -rhs.value)
 }

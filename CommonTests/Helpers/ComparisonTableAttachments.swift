@@ -7,7 +7,7 @@
 //
 import Foundation
 import XCTest
-import Essentia
+@testable import Essentia
 import Accelerate
 
 /// An enumeration for specifying the general basis of an assertion.

@@ -23,7 +23,7 @@
 #include "algorithmfactory.h"
 #include "streamingalgorithm.h"
 #include "network.h"
-//#include "ffmpegapi.h"
+#include "ffmpegapi.h"
 #include "poolstorage.h"
 
 

@@ -18,7 +18,7 @@ extension Dictionary {
   ///              optional value of the type stored by the new dictionary.
   /// - Returns: A new dictionary formed by merging `self` and `other` using `combine`.
   /// - Throws: Any error encountered within `combine`.
-  public func mappingMerge<T,U>(_ other: [Key:T],
+  internal func mappingMerge<T,U>(_ other: [Key:T],
                               uniquingKeysWith combine: (Key, Value?, T?) throws -> U?)
     rethrows -> [Key:U]
   {
@@ -46,7 +46,7 @@ extension Dictionary {
   ///              optional value of the type stored by the new dictionary.
   /// - Returns: A new dictionary formed by merging `self` and `other` using `combine`.
   /// - Throws: Any error encountered within `combine`.
-  public func mappingMerge<S, T, U>(_ other: S,
+  internal func mappingMerge<S, T, U>(_ other: S,
                                  uniquingKeysWith combine: (Key, Value?, T?) throws -> U?)
     rethrows -> [Key:U]
     where S:Sequence, S.Element == (Key, T)

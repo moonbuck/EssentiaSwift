@@ -7,7 +7,7 @@
 //
 import Foundation
 import AVFoundation
-import Essentia
+@testable import Essentia
 
 /// Simple helper for retrieving the URL for a bundled file.
 ///

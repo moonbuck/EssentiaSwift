@@ -2320,4 +2320,10 @@ class StandardAlgorithmTests: XCTestCase {
 
   }
 
+  /// Tests the functionality of the ReplayGain algorithm. Values taken from
+  /// `test_replaygain.py`.
+  func testReplayGain() {
+    //TODO: Implement the  function
+    XCTFail("\(#function) not yet implemented.")
+  }
 }

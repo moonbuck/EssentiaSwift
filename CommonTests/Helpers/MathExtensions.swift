@@ -7,6 +7,7 @@
 //
 import Foundation
 import struct Accelerate.DSPComplex
+@testable import Essentia
 
 extension FloatingPoint {
 

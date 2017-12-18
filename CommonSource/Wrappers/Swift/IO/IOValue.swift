@@ -36,7 +36,7 @@ extension IODataType: CustomStringConvertible {
     switch self {
       case .complexRealVec, .realVec, .stringVec,
            .stereoSampleVec, .realVecVec, .complexRealVecVec: return true
-      default:                                                               return false
+      default:                                                return false
     }
   }
 

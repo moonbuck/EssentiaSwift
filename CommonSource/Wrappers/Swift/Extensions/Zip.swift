@@ -11,7 +11,7 @@
 import Foundation
 
 @_inlineable
-public func zip<S1, S2, S3>(_ seq1: S1, _ seq2: S2, _ seq3: S3) -> Zip3Sequence<S1, S2, S3>
+internal func zip<S1, S2, S3>(_ seq1: S1, _ seq2: S2, _ seq3: S3) -> Zip3Sequence<S1, S2, S3>
   where S1:Sequence, S2:Sequence, S3:Sequence
 {
   return Zip3Sequence(seq1, seq2, seq3)
@@ -19,11 +19,11 @@ public func zip<S1, S2, S3>(_ seq1: S1, _ seq2: S2, _ seq3: S3) -> Zip3Sequence<
 
 /// An iterator for `Zip3Sequence`.
 @_fixed_layout
-public struct Zip3Iterator<Iterator1, Iterator2, Iterator3> : IteratorProtocol
+internal struct Zip3Iterator<Iterator1, Iterator2, Iterator3> : IteratorProtocol
   where Iterator1:IteratorProtocol, Iterator2:IteratorProtocol, Iterator3:IteratorProtocol
 {
   /// The type of element returned by `next()`.
-  public typealias Element = (Iterator1.Element, Iterator2.Element, Iterator3.Element)
+  internal typealias Element = (Iterator1.Element, Iterator2.Element, Iterator3.Element)
 
   /// Creates an instance around a trio of underlying iterators.
   @_inlineable
@@ -37,7 +37,7 @@ public struct Zip3Iterator<Iterator1, Iterator2, Iterator3> : IteratorProtocol
   ///
   /// Once `nil` has been returned, all subsequent calls return `nil`.
   @_inlineable
-  public mutating func next() -> Element? {
+  internal mutating func next() -> Element? {
 
     if _reachedEnd {
       return nil
@@ -69,25 +69,25 @@ public struct Zip3Iterator<Iterator1, Iterator2, Iterator3> : IteratorProtocol
 }
 
 @_fixed_layout
-public struct Zip3Sequence<Sequence1:Sequence, Sequence2:Sequence, Sequence3:Sequence> : Sequence {
+internal struct Zip3Sequence<Sequence1:Sequence, Sequence2:Sequence, Sequence3:Sequence> : Sequence {
 
   /// A type whose instances can produce the elements of this
   /// sequence, in order.
-  public typealias Iterator = Zip3Iterator<Sequence1.Iterator,
+  internal typealias Iterator = Zip3Iterator<Sequence1.Iterator,
                                            Sequence2.Iterator,
                                            Sequence3.Iterator>
 
   /// Creates an instance that makes tuples of elements from `sequence1`, `sequence2` and
   /// `sequence3`.
   @_inlineable
-  public
+  internal
   init(_ sequence1: Sequence1, _ sequence2: Sequence2, _ sequence3: Sequence3) {
     (_sequence1, _sequence2, _sequence3) = (sequence1, sequence2, sequence3)
   }
 
   /// Returns an iterator over the elements of this sequence.
   @_inlineable
-  public func makeIterator() -> Iterator {
+  internal func makeIterator() -> Iterator {
     return Iterator(
       _sequence1.makeIterator(),
       _sequence2.makeIterator(),

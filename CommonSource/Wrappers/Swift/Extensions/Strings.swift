@@ -15,7 +15,7 @@ extension Character {
   ///   - lhs: The character to repeat.
   ///   - rhs: The number of times to repeat `lhs`.
   /// - Returns: A string composed of `lhs` repeated `rhs` times.
-  public static func *(lhs: Character, rhs: Int) -> String {
+  internal static func *(lhs: Character, rhs: Int) -> String {
     return String(repeating: lhs, count: rhs)
   }
 
@@ -30,12 +30,12 @@ extension String {
   ///   - lhs: The character sequence to repeat.
   ///   - rhs: The number of times to repeat `lhs`.
   /// - Returns: A string composed of `lhs` repeated `rhs` times.
-  public static func *(lhs: String, rhs: Int) -> String {
+  internal static func *(lhs: String, rhs: Int) -> String {
     return String(repeating: lhs, count: rhs)
   }
 
   /// An enumeration for specifying the location of a string's content within a padded string.
-  public enum PadAlignment {
+  internal enum PadAlignment {
 
     /// The padding follows the content.
     case left
@@ -57,7 +57,7 @@ extension String {
   ///   - padCharacter: The character used to pad the string to `length`.
   ///                   Defaults to `" "`.
   /// - Returns: The string padded to `length` using `padCharacter` and aligned via `alignment`.
-  public func padded(to length: Int,
+  internal func padded(to length: Int,
                      alignment: PadAlignment = .left,
                      padCharacter: Character = " ") -> String
   {

@@ -6,7 +6,7 @@
 //  Copyright © 2017 Moondeer Studios. All rights reserved.
 //
 import Foundation
-import Essentia
+@testable import Essentia
 
 /// Helper that combines a dictionary of parameters with a dictionary of descriptions to
 /// form an array of `ParameterInfo` tuples.

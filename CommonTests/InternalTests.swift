@@ -6,7 +6,7 @@
 //  Copyright © 2017 Moondeer Studios. All rights reserved.
 //
 import XCTest
-import Essentia
+@testable import Essentia
 import Accelerate
 
 private let descriptionSuffix = " [Internal]"
