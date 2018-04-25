@@ -42,9 +42,14 @@ void Crest::compute() {
     throw EssentiaException("Crest: array does not contain any values");
   }
 
-  if (find_if(array.begin(), array.end(), bind2nd(less<Real>(), 0)) != array.end()) {
+  Real minimum = *min_element(array.begin(), array.end());
+  if (minimum < 0.0) {
     throw EssentiaException("Crest: array must not contain negative values");
   }
+  
+//  if (find_if(array.begin(), array.end(), bind2nd(less<Real>(), 0)) != array.end()) {
+//    throw EssentiaException("Crest: array must not contain negative values");
+//  }
 
   Real maximum = *max_element(array.begin(), array.end());
 

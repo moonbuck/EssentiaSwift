@@ -41,8 +41,8 @@ using namespace std;
 
   return ^StandardAlgorithmWrapper *(void) {
 
-    standard::Algorithm *algorithm = _info.create();
-    algorithm->setName(_info.name);
+    standard::Algorithm *algorithm = self->_info.create();
+    algorithm->setName(self->_info.name);
     algorithm->declareParameters();
 
     return [[StandardAlgorithmWrapper alloc] initWithAlgorithm: algorithm assumeOwnership:YES];
@@ -115,8 +115,8 @@ using namespace std;
 
   return ^StreamingAlgorithmWrapper *(void) {
 
-    streaming::Algorithm *algorithm = _info.create();
-    algorithm->setName(_info.name);
+    streaming::Algorithm *algorithm = self->_info.create();
+    algorithm->setName(self->_info.name);
     algorithm->declareParameters();
 
     return [[StreamingAlgorithmWrapper alloc] initWithAlgorithm: *algorithm assumeOwnership:YES];

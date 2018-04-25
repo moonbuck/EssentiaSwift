@@ -22,7 +22,7 @@ extension Sequence {
   /// - Parameter keyPath: The key path used to map each value.
   /// - Returns: An array consisting of the value of `keyPath` for each element where `value != nil`.
   internal func flatMap<T>(_ keyPath: KeyPath<Element, T?>) -> [T] {
-    return flatMap { $0[keyPath: keyPath] }
+    return compactMap { $0[keyPath: keyPath] }
   }
 
 }
@@ -112,7 +112,7 @@ extension Dictionary {
                                       _ valueTransform: (Value) throws -> V?) rethrows -> Dictionary<K, V>
     where K:Hashable
   {
-    return Dictionary<K,V>(uniqueKeysWithValues: try flatMap {
+    return Dictionary<K,V>(uniqueKeysWithValues: try compactMap {
       guard let newKey = try keyTransform($0), let newValue = try valueTransform($1) else {
         return nil
       }
@@ -131,7 +131,7 @@ extension Dictionary {
                                       _ valueTransform: (Value) throws -> V?) rethrows -> Dictionary<K, V>
     where K:Hashable
   {
-    return Dictionary<K,V>(uniqueKeysWithValues: try flatMap {
+    return Dictionary<K,V>(uniqueKeysWithValues: try compactMap {
       guard let newKey = $0[keyPath: keyTransform], let newValue = try valueTransform($1) else {
         return nil
       }
@@ -150,7 +150,7 @@ extension Dictionary {
                                       _ valueTransform: KeyPath<Value, V?>) rethrows -> Dictionary<K, V>
     where K:Hashable
   {
-    return Dictionary<K,V>(uniqueKeysWithValues: try flatMap {
+    return Dictionary<K,V>(uniqueKeysWithValues: try compactMap {
       guard let newKey = try keyTransform($0), let newValue = $1[keyPath: valueTransform] else {
         return nil
       }
@@ -168,7 +168,7 @@ extension Dictionary {
                                       _ valueTransform: KeyPath<Value, V?>) -> Dictionary<K, V>
     where K:Hashable
   {
-    return Dictionary<K,V>(uniqueKeysWithValues: flatMap {
+    return Dictionary<K,V>(uniqueKeysWithValues: compactMap {
       guard let newKey = $0[keyPath: keyTransform], let newValue = $1[keyPath: valueTransform] else {
         return nil
       }
@@ -206,7 +206,7 @@ extension Dictionary {
   /// - Returns: The dictionary with mapped keys.
   /// - Throws: Any error thrown by `keyTransform`.
   internal func flatMapKeys<K:Hashable>(_ keyTransform: (Key) throws -> K?) rethrows -> Dictionary<K, Value> {
-    return Dictionary<K,Value>(uniqueKeysWithValues: try flatMap {
+    return Dictionary<K,Value>(uniqueKeysWithValues: try compactMap {
       guard let newKey = try keyTransform($0) else { return nil }
       return (newKey, $1)
       })
@@ -218,7 +218,7 @@ extension Dictionary {
   ///   - keyTransform: The key path with which to map the keys.
   /// - Returns: The dictionary with mapped keys.
   internal func flatMapKeys<K:Hashable>(_ keyTransform: KeyPath<Key, K?>) -> Dictionary<K, Value> {
-    return Dictionary<K,Value>(uniqueKeysWithValues: flatMap {
+    return Dictionary<K,Value>(uniqueKeysWithValues: compactMap {
       guard let newKey = $0[keyPath: keyTransform] else { return nil }
       return (newKey, $1)
       })
@@ -231,7 +231,7 @@ extension Dictionary {
   /// - Returns: The dictionary with mapped values.
   /// - Throws: Any error thrown by `valueTransform`.
   internal func flatMapValues<V>(_ valueTransform: (Value) throws -> V?) rethrows -> Dictionary<Key, V> {
-    return Dictionary<Key,V>(uniqueKeysWithValues: try flatMap {
+    return Dictionary<Key,V>(uniqueKeysWithValues: try compactMap {
       guard let newValue = try valueTransform($1) else { return nil }
       return ($0, newValue)
       })
@@ -243,7 +243,7 @@ extension Dictionary {
   ///   - valueTransform: The key path with which to map the values.
   /// - Returns: The dictionary of mapped keys and values.
   internal func flatMapValues<V>(_ valueTransform: KeyPath<Value, V?>) -> Dictionary<Key, V> {
-    return Dictionary<Key,V>(uniqueKeysWithValues: flatMap {
+    return Dictionary<Key,V>(uniqueKeysWithValues: compactMap {
       guard let newValue = $1[keyPath: valueTransform] else { return nil }
       return ($0, newValue)
       })

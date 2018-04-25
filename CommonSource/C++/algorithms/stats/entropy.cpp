@@ -41,7 +41,9 @@ void Entropy::compute() {
         throw EssentiaException("Entropy: array does not contain any values");
     }
 
-    if (find_if(array.begin(), array.end(), bind2nd(less<Real>(), 0)) != array.end()) {
+    Real minimum = *min_element(array.begin(), array.end());
+    if (minimum < 0.0) {
+//    if (find_if(array.begin(), array.end(), bind2nd(less<Real>(), 0)) != array.end()) {
         throw EssentiaException("Entropy: array must not contain negative values");
     }
 
