@@ -76,7 +76,7 @@ public func XCTAssertEqual<T:Equatable>(_ array1: [[T]],
 {
 
   var countMismatch = false
-  guard !test(array: array1, against: array2, countMismatch: &countMismatch, using: ==) else {
+  guard !test(array2D: array1, against: array2, countMismatch: &countMismatch, using: ==) else {
     return true
   }
 
@@ -120,7 +120,7 @@ public func XCTAssertEqual<T:Equatable>(_ array1: [[[T]]],
 {
 
   var countMismatch = false
-  guard !test(array: array1, against: array2, countMismatch: &countMismatch, using: ==) else {
+  guard !test(array3D: array1, against: array2, countMismatch: &countMismatch, using: ==) else {
     return true
   }
 
@@ -166,7 +166,7 @@ public func XCTAssertEqual<T:FloatingPoint>(_ array1: [T],
 {
 
   var countMismatch = false
-  guard !test(array: array1, against: array2, countMismatch: &countMismatch, using: {
+  guard !test(array1D: array1, against: array2, countMismatch: &countMismatch, using: {
     $0.isEqual(to: $1, accuracy: accuracy)
   }) else { return true }
 
@@ -213,7 +213,7 @@ public func XCTAssertEqual<T:FloatingPoint>(_ array1: [[T]],
 {
 
   var countMismatch = false
-  guard !test(array: array1, against: array2, countMismatch: &countMismatch, using: {
+  guard !test(array2D: array1, against: array2, countMismatch: &countMismatch, using: {
     $0.isEqual(to: $1, accuracy: accuracy)
   }) else { return true }
 
@@ -260,7 +260,7 @@ public func XCTAssertEqual<T:FloatingPoint>(_ array1: [[[T]]],
 {
 
   var countMismatch = false
-  guard !test(array: array1, against: array2, countMismatch: &countMismatch, using: {
+  guard !test(array3D: array1, against: array2, countMismatch: &countMismatch, using: {
     $0.isEqual(to: $1, accuracy: accuracy)
   }) else { return true }
 
@@ -306,7 +306,7 @@ public func XCTAssertEqual(_ array1: [DSPComplex],
 {
 
   var countMismatch = false
-  guard !test(array: array1, against: array2, countMismatch: &countMismatch, using: {
+  guard !test(array1D: array1, against: array2, countMismatch: &countMismatch, using: {
     $0.isEqual(to: $1, accuracy: accuracy)
   }) else { return true }
 
@@ -352,7 +352,7 @@ public func XCTAssertEqual(_ array1: [[DSPComplex]],
 {
 
   var countMismatch = false
-  guard !test(array: array1, against: array2, countMismatch: &countMismatch, using: {
+  guard !test(array2D: array1, against: array2, countMismatch: &countMismatch, using: {
     $0.isEqual(to: $1, accuracy: accuracy)
   }) else { return true }
 
@@ -398,7 +398,7 @@ public func XCTAssertEqual(_ array1: [[[DSPComplex]]],
 {
 
   var countMismatch = false
-  guard !test(array: array1, against: array2, countMismatch: &countMismatch, using: {
+  guard !test(array3D: array1, against: array2, countMismatch: &countMismatch, using: {
     $0.isEqual(to: $1, accuracy: accuracy)
   }) else { return true }
 
@@ -444,7 +444,7 @@ public func XCTAssertEqual<T:FloatingPoint>(_ array1: [T],
 {
 
   var countMismatch = false
-  guard !test(array: array1, against: array2, countMismatch: &countMismatch, using: {
+  guard !test(array1D: array1, against: array2, countMismatch: &countMismatch, using: {
     $0.isEqual(to: $1, deviation: deviation)
   }) else { return true }
 
@@ -491,7 +491,7 @@ public func XCTAssertEqual<T:FloatingPoint>(_ array1: [[T]],
 {
 
   var countMismatch = false
-  guard !test(array: array1, against: array2, countMismatch: &countMismatch, using: {
+  guard !test(array2D: array1, against: array2, countMismatch: &countMismatch, using: {
     $0.isEqual(to: $1, deviation: deviation)
   }) else { return true }
 
@@ -538,7 +538,7 @@ public func XCTAssertEqual<T:FloatingPoint>(_ array1: [[[T]]],
 {
 
   var countMismatch = false
-  guard !test(array: array1, against: array2, countMismatch: &countMismatch, using: {
+  guard !test(array3D: array1, against: array2, countMismatch: &countMismatch, using: {
     $0.isEqual(to: $1, deviation: deviation)
   }) else { return true }
 
@@ -584,7 +584,7 @@ public func XCTAssertEqual(_ array1: [DSPComplex],
 {
 
   var countMismatch = false
-  guard !test(array: array1, against: array2, countMismatch: &countMismatch, using: {
+  guard !test(array1D: array1, against: array2, countMismatch: &countMismatch, using: {
     $0.isEqual(to: $1, deviation: deviation)
   }) else { return true }
 
@@ -630,7 +630,7 @@ public func XCTAssertEqual(_ array1: [[DSPComplex]],
 {
 
   var countMismatch = false
-  guard !test(array: array1, against: array2, countMismatch: &countMismatch, using: {
+  guard !test(array2D: array1, against: array2, countMismatch: &countMismatch, using: {
     $0.isEqual(to: $1, deviation: deviation)
   }) else { return true }
 
@@ -676,7 +676,7 @@ public func XCTAssertEqual(_ array1: [[[DSPComplex]]],
 {
 
   var countMismatch = false
-  guard !test(array: array1, against: array2, countMismatch: &countMismatch, using: {
+  guard !test(array3D: array1, against: array2, countMismatch: &countMismatch, using: {
     $0.isEqual(to: $1, deviation: deviation)
   }) else { return true }
 

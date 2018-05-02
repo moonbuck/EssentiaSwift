@@ -285,36 +285,36 @@ class InternalTests: XCTestCase {
      Test the test function for two 1d arrays.
      */
 
-    XCTAssertTrue(test(array: f1d1, against: f1d1, using: ==), descriptionSuffix)
-    XCTAssertFalse(test(array: f1d1, against: f1d4, using: ==), descriptionSuffix)
+    XCTAssertTrue(test(array1D: f1d1, against: f1d1, using: ==), descriptionSuffix)
+    XCTAssertFalse(test(array1D: f1d1, against: f1d4, using: ==), descriptionSuffix)
 
-    XCTAssertTrue(test(array: f1d1, against: f1d4,
+    XCTAssertTrue(test(array1D: f1d1, against: f1d4,
                        using: equalWithAccuracyPassBlock), descriptionSuffix)
-    XCTAssertFalse(test(array: f1d1, against: f1d4,
+    XCTAssertFalse(test(array1D: f1d1, against: f1d4,
                         using: equalWithAccuracyFailBlock), descriptionSuffix)
 
     /*
      Test the test function for two 2d arrays.
      */
 
-    XCTAssertTrue(test(array: f2d14, against: f2d14, using: ==), descriptionSuffix)
-    XCTAssertFalse(test(array: f2d41, against: f2d14, using: ==), descriptionSuffix)
+    XCTAssertTrue(test(array2D: f2d14, against: f2d14, using: ==), descriptionSuffix)
+    XCTAssertFalse(test(array2D: f2d41, against: f2d14, using: ==), descriptionSuffix)
 
-    XCTAssertTrue(test(array: f2d14, against: f2d14,
+    XCTAssertTrue(test(array2D: f2d14, against: f2d14,
                        using: equalWithAccuracyPassBlock), descriptionSuffix)
-    XCTAssertFalse(test(array: f2d41, against: f2d14,
+    XCTAssertFalse(test(array2D: f2d41, against: f2d14,
                         using: equalWithAccuracyFailBlock), descriptionSuffix)
 
     /*
      Test the test function for two 3d arrays.
      */
 
-    XCTAssertTrue(test(array: f3d14_14, against: f3d14_14, using: ==), descriptionSuffix)
-    XCTAssertFalse(test(array: f3d14_41, against: f3d14_14, using: ==), descriptionSuffix)
+    XCTAssertTrue(test(array3D: f3d14_14, against: f3d14_14, using: ==), descriptionSuffix)
+    XCTAssertFalse(test(array3D: f3d14_41, against: f3d14_14, using: ==), descriptionSuffix)
 
-    XCTAssertTrue(test(array: f3d14_14, against: f3d14_14,
+    XCTAssertTrue(test(array3D: f3d14_14, against: f3d14_14,
                        using: equalWithAccuracyPassBlock), descriptionSuffix)
-    XCTAssertFalse(test(array: f3d14_41, against: f3d14_14,
+    XCTAssertFalse(test(array3D: f3d14_41, against: f3d14_14,
                         using: equalWithAccuracyFailBlock), descriptionSuffix)
 
   }

@@ -48,7 +48,7 @@ class EssentiaTests: XCTestCase {
     let expected = Set(AlgorithmFactoryWrapper.standardRegisteredNames)
 
     // Get the algorithm info corresponding to each name.
-    let infos = expected.flatMap(AlgorithmFactoryWrapper.standardInfo(forName:))
+    let infos = expected.compactMap(AlgorithmFactoryWrapper.standardInfo(forName:))
 
     // Map the infos into a list of names.
     let actual = Set(infos.map(\.algorithmName))
@@ -76,7 +76,7 @@ class EssentiaTests: XCTestCase {
     let expected = Set(AlgorithmFactoryWrapper.streamingRegisteredNames)
 
     // Get the algorithm info corresponding to each name.
-    let infos = expected.flatMap(AlgorithmFactoryWrapper.streamingInfo(forName:))
+    let infos = expected.compactMap(AlgorithmFactoryWrapper.streamingInfo(forName:))
 
     // Map the infos into a list of names.
     let actual = Set(infos.map(\.algorithmName))
@@ -112,7 +112,7 @@ class EssentiaTests: XCTestCase {
     var declarationOutput = ""
 
     let infoKeys = AlgorithmFactoryWrapper.standardRegisteredNames
-    let infos = infoKeys.flatMap(AlgorithmFactoryWrapper.standardInfo(forName:))
+    let infos = infoKeys.compactMap(AlgorithmFactoryWrapper.standardInfo(forName:))
 
     let infosByCategory = Dictionary(grouping: infos, by: \.algorithmCategory)
     let namesByCategory = infosByCategory.mapValues({$0.map(\.algorithmName)})
@@ -177,7 +177,7 @@ class EssentiaTests: XCTestCase {
     var declarationOutput = ""
 
     let infoKeys = AlgorithmFactoryWrapper.streamingRegisteredNames
-    let infos = infoKeys.flatMap(AlgorithmFactoryWrapper.streamingInfo(forName:))
+    let infos = infoKeys.compactMap(AlgorithmFactoryWrapper.streamingInfo(forName:))
 
     let infosByCategory = Dictionary(grouping: infos, by: \.algorithmCategory)
 

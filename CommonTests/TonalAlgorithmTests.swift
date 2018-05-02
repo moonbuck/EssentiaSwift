@@ -710,7 +710,7 @@ class TonalAlgorithmTests: XCTestCase {
     /// - Parameter labels: The chord labels.
     /// - Returns: `labels` mapped to the vectors in `chordDictionary`.
     func progressionVectors(for labels: [String]) -> [[Float]] {
-      return labels.flatMap({chordDictionary[$0]})
+      return labels.compactMap({chordDictionary[$0]})
     }
 
     /// Helper for running the algorithm and performing assertions on the result.

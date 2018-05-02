@@ -101,7 +101,7 @@ internal func test<T>(array: [[[T]]],
 ///   - element1: The element of `array1` being tested.
 ///   - element2: The element of `array2` being tested.
 /// - Returns: `true` if all element pairs pass and `false` otherwise.
-internal func test<T>(array array1: [T],
+internal func test<T>(array1D array1: [T],
                       against array2: [T],
                       countMismatch: UnsafeMutablePointer<Bool>? = nil,
                       using block: (_ element1: T, _ element2: T) -> Bool) -> Bool
@@ -122,14 +122,14 @@ internal func test<T>(array array1: [T],
 ///   - element1: The element of an element of `array1` being tested.
 ///   - element2: The element of an element of `array2` being tested.
 /// - Returns: `true` if all element pairs pass and `false` otherwise.
-internal func test<T>(array array1: [[T]],
+internal func test<T>(array2D array1: [[T]],
                       against array2: [[T]],
                       countMismatch: UnsafeMutablePointer<Bool>? = nil,
                       using block: (_ element1: T, _ element2: T) -> Bool) -> Bool
 {
   guard array1.count == array2.count else { countMismatch?.pointee = true; return false }
   for (child1, child2) in zip(array1, array2) {
-    guard test(array: child1, against: child2, countMismatch: countMismatch, using: block) else {
+    guard test(array1D: child1, against: child2, countMismatch: countMismatch, using: block) else {
       return false
     }
   }
@@ -148,14 +148,14 @@ internal func test<T>(array array1: [[T]],
 ///   - element1: The element of an element of an element of `array1` being tested.
 ///   - element2: The element of an element of an element of `array2` being tested.
 /// - Returns: `true` if all element pairs pass and `false` otherwise.
-internal func test<T>(array array1: [[[T]]],
+internal func test<T>(array3D array1: [[[T]]],
                       against array2: [[[T]]],
                       countMismatch: UnsafeMutablePointer<Bool>? = nil,
                       using block: (_ element1: T, _ element2: T) -> Bool) -> Bool
 {
   guard array1.count == array2.count else { countMismatch?.pointee = true; return false }
   for (child1, child2) in zip(array1, array2) {
-    guard test(array: child1, against: child2, countMismatch: countMismatch, using: block) else {
+    guard test(array2D: child1, against: child2, countMismatch: countMismatch, using: block) else {
       return false
     }
   }
