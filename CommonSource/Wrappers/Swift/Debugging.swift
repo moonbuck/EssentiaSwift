@@ -13,7 +13,7 @@ extension OBJCDebuggingModule: CustomStringConvertible {
   /// log message.
   public var description: String {
 
-    guard self != .none else { return "None" }
+    guard self.rawValue != 0 else { return "None" }
     guard self != .all  else { return "All"  }
 
     var modules: [String] = []

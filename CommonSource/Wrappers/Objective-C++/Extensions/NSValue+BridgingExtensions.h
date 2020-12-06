@@ -7,8 +7,10 @@
 //
 #import <Foundation/Foundation.h>
 #import <Accelerate/Accelerate.h>
-#import "WrappedTypes.h"
-#import "LoggerWrapper.h"
+#import <Essentia/WrappedTypes.h>
+#import <Essentia/LoggerWrapper.h>
+//#import "WrappedTypes.h"
+//#import "LoggerWrapper.h"
 
 @interface NSValue (BridgingExtensions)
 

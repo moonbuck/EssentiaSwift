@@ -32,7 +32,7 @@ public class AnyAlgorithm: WrappingType {
   ///
   /// - Parameter parameters: The parameter values to set for the configurable.
   public func set(parameters: [String:Parameter]) {
-    let parameterMap = parameters.filter({$0.value.type != .none}).mapValues({$0.wrapper})
+    let parameterMap = parameters.filter({$0.value.type != .undefined}).mapValues({$0.wrapper})
     wrapper.set(parameters: parameterMap)
   }
 
@@ -40,7 +40,7 @@ public class AnyAlgorithm: WrappingType {
   ///
   /// - Parameter parameters: The values with which to reconfigure the configurable.
   public func configure(parameters: [String:Parameter]) {
-    let parameterMap = parameters.filter({$0.value.type != .none}).mapValues({$0.wrapper})
+    let parameterMap = parameters.filter({$0.value.type != .undefined}).mapValues({$0.wrapper})
     wrapper.configure(parameters: parameterMap)
   }
 

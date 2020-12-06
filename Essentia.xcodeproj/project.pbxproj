@@ -5571,10 +5571,12 @@
 				TargetAttributes = {
 					C23A33221FBF571A0083F6CE = {
 						CreatedOnToolsVersion = 9.1;
+						LastSwiftMigration = 1220;
 						ProvisioningStyle = Automatic;
 					};
 					C23A332B1FBF571A0083F6CE = {
 						CreatedOnToolsVersion = 9.1;
+						LastSwiftMigration = 1220;
 						ProvisioningStyle = Automatic;
 					};
 					C23A33411FBF57360083F6CE = {
@@ -7076,7 +7078,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.moondeerstudios.Essentia-iOS";
 				PRODUCT_NAME = Essentia;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -7102,7 +7104,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.moondeerstudios.Essentia-iOS";
 				PRODUCT_NAME = Essentia;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -7121,7 +7123,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.moondeerstudios.Essentia-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -7140,7 +7142,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.moondeerstudios.Essentia-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

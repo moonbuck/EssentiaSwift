@@ -83,6 +83,8 @@ extension AVAudioPCMBuffer {
 
       fatalError("Conversion to single channel failed: \(error!)")
 
+    @unknown default:
+      fatalError("Conversion to single channel failed: \(error!)")
     }
 
   }
@@ -226,6 +228,8 @@ extension AVAudioPCMBuffer {
 
         fatalError("Conversion to single channel failed: \(error!)")
 
+      @unknown default:
+        fatalError("Conversion to single channel failed: \(error!)")
       }
 
     }
@@ -370,6 +374,8 @@ private func convert(sourceBuffer: AVAudioPCMBuffer, to rate: Double) throws -> 
 
       throw error ?? AVAudioPCMBuffer.Error.conversionError
 
+  @unknown default:
+    throw error ?? AVAudioPCMBuffer.Error.conversionError
   }
 
 }

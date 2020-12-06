@@ -258,7 +258,7 @@ private let zTableHeader: String = {
 /// - Returns: `string` with trailing zeros dropped.
 private func zeroTrimmed(_ string: String) -> String {
 
-  guard let decimalIndex = string.index(of: ".") else { return string }
+  guard let decimalIndex = string.firstIndex(of: ".") else { return string }
 
   var endIndex = string.index(decimalIndex, offsetBy: 2)
 

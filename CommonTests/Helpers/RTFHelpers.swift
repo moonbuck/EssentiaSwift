@@ -338,7 +338,7 @@ public func rtfLineWrap(text: String,
                               : subsequentSpaces
 
         guard line.distance(from: printIndex, to: line.endIndex) > printCount,
-              var splitIndex = line.index(of: " ")
+              var splitIndex = line.firstIndex(of: " ")
           else
         {
           let text = line[printIndex...]
@@ -347,7 +347,7 @@ public func rtfLineWrap(text: String,
           break
         }
 
-        while let nextSplitIndex = line[line.index(after: splitIndex)...].index(of: " "),
+        while let nextSplitIndex = line[line.index(after: splitIndex)...].firstIndex(of: " "),
               line.distance(from: printIndex, to: nextSplitIndex) < printCount
         {
           splitIndex = nextSplitIndex
@@ -355,7 +355,7 @@ public func rtfLineWrap(text: String,
 
         if line.distance(from: printIndex, to: splitIndex) < 0 {
 
-          while let nextSplitIndex = line[line.index(after: splitIndex)...].index(of: "/"),
+          while let nextSplitIndex = line[line.index(after: splitIndex)...].firstIndex(of: "/"),
             line.distance(from: printIndex, to: nextSplitIndex) < printCount
           {
             splitIndex = nextSplitIndex

@@ -27,6 +27,8 @@ extension IODataType: CustomStringConvertible {
       case .stereoSampleVec:   return "StereoSampleVec"
       case .realVecVec:        return "RealVecVec"
       case .complexRealVecVec: return "ComplexRealVecVec"
+    @unknown default:
+      return "Undefined"
     }
 
   }
@@ -134,6 +136,8 @@ public enum IOValue {
         let convertedData = complexRealVecVecData.map({$0.map({$0.complexValue})})
         self = .complexRealVecVec(convertedData)
 
+    @unknown default:
+      self = .none
     }
 
   }

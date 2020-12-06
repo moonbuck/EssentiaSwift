@@ -35,10 +35,14 @@ class InternalTests: XCTestCase {
     let endIndex = description.index(description.endIndex, offsetBy: -descriptionSuffix.count)
     let actualDescription = String(description[..<endIndex])
 
-    super.recordFailure(withDescription: actualDescription,
-                        inFile: filePath,
-                        atLine: lineNumber,
-                        expected: expected)
+
+    super.record(XCTIssue(type: expected ? .assertionFailure : .uncaughtException,
+                          compactDescription: actualDescription,
+                          sourceCodeContext: XCTSourceCodeContext(location: XCTSourceCodeLocation(filePath: filePath, lineNumber: lineNumber))))
+//    super.recordFailure(withDescription: actualDescription,
+//                        inFile: filePath,
+//                        atLine: lineNumber,
+//                        expected: expected)
 
 
   }
@@ -92,14 +96,14 @@ class InternalTests: XCTestCase {
      Test addition.
      */
 
-    XCTAssertEqual( 4+2⍳ + ( 6-8⍳),  10-6⍳, descriptionSuffix)
-    XCTAssertEqual( 4-2⍳ + ( 6+8⍳),  10+6⍳, descriptionSuffix)
-    XCTAssertEqual(-4+2⍳ + ( 6-8⍳),   2-6⍳, descriptionSuffix)
-    XCTAssertEqual(-4-2⍳ + ( 6+8⍳),   2+6⍳, descriptionSuffix)
-    XCTAssertEqual( 4+2⍳ + (-6-8⍳),  -2-6⍳, descriptionSuffix)
-    XCTAssertEqual( 4-2⍳ + (-6+8⍳),  -2+6⍳, descriptionSuffix)
-    XCTAssertEqual(-4+2⍳ + (-6-8⍳), -10-6⍳, descriptionSuffix)
-    XCTAssertEqual(-4-2⍳ + (-6+8⍳), -10+6⍳, descriptionSuffix)
+    XCTAssertEqual( (4+2⍳) as DSPComplex + ( 6-8⍳) as DSPComplex,  10-6⍳, descriptionSuffix)
+    XCTAssertEqual( (4-2⍳) as DSPComplex + ( 6+8⍳) as DSPComplex,  10+6⍳, descriptionSuffix)
+    XCTAssertEqual((-4+2⍳) as DSPComplex + ( 6-8⍳) as DSPComplex,   2-6⍳, descriptionSuffix)
+    XCTAssertEqual((-4-2⍳) as DSPComplex + ( 6+8⍳) as DSPComplex,   2+6⍳, descriptionSuffix)
+    XCTAssertEqual( (4+2⍳) as DSPComplex + (-6-8⍳) as DSPComplex,  -2-6⍳, descriptionSuffix)
+    XCTAssertEqual( (4-2⍳) as DSPComplex + (-6+8⍳) as DSPComplex,  -2+6⍳, descriptionSuffix)
+    XCTAssertEqual((-4+2⍳) as DSPComplex + (-6-8⍳) as DSPComplex, -10-6⍳, descriptionSuffix)
+    XCTAssertEqual((-4-2⍳) as DSPComplex + (-6+8⍳) as DSPComplex, -10+6⍳, descriptionSuffix)
 
     /*
      Test subtraction.

@@ -21,6 +21,8 @@ extension ParameterWrapperType: CustomStringConvertible {
       case .realVec:      return "RealVec"
       case .stringVec:    return "StringVec"
       case .stringVecMap: return "StringVecMap"
+    @unknown default:
+      return "Undefined"
     }
   }
 
@@ -79,6 +81,8 @@ public final class Parameter: CustomStringConvertible {
         guard let stringVecMapValue = wrapper.value as? [String:[String]] else { return .none }
         return .stringVecMap(stringVecMapValue)
 
+    @unknown default:
+      return .none
     }
 
   }
